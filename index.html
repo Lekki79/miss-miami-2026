@@ -1318,8 +1318,29 @@
         <a href="about.html" class="btn-secondary">Learn More</a>
       </div>
 
-      <!-- Event date hint -->
-      <p style="font-size:11px;letter-spacing:0.3em;color:rgba(212,175,55,0.5);text-transform:uppercase;margin-top:8px;">Pageant Night — November 15, 2026</p>
+      <!-- Countdown -->
+      <div class="countdown" id="countdown">
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-days">--</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-hours">--</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-mins">--</span>
+          <span class="countdown-label">Min</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-secs">--</span>
+          <span class="countdown-label">Sec</span>
+        </div>
+      </div>
+      <p style="font-size:10px;letter-spacing:0.28em;color:rgba(212,175,55,0.4);text-transform:uppercase;margin-top:14px;">Until Pageant Night · November 15, 2026</p>
     </div>
 
     <div class="scroll-hint">
@@ -1775,6 +1796,33 @@
 
     // Set first photo on load
     setPhoto(winners[0].photo);
+
+    // ── Countdown Timer ──
+    (function() {
+      const target = new Date('2026-11-15T20:00:00');
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function tick() {
+        const now = new Date();
+        const diff = target - now;
+        if (diff <= 0) {
+          document.getElementById('cd-days').textContent = '00';
+          document.getElementById('cd-hours').textContent = '00';
+          document.getElementById('cd-mins').textContent = '00';
+          document.getElementById('cd-secs').textContent = '00';
+          return;
+        }
+        const days  = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const mins  = Math.floor((diff % 3600000) / 60000);
+        const secs  = Math.floor((diff % 60000) / 1000);
+        document.getElementById('cd-days').textContent  = pad(days);
+        document.getElementById('cd-hours').textContent = pad(hours);
+        document.getElementById('cd-mins').textContent  = pad(mins);
+        document.getElementById('cd-secs').textContent  = pad(secs);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
   </script>
 </body>
 </html>
