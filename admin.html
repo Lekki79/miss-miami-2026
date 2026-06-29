@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — Miss Miami 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #D4AF37; --black: #0D0D0D; --dark: #111008;
+      --dark2: #161209; --cream: #F5F1E8; --white: #ffffff;
+      --green: #2ecc71; --red: #e74c3c; --gray: rgba(245,241,232,0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--black); color: var(--cream); min-height: 100vh; }
+
+    /* ── LOGIN ── */
+    #login-screen {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh;
+      background: radial-gradient(ellipse at 50% 30%, rgba(212,175,55,0.06) 0%, transparent 70%);
+    }
+    .login-box {
+      width: 420px; padding: 56px 48px;
+      border: 1px solid rgba(212,175,55,0.15);
+      background: rgba(22,18,9,0.95);
+    }
+    .login-logo { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.4em; color: var(--gold); text-align: center; margin-bottom: 8px; }
+    .login-title { font-family: 'Cinzel', serif; font-size: 22px; color: var(--white); text-align: center; margin-bottom: 40px; }
+    .login-field { margin-bottom: 20px; }
+    .login-field label { display: block; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(245,241,232,0.4); margin-bottom: 8px; }
+    .login-field input {
+      width: 100%; padding: 14px 16px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(212,175,55,0.2);
+      color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 14px;
+      outline: none; transition: border-color 0.3s;
+    }
+    .login-field input:focus { border-color: var(--gold); }
+    .login-btn {
+      width: 100%; padding: 16px; margin-top: 8px;
+      background: var(--gold); color: var(--black);
+      font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.25em;
+      border: none; cursor: pointer; text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .login-btn:hover { opacity: 0.9; }
+    .login-error { color: var(--red); font-size: 12px; text-align: center; margin-top: 16px; }
+
+    /* ── ADMIN LAYOUT ── */
+    #admin-screen { display: none; }
+    .admin-header {
+      height: 72px; background: rgba(13,13,13,0.98);
+      border-bottom: 1px solid rgba(212,175,55,0.12);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; position: sticky; top: 0; z-index: 100;
+    }
+    .admin-header-left { font-family: 'Cinzel', serif; }
+    .admin-header-left .brand { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); }
+    .admin-header-left .page { font-size: 16px; color: var(--white); margin-top: 2px; }
+    .admin-header-right { display: flex; align-items: center; gap: 24px; }
+    .admin-email { font-size: 12px; color: rgba(245,241,232,0.4); }
+    .logout-btn {
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(245,241,232,0.4); background: none; border: 1px solid rgba(245,241,232,0.1);
+      padding: 8px 16px; cursor: pointer; font-family: 'Montserrat', sans-serif;
+      transition: all 0.2s;
+    }
+    .logout-btn:hover { color: var(--cream); border-color: rgba(245,241,232,0.3); }
+
+    .admin-main { padding: 40px; max-width: 1200px; margin: 0 auto; }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px;
+    }
+    .stat-card {
+      padding: 24px 28px; border: 1px solid rgba(212,175,55,0.1);
+      background: rgba(22,18,9,0.6);
+    }
+    .stat-card .stat-num { font-family: 'Cinzel', serif; font-size: 32px; color: var(--gold); }
+    .stat-card .stat-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,241,232,0.35); margin-top: 4px; }
+
+    /* ── FILTERS ── */
+    .filters {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+    }
+    .search-box {
+      flex: 1; padding: 12px 16px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(212,175,55,0.15);
+      color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 13px;
+      outline: none;
+    }
+    .search-box::placeholder { color: rgba(245,241,232,0.25); }
+    .search-box:focus { border-color: rgba(212,175,55,0.4); }
+    .filter-btn {
+      padding: 12px 20px; background: none;
+      border: 1px solid rgba(212,175,55,0.15); color: rgba(245,241,232,0.5);
+      font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; cursor: pointer; transition: all 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── TABLE ── */
+    .table-wrap { border: 1px solid rgba(212,175,55,0.1); overflow: hidden; }
+    .table-head {
+      display: grid;
+      grid-template-columns: 2fr 2fr 1fr 1.2fr 1fr 160px;
+      padding: 14px 24px;
+      background: rgba(212,175,55,0.05);
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(245,241,232,0.35);
+    }
+    .app-row {
+      display: grid;
+      grid-template-columns: 2fr 2fr 1fr 1.2fr 1fr 160px;
+      padding: 18px 24px; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background 0.2s; cursor: pointer;
+    }
+    .app-row:last-child { border-bottom: none; }
+    .app-row:hover { background: rgba(212,175,55,0.04); }
+    .app-name { font-size: 14px; color: var(--white); font-weight: 500; }
+    .app-email { font-size: 12px; color: rgba(245,241,232,0.45); }
+    .app-age { font-size: 13px; color: rgba(245,241,232,0.6); }
+    .app-date { font-size: 12px; color: rgba(245,241,232,0.45); }
+    .app-city { font-size: 12px; color: rgba(245,241,232,0.5); }
+    .status-badge {
+      display: inline-block; padding: 4px 12px;
+      font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+      border-radius: 0;
+    }
+    .status-pending { border: 1px solid rgba(212,175,55,0.4); color: var(--gold); }
+    .status-approved { border: 1px solid rgba(46,204,113,0.4); color: var(--green); background: rgba(46,204,113,0.08); }
+    .status-rejected { border: 1px solid rgba(231,76,60,0.3); color: rgba(231,76,60,0.7); }
+
+    .row-actions { display: flex; gap: 8px; }
+    .btn-approve, .btn-reject {
+      padding: 7px 14px; border: none; cursor: pointer;
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; transition: opacity 0.2s;
+    }
+    .btn-approve { background: rgba(46,204,113,0.15); color: var(--green); border: 1px solid rgba(46,204,113,0.3); }
+    .btn-approve:hover { background: rgba(46,204,113,0.25); }
+    .btn-reject { background: rgba(231,76,60,0.1); color: rgba(231,76,60,0.8); border: 1px solid rgba(231,76,60,0.2); }
+    .btn-reject:hover { background: rgba(231,76,60,0.2); }
+
+    .empty-state {
+      text-align: center; padding: 80px 40px;
+      color: rgba(245,241,232,0.25); font-size: 14px; line-height: 2;
+    }
+    .empty-state .empty-icon { font-size: 40px; margin-bottom: 16px; opacity: 0.3; }
+
+    /* ── DETAIL MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+      z-index: 200; display: none; align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--dark2); border: 1px solid rgba(212,175,55,0.15);
+      width: 100%; max-width: 720px; max-height: 85vh; overflow-y: auto;
+    }
+    .modal-header {
+      padding: 28px 36px; border-bottom: 1px solid rgba(212,175,55,0.1);
+      display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0;
+      background: var(--dark2);
+    }
+    .modal-header h2 { font-family: 'Cinzel', serif; font-size: 20px; color: var(--white); }
+    .modal-close { background: none; border: none; color: rgba(245,241,232,0.4); font-size: 24px; cursor: pointer; line-height: 1; }
+    .modal-close:hover { color: var(--white); }
+    .modal-body { padding: 36px; }
+    .detail-section { margin-bottom: 32px; }
+    .detail-section-title {
+      font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px; padding-bottom: 8px;
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+    }
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .detail-field label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,241,232,0.3); display: block; margin-bottom: 4px; }
+    .detail-field p { font-size: 14px; color: var(--cream); }
+    .detail-essay { margin-bottom: 16px; }
+    .detail-essay label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,241,232,0.3); display: block; margin-bottom: 6px; }
+    .detail-essay p { font-size: 13px; color: rgba(245,241,232,0.7); line-height: 1.8; }
+    .modal-footer {
+      padding: 24px 36px; border-top: 1px solid rgba(212,175,55,0.1);
+      display: flex; gap: 12px; justify-content: flex-end;
+    }
+    .modal-approve {
+      padding: 14px 32px; background: var(--green); color: #0a2e18;
+      font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.2em;
+      border: none; cursor: pointer; text-transform: uppercase; font-weight: 600;
+    }
+    .modal-reject {
+      padding: 14px 32px; background: transparent; color: var(--red);
+      font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.2em;
+      border: 1px solid rgba(231,76,60,0.4); cursor: pointer; text-transform: uppercase;
+    }
+    .modal-approve:hover { opacity: 0.9; }
+    .modal-reject:hover { background: rgba(231,76,60,0.1); }
+
+    /* loading */
+    .loading { text-align: center; padding: 60px; color: rgba(245,241,232,0.25); font-size: 13px; letter-spacing: 0.2em; }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">Miss Miami 2026</div>
+    <div class="login-title">Admin Panel</div>
+    <div class="login-field">
+      <label>Email</label>
+      <input type="email" id="admin-email" placeholder="admin@missmiamiusa.com" />
+    </div>
+    <div class="login-field">
+      <label>Password</label>
+      <input type="password" id="admin-password" placeholder="••••••••" />
+    </div>
+    <button class="login-btn" onclick="adminLogin()">Sign In</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="admin-screen">
+  <header class="admin-header">
+    <div class="admin-header-left">
+      <div class="brand">Miss Miami 2026</div>
+      <div class="page">Admin Panel</div>
+    </div>
+    <div class="admin-header-right">
+      <span class="admin-email" id="admin-email-display"></span>
+      <button class="logout-btn" onclick="adminLogout()">Sign Out</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <!-- Stats -->
+    <div class="stats-bar">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-total">—</div>
+        <div class="stat-label">Total Applications</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-pending">—</div>
+        <div class="stat-label">Pending Review</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-approved" style="color: var(--green)">—</div>
+        <div class="stat-label">Approved</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-rejected" style="color: var(--red)">—</div>
+        <div class="stat-label">Rejected</div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+      <input class="search-box" id="search-input" placeholder="Search by name or email..." oninput="renderTable()" />
+      <button class="filter-btn active" data-filter="all" onclick="setFilter('all', this)">All</button>
+      <button class="filter-btn" data-filter="pending" onclick="setFilter('pending', this)">Pending</button>
+      <button class="filter-btn" data-filter="approved" onclick="setFilter('approved', this)">Approved</button>
+      <button class="filter-btn" data-filter="rejected" onclick="setFilter('rejected', this)">Rejected</button>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrap">
+      <div class="table-head">
+        <div>Name</div>
+        <div>Email</div>
+        <div>Age</div>
+        <div>City</div>
+        <div>Status</div>
+        <div>Actions</div>
+      </div>
+      <div id="table-body">
+        <div class="loading">Loading applications...</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- DETAIL MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <h2 id="modal-name">Applicant</h2>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-footer">
+      <button class="modal-reject" id="modal-reject-btn" onclick="modalAction('rejected')">✕ Reject</button>
+      <button class="modal-approve" id="modal-approve-btn" onclick="modalAction('approved')">✓ Approve</button>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged }
+    from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+  import { getFirestore, collection, getDocs, doc, updateDoc, query, orderBy }
+    from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDPCir3sConF4XfdEidw-0GTV5T1HrMr-c",
+    authDomain: "miss-miami-2026.firebaseapp.com",
+    projectId: "miss-miami-2026",
+    storageBucket: "miss-miami-2026.firebasestorage.app",
+    messagingSenderId: "1085352203697",
+    appId: "1:1085352203697:web:24e165eb63e07e6306d990"
+  };
+
+  // Admin emails
+  const ADMIN_EMAILS = ['smconsul.in@gmail.com'];
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  let allApps = [];
+  let currentFilter = 'all';
+  let currentAppId = null;
+
+  // Auth state
+  onAuthStateChanged(auth, user => {
+    if (user && ADMIN_EMAILS.includes(user.email)) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('admin-screen').style.display = 'block';
+      document.getElementById('admin-email-display').textContent = user.email;
+      loadApplications();
+    } else if (user) {
+      signOut(auth);
+      showError('Access denied. Admin only.');
+    } else {
+      document.getElementById('login-screen').style.display = 'flex';
+      document.getElementById('admin-screen').style.display = 'none';
+    }
+  });
+
+  window.adminLogin = async () => {
+    const email = document.getElementById('admin-email').value;
+    const password = document.getElementById('admin-password').value;
+    document.getElementById('login-error').textContent = '';
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (e) {
+      showError('Invalid email or password.');
+    }
+  };
+
+  window.adminLogout = () => signOut(auth);
+
+  function showError(msg) {
+    document.getElementById('login-error').textContent = msg;
+  }
+
+  async function loadApplications() {
+    try {
+      const snap = await getDocs(collection(db, 'applications'));
+      allApps = [];
+      snap.forEach(d => allApps.push({ id: d.id, ...d.data() }));
+      // Sort by date desc
+      allApps.sort((a, b) => (b.submittedAt?.seconds || 0) - (a.submittedAt?.seconds || 0));
+      updateStats();
+      renderTable();
+    } catch(e) {
+      document.getElementById('table-body').innerHTML =
+        '<div class="loading">Could not load applications. Check Firestore rules.</div>';
+    }
+  }
+
+  function updateStats() {
+    const pending = allApps.filter(a => !a.status || a.status === 'pending').length;
+    const approved = allApps.filter(a => a.status === 'approved').length;
+    const rejected = allApps.filter(a => a.status === 'rejected').length;
+    document.getElementById('stat-total').textContent = allApps.length;
+    document.getElementById('stat-pending').textContent = pending;
+    document.getElementById('stat-approved').textContent = approved;
+    document.getElementById('stat-rejected').textContent = rejected;
+  }
+
+  window.setFilter = (filter, btn) => {
+    currentFilter = filter;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTable();
+  };
+
+  window.renderTable = () => {
+    const search = document.getElementById('search-input').value.toLowerCase();
+    let apps = allApps.filter(a => {
+      const status = a.status || 'pending';
+      if (currentFilter !== 'all' && status !== currentFilter) return false;
+      if (search) {
+        const name = `${a.firstName || ''} ${a.lastName || ''}`.toLowerCase();
+        const email = (a.email || '').toLowerCase();
+        if (!name.includes(search) && !email.includes(search)) return false;
+      }
+      return true;
+    });
+
+    if (apps.length === 0) {
+      document.getElementById('table-body').innerHTML =
+        `<div class="empty-state"><div class="empty-icon">✦</div>No applications found.</div>`;
+      return;
+    }
+
+    document.getElementById('table-body').innerHTML = apps.map(a => {
+      const status = a.status || 'pending';
+      const name = `${a.firstName || ''} ${a.lastName || ''}`.trim() || 'Unknown';
+      const date = a.submittedAt ? new Date(a.submittedAt.seconds * 1000).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) : '—';
+      return `
+        <div class="app-row" onclick="openModal('${a.id}')">
+          <div>
+            <div class="app-name">${name}</div>
+            <div style="font-size:11px;color:rgba(245,241,232,0.3);margin-top:2px">${date}</div>
+          </div>
+          <div class="app-email">${a.email || '—'}</div>
+          <div class="app-age">${a.age || '—'}</div>
+          <div class="app-city">${a.city || '—'}</div>
+          <div><span class="status-badge status-${status}">${status}</span></div>
+          <div class="row-actions" onclick="event.stopPropagation()">
+            <button class="btn-approve" onclick="setStatus('${a.id}', 'approved')">✓</button>
+            <button class="btn-reject" onclick="setStatus('${a.id}', 'rejected')">✕</button>
+          </div>
+        </div>`;
+    }).join('');
+  };
+
+  window.setStatus = async (id, status) => {
+    try {
+      await updateDoc(doc(db, 'applications', id), { status, reviewedAt: new Date() });
+      const app = allApps.find(a => a.id === id);
+      if (app) app.status = status;
+      updateStats();
+      renderTable();
+    } catch(e) { alert('Error updating status.'); }
+  };
+
+  window.openModal = (id) => {
+    currentAppId = id;
+    const a = allApps.find(x => x.id === id);
+    if (!a) return;
+    const name = `${a.firstName || ''} ${a.lastName || ''}`.trim() || 'Applicant';
+    document.getElementById('modal-name').textContent = name;
+    document.getElementById('modal-body').innerHTML = `
+      <div class="detail-section">
+        <div class="detail-section-title">Personal Information</div>
+        <div class="detail-grid">
+          <div class="detail-field"><label>Full Name</label><p>${name}</p></div>
+          <div class="detail-field"><label>Email</label><p>${a.email || '—'}</p></div>
+          <div class="detail-field"><label>Phone</label><p>${a.phone || '—'}</p></div>
+          <div class="detail-field"><label>Age</label><p>${a.age || '—'}</p></div>
+          <div class="detail-field"><label>City</label><p>${a.city || '—'}</p></div>
+          <div class="detail-field"><label>Occupation</label><p>${a.occupation || '—'}</p></div>
+        </div>
+      </div>
+      ${a.essay1 || a.essay2 || a.essay3 ? `
+      <div class="detail-section">
+        <div class="detail-section-title">Essay Questions</div>
+        ${a.essay1 ? `<div class="detail-essay"><label>Why do you want to be Miss Miami 2026?</label><p>${a.essay1}</p></div>` : ''}
+        ${a.essay2 ? `<div class="detail-essay"><label>Community involvement</label><p>${a.essay2}</p></div>` : ''}
+        ${a.essay3 ? `<div class="detail-essay"><label>What makes you unique?</label><p>${a.essay3}</p></div>` : ''}
+      </div>` : ''}
+      <div class="detail-section">
+        <div class="detail-section-title">Status</div>
+        <span class="status-badge status-${a.status || 'pending'}">${a.status || 'pending'}</span>
+      </div>
+    `;
+    document.getElementById('modal-overlay').classList.add('open');
+  };
+
+  window.closeModal = (e) => {
+    if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+  };
+  window.closeModalDirect = () => {
+    document.getElementById('modal-overlay').classList.remove('open');
+    currentAppId = null;
+  };
+
+  window.modalAction = async (status) => {
+    if (!currentAppId) return;
+    await setStatus(currentAppId, status);
+    closeModalDirect();
+  };
+
+  // Enter key on login
+  document.getElementById('admin-password').addEventListener('keydown', e => {
+    if (e.key === 'Enter') window.adminLogin();
+  });
+</script>
+</body>
+</html>
