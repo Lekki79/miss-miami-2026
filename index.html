@@ -740,12 +740,9 @@
       justify-content: center;
     }
 
-    .winner-photo-placeholder {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 50% 30%, rgba(212,175,55,0.15) 0%, transparent 65%),
-        linear-gradient(180deg, transparent 40%, rgba(13,13,13,0.8) 100%);
+    .winner-photo-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, transparent 50%, rgba(13,13,13,0.6) 100%);
     }
 
     .winner-year-badge {
@@ -1189,7 +1186,7 @@
         linear-gradient(180deg, transparent 40%, rgba(13,13,13,0.85) 100%);
       z-index: 1;
     }
-    .winner-year-badge, .winner-crown { z-index: 2; }
+    .winner-year-badge { z-index: 2; }
 
     /* ─── ANIMATIONS ───────────────────────────────────────────── */
     .fade-up {
@@ -1405,16 +1402,7 @@
         <div class="winner-photo">
           <img id="w-photo" src="winner-1.jpg" alt="Miss Miami Winner">
           <div class="winner-year-badge" id="w-year-badge">2025</div>
-          <div class="winner-photo-placeholder"></div>
-          <!-- Crown -->
-          <svg class="winner-crown" width="160" height="160" viewBox="0 0 160 160" fill="none">
-            <path d="M15 110 L15 75 L45 35 L80 65 L115 35 L145 75 L145 110 Z" stroke="#D4AF37" stroke-width="2" fill="rgba(212,175,55,0.05)"/>
-            <circle cx="15" cy="75" r="5" fill="#D4AF37" opacity="0.5"/>
-            <circle cx="80" cy="65" r="5" fill="#D4AF37" opacity="0.5"/>
-            <circle cx="145" cy="75" r="5" fill="#D4AF37" opacity="0.5"/>
-            <path d="M80 35 L85 50 L80 45 L75 50 Z" fill="#D4AF37" opacity="0.6"/>
-            <line x1="15" y1="110" x2="145" y2="110" stroke="#D4AF37" stroke-width="2"/>
-          </svg>
+          <div class="winner-photo-overlay"></div>
         </div>
 
         <!-- Info -->
