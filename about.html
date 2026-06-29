@@ -61,10 +61,11 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('about-bg.jpg');
+      background-image: url('about-hero.jpg');
       background-size: cover;
       background-position: center top;
       animation: heroZoom 18s ease-in-out infinite alternate;
+      transform: scaleX(-1);
     }
     @keyframes heroZoom {
       0%   { transform: scale(1.0); }
