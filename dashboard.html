@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Road to the Crown — Miss Miami 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold:  #D4AF37;
+      --black: #0D0D0D;
+      --dark:  #111008;
+      --dark2: #161209;
+      --cream: #F5F1E8;
+      --white: #ffffff;
+      --glass: rgba(13,13,13,0.92);
+      --tr: 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--cream); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+    h1,h2,h3,h4 { font-family: 'Cinzel', serif; letter-spacing: 0.06em; }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ── AUTH SCREEN ── */
+    #auth-screen {
+      position: fixed; inset: 0; z-index: 200;
+      background: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .auth-box {
+      width: 100%; max-width: 420px;
+      border: 1px solid rgba(212,175,55,0.2);
+      padding: 48px 40px;
+      background: var(--dark);
+    }
+    .auth-logo { text-align: center; margin-bottom: 32px; }
+    .auth-logo img { height: 64px; object-fit: contain; }
+    .auth-title { font-family: 'Cinzel', serif; font-size: 18px; color: var(--white); text-align: center; margin-bottom: 6px; letter-spacing: 0.15em; }
+    .auth-sub { font-size: 11px; color: rgba(245,241,232,0.4); text-align: center; letter-spacing: 0.1em; margin-bottom: 36px; }
+
+    .auth-tabs { display: flex; margin-bottom: 28px; border-bottom: 1px solid rgba(212,175,55,0.12); }
+    .auth-tab { flex: 1; padding: 10px; text-align: center; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,241,232,0.35); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all var(--tr); font-weight: 500; }
+    .auth-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    .auth-form { display: none; flex-direction: column; gap: 14px; }
+    .auth-form.active { display: flex; }
+
+    .auth-field { display: flex; flex-direction: column; gap: 6px; }
+    .auth-field label { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(212,175,55,0.6); font-weight: 500; }
+    .auth-field input {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,175,55,0.15);
+      color: var(--cream);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color var(--tr);
+      width: 100%;
+    }
+    .auth-field input:focus { border-color: rgba(212,175,55,0.45); }
+    .auth-field input::placeholder { color: rgba(245,241,232,0.2); }
+
+    .btn-auth {
+      padding: 14px;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background var(--tr);
+      margin-top: 4px;
+    }
+    .btn-auth:hover { background: #c9a227; }
+    .auth-error { font-size: 11px; color: #e07070; text-align: center; min-height: 16px; }
+
+    /* ── DASHBOARD ── */
+    #dashboard { display: none; min-height: 100vh; }
+
+    /* sidebar */
+    .db-layout { display: flex; min-height: 100vh; }
+    .sidebar {
+      width: 260px; flex-shrink: 0;
+      background: var(--dark);
+      border-right: 1px solid rgba(212,175,55,0.1);
+      display: flex; flex-direction: column;
+      position: fixed; top: 0; left: 0; bottom: 0;
+      z-index: 50;
+      transition: transform var(--tr);
+    }
+    .sidebar-logo {
+      padding: 24px 28px;
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .sidebar-logo img { height: 48px; object-fit: contain; }
+    .sidebar-crown { font-size: 22px; }
+
+    .sidebar-user {
+      padding: 20px 28px;
+      border-bottom: 1px solid rgba(212,175,55,0.08);
+    }
+    .sidebar-user-name { font-size: 13px; color: var(--white); font-weight: 500; }
+    .sidebar-user-email { font-size: 10px; color: rgba(245,241,232,0.35); margin-top: 2px; }
+
+    .sidebar-progress {
+      padding: 16px 28px;
+      border-bottom: 1px solid rgba(212,175,55,0.08);
+    }
+    .progress-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(212,175,55,0.5); margin-bottom: 8px; }
+    .progress-bar { height: 2px; background: rgba(212,175,55,0.12); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width 0.6s ease; }
+    .progress-text { font-size: 10px; color: rgba(245,241,232,0.3); margin-top: 6px; }
+
+    .sidebar-nav { flex: 1; padding: 16px 0; overflow-y: auto; }
+    .step-nav-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 28px;
+      cursor: pointer;
+      transition: background var(--tr);
+      position: relative;
+    }
+    .step-nav-item:hover { background: rgba(212,175,55,0.04); }
+    .step-nav-item.active { background: rgba(212,175,55,0.08); }
+    .step-nav-item.active::left { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--gold); }
+    .step-nav-num {
+      width: 24px; height: 24px;
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-family: 'Cinzel', serif;
+      color: rgba(212,175,55,0.4);
+      flex-shrink: 0;
+    }
+    .step-nav-item.active .step-nav-num { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,0.1); }
+    .step-nav-item.completed .step-nav-num { border-color: rgba(212,175,55,0.4); background: rgba(212,175,55,0.08); color: var(--gold); }
+    .step-nav-item.locked { opacity: 0.35; cursor: not-allowed; }
+    .step-nav-text { font-size: 11px; color: rgba(245,241,232,0.5); }
+    .step-nav-item.active .step-nav-text { color: var(--cream); }
+    .step-nav-item.completed .step-nav-text { color: rgba(245,241,232,0.65); }
+    .step-check { margin-left: auto; font-size: 10px; color: var(--gold); }
+
+    .sidebar-bottom {
+      padding: 20px 28px;
+      border-top: 1px solid rgba(212,175,55,0.08);
+    }
+    .btn-logout {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(245,241,232,0.3); cursor: pointer;
+      transition: color var(--tr); background: none; border: none;
+      font-family: 'Montserrat', sans-serif; font-weight: 500;
+    }
+    .btn-logout:hover { color: rgba(245,241,232,0.7); }
+
+    /* main content */
+    .db-main {
+      margin-left: 260px;
+      flex: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+    }
+
+    .db-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      border-bottom: 1px solid rgba(212,175,55,0.08);
+      background: rgba(13,13,13,0.6);
+      backdrop-filter: blur(8px);
+      position: sticky; top: 0; z-index: 40;
+    }
+    .db-topbar-title { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(245,241,232,0.4); }
+    .db-topbar-right { display: flex; align-items: center; gap: 16px; }
+    .back-to-site { font-size: 10px; letter-spacing: 0.15em; color: rgba(212,175,55,0.5); transition: color var(--tr); }
+    .back-to-site:hover { color: var(--gold); }
+
+    .db-content { padding: 48px; flex: 1; }
+
+    /* step panel */
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+
+    .step-header {
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+    }
+    .step-eyebrow { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .step-header h2 { font-size: clamp(22px, 2.5vw, 32px); color: var(--white); margin-bottom: 10px; }
+    .step-header p { font-size: 13px; color: rgba(245,241,232,0.45); max-width: 580px; line-height: 2; }
+
+    /* form inside step */
+    .step-form { display: flex; flex-direction: column; gap: 20px; max-width: 640px; }
+    .sf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .sf-field { display: flex; flex-direction: column; gap: 7px; }
+    .sf-field.full { grid-column: span 2; }
+    .sf-field label { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(212,175,55,0.65); font-weight: 500; }
+    .sf-field input, .sf-field select, .sf-field textarea {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,175,55,0.12);
+      color: var(--cream);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color var(--tr);
+      width: 100%;
+      -webkit-appearance: none;
+    }
+    .sf-field input:focus, .sf-field select:focus, .sf-field textarea:focus { border-color: rgba(212,175,55,0.4); }
+    .sf-field input::placeholder, .sf-field textarea::placeholder { color: rgba(245,241,232,0.18); }
+    .sf-field textarea { resize: vertical; min-height: 120px; }
+    .sf-field select option { background: #161209; }
+
+    /* video card */
+    .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
+    .video-card {
+      border: 1px solid rgba(212,175,55,0.1);
+      padding: 20px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .video-thumb {
+      aspect-ratio: 16/9;
+      background: rgba(212,175,55,0.05);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+      border: 1px dashed rgba(212,175,55,0.12);
+      margin-bottom: 4px;
+    }
+    .video-title { font-size: 12px; color: var(--cream); font-weight: 500; }
+    .video-dur { font-size: 10px; color: rgba(245,241,232,0.3); }
+    .video-btn {
+      display: inline-block; padding: 8px 16px;
+      border: 1px solid rgba(212,175,55,0.25);
+      font-size: 10px; letter-spacing: 0.2em; color: var(--gold);
+      cursor: pointer; transition: all var(--tr); text-align: center;
+    }
+    .video-btn:hover { background: rgba(212,175,55,0.08); }
+
+    /* checklist */
+    .checklist { display: flex; flex-direction: column; gap: 10px; }
+    .check-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px;
+      border: 1px solid rgba(212,175,55,0.08);
+      cursor: pointer;
+      transition: background var(--tr);
+    }
+    .check-row:hover { background: rgba(212,175,55,0.04); }
+    .check-row input[type="checkbox"] { accent-color: var(--gold); width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; }
+    .check-row span { font-size: 12px; color: rgba(245,241,232,0.6); }
+    .check-row.done span { text-decoration: line-through; color: rgba(245,241,232,0.25); }
+
+    /* tip box */
+    .tip-box {
+      background: rgba(212,175,55,0.04);
+      border-left: 2px solid var(--gold);
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+    .tip-box h4 { font-size: 10px; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 6px; }
+    .tip-box p { font-size: 12px; color: rgba(245,241,232,0.5); line-height: 1.9; }
+
+    /* step footer buttons */
+    .step-footer {
+      display: flex; align-items: center; gap: 14px;
+      margin-top: 40px; padding-top: 28px;
+      border-top: 1px solid rgba(212,175,55,0.08);
+    }
+    .btn-save {
+      padding: 13px 36px;
+      background: var(--gold); color: var(--black);
+      font-family: 'Cinzel', serif; font-size: 11px;
+      letter-spacing: 0.22em; font-weight: 700;
+      text-transform: uppercase; border: none; cursor: pointer;
+      transition: background var(--tr);
+    }
+    .btn-save:hover { background: #c9a227; }
+    .btn-next {
+      padding: 13px 36px;
+      border: 1px solid rgba(212,175,55,0.3);
+      color: var(--gold); font-family: 'Cinzel', serif;
+      font-size: 11px; letter-spacing: 0.22em; font-weight: 600;
+      text-transform: uppercase; cursor: pointer;
+      transition: all var(--tr); background: none;
+    }
+    .btn-next:hover { background: rgba(212,175,55,0.08); }
+    .save-status { font-size: 11px; color: rgba(212,175,55,0.5); }
+
+    /* welcome panel */
+    .welcome-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(212,175,55,0.08); margin-bottom: 40px; }
+    .welcome-stat { background: var(--dark); padding: 24px 20px; text-align: center; }
+    .welcome-stat-num { font-family: 'Cinzel', serif; font-size: 28px; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .welcome-stat-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,241,232,0.3); }
+
+    .steps-overview { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .step-card {
+      border: 1px solid rgba(212,175,55,0.1);
+      padding: 20px 16px;
+      cursor: pointer;
+      transition: all var(--tr);
+      text-align: center;
+    }
+    .step-card:hover { border-color: rgba(212,175,55,0.3); background: rgba(212,175,55,0.03); }
+    .step-card.locked { opacity: 0.4; cursor: not-allowed; }
+    .step-card.completed { border-color: rgba(212,175,55,0.25); background: rgba(212,175,55,0.04); }
+    .step-card-num { font-family: 'Cinzel', serif; font-size: 22px; color: var(--gold); margin-bottom: 8px; opacity: 0.6; }
+    .step-card.completed .step-card-num::after { content: ' ✦'; font-size: 12px; }
+    .step-card-name { font-size: 11px; color: var(--cream); font-weight: 500; margin-bottom: 4px; }
+    .step-card-sub { font-size: 10px; color: rgba(245,241,232,0.3); }
+
+    /* mobile sidebar toggle */
+    .sidebar-toggle {
+      display: none;
+      position: fixed; bottom: 24px; right: 24px;
+      width: 48px; height: 48px;
+      background: var(--gold); color: var(--black);
+      border: none; cursor: pointer; z-index: 200;
+      font-size: 20px; align-items: center; justify-content: center;
+    }
+
+    @media (max-width: 900px) {
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.open { transform: translateX(0); }
+      .db-main { margin-left: 0; }
+      .db-content { padding: 24px; }
+      .db-topbar { padding: 16px 24px; }
+      .welcome-grid { grid-template-columns: 1fr 1fr; }
+      .steps-overview { grid-template-columns: 1fr 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+      .sf-grid { grid-template-columns: 1fr; }
+      .sf-field.full { grid-column: span 1; }
+      .sidebar-toggle { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     AUTH SCREEN
+══════════════════════════════════ -->
+<div id="auth-screen">
+  <div class="auth-box">
+    <div class="auth-logo">
+      <img src="logo-transparent.png" alt="Miss Miami" />
+    </div>
+    <div class="auth-title">Contestant Portal</div>
+    <div class="auth-sub">Road to the Crown — Miss Miami 2026</div>
+
+    <div class="auth-tabs">
+      <div class="auth-tab active" data-tab="login">Sign In</div>
+      <div class="auth-tab" data-tab="register">Register</div>
+    </div>
+
+    <!-- LOGIN -->
+    <form class="auth-form active" id="login-form">
+      <div class="auth-field">
+        <label>Email</label>
+        <input type="email" id="login-email" placeholder="your@email.com" required />
+      </div>
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" id="login-password" placeholder="••••••••" required />
+      </div>
+      <div class="auth-error" id="login-error"></div>
+      <button type="submit" class="btn-auth">Sign In</button>
+    </form>
+
+    <!-- REGISTER -->
+    <form class="auth-form" id="register-form">
+      <div class="auth-field">
+        <label>Full Name</label>
+        <input type="text" id="reg-name" placeholder="Isabella Moretti" required />
+      </div>
+      <div class="auth-field">
+        <label>Email</label>
+        <input type="email" id="reg-email" placeholder="your@email.com" required />
+      </div>
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" id="reg-password" placeholder="Min. 6 characters" required />
+      </div>
+      <div class="auth-error" id="register-error"></div>
+      <button type="submit" class="btn-auth">Create Account</button>
+    </form>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     DASHBOARD
+══════════════════════════════════ -->
+<div id="dashboard">
+  <div class="db-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <img src="logo-transparent.png" alt="Miss Miami" />
+      </div>
+      <div class="sidebar-user">
+        <div class="sidebar-user-name" id="user-name">Loading...</div>
+        <div class="sidebar-user-email" id="user-email"></div>
+      </div>
+      <div class="sidebar-progress">
+        <div class="progress-label">Your Progress</div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+        <div class="progress-text" id="progress-text">0 of 8 steps completed</div>
+      </div>
+      <nav class="sidebar-nav" id="sidebar-nav">
+        <div class="step-nav-item active" data-step="0">
+          <div class="step-nav-num">♛</div>
+          <span class="step-nav-text">Overview</span>
+        </div>
+        <div class="step-nav-item" data-step="1">
+          <div class="step-nav-num">1</div>
+          <span class="step-nav-text">Profile Setup</span>
+        </div>
+        <div class="step-nav-item locked" data-step="2">
+          <div class="step-nav-num">2</div>
+          <span class="step-nav-text">Platform Statement</span>
+        </div>
+        <div class="step-nav-item locked" data-step="3">
+          <div class="step-nav-num">3</div>
+          <span class="step-nav-text">Interview Prep</span>
+        </div>
+        <div class="step-nav-item locked" data-step="4">
+          <div class="step-nav-num">4</div>
+          <span class="step-nav-text">Evening Gown</span>
+        </div>
+        <div class="step-nav-item locked" data-step="5">
+          <div class="step-nav-num">5</div>
+          <span class="step-nav-text">Talent Showcase</span>
+        </div>
+        <div class="step-nav-item locked" data-step="6">
+          <div class="step-nav-num">6</div>
+          <span class="step-nav-text">Stage Presence</span>
+        </div>
+        <div class="step-nav-item locked" data-step="7">
+          <div class="step-nav-num">7</div>
+          <span class="step-nav-text">Media & Social</span>
+        </div>
+        <div class="step-nav-item locked" data-step="8">
+          <div class="step-nav-num">8</div>
+          <span class="step-nav-text">Final Countdown</span>
+        </div>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="btn-logout" id="logout-btn">← Sign Out</button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="db-main">
+      <div class="db-topbar">
+        <span class="db-topbar-title">Road to the Crown</span>
+        <div class="db-topbar-right">
+          <a href="index.html" class="back-to-site">← Back to site</a>
+        </div>
+      </div>
+
+      <div class="db-content">
+
+        <!-- STEP 0: OVERVIEW -->
+        <div class="step-panel active" id="panel-0">
+          <div class="step-header">
+            <div class="step-eyebrow">Welcome</div>
+            <h2>Your Road to the Crown</h2>
+            <p>Complete each step to prepare for Miss Miami 2026. Steps unlock as you progress. Take your time — this journey is yours.</p>
+          </div>
+
+          <div class="welcome-grid">
+            <div class="welcome-stat">
+              <div class="welcome-stat-num" id="ov-completed">0</div>
+              <div class="welcome-stat-label">Steps Done</div>
+            </div>
+            <div class="welcome-stat">
+              <div class="welcome-stat-num" id="ov-remaining">8</div>
+              <div class="welcome-stat-label">Remaining</div>
+            </div>
+            <div class="welcome-stat">
+              <div class="welcome-stat-num">Nov 15</div>
+              <div class="welcome-stat-label">Event Date</div>
+            </div>
+            <div class="welcome-stat">
+              <div class="welcome-stat-num" id="ov-days">—</div>
+              <div class="welcome-stat-label">Days Away</div>
+            </div>
+          </div>
+
+          <div class="steps-overview" id="steps-overview">
+            <div class="step-card" data-goto="1">
+              <div class="step-card-num">1</div>
+              <div class="step-card-name">Profile Setup</div>
+              <div class="step-card-sub">Personal details</div>
+            </div>
+            <div class="step-card locked" data-goto="2">
+              <div class="step-card-num">2</div>
+              <div class="step-card-name">Platform Statement</div>
+              <div class="step-card-sub">Your mission</div>
+            </div>
+            <div class="step-card locked" data-goto="3">
+              <div class="step-card-num">3</div>
+              <div class="step-card-name">Interview Prep</div>
+              <div class="step-card-sub">Q&A practice</div>
+            </div>
+            <div class="step-card locked" data-goto="4">
+              <div class="step-card-num">4</div>
+              <div class="step-card-name">Evening Gown</div>
+              <div class="step-card-sub">Style & presentation</div>
+            </div>
+            <div class="step-card locked" data-goto="5">
+              <div class="step-card-num">5</div>
+              <div class="step-card-name">Talent Showcase</div>
+              <div class="step-card-sub">Your performance</div>
+            </div>
+            <div class="step-card locked" data-goto="6">
+              <div class="step-card-num">6</div>
+              <div class="step-card-name">Stage Presence</div>
+              <div class="step-card-sub">Walk & confidence</div>
+            </div>
+            <div class="step-card locked" data-goto="7">
+              <div class="step-card-num">7</div>
+              <div class="step-card-name">Media & Social</div>
+              <div class="step-card-sub">Your brand online</div>
+            </div>
+            <div class="step-card locked" data-goto="8">
+              <div class="step-card-num">8</div>
+              <div class="step-card-name">Final Countdown</div>
+              <div class="step-card-sub">Competition day</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 1: PROFILE SETUP -->
+        <div class="step-panel" id="panel-1">
+          <div class="step-header">
+            <div class="step-eyebrow">Step 1 of 8</div>
+            <h2>Profile Setup</h2>
+            <p>Let's start with the essentials. Complete your contestant profile — this information will be used in your official bio and program booklet.</p>
+          </div>
+          <div class="step-form">
+            <div class="sf-grid">
+              <div class="sf-field">
+                <label>First Name *</label>
+                <input type="text" id="s1-firstname" placeholder="Isabella" />
+              </div>
+              <div class="sf-field">
+                <label>Last Name *</label>
+                <input type="text" id="s1-lastname" placeholder="Moretti" />
+              </div>
+              <div class="sf-field">
+                <label>Date of Birth *</label>
+                <input type="date" id="s1-dob" />
+              </div>
+              <div class="sf-field">
+                <label>City</label>
+                <input type="text" id="s1-city" placeholder="Miami, FL" />
+              </div>
+              <div class="sf-field">
+                <label>Phone</label>
+                <input type="tel" id="s1-phone" placeholder="+1 (305) 000-0000" />
+              </div>
+              <div class="sf-field">
+                <label>Instagram Handle</label>
+                <input type="text" id="s1-instagram" placeholder="@yourhandle" />
+              </div>
+              <div class="sf-field full">
+                <label>Short Bio (2–3 sentences)</label>
+                <textarea id="s1-bio" placeholder="A warm, compelling introduction that will appear in the program booklet..."></textarea>
+              </div>
+            </div>
+            <div class="tip-box">
+              <h4>✦ Tip</h4>
+              <p>Your bio should be written in third person and highlight your most notable accomplishments, your passions, and what makes you unique. Keep it elegant and confident.</p>
+            </div>
+            <div class="step-footer">
+              <button class="btn-save" onclick="saveStep(1)">Save & Continue</button>
+              <span class="save-status" id="save-status-1"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: PLATFORM STATEMENT -->
+        <div class="step-panel" id="panel-2">
+          <div class="step-header">
+            <div class="step-eyebrow">Step 2 of 8</div>
+            <h2>Platform Statement</h2>
+            <p>Your platform is the cause or mission you will champion as Miss Miami. It should be something you're genuinely passionate about and can speak to authentically.</p>
+          </div>
+          <div class="step-form">
+            <div class="sf-field">
+              <label>Your Platform Title *</label>
+              <input type="text" id="s2-title" placeholder="e.g. Mental Health Awareness for Young Women" />
+            </div>
+            <div class="sf-field">
+              <label>Why this cause? (Personal connection)</label>
+              <textarea id="s2-why" placeholder="Share your personal story and connection to this cause..."></textarea>
+            </div>
+            <div class="sf-field">
+              <label>How will you create impact as Miss Miami?</label>
+              <textarea id="s2-impact" placeholder="Specific initiatives, partnerships, events you plan to organize..."></textarea>
+            </div>
+            <div class="sf-field">
+              <label>Your 30-second elevator pitch</label>
+              <textarea id="s2-pitch" placeholder="Write out your concise, memorable pitch for on-stage Q&A..."></textarea>
+            </div>
+            <div class="tip-box">
+              <h4>✦ Tip</h4>
+              <p>Judges look for passion, specificity, and feasibility. Avoid vague causes — the more specific your platform, the more memorable and credible you'll be.</p>
+            </div>
+            <div class="step-footer">
+              <button class="btn-save" onclick="saveStep(2)">Save & Continue</button>
+              <span class="save-status" id="save-status-2"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: INTERVIEW PREP -->
+        <div class="step-panel" id="panel-3">
+          <div class="step-header">
+            <div class="step-eyebrow">Step 3 of 8</div>
+            <h2>Interview Preparation</h2>
+            <p>The private interview is often the most important part of competition. Practice answering these common questions until your answers feel natural and confident.</p>
+          </div>
+          <div class="step-form">
+            <div class="sf-field">
+              <label>Practice Answer: "Tell us about yourself"</label>
+              <textarea id="s3-q1" placeholder="Write your rehearsed answer here (aim for 90 seconds spoken)..."></textarea>
+            </div>
+            <div class="sf-field">
+              <label>Practice Answer: "What is your greatest strength?"</label>
+              <textarea id="s3-q2" placeholder="Be specific, use a real example..."></textarea>
+            </div>
+            <div class="sf-field">
+              <label>Practice Answer: "What is the most important issue facing women today?"</label>
+              <textarea id="s3-q3" placeholder="Tie this to your platform if possible..."></textarea>
+            </div>
+            <div class="sf-field">
+              <label>Practice Answer: "Why should YOU be Miss Miami 2026?"</label>
+              <textarea id="s3-q4" placeholder="Confident, specific, memorable..."></textarea>
+            </div>
+            <div class="tip-box">
+              <h4>✦ Tip</h4>
+              <p>Read your answers aloud and time yourself. The sweet spot for most answers is 60–90 seconds. Ask a friend to listen and give honest feedback.</p>
+            </div>
+            <div class="step-footer">
+              <button class="btn-save" onclick="saveStep(3)">Save & Continue</button>
+              <span class="save-status" id="save-status-3"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: EVENING GOWN -->
+        <div class="step-panel" id="panel-4">
+          <div class="step-header">
+            <div class="step-eyebrow">Step 4 of 8</div>
+            <h2>Evening Gown</h2>
+            <p>Your evening gown presentation is a moment of elegance and confidence. Choose a gown that reflects your personality while meeting competition standards.</p>
+          </div>
+          <div class="step-form">
+            <div class="sf-grid">
+              <div class="sf-field">
+                <label>Gown Color</label>
+                <input type="text" id="s4-color" placeholder="e.g. Champagne, Midnight Blue" />
+              </div>
+              <div class="sf-field">
+                <label>Designer / Brand</label>
+                <input type="text" id="s4-designer" placeholder="e.g. Sherri Hill, custom" />
+              </div>
+              <div class="sf-field full">
+                <label>Gown Description</label>
+                <textarea id="s4-desc" rows="3" placeholder="Style, silhouette, details — how does it represent you?"></textarea>
+              </div>
+              <div class="sf-field full">
+                <label>Accessories & Shoes</label>
+                <input type="text" id="s4-accessories" placeholder="Jewelry, heels, clutch details..." />
+              </div>
+            </div>
+            <div class="tip-box">
+              <h4>✦ Gown Guidelines</h4>
+              <p>Floor-length gowns are required. Avoid overly revealing cuts. Choose a color that photographs well under stage lighting — rich jewel tones and classic neutrals tend to read best.</p>
+            </div>
+            <div class="checklist">
+              <div class="check-row" onclick="toggleCheck(this)">
+                <input type="checkbox" /><span>Gown is floor-length</span>
+              </div>
+              <div class="check-row" onclick="toggleCheck(this)">
+                <input type="checkbox" /><span>Gown has been professionally altered to fit</span>
+              </div>
+              <div class="check-row" onclick="toggleCheck(this)">
+                <input type="checkbox" /><span>Shoes are broken in and comfortable</span>
+              </div>
+              <div class="check-row" onclick="toggleCheck(this)">
+                <input type="checkbox" /><span>I've practiced walking in full look</span>
+              </div>
+            </div>
+            <div class="step-footer">
+              <button class="btn-save" onclick="saveStep(4)">Save & Continue</button>
+              <span class="save-status" id="save-status-4"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5: TALENT -->
+        <div class="step-panel" id="panel-5">
+          <div class="step-header">
+            <div class="step-eyebrow">Step 5 of 8</div>
+            <h2>Talent Showcase</h2>
+            <p>Your talent performance is your moment to shine beyond beauty. Whether it's singing, dancing, spoken word or another skill — make it authentic and rehearsed.</p>
+          </div>
+          <div class="step-form">
+            <div class="sf-grid">
+              <div class="sf-field">
+                <label>Talent Category</label>
+                <select id="s5-category">
+                  <option value="">Select...</option>
+                  <option>Singing</option>
+                  <option>Dancing</option>
+                  <option>Instrumental Music</option>
+                  <option>Spoken Word / Poetry</option>
+                  <option>Acting / Monologue</option>
+                  <option>Acrobatics / Gymnastics</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="sf-field">
+                <label>Performance Duration</label>
+                <input type="text" id="s5-duration" placeholder="e.g. 2 min 30 sec" />
+              </div>
+              <div class="sf-field full">
+                <label>Performance Description</label>
+                <textarea id="s5-desc" rows="3" placeholder="What will you perform? What song, piece, or routine? Why did you choose it?"></textarea>
+              </div>
+              <div class="sf-field full">
+                <label>Technical Requirements</label>
+                <input type="text" id="s5-tech" placeholder="e.g. Piano accompaniment, backing track, microphone, props..." />
+              </div>
+            </div>
+            <div class="tip-box">
+              <h4>✦ Tip</h4>
+              <p>Choose something you can perform confidently under pressure. A simpler talent executed flawlessly beats a complex one performed nervously. Practice in front of an audience before competition day.</p>
+            </div>
+            <div class="step-footer">
+              <button class="btn-save" onclick="saveStep(5)">Save & Continue</button>
+              <span class="save-status" id="save-status-5"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 6: STAGE PRESENCE -->
+        <div class="step-panel" id="panel-6">
+          <div class="step-header">
+            <div class="step-eyebrow">Step 6 of 8</div>
+            <h2>Stage Presence</h2>
+            <p>How you move, stand, and present yourself on stage speaks volumes before you say a word. These resources will help you master your walk and on-stage confidence.</p>
+          </div>
+          <div class="video-grid">
+            <div class="video-card">
+              <div class="video-thumb">▶</div>
+              <div class="video-title">The Pageant Walk: Foundation</div>
+              <div class="video-dur">8 min • Beginner</div>
+              <div class="video-btn">Watch Lesson</div>
+            </div>
+            <div class="video-card">
+              <div class="video-thumb">▶</div>
+              <div class="video-title">Posture & Poise</div>
+              <div class="video-dur">6 min • All levels</div>
+              <div class="video-btn">Watch Lesson</div>
+            </div>
+            <div class="video-card">
+              <div class="video-thumb">▶</div>
+              <div class="video-title">Stage Turns & Pivots</div>
+              <div class="video-dur">5 min • Intermediate</div>
+              <div class="video-btn">Watch Lesson</div>
+            </div>
+            <div class="video-card">
+              <div class="video-thumb">▶</div>
+              <div class="video-title">Smile, Eye Contact & Energy</div>
+              <div class="video-dur">7 min • Essential</div>
+              <div class="video-btn">Watch Lesson</div>
+            </div>
+          </div>
+          <div class="tip-box">
+            <h4>✦ Practice Checklist</h4>
+            <p>Complete these practice sessions before competition day.</p>
+          </div>
+          <div class="checklist">
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Practiced walk in competition heels (30 min)</span></div>
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Recorded myself walking and reviewed it</span></div>
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Practiced stage turns in gown</span></div>
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Watched 3 pageant walk videos for inspiration</span></div>
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Rehearsed on a full-length stage (or similar space)</span></div>
+          </div>
+          <div class="step-footer">
+            <button class="btn-save" onclick="saveStep(6)">Mark Complete & Continue</button>
+            <span class="save-status" id="save-status-6"></span>
+          </div>
+        </div>
+
+        <!-- STEP 7: MEDIA & SOCIAL -->
+        <div class="step-panel" id="panel-7">
+          <div class="step-header">
+            <div class="step-eyebrow">Step 7 of 8</div>
+            <h2>Media & Social</h2>
+            <p>Your online presence is part of your brand. Judges and sponsors will look you up — make sure what they find is polished, authentic and aligned with your platform.</p>
+          </div>
+          <div class="step-form">
+            <div class="sf-grid">
+              <div class="sf-field">
+                <label>Instagram</label>
+                <input type="text" id="s7-ig" placeholder="@yourhandle" />
+              </div>
+              <div class="sf-field">
+                <label>TikTok</label>
+                <input type="text" id="s7-tt" placeholder="@yourhandle" />
+              </div>
+              <div class="sf-field full">
+                <label>Your Bio / Caption for Miss Miami posts</label>
+                <textarea id="s7-caption" rows="3" placeholder="Contestant | Miss Miami 2026 | [Your Platform] | Miami, FL 🌴👑"></textarea>
+              </div>
+            </div>
+            <div class="checklist">
+              <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Profile photo is professional and high-quality</span></div>
+              <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Bio mentions Miss Miami 2026</span></div>
+              <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Posted at least one platform-related post</span></div>
+              <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Following @missmiamiofficial</span></div>
+              <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Tagged Miss Miami in at least one post</span></div>
+            </div>
+            <div class="step-footer">
+              <button class="btn-save" onclick="saveStep(7)">Save & Continue</button>
+              <span class="save-status" id="save-status-7"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 8: FINAL COUNTDOWN -->
+        <div class="step-panel" id="panel-8">
+          <div class="step-header">
+            <div class="step-eyebrow">Step 8 of 8</div>
+            <h2>Final Countdown</h2>
+            <p>Competition day is almost here. Use this final checklist to make sure you're completely prepared. You've done the work — now trust yourself.</p>
+          </div>
+          <div class="tip-box">
+            <h4>✦ One Week Before</h4>
+            <p>Confirm all logistics, get rest, eat well. No major changes to hair, nails or look.</p>
+          </div>
+          <div class="checklist">
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>All garments steamed and ready</span></div>
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Hair and makeup appointments confirmed</span></div>
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Transportation to venue arranged</span></div>
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Guest tickets distributed</span></div>
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Talent music/backing track submitted to organizers</span></div>
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Interview answers reviewed and practiced</span></div>
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Platform speech rehearsed aloud</span></div>
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Emergency kit packed (safety pins, tape, touch-up makeup)</span></div>
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>Got a full night's sleep</span></div>
+            <div class="check-row" onclick="toggleCheck(this)"><input type="checkbox" /><span>I am ready. I belong here. 👑</span></div>
+          </div>
+          <div class="step-footer">
+            <button class="btn-save" onclick="saveStep(8)">Complete Road to the Crown ✦</button>
+            <span class="save-status" id="save-status-8"></span>
+          </div>
+        </div>
+
+      </div><!-- /db-content -->
+    </main>
+  </div>
+</div>
+
+<!-- mobile sidebar toggle -->
+<button class="sidebar-toggle" id="sidebar-toggle" style="display:none">☰</button>
+
+<!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDPCir3sConF4XfdEidw-0GTV5T1HrMr-c",
+    authDomain: "miss-miami-2026.firebaseapp.com",
+    projectId: "miss-miami-2026",
+    storageBucket: "miss-miami-2026.firebasestorage.app",
+    messagingSenderId: "1085352203697",
+    appId: "1:1085352203697:web:24e165eb63e07e6306d990",
+    measurementId: "G-EQ9BK96YGV"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // current step tracking
+  let currentStep = 0;
+  let completedSteps = [];
+
+  // ── AUTH STATE ──
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      document.getElementById('auth-screen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      document.getElementById('user-email').textContent = user.email;
+      document.getElementById('user-name').textContent = user.displayName || user.email.split('@')[0];
+      await loadUserData(user.uid);
+      updateDaysCounter();
+    } else {
+      document.getElementById('auth-screen').style.display = 'flex';
+      document.getElementById('dashboard').style.display = 'none';
+    }
+  });
+
+  // ── LOAD USER DATA ──
+  async function loadUserData(uid) {
+    const ref = doc(db, 'contestants', uid);
+    const snap = await getDoc(ref);
+    if (snap.exists()) {
+      const data = snap.data();
+      completedSteps = data.completedSteps || [];
+      updateProgress();
+      // populate step 1 fields
+      if (data.step1) {
+        const s = data.step1;
+        if (s.firstname) document.getElementById('s1-firstname').value = s.firstname;
+        if (s.lastname)  document.getElementById('s1-lastname').value  = s.lastname;
+        if (s.dob)       document.getElementById('s1-dob').value       = s.dob;
+        if (s.city)      document.getElementById('s1-city').value      = s.city;
+        if (s.phone)     document.getElementById('s1-phone').value     = s.phone;
+        if (s.instagram) document.getElementById('s1-instagram').value = s.instagram;
+        if (s.bio)       document.getElementById('s1-bio').value       = s.bio;
+      }
+      if (data.step2) {
+        const s = data.step2;
+        if (s.title)  document.getElementById('s2-title').value  = s.title;
+        if (s.why)    document.getElementById('s2-why').value    = s.why;
+        if (s.impact) document.getElementById('s2-impact').value = s.impact;
+        if (s.pitch)  document.getElementById('s2-pitch').value  = s.pitch;
+      }
+    } else {
+      await setDoc(ref, { completedSteps: [], createdAt: new Date() });
+    }
+  }
+
+  // ── SAVE STEP ──
+  window.saveStep = async function(stepNum) {
+    const user = auth.currentUser;
+    if (!user) return;
+    const status = document.getElementById('save-status-' + stepNum);
+    status.textContent = 'Saving...';
+
+    let stepData = {};
+    if (stepNum === 1) {
+      stepData = {
+        firstname: document.getElementById('s1-firstname').value,
+        lastname:  document.getElementById('s1-lastname').value,
+        dob:       document.getElementById('s1-dob').value,
+        city:      document.getElementById('s1-city').value,
+        phone:     document.getElementById('s1-phone').value,
+        instagram: document.getElementById('s1-instagram').value,
+        bio:       document.getElementById('s1-bio').value,
+      };
+      // update display name
+      const fullName = stepData.firstname + ' ' + stepData.lastname;
+      if (fullName.trim().length > 1) {
+        await updateProfile(user, { displayName: fullName });
+        document.getElementById('user-name').textContent = fullName;
+      }
+    } else if (stepNum === 2) {
+      stepData = {
+        title:  document.getElementById('s2-title').value,
+        why:    document.getElementById('s2-why').value,
+        impact: document.getElementById('s2-impact').value,
+        pitch:  document.getElementById('s2-pitch').value,
+      };
+    } else if (stepNum === 3) {
+      stepData = {
+        q1: document.getElementById('s3-q1').value,
+        q2: document.getElementById('s3-q2').value,
+        q3: document.getElementById('s3-q3').value,
+        q4: document.getElementById('s3-q4').value,
+      };
+    } else if (stepNum === 4) {
+      stepData = {
+        color:        document.getElementById('s4-color').value,
+        designer:     document.getElementById('s4-designer').value,
+        desc:         document.getElementById('s4-desc').value,
+        accessories:  document.getElementById('s4-accessories').value,
+      };
+    } else if (stepNum === 5) {
+      stepData = {
+        category: document.getElementById('s5-category').value,
+        duration: document.getElementById('s5-duration').value,
+        desc:     document.getElementById('s5-desc').value,
+        tech:     document.getElementById('s5-tech').value,
+      };
+    } else if (stepNum === 7) {
+      stepData = {
+        ig:      document.getElementById('s7-ig').value,
+        tt:      document.getElementById('s7-tt').value,
+        caption: document.getElementById('s7-caption').value,
+      };
+    }
+
+    if (!completedSteps.includes(stepNum)) completedSteps.push(stepNum);
+
+    try {
+      const ref = doc(db, 'contestants', user.uid);
+      await setDoc(ref, {
+        ['step' + stepNum]: stepData,
+        completedSteps,
+        updatedAt: new Date()
+      }, { merge: true });
+
+      status.textContent = '✦ Saved';
+      setTimeout(() => { status.textContent = ''; }, 3000);
+      updateProgress();
+
+      // auto navigate to next step
+      setTimeout(() => { if (stepNum < 8) navigateTo(stepNum + 1); }, 800);
+    } catch (e) {
+      status.textContent = 'Error: ' + e.message;
+    }
+  };
+
+  // ── PROGRESS ──
+  function updateProgress() {
+    const done = completedSteps.length;
+    const pct  = Math.round((done / 8) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = done + ' of 8 steps completed';
+    document.getElementById('ov-completed').textContent = done;
+    document.getElementById('ov-remaining').textContent = 8 - done;
+
+    // update nav items
+    document.querySelectorAll('.step-nav-item[data-step]').forEach(el => {
+      const s = parseInt(el.dataset.step);
+      if (s === 0) return;
+      el.classList.remove('locked', 'completed');
+      if (completedSteps.includes(s)) {
+        el.classList.add('completed');
+        const check = el.querySelector('.step-check') || document.createElement('span');
+        check.className = 'step-check';
+        check.textContent = '✦';
+        if (!el.querySelector('.step-check')) el.appendChild(check);
+      } else if (s === 1 || completedSteps.includes(s - 1)) {
+        // unlocked
+      } else {
+        el.classList.add('locked');
+      }
+    });
+
+    // update overview cards
+    document.querySelectorAll('.step-card[data-goto]').forEach(el => {
+      const s = parseInt(el.dataset.goto);
+      el.classList.remove('locked', 'completed');
+      if (completedSteps.includes(s)) {
+        el.classList.add('completed');
+      } else if (s > 1 && !completedSteps.includes(s - 1)) {
+        el.classList.add('locked');
+      }
+    });
+  }
+
+  // ── NAVIGATE ──
+  window.navigateTo = function(step) {
+    // check lock
+    if (step > 1 && !completedSteps.includes(step - 1) && !completedSteps.includes(step)) return;
+    currentStep = step;
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + step).classList.add('active');
+    document.querySelectorAll('.step-nav-item').forEach(el => {
+      el.classList.remove('active');
+      if (parseInt(el.dataset.step) === step) el.classList.add('active');
+    });
+    window.scrollTo(0, 0);
+  };
+
+  // ── AUTH TABS ──
+  document.querySelectorAll('.auth-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab + '-form').classList.add('active');
+    });
+  });
+
+  // ── REGISTER ──
+  document.getElementById('register-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name  = document.getElementById('reg-name').value;
+    const email = document.getElementById('reg-email').value;
+    const pass  = document.getElementById('reg-password').value;
+    const err   = document.getElementById('register-error');
+    try {
+      const cred = await createUserWithEmailAndPassword(auth, email, pass);
+      await updateProfile(cred.user, { displayName: name });
+    } catch(ex) {
+      err.textContent = ex.message.replace('Firebase:', '').trim();
+    }
+  });
+
+  // ── LOGIN ──
+  document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const pass  = document.getElementById('login-password').value;
+    const err   = document.getElementById('login-error');
+    try {
+      await signInWithEmailAndPassword(auth, email, pass);
+    } catch(ex) {
+      err.textContent = 'Incorrect email or password.';
+    }
+  });
+
+  // ── LOGOUT ──
+  document.getElementById('logout-btn').addEventListener('click', () => signOut(auth));
+
+  // ── SIDEBAR NAV ──
+  document.querySelectorAll('.step-nav-item').forEach(el => {
+    el.addEventListener('click', () => navigateTo(parseInt(el.dataset.step)));
+  });
+  document.querySelectorAll('.step-card').forEach(el => {
+    el.addEventListener('click', () => {
+      if (!el.classList.contains('locked')) navigateTo(parseInt(el.dataset.goto));
+    });
+  });
+
+  // ── DAYS COUNTER ──
+  function updateDaysCounter() {
+    const event = new Date('2026-11-15');
+    const today = new Date();
+    const diff  = Math.ceil((event - today) / (1000*60*60*24));
+    const el = document.getElementById('ov-days');
+    if (el) el.textContent = diff > 0 ? diff : '0';
+  }
+
+  // ── MOBILE SIDEBAR ──
+  const sidebarToggle = document.getElementById('sidebar-toggle');
+  if (window.innerWidth <= 900) sidebarToggle.style.display = 'flex';
+  sidebarToggle.addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+  window.addEventListener('resize', () => {
+    sidebarToggle.style.display = window.innerWidth <= 900 ? 'flex' : 'none';
+  });
+</script>
+
+<script>
+  // toggle checklist items (non-Firebase, just UI)
+  window.toggleCheck = function(row) {
+    const cb = row.querySelector('input[type="checkbox"]');
+    cb.checked = !cb.checked;
+    row.classList.toggle('done', cb.checked);
+  };
+</script>
+
+</body>
+</html>

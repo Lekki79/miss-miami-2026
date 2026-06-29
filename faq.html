@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Miss Miami 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:  #D4AF37;
+      --black: #0D0D0D;
+      --dark:  #111008;
+      --dark2: #161209;
+      --cream: #F5F1E8;
+      --white: #ffffff;
+      --glass: rgba(13,13,13,0.85);
+      --tr: 0.3s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--cream); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    h1,h2,h3 { font-family: 'Cinzel', serif; letter-spacing: 0.06em; }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 90px;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+    }
+    .logo { display: flex; align-items: center; }
+    .logo-img { height: 80px; width: auto; display: block; object-fit: contain; }
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.7); transition: color var(--tr); position: relative; }
+    nav a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform var(--tr); }
+    nav a:hover { color: var(--gold); }
+    nav a:hover::after, nav a.active::after { transform: scaleX(1); }
+    nav a.active { color: var(--gold); }
+    .btn-nav { padding: 10px 28px; background: var(--gold); color: var(--black); font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em; font-weight: 700; text-transform: uppercase; transition: all var(--tr); }
+    .btn-nav:hover { background: #c9a227; }
+    .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.55) !important; border: 1px solid rgba(212,175,55,0.25); padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
+    .btn-account::after { display: none !important; }
+    .btn-account:hover { color: var(--gold) !important; border-color: rgba(212,175,55,0.6); }
+    .menu-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+    .menu-toggle span { display:block; width:24px; height:1.5px; background:var(--gold); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 160px 56px 80px;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 60%), var(--dark);
+      position: relative;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(212,175,55,0.45) 50%, transparent);
+    }
+    .eyebrow { font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 500; }
+    .page-hero h1 { font-size: clamp(32px, 4vw, 52px); color: var(--white); margin-bottom: 16px; }
+    .page-hero p { font-size: 14px; color: rgba(245,241,232,0.5); max-width: 500px; margin: 0 auto; line-height: 2; }
+
+    /* ── FAQ WRAP ── */
+    .faq-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 40px 100px;
+    }
+
+    /* ── CATEGORY TABS ── */
+    .faq-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 56px;
+      border-bottom: 1px solid rgba(212,175,55,0.12);
+      overflow-x: auto;
+    }
+    .faq-tab {
+      padding: 12px 28px;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: rgba(245,241,232,0.35);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color var(--tr), border-color var(--tr);
+      white-space: nowrap;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .faq-tab:hover { color: rgba(212,175,55,0.7); }
+    .faq-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ── FAQ GROUPS ── */
+    .faq-group { display: none; }
+    .faq-group.active { display: block; }
+
+    /* ── ACCORDION ── */
+    .faq-item {
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .faq-item.visible { opacity: 1; transform: translateY(0); }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .faq-question h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--cream);
+      font-weight: 400;
+      line-height: 1.5;
+      transition: color var(--tr);
+    }
+    .faq-question:hover h3 { color: var(--gold); }
+    .faq-icon {
+      width: 28px; height: 28px;
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      font-size: 16px;
+      line-height: 1;
+      transition: transform var(--tr), border-color var(--tr), background var(--tr);
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: rgba(212,175,55,0.08);
+      border-color: rgba(212,175,55,0.4);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(.4,0,.2,1);
+    }
+    .faq-answer-inner {
+      padding: 0 0 28px;
+      font-size: 13px;
+      color: rgba(245,241,232,0.55);
+      line-height: 2;
+    }
+    .faq-answer-inner a { color: var(--gold); transition: opacity var(--tr); }
+    .faq-answer-inner a:hover { opacity: 0.7; }
+    .faq-answer-inner strong { color: rgba(245,241,232,0.8); font-weight: 500; }
+
+    /* ── STILL HAVE QUESTIONS ── */
+    .faq-cta {
+      margin-top: 64px;
+      padding: 48px;
+      border: 1px solid rgba(212,175,55,0.15);
+      text-align: center;
+      background: rgba(212,175,55,0.03);
+    }
+    .faq-cta h3 { font-size: 20px; color: var(--white); margin-bottom: 12px; }
+    .faq-cta p { font-size: 13px; color: rgba(245,241,232,0.45); margin-bottom: 28px; line-height: 1.9; }
+    .btn-gold {
+      display: inline-block;
+      padding: 13px 40px;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: background var(--tr);
+    }
+    .btn-gold:hover { background: #c9a227; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); border-top: 1px solid rgba(212,175,55,0.12); padding: 40px 56px 28px; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
+    .footer-bottom p { font-size: 11px; color: rgba(245,241,232,0.3); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 11px; color: rgba(245,241,232,0.3); transition: color var(--tr); }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      header { padding: 0 24px; height: 72px; }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; position: fixed; inset: 72px 0 0 0; background: rgba(13,13,13,0.97); padding: 40px 32px; gap: 28px; z-index: 99; }
+      .menu-toggle { display: flex; }
+      .page-hero { padding: 120px 24px 56px; }
+      .faq-wrap { padding: 48px 24px 72px; }
+      .faq-cta { padding: 32px 24px; }
+      footer { padding: 28px 24px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">
+      <img src="logo-transparent.png" class="logo-img" alt="Miss Miami" />
+    </a>
+    <nav id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="apply.html">Apply</a>
+      <a href="competition.html">Competition</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="faq.html" class="active">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboard.html" class="btn-account">My Account</a>
+      <a href="apply.html" class="btn-nav">Apply Now</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <p class="eyebrow">Miss Miami 2026</p>
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything you need to know about applying, competing and joining the Miss Miami family.</p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-wrap">
+
+    <!-- TABS -->
+    <div class="faq-tabs">
+      <button class="faq-tab active" data-group="eligibility">Eligibility</button>
+      <button class="faq-tab" data-group="application">Application</button>
+      <button class="faq-tab" data-group="competition">Competition</button>
+      <button class="faq-tab" data-group="payment">Payment</button>
+      <button class="faq-tab" data-group="sponsors">Sponsors</button>
+    </div>
+
+    <!-- ELIGIBILITY -->
+    <div class="faq-group active" id="group-eligibility">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Who can apply to Miss Miami?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Miss Miami is open to women between the ages of <strong>18 and 28</strong> who reside in or have a meaningful connection to South Florida. We welcome women of all backgrounds, ethnicities, and walks of life. Beauty is diverse — and so is Miss Miami.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Do I need prior pageant experience?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Not at all. Many of our past contestants and winners had never competed before. What matters most is your authenticity, your story, and your desire to grow. First-timers are absolutely encouraged to apply.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Is there a height or appearance requirement?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            There are no height or specific appearance requirements. Miss Miami celebrates confidence, intelligence, and purpose alongside beauty. We believe every woman has something remarkable to offer.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Can international residents apply?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Applicants must be legally permitted to reside and work in the United States at the time of the competition. International residents with valid visas are welcome to apply, provided they meet all other eligibility requirements.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- APPLICATION -->
+    <div class="faq-group" id="group-application">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>How do I apply?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Simply click <a href="apply.html">Apply Now</a> and complete the online application form. You'll need to fill in your personal information, answer a few essay questions, upload your photos, and pay the application fee. The entire process takes about 20–30 minutes.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What photos do I need to submit?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            You'll need to submit three photos: a <strong>professional headshot</strong>, a <strong>full-length photo</strong> in formal or evening attire, and a <strong>casual photo</strong> that shows your personality. Photos must be recent (within 6 months), high resolution, and minimally edited. No heavy filters please.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>When is the application deadline?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Applications for Miss Miami 2026 close on <strong>September 30, 2026</strong>. We strongly encourage applying early — spots are limited and we review applications on a rolling basis.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>How long does the review process take?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            After submitting, you'll receive a confirmation email immediately. Our team reviews each application within <strong>5–7 business days</strong> and will reach out to let you know if you've been selected to move forward.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Can I edit my application after submitting?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Once submitted, applications cannot be edited through the portal. If you need to make a correction or update your information, please <a href="contact.html">contact us</a> directly within 48 hours of your submission.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COMPETITION -->
+    <div class="faq-group" id="group-competition">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What does the competition consist of?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            The Miss Miami 2026 competition includes several stages: an <strong>interview round</strong>, <strong>talent showcase</strong>, <strong>evening gown</strong>, <strong>casual wear</strong>, and an <strong>on-stage Q&A</strong>. Contestants are scored on poise, articulation, presentation, and the strength of their personal platform.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>When and where is the competition held?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Miss Miami 2026 takes place on <strong>November 15, 2026</strong> in Miami, Florida. The venue will be announced to accepted contestants and ticket holders in September. It will be a fully produced stage event with live audience.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What is "Road to the Crown"?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Road to the Crown is our exclusive 8-step preparation program available to all accepted contestants through their personal online account. It guides you through everything from your platform development and interview prep to styling, stage presence, and final competition readiness. Think of it as your personal coach, available 24/7.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What do winners receive?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Miss Miami 2026 and her court receive a <strong>crown and sash</strong>, a <strong>prize package</strong> including cash award and sponsor gifts, a <strong>professional photoshoot</strong>, media features, and a year of official duties representing Miss Miami at events across South Florida.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Can family and friends attend the competition?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes! Each contestant receives <strong>2 complimentary tickets</strong> for family or guests. Additional tickets will be available for purchase closer to the event date. Details will be shared with accepted contestants.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="faq-group" id="group-payment">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>How much is the application fee?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            The application and registration fee is <strong>$250 USD</strong>. This covers the cost of your application review, access to the Road to the Crown portal, one coaching session, and your contestant event package including 2 guest tickets.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What payment methods are accepted?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We accept all major credit and debit cards (Visa, Mastercard, American Express), as well as Apple Pay and Google Pay. All payments are processed securely through <strong>Stripe</strong>.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Is the fee refundable?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            The application fee is non-refundable. If your application is not selected to move forward, the fee covers the cost of review and administration. We appreciate your understanding and encourage you to apply again in future seasons.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Is my payment information secure?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Absolutely. All payment processing is handled by <strong>Stripe</strong>, one of the world's most trusted payment platforms. We never store your card details. All transactions are encrypted and PCI-compliant.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SPONSORS -->
+    <div class="faq-group" id="group-sponsors">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>How can my brand become a sponsor?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Visit our <a href="sponsors.html">Sponsors page</a> to view partnership packages and submit an inquiry. We offer three tiers — Silver, Gold, and Crown — with benefits ranging from logo placement to full title sponsorship. Our team will respond within 48 hours.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What kind of brands do you partner with?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We partner with brands that align with our values of elegance, empowerment and purpose. Past and prospective partners include brands in <strong>beauty, fashion, wellness, hospitality, real estate, luxury goods</strong> and professional services. If you're unsure whether your brand is a fit, reach out — we love creative partnerships.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Can I create a custom sponsorship package?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes. In addition to our standard tiers, we offer fully custom partnership arrangements for brands with specific goals or budgets. Select "Custom / Other" in the sponsorship inquiry form and describe what you have in mind — we'll build a proposal around your needs.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="faq-cta">
+      <h3>Still Have Questions?</h3>
+      <p>Our team is happy to help. Reach out and we'll get back to you within 24 hours.</p>
+      <a href="contact.html" class="btn-gold">Contact Us</a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <p>© 2026 Miss Miami. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+
+    // Tabs
+    const tabs = document.querySelectorAll('.faq-tab');
+    const groups = document.querySelectorAll('.faq-group');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        groups.forEach(g => g.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('group-' + tab.dataset.group).classList.add('active');
+        // animate items in new group
+        document.querySelectorAll('#group-' + tab.dataset.group + ' .faq-item').forEach((el, i) => {
+          el.classList.remove('visible');
+          setTimeout(() => el.classList.add('visible'), i * 60);
+        });
+      });
+    });
+
+    // Accordion
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+        // close all
+        document.querySelectorAll('.faq-item.open').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-answer').style.maxHeight = '0';
+        });
+        // open clicked
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.faq-item').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.05}s`;
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

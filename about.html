@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Miss Miami 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold:  #D4AF37;
+      --black: #0D0D0D;
+      --dark:  #111008;
+      --dark2: #161209;
+      --cream: #F5F1E8;
+      --white: #ffffff;
+      --glass: rgba(13,13,13,0.85);
+      --tr: 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--cream); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    h1,h2,h3,h4 { font-family: 'Cinzel', serif; letter-spacing: 0.06em; }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 90px;
+      background: var(--glass); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+    }
+    .logo { display: flex; align-items: center; }
+    .logo-img { height: 80px; width: auto; display: block; object-fit: contain; }
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.7); transition: color var(--tr); position: relative; }
+    nav a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform var(--tr); }
+    nav a:hover { color: var(--gold); }
+    nav a:hover::after, nav a.active::after { transform: scaleX(1); }
+    nav a.active { color: var(--gold); }
+    .btn-nav { padding: 10px 28px; background: var(--gold); color: var(--black) !important; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em; font-weight: 700; text-transform: uppercase; transition: all var(--tr); }
+    .btn-nav:hover { background: #c9a227; }
+    .btn-nav::after, .btn-account::after { display: none !important; }
+    .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.55) !important; border: 1px solid rgba(212,175,55,0.25); padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
+    .btn-account:hover { color: var(--gold) !important; border-color: rgba(212,175,55,0.6); }
+    .menu-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+    .menu-toggle span { display:block; width:24px; height:1.5px; background:var(--gold); }
+
+    /* ── CINEMATIC HERO ── */
+    .hero {
+      height: 100vh; min-height: 600px;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      background-color: #080500;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('about-bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      animation: heroZoom 12s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      0%   { transform: scale(1.0); }
+      100% { transform: scale(1.06); }
+    }
+    .hero-bg-fallback {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(212,175,55,0.12) 0%, transparent 60%),
+                  linear-gradient(135deg, #0d0a02 0%, #1a1406 50%, #0d0a02 100%);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(8,5,0,0.3) 0%,
+        rgba(8,5,0,0.4) 40%,
+        rgba(8,5,0,0.75) 80%,
+        rgba(8,5,0,1) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 0 24px;
+      max-width: 900px;
+    }
+    .hero-ornament {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; margin-bottom: 32px;
+    }
+    .hero-ornament-line { width: 60px; height: 1px; background: rgba(212,175,55,0.4); }
+    .hero-ornament span { font-size: 14px; color: var(--gold); opacity: 0.7; }
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 90px);
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 28px;
+      text-shadow: 0 2px 40px rgba(0,0,0,0.5);
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg,
+        #B8960C 0%,
+        #D4AF37 20%,
+        #F5E27A 35%,
+        #fff8dc 50%,
+        #F5E27A 65%,
+        #D4AF37 80%,
+        #B8960C 100%
+      );
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%   { background-position: 100% 0; }
+      50%  { background-position: 0% 0; }
+      100% { background-position: 100% 0; }
+    }
+    .hero-sub {
+      font-size: 14px; color: rgba(245,241,232,0.55);
+      max-width: 520px; margin: 0 auto; line-height: 2;
+      letter-spacing: 0.05em;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      z-index: 2;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 0.8; transform: scaleY(1.1); }
+    }
+
+    /* ── GOLD DIVIDER ── */
+    .gold-divider {
+      display: flex; align-items: center; justify-content: center;
+      gap: 20px; padding: 60px 56px;
+      background: var(--black);
+    }
+    .gd-line { flex: 1; max-width: 200px; height: 1px; background: linear-gradient(to right, transparent, rgba(212,175,55,0.3)); }
+    .gd-line.right { background: linear-gradient(to left, transparent, rgba(212,175,55,0.3)); }
+    .gd-icon { font-size: 18px; color: var(--gold); opacity: 0.6; letter-spacing: 12px; }
+
+    /* ── BIG QUOTE ── */
+    .quote-section {
+      padding: 0 56px 100px;
+      text-align: center;
+      position: relative;
+    }
+    .quote-mark {
+      font-family: 'Cinzel', serif;
+      font-size: 120px;
+      line-height: 0.5;
+      color: rgba(212,175,55,0.08);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .quote-text {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(22px, 3.5vw, 42px);
+      color: var(--white);
+      line-height: 1.4;
+      max-width: 860px;
+      margin: 0 auto 28px;
+      font-weight: 400;
+    }
+    .quote-text em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .quote-author { font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(245,241,232,0.35); }
+
+    /* ── FULL BLEED MISSION ── */
+    .mission-section {
+      position: relative;
+      min-height: 80vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .mission-photo {
+      position: relative;
+      background-color: var(--dark2);
+      overflow: hidden;
+      min-height: 500px;
+    }
+    .mission-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: sepia(15%) contrast(1.05) brightness(0.85);
+      display: block;
+    }
+    .mission-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--black) 100%);
+    }
+    .mission-photo-placeholder {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cinzel', serif; font-size: 100px;
+      color: rgba(212,175,55,0.06);
+    }
+    .mission-text-panel {
+      background: var(--black);
+      padding: 80px 72px 80px 64px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative;
+    }
+    .mission-text-panel::before {
+      content: '';
+      position: absolute; left: 0; top: 10%; bottom: 10%; width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(212,175,55,0.2), transparent);
+    }
+    .eyebrow { font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 500; }
+    .mission-text-panel h2 { font-size: clamp(24px, 2.8vw, 38px); color: var(--white); margin-bottom: 28px; line-height: 1.3; }
+    .mission-text-panel p { font-size: 13px; color: rgba(245,241,232,0.5); line-height: 2.1; margin-bottom: 18px; }
+    .mission-detail {
+      display: flex; gap: 32px; margin-top: 36px;
+    }
+    .mission-detail-item { flex: 1; }
+    .mission-detail-item .num {
+      font-family: 'Cinzel', serif; font-size: 32px; color: var(--gold);
+      line-height: 1; margin-bottom: 6px;
+    }
+    .mission-detail-item .label { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(245,241,232,0.35); }
+
+    /* ── VALUES — FULL SCREEN ── */
+    .values-section { background: var(--dark2); }
+    .values-hero {
+      padding: 80px 56px 60px;
+      text-align: center;
+    }
+    .values-hero h2 { font-size: clamp(28px, 4vw, 52px); color: var(--white); margin-bottom: 16px; }
+    .values-hero p { font-size: 13px; color: rgba(245,241,232,0.4); max-width: 480px; margin: 0 auto; line-height: 2; }
+
+    .values-panels { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .value-panel {
+      position: relative; padding: 64px 48px;
+      border-top: 1px solid rgba(212,175,55,0.08);
+      border-right: 1px solid rgba(212,175,55,0.08);
+      overflow: hidden;
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease, background var(--tr);
+    }
+    .value-panel:last-child { border-right: none; }
+    .value-panel.visible { opacity: 1; transform: translateY(0); }
+    .value-panel:hover { background: rgba(212,175,55,0.03); }
+    .value-panel-num {
+      font-family: 'Cinzel', serif;
+      font-size: 100px; line-height: 1;
+      color: rgba(212,175,55,0.04);
+      position: absolute; top: 20px; right: 24px;
+      pointer-events: none;
+    }
+    .value-panel-icon { font-size: 28px; margin-bottom: 24px; display: block; }
+    .value-panel h3 {
+      font-size: 16px; letter-spacing: 0.2em; color: var(--gold);
+      margin-bottom: 16px; font-weight: 600;
+    }
+    .value-panel p { font-size: 13px; color: rgba(245,241,232,0.45); line-height: 2; }
+
+    /* ── STORY — IMMERSIVE ── */
+    .story-section { background: var(--black); padding: 100px 56px; }
+    .story-inner { max-width: 1100px; margin: 0 auto; }
+    .story-head { margin-bottom: 72px; }
+    .story-head h2 { font-size: clamp(28px, 4vw, 48px); color: var(--white); margin-bottom: 14px; }
+    .story-head p { font-size: 13px; color: rgba(245,241,232,0.4); max-width: 420px; line-height: 2; }
+
+    .timeline { position: relative; }
+    .tl-track {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+      background: rgba(212,175,55,0.08);
+    }
+    .tl-track-fill {
+      position: absolute; left: 0; top: 0; width: 1px;
+      background: linear-gradient(to bottom, var(--gold), rgba(212,175,55,0.3));
+      height: 0%;
+      transition: height 1.8s cubic-bezier(.4,0,.2,1);
+    }
+    .tl-track-fill.animated { height: 100%; }
+    .tl-item {
+      display: grid; grid-template-columns: 48px 1fr;
+      gap: 40px; padding-bottom: 56px;
+      opacity: 0; transform: translateY(28px);
+      filter: blur(3px);
+      transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  filter 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item.visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+    .tl-left { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .tl-dot {
+      width: 48px; height: 48px; flex-shrink: 0;
+      border: 1px solid rgba(212,175,55,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cinzel', serif; font-size: 14px;
+      color: rgba(212,175,55,0.3); background: var(--black);
+      position: relative; z-index: 1;
+      transition: border-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+    }
+    .tl-item.visible .tl-dot {
+      border-color: var(--gold);
+      color: var(--gold);
+      box-shadow: 0 0 16px rgba(212,175,55,0.2), inset 0 0 8px rgba(212,175,55,0.05);
+    }
+    .tl-content { padding-top: 12px; padding-bottom: 8px; }
+    .tl-year { font-size: 9px; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; opacity: 0.7; }
+    .tl-content h4 { font-size: 17px; color: var(--white); margin-bottom: 10px; letter-spacing: 0.1em; }
+    .tl-content p { font-size: 13px; color: rgba(245,241,232,0.45); line-height: 2; max-width: 540px; }
+
+    /* ── TEAM — EDITORIAL ── */
+    .team-section { background: var(--dark2); padding: 100px 56px; }
+    .team-head { margin-bottom: 64px; }
+    .team-head h2 { font-size: clamp(28px, 4vw, 48px); color: var(--white); margin-bottom: 14px; }
+    .team-head p { font-size: 13px; color: rgba(245,241,232,0.4); max-width: 400px; line-height: 2; }
+
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .team-card {
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .team-card.visible { opacity: 1; transform: translateY(0); }
+    .team-photo {
+      aspect-ratio: 3/4;
+      background: var(--dark);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .team-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; filter: sepia(10%) contrast(1.05) brightness(0.9); }
+    .team-card:hover .team-photo img { transform: scale(1.04); }
+    .team-photo-placeholder { font-size: 64px; color: rgba(212,175,55,0.06); }
+    .team-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,5,0,0.9) 0%, rgba(8,5,0,0.3) 50%, transparent 100%);
+    }
+    .team-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 28px 24px;
+    }
+    .team-name { font-family: 'Cinzel', serif; font-size: 16px; color: var(--white); margin-bottom: 4px; }
+    .team-role { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); opacity: 0.8; margin-bottom: 10px; }
+    .team-bio { font-size: 11px; color: rgba(245,241,232,0.5); line-height: 1.8; }
+
+    /* ── CTA — FULL BLEED ── */
+    .cta-section {
+      position: relative;
+      padding: 120px 56px;
+      text-align: center;
+      overflow: hidden;
+      background-color: var(--black);
+    }
+    .cta-bg {
+      position: absolute; inset: 0;
+      background-image: url('hero.jpg');
+      background-size: cover; background-position: center;
+      opacity: 0.12;
+    }
+    .cta-overlay {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, transparent 0%, var(--black) 70%);
+    }
+    .cta-content { position: relative; z-index: 2; }
+    .cta-section h2 { font-size: clamp(28px, 4.5vw, 56px); color: var(--white); margin-bottom: 20px; line-height: 1.2; }
+    .cta-section h2 em { font-style: normal; color: var(--gold); }
+    .cta-section p { font-size: 14px; color: rgba(245,241,232,0.45); max-width: 480px; margin: 0 auto 48px; line-height: 2; }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .btn-gold { display: inline-block; padding: 16px 52px; background: var(--gold); color: var(--black); font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.25em; font-weight: 700; text-transform: uppercase; transition: background var(--tr); }
+    .btn-gold:hover { background: #c9a227; }
+    .btn-outline { display: inline-block; padding: 15px 52px; border: 1px solid rgba(212,175,55,0.35); color: var(--gold); font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.25em; font-weight: 600; text-transform: uppercase; transition: all var(--tr); }
+    .btn-outline:hover { background: rgba(212,175,55,0.08); border-color: rgba(212,175,55,0.6); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); border-top: 1px solid rgba(212,175,55,0.12); padding: 40px 56px 28px; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
+    .footer-bottom p { font-size: 11px; color: rgba(245,241,232,0.3); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 11px; color: rgba(245,241,232,0.3); transition: color var(--tr); }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .mission-section { grid-template-columns: 1fr; }
+      .mission-photo { min-height: 400px; aspect-ratio: 4/3; }
+      .mission-photo-overlay { background: linear-gradient(to bottom, transparent 50%, var(--black) 100%); }
+      .mission-text-panel { padding: 56px 32px; }
+      .mission-text-panel::before { display: none; }
+      .mission-detail { gap: 20px; }
+      .values-panels { grid-template-columns: 1fr; }
+      .value-panel { border-right: none; border-bottom: 1px solid rgba(212,175,55,0.08); }
+      .team-grid { grid-template-columns: 1fr; max-width: 400px; }
+    }
+    @media (max-width: 640px) {
+      header { padding: 0 24px; height: 72px; }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; position: fixed; inset: 72px 0 0 0; background: rgba(13,13,13,0.97); padding: 40px 32px; gap: 28px; z-index: 99; }
+      .menu-toggle { display: flex; }
+      .gold-divider { padding: 40px 24px; }
+      .quote-section { padding: 0 24px 72px; }
+      .quote-mark { font-size: 72px; }
+      .story-section, .team-section { padding: 72px 24px; }
+      .values-hero, .values-panels .value-panel { padding: 48px 24px; }
+      .cta-section { padding: 80px 24px; }
+      footer { padding: 28px 24px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">
+      <img src="logo-transparent.png" class="logo-img" alt="Miss Miami" />
+    </a>
+    <nav id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="apply.html">Apply</a>
+      <a href="competition.html">Competition</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboard.html" class="btn-account">My Account</a>
+      <a href="apply.html" class="btn-nav">Apply Now</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- CINEMATIC HERO -->
+  <section class="hero">
+    <div class="hero-bg-fallback"></div>
+    <div class="hero-bg" id="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-ornament">
+        <div class="hero-ornament-line"></div>
+        <span>✦ ✦ ✦</span>
+        <div class="hero-ornament-line"></div>
+      </div>
+      <h1>More Than<br>a <em>Crown</em></h1>
+      <p class="hero-sub">Miss Miami is a celebration of the modern woman — her intelligence, her ambition, her grace. A platform where beauty meets purpose.</p>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="gold-divider">
+    <div class="gd-line"></div>
+    <div class="gd-icon">✦ ◈ ✦</div>
+    <div class="gd-line right"></div>
+  </div>
+
+  <!-- BIG QUOTE -->
+  <section class="quote-section">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">
+      We don't crown the most beautiful woman in the room.<br>
+      We crown the woman who makes the room <em>more beautiful</em>.
+    </p>
+    <div class="quote-author">— Iryna, Founder of Miss Miami</div>
+  </section>
+
+  <!-- MISSION — FULL BLEED -->
+  <section class="mission-section">
+    <div class="mission-photo">
+      <img src="about-bg.jpg" alt="Miss Miami" onerror="this.style.display='none'" />
+      <div class="mission-photo-placeholder">♛</div>
+      <div class="mission-photo-overlay"></div>
+    </div>
+    <div class="mission-text-panel">
+      <p class="eyebrow">Who We Are</p>
+      <h2>Redefining What a Crown Means</h2>
+      <p>Miss Miami was founded on the belief that beauty pageants can be more than surface-level competition. We created a space where accomplished, driven women come together to celebrate what makes them extraordinary.</p>
+      <p>Our contestants are students, entrepreneurs, artists, athletes and advocates. They carry causes close to their hearts and the ambition to make real change in their communities.</p>
+      <p>Every year, Miss Miami brings together the brightest women of South Florida for an experience that challenges, transforms and elevates — whether you win the title or not, you leave as part of a lifelong sisterhood.</p>
+      <div class="mission-detail">
+        <div class="mission-detail-item">
+          <div class="num">2026</div>
+          <div class="label">Season</div>
+        </div>
+        <div class="mission-detail-item">
+          <div class="num">Nov 15</div>
+          <div class="label">Event Date</div>
+        </div>
+        <div class="mission-detail-item">
+          <div class="num">Miami</div>
+          <div class="label">Florida</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values-section">
+    <div class="values-hero">
+      <p class="eyebrow">What We Stand For</p>
+      <h2>Beauty. Confidence. Purpose.</h2>
+      <p>Three words that define every Miss Miami contestant — and every woman who walks through our doors.</p>
+    </div>
+    <div class="values-panels">
+      <div class="value-panel">
+        <div class="value-panel-num">I</div>
+        <span class="value-panel-icon">✦</span>
+        <h3>Beauty</h3>
+        <p>We celebrate beauty in all its forms — inner radiance, authentic confidence, and the elegance of a woman who knows her worth. Beauty is not a standard. It is a presence.</p>
+      </div>
+      <div class="value-panel">
+        <div class="value-panel-num">II</div>
+        <span class="value-panel-icon">♛</span>
+        <h3>Confidence</h3>
+        <p>The ability to walk into a room and own it. To speak with conviction and grace under pressure. We cultivate confidence that goes far beyond the stage — and lasts a lifetime.</p>
+      </div>
+      <div class="value-panel">
+        <div class="value-panel-num">III</div>
+        <span class="value-panel-icon">◈</span>
+        <h3>Purpose</h3>
+        <p>Every Miss Miami champion carries a platform — a cause that drives her. We believe that with influence comes responsibility, and we empower our queens to create lasting impact.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY TIMELINE -->
+  <section class="story-section">
+    <div class="story-inner">
+      <div class="story-head">
+        <p class="eyebrow">Our Journey</p>
+        <h2>A Legacy<br>in the Making</h2>
+        <p>From a single vision to a South Florida institution.</p>
+      </div>
+      <div class="timeline" id="timeline">
+        <div class="tl-track"><div class="tl-track-fill" id="tl-fill"></div></div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot">✦</div></div>
+          <div class="tl-content">
+            <div class="tl-year">The Beginning</div>
+            <h4>A Vision is Born</h4>
+            <p>Miss Miami was founded with a single purpose: to create a pageant that truly celebrated the modern woman of South Florida — her diversity, her ambition, and her power.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot">◈</div></div>
+          <div class="tl-content">
+            <div class="tl-year">Growing</div>
+            <h4>The Community Expands</h4>
+            <p>Word spread quickly. More contestants, more sponsors, more media coverage. Miss Miami became a fixture in the Miami social calendar — and a launchpad for remarkable women.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot">♛</div></div>
+          <div class="tl-content">
+            <div class="tl-year">Evolution</div>
+            <h4>Road to the Crown is Introduced</h4>
+            <p>We launched our exclusive contestant preparation program — eight steps designed to coach, inspire and fully prepare each participant for competition and beyond.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot">★</div></div>
+          <div class="tl-content">
+            <div class="tl-year">2026</div>
+            <h4>Miss Miami 2026 — Our Biggest Season Yet</h4>
+            <p>A new chapter begins. More contestants, a grander stage, and a renewed commitment to celebrating the extraordinary women of Miami. Applications are open now.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team-section">
+    <div class="team-head">
+      <p class="eyebrow">Behind the Crown</p>
+      <h2>Meet the Team</h2>
+      <p>The people who make Miss Miami possible.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="team-1.jpg" alt="Iryna" onerror="this.style.display='none'" />
+          <div class="team-photo-placeholder">♛</div>
+          <div class="team-photo-overlay"></div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Iryna</div>
+          <div class="team-role">Founder & Director</div>
+          <div class="team-bio">The visionary behind Miss Miami. With a passion for empowering women and an eye for elegance, Iryna built this platform from the ground up.</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="team-2.jpg" alt="Creative Director" onerror="this.style.display='none'" />
+          <div class="team-photo-placeholder">✦</div>
+          <div class="team-photo-overlay"></div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Your Name</div>
+          <div class="team-role">Creative Director</div>
+          <div class="team-bio">Responsible for the visual identity, styling and stage production that makes every Miss Miami event an unforgettable experience.</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="team-3.jpg" alt="Contestant Coordinator" onerror="this.style.display='none'" />
+          <div class="team-photo-placeholder">◈</div>
+          <div class="team-photo-overlay"></div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Your Name</div>
+          <div class="team-role">Contestant Coordinator</div>
+          <div class="team-bio">The guiding hand for every contestant from application to competition day. Always available, always encouraging.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-bg"></div>
+    <div class="cta-overlay"></div>
+    <div class="cta-content">
+      <p class="eyebrow">Join Us</p>
+      <h2>Ready to Begin<br>Your <em>Journey</em>?</h2>
+      <p>Applications for Miss Miami 2026 are now open. Take the first step toward the crown.</p>
+      <div class="cta-btns">
+        <a href="apply.html" class="btn-gold">Apply Now</a>
+        <a href="sponsors.html" class="btn-outline">Become a Sponsor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <p>© 2026 Miss Miami. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.value-panel, .team-card').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 3) * 0.12}s`;
+      observer.observe(el);
+    });
+
+    // Timeline: each item appears individually as it scrolls into view
+    const tlFill = document.getElementById('tl-fill');
+    const tlItems = document.querySelectorAll('.tl-item');
+    let tlStarted = false;
+
+    const tlItemObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          // Start line fill on first item
+          if (!tlStarted) { tlFill && tlFill.classList.add('animated'); tlStarted = true; }
+          e.target.classList.add('visible');
+          tlItemObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3, rootMargin: '0px 0px -60px 0px' });
+
+    tlItems.forEach(el => tlItemObserver.observe(el));
+  </script>
+</body>
+</html>
