@@ -1221,10 +1221,10 @@
         flex-direction: column;
         position: fixed;
         inset: 68px 0 0 0;
-        background: rgba(13,13,13,0.97);
-        backdrop-filter: blur(16px);
-        padding: 40px 32px;
-        gap: 32px;
+        background: #0d0d0d;
+        backdrop-filter: none;
+        padding: 32px 32px;
+        gap: 20px;
         align-items: flex-start;
         z-index: 99;
       }
@@ -1804,7 +1804,7 @@
 
     // ── Countdown Timer ──
     (function() {
-      const target = new Date('2026-11-15T20:00:00');
+      const target = new Date(2026, 10, 15, 20, 0, 0); // Nov 15, 2026 — iOS-safe
       function pad(n) { return String(n).padStart(2, '0'); }
       function tick() {
         const now = new Date();
