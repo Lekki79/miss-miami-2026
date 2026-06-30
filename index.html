@@ -1212,25 +1212,44 @@
       .winner-card { grid-template-columns: 280px 1fr; }
     }
 
+    /* ── Mobile overlay menu (outside header) ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0; bottom: 0;
+      background: #0d0d0d;
+      z-index: 9999;
+      flex-direction: column;
+      padding: 32px 32px;
+      gap: 20px;
+      align-items: flex-start;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245,241,232,0.75);
+      transition: color 0.3s ease;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .btn-apply-nav {
+      margin-top: 8px;
+      padding: 14px 32px;
+      font-size: 13px !important;
+    }
+    .mobile-menu .btn-account-nav {
+      border: 1px solid rgba(212,175,55,0.25);
+      padding: 10px 20px;
+    }
+
     @media (max-width: 768px) {
       header { padding: 0 24px; height: 68px; }
 
-      nav { display: none; }
-      nav.open {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        inset: 68px 0 0 0;
-        background: #0d0d0d;
-        backdrop-filter: none;
-        padding: 32px 32px;
-        gap: 20px;
-        align-items: flex-start;
-        z-index: 99;
-      }
-
-      nav.open a { font-size: 14px; }
-      nav.open .btn-apply-nav { padding: 14px 32px; font-size: 13px !important; }
+      nav { display: none !important; }
 
       .menu-toggle { display: flex; }
 
@@ -1288,6 +1307,20 @@
       <span></span><span></span><span></span>
     </button>
   </header>
+
+  <!-- ═══ MOBILE MENU OVERLAY ══════════════════════════════════════ -->
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="apply.html">Apply</a>
+    <a href="competition.html">Competition</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="sponsors.html">Sponsors</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+    <a href="dashboard.html" class="btn-account-nav">My Account</a>
+    <a href="apply.html" class="btn-apply-nav">Apply Now</a>
+  </div>
 
   <!-- ═══ HERO ════════════════════════════════════════════════════ -->
   <section id="home">
@@ -1600,17 +1633,24 @@
   <script>
     // ── Mobile menu ──
     const toggle = document.getElementById('menu-toggle');
-    const nav = document.getElementById('main-nav');
+    const mobileMenu = document.getElementById('mobile-menu');
     toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
       const spans = toggle.querySelectorAll('span');
-      if (nav.classList.contains('open')) {
+      if (mobileMenu.classList.contains('open')) {
         spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
         spans[1].style.opacity = '0';
         spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
       } else {
         spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
       }
+    });
+    // Close menu on link click
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        toggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      });
     });
 
     // ── Header scroll style ──
