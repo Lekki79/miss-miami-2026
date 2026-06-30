@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<!-- v1 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Miss Miami 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold:  #D4AF37;
+      --black: #0D0D0D;
+      --dark:  #111008;
+      --dark2: #161209;
+      --cream: #F5F1E8;
+      --white: #ffffff;
+      --glass: rgba(13,13,13,0.85);
+      --tr: 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--cream); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    h1,h2,h3,h4 { font-family: 'Cinzel', serif; letter-spacing: 0.06em; }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 90px;
+      background: var(--glass); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+    }
+    .logo { display: flex; align-items: center; }
+    .logo-img { height: 80px; width: auto; display: block; object-fit: contain; }
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.7); transition: color var(--tr); position: relative; }
+    nav a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform var(--tr); }
+    nav a:hover { color: var(--gold); }
+    nav a:hover::after, nav a.active::after { transform: scaleX(1); }
+    nav a.active { color: var(--gold); }
+    .btn-nav { padding: 10px 28px; background: var(--gold); color: var(--black) !important; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em; font-weight: 700; text-transform: uppercase; transition: all var(--tr); }
+    .btn-nav:hover { background: #c9a227; }
+    .btn-nav::after, .btn-account::after { display: none !important; }
+    .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.55) !important; border: 1px solid rgba(212,175,55,0.25); padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
+    .btn-account:hover { color: var(--gold) !important; border-color: rgba(212,175,55,0.6); }
+    .menu-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; }
+    .menu-toggle span { display:block; width:24px; height:1.5px; background:var(--gold); transition: all 0.3s; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 160px 56px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('hero.jpg');
+      background-size: cover; background-position: center;
+      opacity: 0.06;
+    }
+    .page-hero-overlay {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, transparent 0%, var(--black) 75%);
+    }
+    .page-hero-content { position: relative; z-index: 2; }
+    .eyebrow { font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 500; display: block; }
+    .page-hero h1 { font-size: clamp(36px, 6vw, 72px); color: var(--white); margin-bottom: 20px; line-height: 1.1; }
+    .page-hero h1 em { font-style: normal; color: var(--gold); }
+    .page-hero p { font-size: 14px; color: rgba(245,241,232,0.45); max-width: 480px; margin: 0 auto; line-height: 2; }
+
+    /* ── GOLD DIVIDER ── */
+    .gold-divider {
+      display: flex; align-items: center; justify-content: center;
+      gap: 20px; padding: 48px 56px;
+    }
+    .gd-line { flex: 1; max-width: 200px; height: 1px; background: linear-gradient(to right, transparent, rgba(212,175,55,0.3)); }
+    .gd-line.right { background: linear-gradient(to left, transparent, rgba(212,175,55,0.3)); }
+    .gd-icon { font-size: 18px; color: var(--gold); opacity: 0.6; letter-spacing: 12px; }
+
+    /* ── CONTACT SECTION ── */
+    .contact-section {
+      padding: 0 56px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* ── INFO CARDS ── */
+    .contact-info { display: flex; flex-direction: column; gap: 2px; }
+    .contact-card {
+      padding: 32px 28px;
+      border: 1px solid rgba(212,175,55,0.08);
+      background: rgba(212,175,55,0.02);
+      transition: border-color var(--tr), background var(--tr);
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s, background 0.3s;
+    }
+    .contact-card.visible { opacity: 1; transform: translateY(0); }
+    .contact-card:hover { border-color: rgba(212,175,55,0.2); background: rgba(212,175,55,0.04); }
+    .contact-card-icon { font-size: 22px; margin-bottom: 14px; display: block; }
+    .contact-card h4 { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .contact-card p, .contact-card a {
+      font-size: 14px; color: rgba(245,241,232,0.6); line-height: 1.8;
+      transition: color var(--tr);
+    }
+    .contact-card a:hover { color: var(--gold); }
+
+    .social-row { display: flex; gap: 16px; margin-top: 8px; }
+    .social-link {
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(245,241,232,0.5); border: 1px solid rgba(212,175,55,0.2);
+      padding: 8px 16px; transition: all var(--tr);
+    }
+    .social-link:hover { color: var(--gold); border-color: rgba(212,175,55,0.5); }
+
+    /* ── CONTACT FORM ── */
+    .contact-form-wrap {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s;
+    }
+    .contact-form-wrap.visible { opacity: 1; transform: translateY(0); }
+    .form-head { margin-bottom: 36px; }
+    .form-head h2 { font-size: clamp(22px, 2.5vw, 32px); color: var(--white); margin-bottom: 10px; }
+    .form-head p { font-size: 13px; color: rgba(245,241,232,0.4); line-height: 2; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .form-group label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); opacity: 0.8; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,175,55,0.15);
+      color: var(--cream);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 300;
+      padding: 14px 18px;
+      outline: none;
+      transition: border-color var(--tr), background var(--tr);
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: rgba(212,175,55,0.5);
+      background: rgba(212,175,55,0.03);
+    }
+    .form-group select { appearance: none; cursor: pointer; }
+    .form-group select option { background: #1a1406; color: var(--cream); }
+    .form-group textarea { resize: vertical; min-height: 140px; }
+    input::placeholder, textarea::placeholder { color: rgba(245,241,232,0.25); }
+
+    .btn-submit {
+      display: inline-block; padding: 16px 56px;
+      background: var(--gold); color: var(--black);
+      font-family: 'Cinzel', serif; font-size: 12px;
+      letter-spacing: 0.25em; font-weight: 700;
+      text-transform: uppercase; border: none;
+      cursor: pointer; transition: background var(--tr);
+      width: 100%;
+    }
+    .btn-submit:hover { background: #c9a227; }
+
+    .form-success {
+      display: none;
+      text-align: center; padding: 48px 32px;
+      border: 1px solid rgba(212,175,55,0.2);
+      background: rgba(212,175,55,0.03);
+    }
+    .form-success .success-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+    .form-success h3 { font-size: 20px; color: var(--gold); margin-bottom: 12px; }
+    .form-success p { font-size: 13px; color: rgba(245,241,232,0.5); line-height: 2; }
+
+    /* ── SPONSOR CTA ── */
+    .sponsor-cta {
+      background: var(--dark2);
+      padding: 80px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .sponsor-cta-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+    .sponsor-cta h2 { font-size: clamp(24px, 3.5vw, 44px); color: var(--white); margin-bottom: 16px; line-height: 1.3; }
+    .sponsor-cta h2 em { font-style: normal; color: var(--gold); }
+    .sponsor-cta p { font-size: 13px; color: rgba(245,241,232,0.4); margin-bottom: 36px; line-height: 2; }
+    .btn-outline {
+      display: inline-block; padding: 15px 52px;
+      border: 1px solid rgba(212,175,55,0.35); color: var(--gold);
+      font-family: 'Cinzel', serif; font-size: 12px;
+      letter-spacing: 0.25em; font-weight: 600;
+      text-transform: uppercase; transition: all var(--tr);
+    }
+    .btn-outline:hover { background: rgba(212,175,55,0.08); border-color: rgba(212,175,55,0.6); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); border-top: 1px solid rgba(212,175,55,0.12); padding: 40px 56px 28px; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
+    .footer-bottom p { font-size: 11px; color: rgba(245,241,232,0.3); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 11px; color: rgba(245,241,232,0.3); transition: color var(--tr); }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0; bottom: 0;
+      background: #0d0d0d;
+      z-index: 9999;
+      flex-direction: column;
+      padding: 32px;
+      gap: 20px;
+      align-items: flex-start;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 13px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(245,241,232,0.7);
+      transition: color 0.3s; width: 100%; padding: 8px 0;
+      border-bottom: 1px solid rgba(212,175,55,0.08);
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .btn-account-nav { color: rgba(245,241,232,0.55) !important; }
+    .mobile-menu .btn-apply-nav {
+      margin-top: 12px; display: inline-block; padding: 16px 40px;
+      background: var(--gold); color: var(--black) !important;
+      font-family: 'Cinzel', serif; font-size: 12px;
+      letter-spacing: 0.25em; font-weight: 700;
+      text-transform: uppercase; border: none; width: auto;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 640px) {
+      header { padding: 0 24px; height: 72px; }
+      nav { display: none; }
+      .menu-toggle { display: flex; }
+      .page-hero { padding: 120px 24px 60px; }
+      .gold-divider { padding: 32px 24px; }
+      .contact-section { padding: 0 24px 72px; }
+      .form-row { grid-template-columns: 1fr; }
+      .sponsor-cta { padding: 60px 24px; }
+      footer { padding: 28px 24px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .social-row { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">
+      <img src="logo-transparent.png" class="logo-img" alt="Miss Miami" />
+    </a>
+    <nav id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="apply.html">Apply</a>
+      <a href="competition.html">Competition</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="dashboard.html" class="btn-account">My Account</a>
+      <a href="apply.html" class="btn-nav">Apply Now</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="apply.html">Apply</a>
+    <a href="competition.html">Competition</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="sponsors.html">Sponsors</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="dashboard.html" class="btn-account-nav">My Account</a>
+    <a href="apply.html" class="btn-apply-nav">Apply Now</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <span class="eyebrow">Get in Touch</span>
+      <h1>Contact <em>Us</em></h1>
+      <p>We'd love to hear from you. Whether you're a contestant, sponsor, or member of the press — our team is here to help.</p>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="gold-divider">
+    <div class="gd-line"></div>
+    <div class="gd-icon">✦ ◈ ✦</div>
+    <div class="gd-line right"></div>
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section">
+    <div class="contact-grid">
+
+      <!-- LEFT: Info -->
+      <div class="contact-info">
+        <div class="contact-card">
+          <span class="contact-card-icon">✉</span>
+          <h4>Email</h4>
+          <a href="mailto:info@missmiamiofficial.com">info@missmiamiofficial.com</a>
+        </div>
+        <div class="contact-card">
+          <span class="contact-card-icon">✆</span>
+          <h4>Phone</h4>
+          <a href="tel:+13055550000">+1 (305) 555-0000</a>
+          <p style="margin-top:6px; font-size:12px;">Mon–Fri, 10am – 6pm EST</p>
+        </div>
+        <div class="contact-card">
+          <span class="contact-card-icon">◈</span>
+          <h4>Location</h4>
+          <p>Miami, Florida<br>United States</p>
+        </div>
+        <div class="contact-card">
+          <span class="contact-card-icon">✦</span>
+          <h4>Follow Us</h4>
+          <div class="social-row">
+            <a href="#" class="social-link">Instagram</a>
+            <a href="#" class="social-link">Facebook</a>
+            <a href="#" class="social-link">TikTok</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div class="contact-form-wrap" id="form-wrap">
+        <div class="form-head">
+          <h2>Send Us a Message</h2>
+          <p>Fill out the form below and we'll get back to you within 1–2 business days.</p>
+        </div>
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Your first name" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Your last name" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+              <option value="" disabled selected>Select a topic</option>
+              <option value="contestant">Contestant Inquiry</option>
+              <option value="sponsor">Sponsorship Opportunity</option>
+              <option value="press">Press & Media</option>
+              <option value="vendor">Vendor / Partnership</option>
+              <option value="general">General Question</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us how we can help you…" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+        <div class="form-success" id="form-success">
+          <span class="success-icon">✦</span>
+          <h3>Message Received</h3>
+          <p>Thank you for reaching out. A member of our team will be in touch within 1–2 business days.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SPONSOR CTA -->
+  <section class="sponsor-cta">
+    <div class="sponsor-cta-inner">
+      <span class="eyebrow">Partner With Us</span>
+      <h2>Interested in <em>Sponsoring</em><br>Miss Miami 2026?</h2>
+      <p>Align your brand with elegance, ambition, and the women who define Miami's future. Sponsorship packages are available at multiple tiers.</p>
+      <a href="sponsors.html" class="btn-outline">View Sponsorship Packages</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <p>© 2026 Miss Miami. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const toggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      const spans = toggle.querySelectorAll('span');
+      if (mobileMenu.classList.contains('open')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+      } else {
+        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      }
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        toggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      });
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.contact-card, .contact-form-wrap').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.08}s`;
+      observer.observe(el);
+    });
+
+    // Form submit
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const fname = document.getElementById('fname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if (!fname || !email || !message) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      this.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
