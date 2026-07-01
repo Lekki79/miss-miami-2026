@@ -20,7 +20,7 @@
       --glass: rgba(13,13,13,0.85);
       --tr: 0.3s cubic-bezier(.4,0,.2,1);
     }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body { background: var(--black); color: var(--cream); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
     h1,h2,h3,h4 { font-family: 'Cinzel', serif; letter-spacing: 0.06em; }
     a { text-decoration: none; color: inherit; }
@@ -464,6 +464,7 @@
       .hero-ornament { justify-content: center !important; }
       .hero h1 { font-size: 36px !important; }
       .hero-sub { font-size: 13px !important; max-width: 100% !important; }
+      .hero-photo { animation: none !important; }
 
       /* Timeline mobile */
       .tl-item { grid-template-columns: 36px 1fr; gap: 16px; padding-bottom: 40px; }
