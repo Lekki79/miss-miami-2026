@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Miss Miami 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --gold: #D4AF37; --black: #0D0D0D; --cream: #F5F1E8; --white: #ffffff; --glass: rgba(13,13,13,0.85); --tr: 0.3s cubic-bezier(.4,0,.2,1); }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--cream); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    h1,h2,h3 { font-family: 'Cinzel', serif; letter-spacing: 0.06em; }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 90px;
+      background: var(--glass); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+    }
+    .logo { display: flex; align-items: center; }
+    .logo-img { height: 80px; width: auto; display: block; object-fit: contain; }
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.7); transition: color var(--tr); position: relative; }
+    nav a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform var(--tr); }
+    nav a:hover { color: var(--gold); }
+    nav a:hover::after, nav a.active::after { transform: scaleX(1); }
+    nav a.active { color: var(--gold); }
+    .btn-nav { padding: 10px 28px; background: var(--gold); color: var(--black) !important; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em; font-weight: 700; text-transform: uppercase; transition: all var(--tr); }
+    .btn-nav:hover { background: #c9a227; }
+    .btn-nav::after, .btn-account::after { display: none !important; }
+    .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.78) !important; border: 1px solid rgba(212,175,55,0.25); padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
+    .btn-account:hover { color: var(--gold) !important; border-color: rgba(212,175,55,0.6); }
+    .menu-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; }
+    .menu-toggle span { display:block; width:24px; height:1.5px; background:var(--gold); }
+
+    .coming-soon {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .coming-soon-bg {
+      position: absolute; inset: 0;
+      background-image: url('about-bg.jpg');
+      background-size: cover; background-position: center;
+      opacity: 0.07;
+    }
+    .coming-soon-overlay {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, transparent 0%, var(--black) 70%);
+    }
+    .coming-soon-content { position: relative; z-index: 2; max-width: 640px; }
+    .cs-icon { font-size: 56px; margin-bottom: 32px; display: block; opacity: 0.6; }
+    .cs-eyebrow { font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; display: block; }
+    .cs-title { font-size: clamp(36px, 6vw, 72px); color: var(--white); margin-bottom: 24px; line-height: 1.1; }
+    .cs-title em { font-style: normal; color: var(--gold); }
+    .cs-text { font-size: 15px; color: rgba(245,241,232,0.65); line-height: 2; margin-bottom: 48px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cs-divider { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 48px; }
+    .cs-divider-line { width: 60px; height: 1px; background: rgba(212,175,55,0.3); }
+    .cs-divider span { color: var(--gold); opacity: 0.6; font-size: 14px; }
+
+    /* Placeholder grid for atmosphere */
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 400px;
+      margin: 0 auto 48px;
+      opacity: 0.18;
+    }
+    .preview-cell {
+      aspect-ratio: 1;
+      background: rgba(212,175,55,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: rgba(212,175,55,0.4);
+    }
+
+    .btn-gold {
+      display: inline-block; padding: 16px 52px;
+      background: var(--gold); color: var(--black);
+      font-family: 'Cinzel', serif; font-size: 12px;
+      letter-spacing: 0.25em; font-weight: 700;
+      text-transform: uppercase; transition: background var(--tr);
+    }
+    .btn-gold:hover { background: #c9a227; }
+
+    footer { background: var(--black); border-top: 1px solid rgba(212,175,55,0.12); padding: 40px 56px 28px; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
+    .footer-bottom p { font-size: 11px; color: rgba(245,241,232,0.55); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 11px; color: rgba(245,241,232,0.55); transition: color var(--tr); }
+    .footer-links a:hover { color: var(--gold); }
+
+    .mobile-menu {
+      display: none; position: fixed;
+      top: 72px; left: 0; right: 0; bottom: 0;
+      background: #0d0d0d; z-index: 9999;
+      flex-direction: column; padding: 32px; gap: 20px;
+      align-items: flex-start; overflow-y: auto;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 13px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.7); transition: color 0.3s; width: 100%; padding: 8px 0; border-bottom: 1px solid rgba(212,175,55,0.08); }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .btn-apply-nav { margin-top: 12px; display: inline-block; padding: 16px 40px; background: var(--gold); color: var(--black) !important; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.25em; font-weight: 700; text-transform: uppercase; border: none; width: auto; }
+
+    @media (max-width: 640px) {
+      header { padding: 0 24px; height: 72px; }
+      nav { display: none; }
+      .menu-toggle { display: flex; }
+      footer { padding: 28px 24px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .preview-grid { max-width: 280px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">
+      <img src="logo-transparent.png" class="logo-img" alt="Miss Miami" />
+    </a>
+    <nav id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="apply.html">Apply</a>
+      <a href="competition.html">Competition</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboard.html" class="btn-account">My Account</a>
+      <a href="apply.html" class="btn-nav">Apply Now</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="apply.html">Apply</a>
+    <a href="competition.html">Competition</a>
+    <a href="gallery.html" class="active">Gallery</a>
+    <a href="sponsors.html">Sponsors</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+    <a href="dashboard.html">My Account</a>
+    <a href="apply.html" class="btn-apply-nav">Apply Now</a>
+  </div>
+
+  <section class="coming-soon">
+    <div class="coming-soon-bg"></div>
+    <div class="coming-soon-overlay"></div>
+    <div class="coming-soon-content">
+      <span class="cs-icon">◈</span>
+      <span class="cs-eyebrow">Miss Miami 2026</span>
+      <h1 class="cs-title">Photo<br><em>Gallery</em></h1>
+      <div class="cs-divider">
+        <div class="cs-divider-line"></div>
+        <span>✦ ◈ ✦</span>
+        <div class="cs-divider-line"></div>
+      </div>
+      <div class="preview-grid">
+        <div class="preview-cell">◈</div>
+        <div class="preview-cell">♛</div>
+        <div class="preview-cell">◈</div>
+        <div class="preview-cell">✦</div>
+        <div class="preview-cell">◈</div>
+        <div class="preview-cell">✦</div>
+        <div class="preview-cell">◈</div>
+        <div class="preview-cell">♛</div>
+        <div class="preview-cell">◈</div>
+      </div>
+      <p class="cs-text">Beautiful photos and moments from Miss Miami will be curated here. Check back soon as we bring this gallery to life.</p>
+      <a href="apply.html" class="btn-gold">Apply Now</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>© 2026 Miss Miami. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      const spans = toggle.querySelectorAll('span');
+      if (mobileMenu.classList.contains('open')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+      } else {
+        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      }
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        toggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      });
+    });
+  </script>
+</body>
+</html>
