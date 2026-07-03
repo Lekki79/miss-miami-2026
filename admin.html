@@ -219,7 +219,7 @@
       <label>Password</label>
       <input type="password" id="admin-password" placeholder="••••••••" />
     </div>
-    <button class="login-btn" onclick="adminLogin()">Sign In</button>
+    <button class="login-btn" id="login-btn">Sign In</button>
     <div class="login-error" id="login-error"></div>
   </div>
 </div>
@@ -328,7 +328,8 @@
 
   // Auth state
   onAuthStateChanged(auth, user => {
-    if (user && ADMIN_EMAILS.includes(user.email)) {
+    const emailMatch = user && ADMIN_EMAILS.map(e => e.trim().toLowerCase()).includes(user.email.trim().toLowerCase());
+    if (emailMatch) {
       document.getElementById('login-screen').style.display = 'none';
       document.getElementById('admin-screen').style.display = 'block';
       document.getElementById('admin-email-display').textContent = user.email;
@@ -342,16 +343,22 @@
     }
   });
 
-  window.adminLogin = async () => {
-    const email = document.getElementById('admin-email').value;
+  // Login button — event listener in module (more reliable than onclick)
+  document.getElementById('login-btn').addEventListener('click', async () => {
+    const email = document.getElementById('admin-email').value.trim();
     const password = document.getElementById('admin-password').value;
+    const btn = document.getElementById('login-btn');
     document.getElementById('login-error').textContent = '';
+    btn.textContent = 'Signing in...';
+    btn.disabled = true;
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (e) {
       showError('Invalid email or password.');
+      btn.textContent = 'Sign In';
+      btn.disabled = false;
     }
-  };
+  });
 
   window.adminLogout = () => signOut(auth);
 
@@ -491,7 +498,7 @@
 
   // Enter key on login
   document.getElementById('admin-password').addEventListener('keydown', e => {
-    if (e.key === 'Enter') window.adminLogin();
+    if (e.key === 'Enter') document.getElementById('login-btn').click();
   });
 </script>
 </body>
