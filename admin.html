@@ -217,7 +217,10 @@
     </div>
     <div class="login-field">
       <label>Password</label>
-      <input type="password" id="admin-password" placeholder="••••••••" />
+      <div style="position:relative;">
+        <input type="password" id="admin-password" placeholder="••••••••" style="width:100%; padding-right:44px;" />
+        <button type="button" id="toggle-password" onclick="(function(){var i=document.getElementById('admin-password'),b=document.getElementById('toggle-password');if(i.type==='password'){i.type='text';b.innerHTML='&#128065;&#65038;';}else{i.type='password';b.innerHTML='&#128065;';}})()" style="position:absolute;right:0;top:0;bottom:0;width:44px;background:none;border:none;cursor:pointer;color:rgba(245,241,232,0.35);font-size:16px;display:flex;align-items:center;justify-content:center;transition:color 0.2s;" onmouseover="this.style.color='rgba(212,175,55,0.7)'" onmouseout="this.style.color='rgba(245,241,232,0.35)'">&#128065;</button>
+      </div>
     </div>
     <button class="login-btn" id="login-btn">Sign In</button>
     <div class="login-error" id="login-error"></div>
