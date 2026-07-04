@@ -40,9 +40,8 @@
     h1, h2, h3, h4 { font-family: 'Cinzel', serif; letter-spacing: 0.08em; }
     a { text-decoration: none; color: inherit; }
 
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+    ::-webkit-scrollbar { display: none; }
+    * { scrollbar-width: none; }
 
     /* ─── HEADER ───────────────────────────────────────────────── */
     header {
@@ -54,10 +53,10 @@
       justify-content: space-between;
       padding: 0 56px;
       height: 90px;
-      background: var(--glass);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+      background: transparent;
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+      box-shadow: none;
       transition: background var(--transition);
     }
 
@@ -959,9 +958,11 @@
     // ── Header scroll ──
     window.addEventListener('scroll', () => {
       const h = document.getElementById('site-header');
-      h.style.background = window.scrollY > 60
-        ? 'rgba(4,1,0,0.98)'
-        : 'rgba(4,1,0,0.93)';
+      const scrolled = window.scrollY > 60;
+      h.style.background = scrolled ? 'rgba(4,1,0,0.95)' : 'transparent';
+      h.style.backdropFilter = scrolled ? 'blur(14px)' : 'blur(0px)';
+      h.style.webkitBackdropFilter = scrolled ? 'blur(14px)' : 'blur(0px)';
+      h.style.boxShadow = scrolled ? '0 2px 24px rgba(0,0,0,0.4)' : 'none';
     });
 
     // ── Gold Particle Canvas ──
