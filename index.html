@@ -54,10 +54,10 @@
       padding: 0 56px;
       height: 90px;
       background: transparent;
-      backdrop-filter: blur(0px);
-      -webkit-backdrop-filter: blur(0px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       box-shadow: none;
-      transition: background var(--transition);
+      transition: none;
     }
 
     .logo { display: flex; align-items: center; flex-shrink: 0; }
@@ -69,7 +69,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 11px; font-weight: 500;
       letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(245,230,200,0.8);
+      color: var(--gold);
       transition: color var(--transition);
       position: relative;
     }
@@ -531,7 +531,7 @@
 
     /* ─── FOOTER ───────────────────────────────────────────────── */
     footer {
-      background: #060100;
+      background: #1C0A02;
       padding: 64px 48px 40px;
     }
     .footer-grid {
@@ -609,19 +609,19 @@
 
     /* ─── ANIMATIONS ───────────────────────────────────────────── */
     .fade-up {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fade-up-d1 { transition-delay: 0.1s; }
-    .fade-up-d2 { transition-delay: 0.2s; }
-    .fade-up-d3 { transition-delay: 0.3s; }
+    .fade-up-d1 { transition-delay: 0.15s; }
+    .fade-up-d2 { transition-delay: 0.35s; }
+    .fade-up-d3 { transition-delay: 0.55s; }
 
     /* ─── MOBILE MENU ──────────────────────────────────────────── */
     .mobile-menu {
       display: none; position: fixed;
       top: 68px; left: 0; right: 0; bottom: 0;
-      background: #060100;
+      background: #1C0A02;
       z-index: 9999;
       flex-direction: column; padding: 32px; gap: 20px;
       align-items: flex-start; overflow-y: auto;
@@ -764,7 +764,7 @@
   <section id="mission">
     <div class="section-eyebrow fade-up"><span>Our Mission</span></div>
     <div class="mission-grid">
-      <div class="mission-card fade-up">
+      <div class="mission-card fade-up fade-up-d1">
         <div class="mission-icon">
           <svg viewBox="0 0 56 56" fill="none">
             <path d="M28 8L28 4M28 52L28 48M8 28L4 28M52 28L48 28" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
@@ -937,15 +937,7 @@
       });
     });
 
-    // ── Header scroll ──
-    window.addEventListener('scroll', () => {
-      const h = document.getElementById('site-header');
-      const scrolled = window.scrollY > 60;
-      h.style.background = scrolled ? 'rgba(4,1,0,0.95)' : 'transparent';
-      h.style.backdropFilter = scrolled ? 'blur(14px)' : 'blur(0px)';
-      h.style.webkitBackdropFilter = scrolled ? 'blur(14px)' : 'blur(0px)';
-      h.style.boxShadow = scrolled ? '0 2px 24px rgba(0,0,0,0.4)' : 'none';
-    });
+    // ── Header: always transparent ──
 
     // ── Gold Particle Canvas ──
     (function() {
