@@ -57,7 +57,6 @@
       background: var(--glass);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(212,175,55,0.15);
       transition: background var(--transition);
     }
 
@@ -496,50 +495,34 @@
 
     /* ─── APPLY BANNER ─────────────────────────────────────────── */
     #apply-banner {
-      padding: 0;
-      background: #2E1508;
+      background: var(--cream2);
+      padding: 100px 48px;
+      text-align: center;
+      position: relative;
+      border-top: 1px solid rgba(180,140,40,0.12);
+      border-bottom: 1px solid rgba(180,140,40,0.12);
     }
-    .apply-banner-inner {
-      display: grid; grid-template-columns: 1fr 1fr; min-height: 400px;
+    .apply-cta-box {
+      max-width: 580px;
+      margin: 0 auto;
     }
-    .apply-banner-photo {
-      position: relative; overflow: hidden; background: #1A0A00;
+    .apply-cta-crown { margin-bottom: 24px; }
+    .apply-cta-title {
+      font-size: clamp(28px, 4vw, 44px);
+      color: var(--dark-text);
+      margin-bottom: 16px;
+      letter-spacing: 0.06em;
+      line-height: 1.2;
     }
-    .apply-banner-photo img {
-      display: block; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.6;
-    }
-    .apply-banner-photo::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, transparent 60%, rgba(46,21,8,0.95) 100%);
-      z-index: 1;
-    }
-    .apply-banner-content {
-      padding: 80px 72px;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .apply-banner-content .tag {
-      font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
-      color: rgba(212,175,55,0.85); margin-bottom: 20px; font-weight: 600;
-    }
-    .apply-banner-content h2 {
-      font-size: clamp(28px, 3.5vw, 44px);
-      color: #FBF0D8; line-height: 1.15; margin-bottom: 12px; letter-spacing: 0.04em;
-    }
-    .apply-banner-content .star {
-      font-size: 14px; color: var(--gold); opacity: 0.6; margin-bottom: 20px;
-    }
-    .apply-banner-content p {
-      font-size: 14px; color: rgba(245,230,200,0.65);
-      line-height: 1.9; margin-bottom: 44px; max-width: 380px;
+    .apply-cta-desc {
+      font-size: 15px;
+      color: var(--mid-text);
+      margin: 0 auto 44px;
+      line-height: 1.9;
     }
     #apply-banner .btn-primary {
-      align-self: flex-start;
-      background: var(--gold); color: #2A1200;
-      border-color: var(--gold);
+      margin: 0 auto;
     }
-    #apply-banner .btn-primary:hover { background: #dbb83a; border-color: #dbb83a; }
 
     /* ─── FAQ TEASER ───────────────────────────────────────────── */
     #faq-teaser {
@@ -681,7 +664,7 @@
       .menu-toggle { display: flex; }
 
       section { padding: 64px 24px; }
-      #mission, #winners, #faq-teaser { padding: 64px 24px; }
+      #mission, #faq-teaser, #apply-banner { padding: 64px 24px; }
 
       .hero-content { padding: 0 24px; }
       .hero-h1 { font-size: 34px; }
@@ -859,74 +842,42 @@
     </div>
   </section>
 
-  <!-- ═══ WINNERS ══════════════════════════════════════════════════ -->
+  <!-- ═══ WINNERS — скрыт, появится позже ══════════════════════════
   <section id="winners">
-    <div class="section-eyebrow fade-up"><span>Our Winners</span></div>
-    <h2 class="section-title fade-up fade-up-d1">Faces of Miss Miami</h2>
-    <div class="ornament fade-up fade-up-d2">
-      <svg class="ornament-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
-        <path d="M9 1L9 17M1 9L17 9M3 3L15 15M15 3L3 15" stroke="#A8842A" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
-      </svg>
-    </div>
-
-    <div class="winners-slider">
-      <div class="winner-card" id="winner-card">
-        <div class="winner-photo">
-          <img id="w-photo" src="winner-1.jpg" alt="Miss Miami Winner">
-          <div class="winner-year-badge" id="w-year-badge">2025</div>
-          <div class="winner-photo-overlay"></div>
-        </div>
-        <div class="winner-info">
-          <span class="year" id="w-year">2025</span>
-          <h3 id="w-name">Isabella Moretti</h3>
-          <p class="title" id="w-title">Miss Miami 2025</p>
-          <div class="winner-divider"></div>
-          <p id="w-desc">Isabella is a passionate advocate for mental health awareness and youth empowerment. During her reign, she launched a statewide initiative reaching over 12,000 young women.</p>
-          <a href="winners.html" class="btn-outline">
-            View Story
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8L13 8M9 4L13 8L9 12" stroke="#A8842A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="slider-controls">
-        <button class="slider-btn" id="prev-btn" aria-label="Previous">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M11 4L6 9L11 14" stroke="#A8842A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="slider-dots" id="slider-dots"></div>
-        <button class="slider-btn" id="next-btn" aria-label="Next">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M7 4L12 9L7 14" stroke="#A8842A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
-    </div>
+    ...
   </section>
+  ══════════════════════════════════════════════════════════════════ -->
 
   <!-- ═══ APPLY BANNER ═════════════════════════════════════════════ -->
   <section id="apply-banner">
-    <div class="apply-banner-inner">
-      <div class="apply-banner-photo">
-        <img src="about-bg.jpg" alt="Miss Miami Crown">
-        <svg style="position:absolute;inset:0;margin:auto;opacity:0.07;z-index:2;" width="220" height="220" viewBox="0 0 220 220" fill="none">
-          <path d="M20 180L20 110L65 50L110 90L155 50L200 110L200 180Z" stroke="#D4AF37" stroke-width="2.5" fill="rgba(212,175,55,0.05)"/>
-          <circle cx="20" cy="110" r="8" fill="#D4AF37"/>
-          <circle cx="110" cy="90" r="8" fill="#D4AF37"/>
-          <circle cx="200" cy="110" r="8" fill="#D4AF37"/>
-          <line x1="20" y1="180" x2="200" y2="180" stroke="#D4AF37" stroke-width="2.5"/>
+    <div class="apply-cta-box fade-up">
+      <div class="apply-cta-crown">
+        <svg width="64" height="48" viewBox="0 0 96 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="crownGrad2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#C9A84C"/>
+              <stop offset="100%" stop-color="#8A6810"/>
+            </linearGradient>
+          </defs>
+          <polygon points="48,6 20,48 6,22 6,62 90,62 90,22 76,48"
+            fill="none" stroke="url(#crownGrad2)" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="48" cy="6" r="4" fill="#C9A84C" opacity="0.85"/>
+          <circle cx="20" cy="48" r="3" fill="#C9A84C" opacity="0.7"/>
+          <circle cx="76" cy="48" r="3" fill="#C9A84C" opacity="0.7"/>
+          <circle cx="6"  cy="22" r="2.5" fill="#A8842A" opacity="0.6"/>
+          <circle cx="90" cy="22" r="2.5" fill="#A8842A" opacity="0.6"/>
+          <rect x="6" y="60" width="84" height="2" rx="1" fill="#A8842A" opacity="0.5"/>
         </svg>
       </div>
-      <div class="apply-banner-content">
-        <p class="tag">Ready to Begin?</p>
-        <h2>Take the First Step<br>Towards the Crown</h2>
-        <p class="star">✦</p>
-        <p>Applications for Miss Miami 2026 are now open.<br>Join a legacy of beauty, confidence, and purpose.</p>
-        <a href="apply.html" class="btn-primary">Start Application</a>
+      <div class="section-eyebrow fade-up fade-up-d1"><span>Ready to Begin?</span></div>
+      <h2 class="apply-cta-title fade-up fade-up-d2">Take the First Step<br>Towards the Crown</h2>
+      <div class="ornament fade-up fade-up-d2">
+        <svg class="ornament-icon" width="16" height="16" viewBox="0 0 18 18" fill="none">
+          <path d="M9 1L9 17M1 9L17 9M3 3L15 15M15 3L3 15" stroke="#A8842A" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+        </svg>
       </div>
+      <p class="apply-cta-desc fade-up fade-up-d3">Applications for Miss Miami 2026 are now open.<br>Join a legacy of beauty, confidence, and purpose.</p>
+      <a href="apply.html" class="btn-primary fade-up fade-up-d3">Start Application</a>
     </div>
   </section>
 
@@ -1154,57 +1105,7 @@
     }, { threshold: 0.5 });
     document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObserver.observe(el));
 
-    // ── Winners slider ──
-    const winners = [
-      { year:'2025', name:'Isabella Moretti', title:'Miss Miami 2025', photo:'winner-1.jpg',
-        desc:'Isabella is a passionate advocate for mental health awareness and youth empowerment. During her reign, she launched a statewide initiative reaching over 12,000 young women.' },
-      { year:'2024', name:'Sophia Reyes', title:'Miss Miami 2024', photo:'winner-2.jpg',
-        desc:'Sophia founded a STEM scholarship program for underprivileged girls. Her work earned her the National Community Impact Award from the American Youth Foundation.' },
-      { year:'2023', name:'Valentina Cruz', title:'Miss Miami 2023', photo:'winner-3.jpg',
-        desc:'Valentina dedicated her reign to environmental advocacy, partnering with local organizations to plant over 5,000 trees across South Florida.' },
-      { year:'2022', name:'Natalie Brooks', title:'Miss Miami 2022', photo:'winner-4.jpg',
-        desc:'Natalie championed literacy and education access, visiting over 40 schools and donating 8,000 books to underserved communities in Miami-Dade County.' }
-    ];
-
-    let currentWinner = 0;
-    const dotsContainer = document.getElementById('slider-dots');
-
-    winners.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', `Winner ${i+1}`);
-      dot.addEventListener('click', () => goTo(i));
-      dotsContainer.appendChild(dot);
-    });
-
-    function goTo(index) {
-      currentWinner = (index + winners.length) % winners.length;
-      const w = winners[currentWinner];
-      const card = document.getElementById('winner-card');
-      const img = document.getElementById('w-photo');
-      img.style.opacity = '0';
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(10px)';
-      setTimeout(() => {
-        img.src = w.photo;
-        document.getElementById('w-year-badge').textContent = w.year;
-        document.getElementById('w-year').textContent = w.year;
-        document.getElementById('w-name').textContent = w.name;
-        document.getElementById('w-title').textContent = w.title;
-        document.getElementById('w-desc').textContent = w.desc;
-        img.style.opacity = '0.85';
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-      }, 300);
-      document.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === currentWinner));
-    }
-
-    document.getElementById('next-btn').addEventListener('click', () => goTo(currentWinner + 1));
-    document.getElementById('prev-btn').addEventListener('click', () => goTo(currentWinner - 1));
-    setInterval(() => goTo(currentWinner + 1), 6000);
-
-    const card = document.getElementById('winner-card');
-    card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+    // ── Winners slider — скрыт, раскомментировать когда будут фото победительниц ──
   </script>
 </body>
 </html>
