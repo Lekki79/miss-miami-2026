@@ -939,7 +939,14 @@
       });
     });
 
-    // ── Header: always transparent ──
+    // ── Header: transparent on hero, dark on scroll ──
+    window.addEventListener('scroll', () => {
+      const h = document.getElementById('site-header');
+      const scrolled = window.scrollY > window.innerHeight * 0.7;
+      h.style.background = scrolled ? 'rgba(58,26,4,0.96)' : 'transparent';
+      h.style.backdropFilter = scrolled ? 'blur(12px)' : 'none';
+      h.style.webkitBackdropFilter = scrolled ? 'blur(12px)' : 'none';
+    });
 
     // ── Gold Particle Canvas ──
     (function() {
