@@ -150,7 +150,7 @@
       position: absolute; inset: 0;
       width: 100%; height: 100%;
       z-index: 2; pointer-events: none;
-      opacity: 0.4;
+      opacity: 0.75;
     }
 
     .hero-glow {
@@ -816,24 +816,6 @@
   <!-- ═══ APPLY BANNER ═════════════════════════════════════════════ -->
   <section id="apply-banner">
     <div class="apply-cta-box fade-up">
-      <div class="apply-cta-crown">
-        <svg width="64" height="48" viewBox="0 0 96 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="crownGrad2" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#C9A84C"/>
-              <stop offset="100%" stop-color="#8A6810"/>
-            </linearGradient>
-          </defs>
-          <polygon points="48,6 20,48 6,22 6,62 90,62 90,22 76,48"
-            fill="none" stroke="url(#crownGrad2)" stroke-width="2.5" stroke-linejoin="round"/>
-          <circle cx="48" cy="6" r="4" fill="#C9A84C" opacity="0.85"/>
-          <circle cx="20" cy="48" r="3" fill="#C9A84C" opacity="0.7"/>
-          <circle cx="76" cy="48" r="3" fill="#C9A84C" opacity="0.7"/>
-          <circle cx="6"  cy="22" r="2.5" fill="#A8842A" opacity="0.6"/>
-          <circle cx="90" cy="22" r="2.5" fill="#A8842A" opacity="0.6"/>
-          <rect x="6" y="60" width="84" height="2" rx="1" fill="#A8842A" opacity="0.5"/>
-        </svg>
-      </div>
       <div class="section-eyebrow fade-up fade-up-d1"><span>Ready to Begin?</span></div>
       <h2 class="apply-cta-title fade-up fade-up-d2">Take the First Step<br>Towards the Crown</h2>
       <p class="apply-cta-desc fade-up fade-up-d3">Applications for Miss Miami 2026 are now open.<br>Join a legacy of beauty, confidence, and purpose.</p>
@@ -990,15 +972,16 @@
         reset(init) {
           this.x = Math.random() * W;
           this.y = init ? Math.random() * H : H + 10;
-          this.r = Math.random() * 2 + 0.4;
-          this.speed = Math.random() * 0.5 + 0.15;
-          this.drift = (Math.random() - 0.5) * 0.35;
-          this.alpha = Math.random() * 0.5 + 0.12;
+          this.bokeh = Math.random() < 0.15; // 15% — big slow bokeh
+          this.r = this.bokeh ? Math.random() * 18 + 8 : Math.random() * 2.5 + 0.5;
+          this.speed = this.bokeh ? Math.random() * 0.2 + 0.05 : Math.random() * 0.6 + 0.2;
+          this.drift = (Math.random() - 0.5) * (this.bokeh ? 0.15 : 0.4);
+          this.alpha = this.bokeh ? Math.random() * 0.12 + 0.04 : Math.random() * 0.65 + 0.2;
           this.maxAlpha = this.alpha;
           this.life = 0;
-          this.maxLife = Math.random() * 280 + 150;
+          this.maxLife = this.bokeh ? Math.random() * 500 + 300 : Math.random() * 260 + 120;
           this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-          this.star = this.r > 1.5 && Math.random() < 0.3;
+          this.star = !this.bokeh && this.r > 1.5 && Math.random() < 0.3;
         }
         update() {
           this.y -= this.speed;
@@ -1027,7 +1010,7 @@
         }
       }
 
-      for (let i = 0; i < 75; i++) particles.push(new Particle());
+      for (let i = 0; i < 120; i++) particles.push(new Particle());
 
       function animate() {
         ctx.clearRect(0, 0, W, H);
