@@ -12,13 +12,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --gold:    #D4AF37;
-      --gold2:   #B8960C;
-      --black:   #0D0D0D;
-      --dark:    #2B2B2B;
-      --cream:   #F5F1E8;
-      --white:   #ffffff;
-      --glass:   rgba(13,13,13,0.72);
+      --gold:    #C9A84C;
+      --gold2:   #A8842A;
+      --black:   #0E0B06;
+      --dark:    #1C1508;
+      --cream:   #F0E8D5;
+      --white:   #FBF7EF;
+      --glass:   rgba(14,11,6,0.78);
       --transition: 0.35s cubic-bezier(.4,0,.2,1);
     }
 
@@ -152,6 +152,7 @@
       text-transform: uppercase;
       border: none;
       cursor: pointer;
+      border-radius: 30px;
       transition: background var(--transition), transform var(--transition);
     }
 
@@ -179,18 +180,25 @@
     .menu-toggle {
       display: none;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
       cursor: pointer;
-      padding: 4px;
+      padding: 10px 12px;
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 4px;
+      transition: border-color var(--transition);
     }
+    .menu-toggle:hover { border-color: rgba(201,168,76,0.55); }
 
     .menu-toggle span {
       display: block;
-      width: 24px;
-      height: 1.5px;
+      height: 1px;
       background: var(--gold);
       transition: var(--transition);
+      border-radius: 1px;
     }
+    .menu-toggle span:nth-child(1) { width: 20px; }
+    .menu-toggle span:nth-child(2) { width: 14px; }
+    .menu-toggle span:nth-child(3) { width: 20px; }
 
     /* ─── NOISE TEXTURE ────────────────────────────────────────── */
     body::before {
@@ -443,6 +451,7 @@
       cursor: pointer;
       transition: all var(--transition);
       border: 2px solid var(--gold);
+      border-radius: 30px;
     }
 
     .btn-primary:hover {
@@ -530,6 +539,21 @@
       0%, 100% { opacity: 0.3; transform: scaleY(1); }
       50% { opacity: 1; transform: scaleY(1.2); }
     }
+
+    /* ─── MM DIVIDER ───────────────────────────────────────────── */
+    .mm-divider {
+      display: flex; align-items: center; justify-content: center;
+      gap: 28px; padding: 32px 48px;
+      background: var(--black);
+    }
+    .mm-divider-line {
+      flex: 1; max-width: 220px; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,168,76,0.35));
+    }
+    .mm-divider-line.right {
+      background: linear-gradient(to left, transparent, rgba(201,168,76,0.35));
+    }
+    .mm-divider img { height: 36px; width: auto; opacity: 0.5; }
 
     /* ─── SECTION BASE ─────────────────────────────────────────── */
     section { padding: 100px 48px; }
@@ -1217,7 +1241,7 @@
       display: none;
       position: fixed;
       top: 68px; left: 0; right: 0; bottom: 0;
-      background: #0d0d0d;
+      background: #0E0B06;
       z-index: 9999;
       flex-direction: column;
       padding: 32px 32px;
@@ -1359,49 +1383,19 @@
         <a href="about.html" class="btn-secondary">Learn More</a>
       </div>
 
-      <!-- Countdown -->
-      <div class="countdown" id="countdown">
-        <div class="countdown-item">
-          <span class="countdown-num" id="cd-days">--</span>
-          <span class="countdown-label">Days</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-item">
-          <span class="countdown-num" id="cd-hours">--</span>
-          <span class="countdown-label">Hours</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-item">
-          <span class="countdown-num" id="cd-mins">--</span>
-          <span class="countdown-label">Min</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-item">
-          <span class="countdown-num" id="cd-secs">--</span>
-          <span class="countdown-label">Sec</span>
-        </div>
-      </div>
-      <p style="font-size:10px;letter-spacing:0.28em;color:rgba(212,175,55,0.75);text-transform:uppercase;margin-top:14px;">Until Pageant Night · November 15, 2026</p>
-      <script>
-        (function(){
-          var t=new Date(2026,10,15,20,0,0);
-          function p(n){return n<10?'0'+n:''+n;}
-          function tick(){
-            var d=t-new Date();if(d<0)d=0;
-            document.getElementById('cd-days').textContent=p(Math.floor(d/86400000));
-            document.getElementById('cd-hours').textContent=p(Math.floor(d%86400000/3600000));
-            document.getElementById('cd-mins').textContent=p(Math.floor(d%3600000/60000));
-            document.getElementById('cd-secs').textContent=p(Math.floor(d%60000/1000));
-          }
-          tick();setInterval(tick,1000);
-        })();
-      </script>
     </div>
 
     <div class="scroll-hint">
       <div class="scroll-line"></div>
     </div>
   </section>
+
+  <!-- ═══ MM DIVIDER ═══════════════════════════════════════════════ -->
+  <div class="mm-divider">
+    <div class="mm-divider-line"></div>
+    <img src="logo-transparent.png" alt="Miss Miami">
+    <div class="mm-divider-line right"></div>
+  </div>
 
   <!-- ═══ MISSION ══════════════════════════════════════════════════ -->
   <section id="mission">
@@ -1674,8 +1668,8 @@
     window.addEventListener('scroll', () => {
       const h = document.getElementById('site-header');
       h.style.background = window.scrollY > 60
-        ? 'rgba(13,13,13,0.95)'
-        : 'rgba(13,13,13,0.72)';
+        ? 'rgba(14,11,6,0.96)'
+        : 'rgba(14,11,6,0.78)';
     });
 
     // ── Gold Particle Canvas ──
@@ -1859,32 +1853,6 @@
     // Set first photo on load
     setPhoto(winners[0].photo);
 
-    // ── Countdown Timer ──
-    window.addEventListener('load', function() {
-      try {
-        var target = new Date(2026, 10, 15, 20, 0, 0);
-        function pad(n) { return n < 10 ? '0' + n : '' + n; }
-        function tick() {
-          var now = new Date();
-          var diff = target - now;
-          if (diff <= 0) diff = 0;
-          var days  = Math.floor(diff / 86400000);
-          var hours = Math.floor((diff % 86400000) / 3600000);
-          var mins  = Math.floor((diff % 3600000) / 60000);
-          var secs  = Math.floor((diff % 60000) / 1000);
-          var d = document.getElementById('cd-days');
-          var h = document.getElementById('cd-hours');
-          var m = document.getElementById('cd-mins');
-          var s = document.getElementById('cd-secs');
-          if (d) d.textContent = pad(days);
-          if (h) h.textContent = pad(hours);
-          if (m) m.textContent = pad(mins);
-          if (s) s.textContent = pad(secs);
-        }
-        tick();
-        setInterval(tick, 1000);
-      } catch(e) { console.error('Countdown error:', e); }
-    });
   </script>
 </body>
 </html>
