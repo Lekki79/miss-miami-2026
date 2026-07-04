@@ -67,7 +67,13 @@
       background: url('about-hero.jpg') center 35%/cover no-repeat,
         radial-gradient(ellipse at 50% 35%, var(--hero-light) 0%, var(--hero-mid) 45%, var(--hero-dark) 100%);
     }
-    .hero::after { display: none; }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(221,184,112,0.6) 70%, #DDB870 100%);
+      z-index: 2; pointer-events: none;
+    }
     .hero-bg { display: none; }
     .hero-photo { display: none; }
     .hero-bg-fallback { display: none; }
