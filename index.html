@@ -102,7 +102,7 @@
 
     .btn-account-nav {
       font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(245,230,200,0.8) !important;
+      color: var(--gold) !important;
       border: 1px solid rgba(212,175,55,0.28);
       padding: 8px 18px;
       transition: all 0.3s ease; font-weight: 500;
@@ -942,9 +942,15 @@
     // ── Header: transparent, text color switches on scroll ──
     window.addEventListener('scroll', () => {
       const onHero = window.scrollY < window.innerHeight * 0.85;
+      const darkColor = '#3A1A04';
       document.querySelectorAll('nav a:not(.btn-apply-nav):not(.btn-account-nav)').forEach(a => {
-        a.style.color = onHero ? '' : '#3A1A04';
+        a.style.color = onHero ? '' : darkColor;
       });
+      const acc = document.querySelector('.btn-account-nav');
+      if (acc) {
+        acc.style.color = onHero ? '' : darkColor;
+        acc.style.borderColor = onHero ? '' : 'rgba(58,26,4,0.4)';
+      }
     });
 
     // ── Gold Particle Canvas ──
