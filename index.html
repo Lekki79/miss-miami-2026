@@ -70,7 +70,7 @@
       font-size: 11px; font-weight: 700;
       letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--gold);
-      text-shadow: 0 1px 8px rgba(0,0,0,0.7), 0 0 20px rgba(0,0,0,0.4);
+      text-shadow: none;
       transition: color var(--transition);
       position: relative;
     }
@@ -939,7 +939,13 @@
       });
     });
 
-    // ── Header: always transparent ──
+    // ── Header: transparent, text color switches on scroll ──
+    window.addEventListener('scroll', () => {
+      const onHero = window.scrollY < window.innerHeight * 0.85;
+      document.querySelectorAll('nav a:not(.btn-apply-nav):not(.btn-account-nav)').forEach(a => {
+        a.style.color = onHero ? '' : '#3A1A04';
+      });
+    });
 
     // ── Gold Particle Canvas ──
     (function() {
