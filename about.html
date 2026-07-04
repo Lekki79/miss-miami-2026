@@ -141,6 +141,18 @@
       0%, 100% { opacity: 0.3; transform: scaleY(1); }
       50% { opacity: 0.8; transform: scaleY(1.1); }
     }
+    @keyframes bronzeFlow {
+      0%   { background-position: 0% center; }
+      50%  { background-position: 100% center; }
+      100% { background-position: 0% center; }
+    }
+    @keyframes bronzeSheen {
+      0%   { left: -100%; opacity: 0; }
+      10%  { opacity: 1; }
+      40%  { left: 160%; opacity: 1; }
+      42%  { opacity: 0; }
+      100% { left: 160%; opacity: 0; }
+    }
 
     /* ── GOLD DIVIDER ── */
     .gold-divider {
@@ -394,7 +406,7 @@
     @media (max-width: 900px) {
       .mission-section { grid-template-columns: 1fr; }
       .mission-photo { min-height: 400px; aspect-ratio: 4/3; }
-      .mission-photo-overlay { background: linear-gradient(to bottom, transparent 50%, var(--black) 100%); }
+      .mission-photo-overlay { background: linear-gradient(to bottom, transparent 50%, #050100 100%); }
       .mission-text-panel { padding: 56px 32px; }
       .mission-text-panel::before { display: none; }
       .mission-detail { gap: 20px; }
@@ -428,13 +440,23 @@
       border-bottom: 1px solid rgba(212,175,55,0.08);
     }
     .mobile-menu .btn-apply-nav {
-      margin-top: 12px;
-      display: inline-block; padding: 16px 40px;
-      background: var(--gold); color: var(--black) !important;
-      font-family: 'Cinzel', serif; font-size: 12px;
-      letter-spacing: 0.25em; font-weight: 700;
-      text-transform: uppercase; border: none;
-      width: auto;
+      margin-top: 12px; padding: 16px 32px;
+      font-size: 13px !important; width: 100%; border: none;
+      background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
+      background-size: 250% auto;
+      color: #FFF8E7 !important;
+      font-family: 'Cinzel', serif; letter-spacing: 0.25em; font-weight: 700;
+      text-transform: uppercase;
+      animation: bronzeFlow 8s ease-in-out infinite;
+      position: relative; overflow: hidden;
+      text-align: center; justify-content: center;
+    }
+    .mobile-menu .btn-apply-nav::after {
+      content: '';
+      position: absolute; top: 0; left: -100%; width: 55%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,248,220,0.3), transparent);
+      animation: bronzeSheen 7s ease-in-out infinite;
+      pointer-events: none;
     }
 
     @media (max-width: 640px) {
@@ -442,43 +464,73 @@
       nav { display: none; }
       .menu-toggle { display: flex; }
 
-      /* Hero mobile — photo becomes full-screen background */
-      .hero-photo {
-        width: 100% !important;
-        left: 0 !important;
-        right: 0 !important;
-        top: 72px !important;
-        object-position: center top !important;
-      }
-      .hero-overlay {
-        background: rgba(8,5,0,0.72) !important;
-      }
+      /* Hero mobile */
       .hero-content {
         padding: 0 28px !important;
         max-width: 100% !important;
         text-align: center !important;
       }
       .hero-ornament { justify-content: center !important; }
-      .hero h1 { font-size: 36px !important; }
-      .hero-sub { font-size: 13px !important; max-width: 100% !important; }
-      .hero-photo { animation: none !important; }
+      .hero h1 { font-size: 36px !important; line-height: 1.1 !important; }
+      .hero-sub { font-size: 16px !important; max-width: 100% !important; line-height: 1.85 !important; }
+
+      /* Quote section */
+      .quote-section { padding: 0 24px 56px; }
+      .quote-mark { font-size: 72px; }
+      .quote-text { font-size: 20px !important; line-height: 1.5; }
+      .quote-author { font-size: 10px; }
+
+      /* Mission section */
+      .mission-text-panel { padding: 40px 24px; }
+      .eyebrow { font-size: 10px; letter-spacing: 0.3em; }
+      .mission-text-panel h2 { font-size: 26px !important; margin-bottom: 20px; }
+      .mission-text-panel p { font-size: 15px; line-height: 1.9; }
+      .mission-detail { flex-direction: column; gap: 16px; margin-top: 24px; }
+      .mission-detail-item .num { font-size: 28px; }
+      .mission-detail-item .label { font-size: 10px; }
+
+      /* Values section */
+      .values-hero { padding: 48px 24px 40px; }
+      .values-hero h2 { font-size: 26px !important; margin-bottom: 14px; }
+      .values-hero p { font-size: 15px; line-height: 1.9; }
+      .value-panel { padding: 36px 24px; }
+      .value-panel h3 { font-size: 14px; letter-spacing: 0.15em; margin-bottom: 12px; }
+      .value-panel p { font-size: 15px; line-height: 1.9; }
+      .value-panel-icon { font-size: 24px; margin-bottom: 16px; }
 
       /* Timeline mobile */
       .tl-item { grid-template-columns: 36px 1fr; gap: 16px; padding-bottom: 40px; }
       .tl-dot { width: 36px; height: 36px; font-size: 12px; }
+      .tl-content h4 { font-size: 16px; margin-bottom: 8px; }
+      .tl-content p { font-size: 15px; line-height: 1.85; }
+      .tl-year { font-size: 10px; letter-spacing: 0.25em; }
 
       /* Team mobile */
       .team-grid { max-width: 100%; margin: 0 auto; }
+      .team-head h2 { font-size: 26px !important; }
+      .team-head p { font-size: 15px; line-height: 1.9; }
+      .team-name { font-size: 15px; }
+      .team-bio { font-size: 12px; }
+
+      /* CTA section */
+      .cta-section { padding: 80px 24px; }
+      .cta-section h2 { font-size: 26px !important; margin-bottom: 16px; }
+      .cta-section p { font-size: 15px; line-height: 1.9; margin-bottom: 36px; }
+      .cta-btns { flex-direction: column; align-items: stretch; gap: 12px; }
+      .btn-gold, .btn-outline { padding: 16px 24px; font-size: 12px; text-align: center; }
 
       /* Misc */
       .gold-divider { padding: 40px 24px; }
-      .quote-section { padding: 0 24px 72px; }
-      .quote-mark { font-size: 72px; }
-      .story-section, .team-section { padding: 72px 24px; }
-      .values-hero, .values-panels .value-panel { padding: 48px 24px; }
-      .cta-section { padding: 80px 24px; }
+      .story-section, .team-section { padding: 64px 24px; }
+      .story-head h2 { font-size: 26px !important; }
+      .story-head p { font-size: 15px; line-height: 1.9; }
+
+      /* Footer */
       footer { padding: 28px 24px; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .footer-bottom p { font-size: 13px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+      .footer-links a { font-size: 13px; }
     }
   </style>
 </head>
