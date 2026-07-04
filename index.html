@@ -67,10 +67,10 @@
 
     nav a {
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px; font-weight: 500;
+      font-size: 11px; font-weight: 700;
       letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--gold);
-      text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+      text-shadow: 0 1px 8px rgba(0,0,0,0.7), 0 0 20px rgba(0,0,0,0.4);
       transition: color var(--transition);
       position: relative;
     }
@@ -939,14 +939,7 @@
       });
     });
 
-    // ── Header: transparent on hero, dark on scroll ──
-    window.addEventListener('scroll', () => {
-      const h = document.getElementById('site-header');
-      const scrolled = window.scrollY > window.innerHeight * 0.7;
-      h.style.background = scrolled ? 'rgba(58,26,4,0.96)' : 'transparent';
-      h.style.backdropFilter = scrolled ? 'blur(12px)' : 'none';
-      h.style.webkitBackdropFilter = scrolled ? 'blur(12px)' : 'none';
-    });
+    // ── Header: always transparent ──
 
     // ── Gold Particle Canvas ──
     (function() {
