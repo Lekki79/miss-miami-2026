@@ -50,8 +50,19 @@
     nav a:hover { color: var(--gold); }
     nav a:hover::after, nav a.active::after { transform: scaleX(1); }
     nav a.active { color: var(--gold); }
-    .btn-nav { padding: 10px 28px; background: var(--gold); color: #050100 !important; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em; font-weight: 700; text-transform: uppercase; transition: all var(--tr); border-radius: 6px; }
-    .btn-nav:hover { background: #c9a227; }
+    .btn-nav {
+      padding: 10px 28px;
+      background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
+      background-size: 250% auto;
+      color: #FFF8E7 !important;
+      font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em;
+      font-weight: 700; text-transform: uppercase;
+      border-radius: 6px; border: none;
+      animation: bronzeFlow 8s ease-in-out infinite;
+      position: relative; overflow: hidden;
+    }
+    .btn-nav::after { display: none !important; }
+    .btn-nav:hover { background-position: right center; }
     .btn-nav::after, .btn-account::after { display: none !important; }
     .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid-text) !important; border: 1px solid rgba(212,175,55,0.25); padding: 8px 18px; transition: all var(--tr); font-weight: 500; border-radius: 6px; }
     .btn-account:hover { color: var(--gold) !important; border-color: rgba(212,175,55,0.6); }
