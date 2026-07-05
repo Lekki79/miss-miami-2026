@@ -89,16 +89,19 @@
     .btn-apply-nav {
       display: inline-flex; align-items: center;
       padding: 10px 28px;
-      background: var(--gold); color: #2A1200 !important;
+      background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
+      background-size: 250% auto;
+      color: #FFF8E7 !important;
       font-family: 'Cinzel', serif !important;
       font-size: 11px !important; letter-spacing: 0.22em !important;
       font-weight: 700 !important; text-transform: uppercase;
       border: none; cursor: pointer;
       border-radius: 6px;
-      transition: background var(--transition);
+      animation: bronzeFlow 8s ease-in-out infinite;
+      position: relative; overflow: hidden;
     }
     .btn-apply-nav::after { display: none !important; }
-    .btn-apply-nav:hover { background: #dbb83a; }
+    .btn-apply-nav:hover { background-position: right center; }
 
     .btn-account-nav {
       font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
