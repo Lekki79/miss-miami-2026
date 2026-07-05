@@ -79,14 +79,23 @@
       position: relative;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      background: url('about-hero.jpg') center 30%/cover no-repeat,
+      /* Mobile default: portrait photo */
+      background: url('about-hero.jpg') center center/cover no-repeat,
         radial-gradient(ellipse at 50% 35%, var(--hero-light) 0%, var(--hero-mid) 45%, var(--hero-dark) 100%);
     }
+    /* Desktop: landscape photo (once about-hero-desktop.jpg is placed) */
+    @media (min-width: 641px) {
+      .hero {
+        background: url('about-hero-desktop.jpg') center center/cover no-repeat,
+          radial-gradient(ellipse at 50% 35%, var(--hero-light) 0%, var(--hero-mid) 45%, var(--hero-dark) 100%);
+      }
+    }
+    /* Match Home: gradient fades to cream at bottom */
     .hero::after {
       content: '';
       position: absolute; bottom: 0; left: 0; right: 0;
-      height: 220px;
-      background: linear-gradient(to bottom, transparent 0%, rgba(8,4,0,0.65) 70%, #160500 100%);
+      height: 140px;
+      background: linear-gradient(to bottom, transparent 0%, transparent 40%, #DDB870 100%);
       z-index: 2; pointer-events: none;
     }
     .hero-bg { display: none; }
@@ -174,16 +183,16 @@
     .logo-divider {
       display: flex; align-items: center; justify-content: center;
       gap: 24px; padding: 36px 56px;
-      background: #160500;
+      background: var(--cream);
     }
     .logo-divider::before, .logo-divider::after {
       content: ''; flex: 0 0 80px; height: 1px;
-      background: rgba(212,175,55,0.3);
+      background: rgba(42,18,0,0.18);
     }
     .logo-divider img {
-      height: 32px; width: auto; opacity: 0.7;
-      filter: brightness(1.8) sepia(1) saturate(3) hue-rotate(5deg);
-      mix-blend-mode: screen;
+      height: 32px; width: auto; opacity: 0.85;
+      filter: sepia(1) saturate(5) brightness(0.72) hue-rotate(3deg);
+      mix-blend-mode: multiply;
     }
 
     /* ── PARTICLE CANVAS ── */
@@ -199,7 +208,6 @@
       padding: 0 56px 100px;
       text-align: center;
       position: relative;
-      background: linear-gradient(to bottom, #160500 0%, var(--cream) 18%);
     }
     .quote-mark {
       font-family: 'Cinzel', serif;
@@ -494,7 +502,8 @@
       .logo-divider { padding: 28px 24px; }
       .logo-divider::before, .logo-divider::after { flex: 0 0 60px; }
       .hero-content {
-        top: 120px !important;
+        top: 116px !important;
+        bottom: 80px !important;
         left: 28px !important; right: 28px !important;
         transform: none !important;
         width: auto !important;
@@ -504,13 +513,14 @@
       }
       .hero-sub {
         position: absolute !important;
-        bottom: 80px !important;
-        left: 28px !important; right: 28px !important;
+        bottom: 0 !important;
+        left: 0 !important; right: 0 !important;
         top: auto !important;
         font-size: 13px !important;
         max-width: 100% !important;
         line-height: 1.8 !important;
         color: rgba(245,230,200,0.75) !important;
+        margin: 0 !important;
       }
       .hero-ornament { justify-content: center !important; }
       .hero h1 { font-size: 36px !important; line-height: 1.1 !important; }
