@@ -79,7 +79,7 @@
       position: relative;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      background: url('about-hero.jpg') center 55%/cover no-repeat,
+      background: url('about-hero.jpg') center 40%/cover no-repeat,
         radial-gradient(ellipse at 50% 35%, var(--hero-light) 0%, var(--hero-mid) 45%, var(--hero-dark) 100%);
     }
     .hero::after {
@@ -180,8 +180,8 @@
       background: rgba(42,18,0,0.28);
     }
     .logo-divider img {
-      height: 32px; width: auto; opacity: 0.55;
-      filter: brightness(0.2) sepia(1) saturate(5) hue-rotate(5deg);
+      height: 32px; width: auto; opacity: 0.6;
+      filter: invert(1) sepia(1) saturate(4) brightness(0.75) hue-rotate(5deg);
     }
 
     /* ── PARTICLE CANVAS ── */
@@ -487,11 +487,11 @@
       .menu-toggle { display: flex; }
 
       /* Hero mobile */
-      .hero { background-position: center center; }
+      .hero { background-position: center center; align-items: flex-start; }
       .logo-divider { padding: 28px 24px; }
       .logo-divider::before, .logo-divider::after { flex: 0 0 60px; }
       .hero-content {
-        padding: 0 28px !important;
+        padding: 100px 28px 0 !important;
         max-width: 100% !important;
         text-align: center !important;
       }
