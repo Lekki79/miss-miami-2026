@@ -50,7 +50,7 @@
     nav a:hover { color: var(--gold); }
     nav a:hover::after, nav a.active::after { transform: scaleX(1); }
     nav a.active { color: var(--gold); }
-    .btn-nav { padding: 10px 28px; background: var(--gold); color: var(--black) !important; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em; font-weight: 700; text-transform: uppercase; transition: all var(--tr); }
+    .btn-nav { padding: 10px 28px; background: var(--gold); color: #050100 !important; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em; font-weight: 700; text-transform: uppercase; transition: all var(--tr); }
     .btn-nav:hover { background: #c9a227; }
     .btn-nav::after, .btn-account::after { display: none !important; }
     .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid-text) !important; border: 1px solid rgba(212,175,55,0.25); padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
@@ -85,8 +85,8 @@
     .hero::after {
       content: '';
       position: absolute; bottom: 0; left: 0; right: 0;
-      height: 200px;
-      background: linear-gradient(to bottom, transparent 0%, rgba(221,184,112,0.6) 70%, #DDB870 100%);
+      height: 220px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(8,4,0,0.65) 70%, #160500 100%);
       z-index: 2; pointer-events: none;
     }
     .hero-bg { display: none; }
@@ -98,9 +98,10 @@
       z-index: 1;
     }
     .hero-content {
-      position: relative; z-index: 3;
+      position: absolute; z-index: 3;
+      top: 140px; left: 50%; transform: translateX(-50%);
       text-align: center; padding: 0 48px;
-      max-width: 720px;
+      width: 100%; max-width: 720px;
     }
     .hero-ornament {
       display: flex; align-items: center; justify-content: flex-start;
@@ -173,15 +174,16 @@
     .logo-divider {
       display: flex; align-items: center; justify-content: center;
       gap: 24px; padding: 36px 56px;
-      background: var(--cream);
+      background: #160500;
     }
     .logo-divider::before, .logo-divider::after {
       content: ''; flex: 0 0 80px; height: 1px;
-      background: rgba(42,18,0,0.28);
+      background: rgba(212,175,55,0.3);
     }
     .logo-divider img {
-      height: 32px; width: auto; opacity: 0.6;
-      filter: invert(1) sepia(1) saturate(4) brightness(0.75) hue-rotate(5deg);
+      height: 32px; width: auto; opacity: 0.7;
+      filter: brightness(1.8) sepia(1) saturate(3) hue-rotate(5deg);
+      mix-blend-mode: screen;
     }
 
     /* ── PARTICLE CANVAS ── */
@@ -230,7 +232,7 @@
     }
     .mission-photo {
       position: relative;
-      background-color: var(--dark2);
+      background-color: #1A0800;
       overflow: hidden;
       min-height: 500px;
     }
@@ -243,7 +245,7 @@
     }
     .mission-photo-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to right, transparent 60%, var(--black) 100%);
+      background: linear-gradient(to right, transparent 60%, #050100 100%);
     }
     .mission-photo-placeholder {
       position: absolute; inset: 0;
@@ -375,7 +377,7 @@
     .team-card.visible { opacity: 1; transform: translateY(0); }
     .team-photo {
       aspect-ratio: 3/4;
-      background: var(--dark);
+      background: #100500;
       position: relative; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
     }
@@ -400,7 +402,7 @@
       padding: 120px 56px;
       text-align: center;
       overflow: hidden;
-      background-color: var(--black);
+      background-color: #050100;
     }
     .cta-bg {
       position: absolute; inset: 0;
@@ -410,14 +412,14 @@
     }
     .cta-overlay {
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse at center, transparent 0%, var(--black) 70%);
+      background: radial-gradient(ellipse at center, transparent 0%, rgba(5,1,0,0.9) 70%);
     }
     .cta-content { position: relative; z-index: 2; }
-    .cta-section h2 { font-size: clamp(28px, 4.5vw, 56px); color: var(--dark-text); margin-bottom: 20px; line-height: 1.2; }
+    .cta-section h2 { font-size: clamp(28px, 4.5vw, 56px); color: rgba(245,230,200,0.95); margin-bottom: 20px; line-height: 1.2; }
     .cta-section h2 em { font-style: normal; color: var(--gold); }
-    .cta-section p { font-size: 14px; color: var(--mid-text); max-width: 480px; margin: 0 auto 48px; line-height: 2; }
+    .cta-section p { font-size: 14px; color: rgba(220,185,140,0.7); max-width: 480px; margin: 0 auto 48px; line-height: 2; }
     .cta-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
-    .btn-gold { display: inline-block; padding: 16px 52px; background: var(--gold); color: var(--black); font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.25em; font-weight: 700; text-transform: uppercase; transition: background var(--tr); }
+    .btn-gold { display: inline-block; padding: 16px 52px; background: var(--gold); color: #050100; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.25em; font-weight: 700; text-transform: uppercase; transition: background var(--tr); }
     .btn-gold:hover { background: #c9a227; }
     .btn-outline { display: inline-block; padding: 15px 52px; border: 1px solid rgba(212,175,55,0.35); color: var(--gold); font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.25em; font-weight: 600; text-transform: uppercase; transition: all var(--tr); }
     .btn-outline:hover { background: rgba(212,175,55,0.08); border-color: rgba(212,175,55,0.6); }
@@ -487,11 +489,15 @@
       .menu-toggle { display: flex; }
 
       /* Hero mobile */
-      .hero { background-position: center center; align-items: flex-start; }
+      .hero { background-position: center center; }
       .logo-divider { padding: 28px 24px; }
       .logo-divider::before, .logo-divider::after { flex: 0 0 60px; }
       .hero-content {
-        padding: 100px 28px 0 !important;
+        top: 88px !important;
+        left: 28px !important; right: 28px !important;
+        transform: none !important;
+        width: auto !important;
+        padding: 0 !important;
         max-width: 100% !important;
         text-align: center !important;
       }
