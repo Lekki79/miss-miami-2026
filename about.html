@@ -55,8 +55,23 @@
     .btn-nav::after, .btn-account::after { display: none !important; }
     .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid-text) !important; border: 1px solid rgba(212,175,55,0.25); padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
     .btn-account:hover { color: var(--gold) !important; border-color: rgba(212,175,55,0.6); }
-    .menu-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; }
-    .menu-toggle span { display:block; width:24px; height:1.5px; background:var(--gold); }
+    .menu-toggle {
+      display: none; flex-direction: column; gap: 6px;
+      cursor: pointer; padding: 10px 12px;
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 4px;
+      background: none;
+      transition: border-color var(--tr);
+    }
+    .menu-toggle:hover { border-color: rgba(201,168,76,0.55); }
+    .menu-toggle span {
+      display: block; height: 1px;
+      background: var(--gold);
+      transition: var(--tr); border-radius: 1px;
+    }
+    .menu-toggle span:nth-child(1) { width: 20px; }
+    .menu-toggle span:nth-child(2) { width: 14px; }
+    .menu-toggle span:nth-child(3) { width: 20px; }
 
     /* ── HERO ── */
     .hero {
@@ -64,7 +79,7 @@
       position: relative;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      background: url('about-hero.jpg') center 35%/cover no-repeat,
+      background: url('about-hero.jpg') center 30%/cover no-repeat,
         radial-gradient(ellipse at 50% 35%, var(--hero-light) 0%, var(--hero-mid) 45%, var(--hero-dark) 100%);
     }
     .hero::after {
@@ -157,16 +172,25 @@
     /* ── LOGO DIVIDER ── */
     .logo-divider {
       display: flex; align-items: center; justify-content: center;
-      gap: 20px; padding: 56px 56px;
+      gap: 24px; padding: 36px 56px;
       background: var(--cream);
     }
     .logo-divider::before, .logo-divider::after {
       content: ''; flex: 0 0 80px; height: 1px;
-      background: rgba(42,18,0,0.2);
+      background: rgba(42,18,0,0.28);
     }
     .logo-divider img {
-      height: 36px; width: auto; opacity: 0.45;
-      filter: sepia(1) saturate(2) brightness(0.55) hue-rotate(5deg);
+      height: 32px; width: auto; opacity: 0.65;
+      filter: sepia(1) saturate(2.5) brightness(0.75) hue-rotate(5deg);
+      mix-blend-mode: multiply;
+    }
+
+    /* ── PARTICLE CANVAS ── */
+    #hero-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      z-index: 2; pointer-events: none;
+      opacity: 0.75;
     }
 
     /* ── BIG QUOTE ── */
@@ -464,6 +488,9 @@
       .menu-toggle { display: flex; }
 
       /* Hero mobile */
+      .hero { background-position: center center; }
+      .logo-divider { padding: 28px 24px; }
+      .logo-divider::before, .logo-divider::after { flex: 0 0 60px; }
       .hero-content {
         padding: 0 28px !important;
         max-width: 100% !important;
@@ -573,6 +600,7 @@
 
   <!-- CINEMATIC HERO -->
   <section class="hero">
+    <canvas id="hero-canvas"></canvas>
     <div class="hero-bg-fallback"></div>
     <div class="hero-bg" id="hero-bg"></div>
     <img class="hero-photo" src="about-hero.jpg" alt="Miss Miami 2026">
@@ -817,6 +845,55 @@
       });
     });
 
+
+    // Gold Particle Canvas
+    (function() {
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let W, H, particles = [];
+      function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+      resize();
+      window.addEventListener('resize', resize);
+      const COLORS = ['rgba(212,175,55,','rgba(240,210,80,','rgba(180,140,20,','rgba(255,225,100,'];
+      class Particle {
+        constructor() { this.reset(true); }
+        reset(init) {
+          this.x = Math.random() * W;
+          this.y = init ? Math.random() * H : H + 10;
+          this.bokeh = Math.random() < 0.15;
+          this.r = this.bokeh ? Math.random() * 18 + 8 : Math.random() * 2.5 + 0.5;
+          this.speed = this.bokeh ? Math.random() * 0.2 + 0.05 : Math.random() * 0.6 + 0.2;
+          this.drift = (Math.random() - 0.5) * (this.bokeh ? 0.15 : 0.4);
+          this.alpha = this.bokeh ? Math.random() * 0.12 + 0.04 : Math.random() * 0.65 + 0.2;
+          this.maxAlpha = this.alpha; this.life = 0;
+          this.maxLife = this.bokeh ? Math.random() * 500 + 300 : Math.random() * 260 + 120;
+          this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+          this.star = !this.bokeh && this.r > 1.5 && Math.random() < 0.3;
+        }
+        update() {
+          this.y -= this.speed; this.x += this.drift; this.life++;
+          const t = this.life / this.maxLife;
+          this.alpha = this.maxAlpha * Math.sin(Math.PI * t);
+          if (this.life >= this.maxLife || this.y < -10) this.reset(false);
+        }
+        draw() {
+          if (this.star) {
+            ctx.save(); ctx.translate(this.x, this.y);
+            ctx.strokeStyle = this.color + this.alpha + ')'; ctx.lineWidth = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(-this.r * 2.5, 0); ctx.lineTo(this.r * 2.5, 0);
+            ctx.moveTo(0, -this.r * 2.5); ctx.lineTo(0, this.r * 2.5);
+            ctx.stroke(); ctx.restore();
+          }
+          ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+          ctx.fillStyle = this.color + this.alpha + ')'; ctx.fill();
+        }
+      }
+      for (let i = 0; i < 120; i++) particles.push(new Particle());
+      function animate() { ctx.clearRect(0, 0, W, H); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
+      animate();
+    })();
 
     // Scroll animations
     const observer = new IntersectionObserver((entries) => {
