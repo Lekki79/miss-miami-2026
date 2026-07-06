@@ -312,7 +312,7 @@
       text-align: center;
     }
     .values-hero h2 { font-size: clamp(28px, 4vw, 52px); color: #1A0800; margin-bottom: 16px; }
-    .values-hero p { font-size: 13px; color: var(--mid-text); max-width: 480px; margin: 0 auto; line-height: 2; }
+    .values-hero p { font-size: 17px; color: rgba(40,20,0,0.80); max-width: 480px; margin: 0 auto; line-height: 2; }
 
     .values-panels { display: grid; grid-template-columns: repeat(3, 1fr); }
     .value-panel {
@@ -335,10 +335,10 @@
     }
     .value-panel-icon { font-size: 28px; margin-bottom: 24px; display: block; }
     .value-panel h3 {
-      font-size: 16px; letter-spacing: 0.2em; color: var(--gold);
+      font-size: 16px; letter-spacing: 0.2em; color: #3A1A04;
       margin-bottom: 16px; font-weight: 600;
     }
-    .value-panel p { font-size: 13px; color: var(--mid-text); line-height: 2; }
+    .value-panel p { font-size: 17px; color: rgba(40,20,0,0.80); line-height: 2; }
 
     /* ── STORY — IMMERSIVE ── */
     .story-section { background: var(--cream); padding: 100px 56px; }
@@ -373,17 +373,18 @@
     .tl-left { display: flex; flex-direction: column; align-items: center; gap: 0; }
     .tl-dot {
       width: 48px; height: 48px; flex-shrink: 0;
-      border: 1px solid rgba(212,175,55,0.15);
+      border: 1px solid rgba(212,175,55,0.25);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Cinzel', serif; font-size: 14px;
-      color: rgba(212,175,55,0.3); background: var(--cream);
+      font-family: 'Cinzel', serif; font-size: 16px;
+      color: #9A6010; background: var(--cream);
       position: relative; z-index: 1;
       transition: border-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
     }
     .tl-item.visible .tl-dot {
-      border-color: var(--gold);
-      color: var(--gold);
-      box-shadow: 0 0 16px rgba(212,175,55,0.2), inset 0 0 8px rgba(212,175,55,0.05);
+      border-color: #C9922A;
+      color: #C9922A;
+      background: linear-gradient(135deg, rgba(201,146,42,0.08), rgba(212,175,55,0.04));
+      box-shadow: 0 0 16px rgba(201,146,42,0.25), inset 0 0 8px rgba(212,175,55,0.08);
     }
     .tl-content { padding-top: 12px; padding-bottom: 8px; }
     .tl-year { font-size: 9px; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; opacity: 0.7; }
@@ -414,15 +415,15 @@
     .team-photo-placeholder { font-size: 64px; color: rgba(212,175,55,0.06); }
     .team-photo-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,5,0,0.9) 0%, rgba(8,5,0,0.3) 50%, transparent 100%);
+      background: linear-gradient(to top, rgba(60,20,5,0.92) 0%, rgba(40,15,5,0.35) 55%, rgba(200,120,30,0.12) 100%);
     }
     .team-info {
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: 28px 24px;
     }
-    .team-name { font-family: 'Cinzel', serif; font-size: 16px; color: var(--dark-text); margin-bottom: 4px; }
-    .team-role { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); opacity: 0.8; margin-bottom: 10px; }
-    .team-bio { font-size: 11px; color: var(--mid-text); line-height: 1.8; }
+    .team-name { font-family: 'Cinzel', serif; font-size: 16px; color: rgba(255,240,210,0.95); margin-bottom: 4px; }
+    .team-role { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: #D4AF37; opacity: 0.9; margin-bottom: 10px; }
+    .team-bio { font-size: 11px; color: rgba(220,185,140,0.75); line-height: 1.8; }
 
     /* ── CTA — FULL BLEED ── */
     .cta-section {
@@ -822,21 +823,6 @@
           <div class="team-role">Contestant Coordinator</div>
           <div class="team-bio">The guiding hand for every contestant from application to competition day. Always available, always encouraging.</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="cta-bg"></div>
-    <div class="cta-overlay"></div>
-    <div class="cta-content">
-      <p class="eyebrow">Join Us</p>
-      <h2>Ready to Begin<br>Your <em>Journey</em>?</h2>
-      <p>Applications for Miss Miami 2026 are now open. Take the first step toward the crown.</p>
-      <div class="cta-btns">
-        <a href="apply.html" class="btn-gold">Apply Now</a>
-        <a href="sponsors.html" class="btn-outline">Become a Sponsor</a>
       </div>
     </div>
   </section>
