@@ -147,7 +147,7 @@
     .step {
       display: flex; align-items: center; gap: 8px;
       font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: #1A0800; opacity: 0.75; font-weight: 600;
+      color: #1A0800; opacity: 1; font-weight: 600;
       transition: all var(--tr);
     }
     .step.active { opacity: 1; color: #1A0800; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
@@ -1006,8 +1006,13 @@
           });
         }
       });
-    }, { threshold: 0.4 });
+    }, { threshold: 0.1 });
     sections.forEach(s => scrollObs.observe(s));
+
+    // Set first step as active on load
+    if (stepEls.length > 0) {
+      stepEls[0].classList.add('active');
+    }
 
     // Custom date picker
     const dobInput = document.getElementById('dob-input');
