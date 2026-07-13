@@ -1,0 +1,2053 @@
+<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 wp14">
+  <w:body>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="20"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="48"/>
+        </w:rPr>
+        <w:t>Core</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="48"/>
+        </w:rPr>
+        <w:t>Nova</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="280"/>
+        <w:pBdr>
+          <w:bottom w:val="single" w:sz="2" w:space="6" w:color="1A56DB"/>
+        </w:pBdr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i/>
+          <w:color w:val="6B7280"/>
+          <w:sz w:val="18"/>
+        </w:rPr>
+        <w:t>Цифровое ядро вашего бизнеса</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="200"/>
+      </w:pPr>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="60"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="44"/>
+        </w:rPr>
+        <w:t>Стоимость разработки</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="80"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="26"/>
+        </w:rPr>
+        <w:t>Miss Miami 2026 — Цифровая платформа конкурса красоты</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="320"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i/>
+          <w:color w:val="6B7280"/>
+          <w:sz w:val="19"/>
+        </w:rPr>
+        <w:t>08.07.2026</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="80"/>
+      </w:pPr>
+    </w:p>
+    <w:tbl>
+      <w:tblPr>
+        <w:tblStyle w:val="TableGrid"/>
+        <w:tblW w:type="auto" w:w="0"/>
+        <w:tblLook w:firstColumn="1" w:firstRow="1" w:lastColumn="0" w:lastRow="0" w:noHBand="0" w:noVBand="1" w:val="04A0"/>
+      </w:tblPr>
+      <w:tblGrid>
+        <w:gridCol w:w="9072"/>
+      </w:tblGrid>
+      <w:tr>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:type="dxa" w:w="9216"/>
+            <w:shd w:val="clear" w:color="auto" w:fill="EFF6FF"/>
+          </w:tcPr>
+          <w:p>
+            <w:pPr>
+              <w:ind w:left="144"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:b w:val="0"/>
+                <w:i w:val="0"/>
+                <w:color w:val="0D1B2A"/>
+                <w:sz w:val="21"/>
+              </w:rPr>
+              <w:t>Платформа Miss Miami 2026 охватывает весь цикл конкурса — от первой заявки участницы до финального вечера: регистрация, билеты, спонсоры, бренд и управление в одном месте.</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+      </w:tr>
+    </w:tbl>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="160"/>
+      </w:pPr>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:before="360" w:after="120"/>
+        <w:pBdr>
+          <w:bottom w:val="single" w:sz="6" w:space="6" w:color="0D1B2A"/>
+        </w:pBdr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="22"/>
+        </w:rPr>
+        <w:t>СТОИМОСТЬ</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="80"/>
+      </w:pPr>
+    </w:p>
+    <w:tbl>
+      <w:tblPr>
+        <w:tblStyle w:val="TableGrid"/>
+        <w:tblW w:type="auto" w:w="0"/>
+        <w:tblLook w:firstColumn="1" w:firstRow="1" w:lastColumn="0" w:lastRow="0" w:noHBand="0" w:noVBand="1" w:val="04A0"/>
+      </w:tblPr>
+      <w:tblGrid>
+        <w:gridCol w:w="3024"/>
+        <w:gridCol w:w="3024"/>
+        <w:gridCol w:w="3024"/>
+      </w:tblGrid>
+      <w:tr>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:type="dxa" w:w="2016"/>
+            <w:shd w:val="clear" w:color="auto" w:fill="0D1B2A"/>
+          </w:tcPr>
+          <w:p>
+            <w:pPr>
+              <w:jc w:val="center"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:b/>
+                <w:i w:val="0"/>
+                <w:color w:val="FFFFFF"/>
+                <w:sz w:val="20"/>
+              </w:rPr>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:type="dxa" w:w="5184"/>
+            <w:shd w:val="clear" w:color="auto" w:fill="0D1B2A"/>
+          </w:tcPr>
+          <w:p>
+            <w:pPr>
+              <w:jc w:val="center"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:b/>
+                <w:i w:val="0"/>
+                <w:color w:val="FFFFFF"/>
+                <w:sz w:val="20"/>
+              </w:rPr>
+              <w:t>Состав</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:type="dxa" w:w="1728"/>
+            <w:shd w:val="clear" w:color="auto" w:fill="0D1B2A"/>
+          </w:tcPr>
+          <w:p>
+            <w:pPr>
+              <w:jc w:val="center"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:b/>
+                <w:i w:val="0"/>
+                <w:color w:val="FFFFFF"/>
+                <w:sz w:val="20"/>
+              </w:rPr>
+              <w:t>Стоимость</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+      </w:tr>
+      <w:tr>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:type="dxa" w:w="2016"/>
+            <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF"/>
+          </w:tcPr>
+          <w:p>
+            <w:pPr>
+              <w:jc w:val="center"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:b w:val="0"/>
+                <w:i w:val="0"/>
+                <w:color w:val="0D1B2A"/>
+                <w:sz w:val="21"/>
+              </w:rPr>
+              <w:t>Этап 1</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:type="dxa" w:w="5184"/>
+            <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF"/>
+          </w:tcPr>
+          <w:p>
+            <w:pPr>
+              <w:jc w:val="left"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:b w:val="0"/>
+                <w:i w:val="0"/>
+                <w:color w:val="0D1B2A"/>
+                <w:sz w:val="21"/>
+              </w:rPr>
+              <w:t>Дизайн и все страницы сайта</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:type="dxa" w:w="1728"/>
+            <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF"/>
+          </w:tcPr>
+          <w:p>
+            <w:pPr>
+              <w:jc w:val="center"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:b w:val="0"/>
+                <w:i w:val="0"/>
+                <w:color w:val="0D1B2A"/>
+                <w:sz w:val="21"/>
+              </w:rPr>
+              <w:t>2 500 $</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+      </w:tr>
+      <w:tr>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:type="dxa" w:w="2016"/>
+            <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF"/>
+          </w:tcPr>
+          <w:p>
+            <w:pPr>
+              <w:jc w:val="center"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:b w:val="0"/>
+                <w:i w:val="0"/>
+                <w:color w:val="0D1B2A"/>
+                <w:sz w:val="21"/>
+              </w:rPr>
+              <w:t>Этап 2</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:type="dxa" w:w="5184"/>
+            <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF"/>
+          </w:tcPr>
+          <w:p>
+            <w:pPr>
+              <w:jc w:val="left"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:b w:val="0"/>
+                <w:i w:val="0"/>
+                <w:color w:val="0D1B2A"/>
+                <w:sz w:val="21"/>
+              </w:rPr>
+              <w:t>Весь функционал платформы</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:type="dxa" w:w="1728"/>
+            <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF"/>
+          </w:tcPr>
+          <w:p>
+            <w:pPr>
+              <w:jc w:val="center"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:b w:val="0"/>
+                <w:i w:val="0"/>
+                <w:color w:val="0D1B2A"/>
+                <w:sz w:val="21"/>
+              </w:rPr>
+              <w:t>2 500 $</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+      </w:tr>
+      <w:tr>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:type="dxa" w:w="2016"/>
+            <w:shd w:val="clear" w:color="auto" w:fill="EFF6FF"/>
+          </w:tcPr>
+          <w:p>
+            <w:pPr>
+              <w:jc w:val="center"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:b/>
+                <w:i w:val="0"/>
+                <w:color w:val="1A56DB"/>
+                <w:sz w:val="21"/>
+              </w:rPr>
+              <w:t>ИТОГО</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:type="dxa" w:w="5184"/>
+            <w:shd w:val="clear" w:color="auto" w:fill="EFF6FF"/>
+          </w:tcPr>
+          <w:p>
+            <w:pPr>
+              <w:jc w:val="left"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:b/>
+                <w:i w:val="0"/>
+                <w:color w:val="1A56DB"/>
+                <w:sz w:val="21"/>
+              </w:rPr>
+              <w:t>Полная платформа под ключ</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:type="dxa" w:w="1728"/>
+            <w:shd w:val="clear" w:color="auto" w:fill="EFF6FF"/>
+          </w:tcPr>
+          <w:p>
+            <w:pPr>
+              <w:jc w:val="center"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:b/>
+                <w:i w:val="0"/>
+                <w:color w:val="1A56DB"/>
+                <w:sz w:val="21"/>
+              </w:rPr>
+              <w:t>5 000 $</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+      </w:tr>
+    </w:tbl>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="200"/>
+      </w:pPr>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:before="360" w:after="120"/>
+        <w:pBdr>
+          <w:bottom w:val="single" w:sz="6" w:space="6" w:color="0D1B2A"/>
+        </w:pBdr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="22"/>
+        </w:rPr>
+        <w:t>СОСТАВ ПЛАТФОРМЫ</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:before="240" w:after="60"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Ключевые возможности</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Email-рассылка и автоматические письма</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>База клиентов — все контакты автоматически попадают в CRM</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Регистрация участниц</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Регистрация спонсоров</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Покупка билетов онлайн</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:before="240" w:after="60"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Для участниц</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Онлайн-подача заявки</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Загрузка фотографий и документов</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Оплата регистрационного взноса онлайн</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Личный кабинет участницы</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Статус заявки: «На рассмотрении», «Одобрена», «Отклонена»</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>«Road to the Crown» — персональный путь подготовки из 8 шагов</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>FAQ с правилами конкурса</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:before="240" w:after="60"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Для зрителей</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Покупка билетов онлайн</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Countdown-таймер до финала</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Подписка на новости Miss Miami</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Магазин мерча Miss Miami</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:before="240" w:after="60"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Для спонсоров</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Sponsor Deck — PDF для скачивания</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Спонсорские пакеты: Gold, Platinum, Титульный</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Форма «Become a Sponsor»</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Возможность сразу оплатить пакет или оставить заявку</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:before="240" w:after="60"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Для конкурса</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Галерея прошлых победительниц</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Профили судей</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Расписание конкурса</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Правила</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Призы</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Благотворительная миссия Beauty with Purpose</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:before="240" w:after="60"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Для бренда</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Медиа-кит</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Пресс-раздел</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Новости и блог</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Фото и видео с мероприятий</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Отзывы участниц</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:before="240" w:after="60"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Для бизнеса</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>CRM — все заявки автоматически попадают в базу</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Автоматические email-цепочки: подтверждение, напоминания, инструкции, благодарность</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Промокоды</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Партнёрская программа (affiliate-ссылки)</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Голосование «People's Choice» с защитой от накрутки</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Кабинет организатора — управление участницами, рассылки, статусы</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:before="240" w:after="60"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Для SEO</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Оптимизированные страницы под поиск Google</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Блог с 4 стартовыми статьями:</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="576"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="6B7280"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">     —  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i/>
+          <w:color w:val="374151"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>How to Prepare for a Beauty Pageant</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="576"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="6B7280"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">     —  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i/>
+          <w:color w:val="374151"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Miss Miami Tips</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="576"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="6B7280"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">     —  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i/>
+          <w:color w:val="374151"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Interview Preparation</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="576"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="6B7280"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">     —  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i/>
+          <w:color w:val="374151"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Runway Training</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:before="240" w:after="60"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Доверие и юридика</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>FAQ</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Контакты</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Политика конфиденциальности</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Terms &amp; Conditions</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Refund Policy</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Ссылки на социальные сети</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>Адаптивный дизайн: десктоп, планшет, мобильный</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="40"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="1A56DB"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t xml:space="preserve">✓  </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>365 дней технического обслуживания после запуска</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="160"/>
+      </w:pPr>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:before="360" w:after="120"/>
+        <w:pBdr>
+          <w:bottom w:val="single" w:sz="6" w:space="6" w:color="0D1B2A"/>
+        </w:pBdr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="22"/>
+        </w:rPr>
+        <w:t>ГРАФИК ПЛАТЕЖЕЙ</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="80"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="22"/>
+        </w:rPr>
+        <w:t xml:space="preserve">50%  —  2 500 $   </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="6B7280"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>предоплата до начала работ</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="80"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="22"/>
+        </w:rPr>
+        <w:t xml:space="preserve">25%  —  1 250 $   </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="6B7280"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>после утверждения Этапа 1</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="80"/>
+        <w:ind w:left="288"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b/>
+          <w:i w:val="0"/>
+          <w:color w:val="0D1B2A"/>
+          <w:sz w:val="22"/>
+        </w:rPr>
+        <w:t xml:space="preserve">25%  —  1 250 $   </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i w:val="0"/>
+          <w:color w:val="6B7280"/>
+          <w:sz w:val="21"/>
+        </w:rPr>
+        <w:t>после сдачи полной платформы</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:spacing w:after="240"/>
+      </w:pPr>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:pBdr>
+          <w:bottom w:val="single" w:sz="2" w:space="6" w:color="1A56DB"/>
+        </w:pBdr>
+        <w:spacing w:after="120"/>
+      </w:pPr>
+    </w:p>
+    <w:p>
+      <w:pPr>
+        <w:jc w:val="center"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+          <w:b w:val="0"/>
+          <w:i/>
+          <w:color w:val="6B7280"/>
+          <w:sz w:val="18"/>
+        </w:rPr>
+        <w:t>CoreNova  ·  info@corenova.ua  ·  lekki79.github.io/corenova</w:t>
+      </w:r>
+    </w:p>
+    <w:sectPr w:rsidR="00FC693F" w:rsidRPr="0006063C" w:rsidSect="00034616">
+      <w:pgSz w:w="12240" w:h="15840"/>
+      <w:pgMar w:top="1296" w:right="1584" w:bottom="1296" w:left="1584" w:header="720" w:footer="720" w:gutter="0"/>
+      <w:cols w:space="720"/>
+      <w:docGrid w:linePitch="360"/>
+    </w:sectPr>
+  </w:body>
+</w:document>

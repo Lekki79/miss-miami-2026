@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="Content-Language" content="en-US" />
+  <meta name="language" content="English" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apply — Miss Miami 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,21 +14,21 @@
 
     :root {
       --gold:   #D4AF37;
-      --black:  #0D0D0D;
-      --dark:   #111008;
-      --dark2:  #1a1608;
-      --cream:  #F5F1E8;
-      --white:  #ffffff;
-      --glass:  rgba(13,13,13,0.85);
+      --black:  #1A0800;
+      --dark:   #DDB870;
+      --dark2:  #CCA55A;
+      --cream:  #1A0800;
+      --white:  #1A0800;
+      --glass:  rgba(221,184,112,0.92);
       --tr: 0.3s cubic-bezier(.4,0,.2,1);
     }
 
     html { scroll-behavior: smooth; }
-    body { background: var(--black); color: var(--cream); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    body { background: #DDB870; color: #1A0800; font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
     h1,h2,h3,h4 { font-family: 'Cinzel', serif; letter-spacing: 0.06em; }
     a { text-decoration: none; color: inherit; }
     ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-track { background: #DDB870; }
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
     /* ── HEADER ── */
@@ -41,22 +43,70 @@
     .logo { display: flex; align-items: center; gap: 12px; }
     .logo-img { height: 80px; width: auto; display: block; object-fit: contain; }
     nav { display: flex; align-items: center; gap: 32px; }
-    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.7); transition: color var(--tr); position: relative; }
+    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #1A0800; transition: color var(--tr); position: relative; opacity: 0.8; }
     nav a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform var(--tr); }
     nav a:hover { color: var(--gold); }
     nav a:hover::after, nav a.active::after { transform: scaleX(1); }
     nav a.active { color: var(--gold); }
     .btn-nav {
-      padding: 10px 28px; background: var(--gold); color: var(--black);
-      font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em;
-      font-weight: 700; text-transform: uppercase; transition: all var(--tr);
+      padding: 10px 28px;
+      background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
+      background-size: 250% auto;
+      color: #FFF8E7;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      animation: bronzeFlow 8s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
     }
-    .btn-nav:hover { background: #c9a227; }
+    .btn-nav:hover {
+      background-position: right center;
+    }
+    @keyframes bronzeFlow {
+      0%   { background-position: 0% center; }
+      50%  { background-position: 100% center; }
+      100% { background-position: 0% center; }
+    }
+    @keyframes stepPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
     .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.78) !important; border: 1px solid rgba(212,175,55,0.25); padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
     .btn-account::after { display: none !important; }
     .btn-account:hover { color: var(--gold) !important; border-color: rgba(212,175,55,0.6); }
-    .menu-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; }
-    .menu-toggle span { display:block; width:24px; height:1.5px; background:var(--gold); transition:var(--tr); }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+      z-index: 101;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2.5px;
+      background: #1A0800;
+      transition: all var(--tr);
+      border-radius: 2px;
+    }
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(10px, 10px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
 
     /* ── PAGE HERO ── */
     .page-hero {
@@ -80,39 +130,56 @@
       color: var(--gold); margin-bottom: 20px; font-weight: 500;
     }
     .page-hero h1 { font-size: clamp(32px, 4vw, 52px); color: var(--white); margin-bottom: 16px; }
-    .page-hero p { font-size: 14px; color: rgba(245,241,232,0.78); max-width: 540px; margin: 0 auto; line-height: 1.9; }
+    .page-hero p { font-size: 14px; color: #1A0800; opacity: 0.85; max-width: 540px; margin: 0 auto; line-height: 1.9; }
 
     /* ── STEPS BAR ── */
     .steps-bar {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0;
-      padding: 40px 56px;
-      background: var(--dark2);
-      border-bottom: 1px solid rgba(212,175,55,0.1);
+      gap: 12px;
+      padding: 32px 56px;
+      background: linear-gradient(to right, #CCA55A 0%, #DDB870 50%, #CCA55A 100%);
+      border-bottom: 1px solid rgba(212,175,55,0.25);
       flex-wrap: wrap;
-      gap: 8px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.1);
     }
     .step {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(245,241,232,0.78); font-weight: 500;
-      transition: color var(--tr);
+      display: flex; align-items: center; gap: 8px;
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #1A0800; opacity: 0.75; font-weight: 600;
+      transition: all var(--tr);
     }
-    .step.active { color: var(--gold); }
-    .step.done { color: rgba(212,175,55,0.5); }
+    .step.active { opacity: 1; color: #1A0800; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+    .step.done { opacity: 0.6; }
     .step-num {
-      width: 28px; height: 28px; border-radius: 50%;
-      border: 1px solid rgba(212,175,55,0.2);
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 2px solid #C9922A;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Cinzel', serif; font-size: 11px;
-      color: rgba(212,175,55,0.4);
+      font-family: 'Cinzel', serif; font-size: 12px;
+      color: #FFF8E7;
+      flex-shrink: 0;
+      background: #C9922A;
+      font-weight: 700;
+    }
+    .step.active .step-num {
+      border-color: #C9922A;
+      color: #FFF8E7;
+      background: #C9922A;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .step.done .step-num {
+      border-color: #C9922A;
+      background: #C9922A;
+      color: #FFF8E7;
+      opacity: 1;
+      animation: stepPulse 2s ease-in-out infinite;
+    }
+    .step-sep {
+      width: 24px; height: 2px;
+      background: linear-gradient(to right, rgba(212,175,55,0.2) 0%, rgba(212,175,55,0.4) 50%, rgba(212,175,55,0.2) 100%);
       flex-shrink: 0;
     }
-    .step.active .step-num { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,0.08); }
-    .step.done .step-num { border-color: rgba(212,175,55,0.4); background: rgba(212,175,55,0.06); }
-    .step-sep { width: 32px; height: 1px; background: rgba(212,175,55,0.15); flex-shrink: 0; }
 
     /* ── MAIN CONTENT ── */
     .apply-wrap {
@@ -141,17 +208,20 @@
     .form-section-title h3 {
       font-size: 14px;
       letter-spacing: 0.25em;
-      color: var(--white);
+      color: #1A0800;
       font-weight: 600;
     }
     .form-section-title .num {
-      width: 32px; height: 32px;
-      background: rgba(212,175,55,0.08);
-      border: 1px solid rgba(212,175,55,0.25);
+      width: 40px; height: 40px;
+      background: #C9922A;
+      border: 2px solid #7A4F10;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Cinzel', serif; font-size: 12px;
-      color: var(--gold); flex-shrink: 0;
+      font-family: 'Cinzel', serif; font-size: 16px;
+      color: #FFF8E7;
+      flex-shrink: 0;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
     /* ── FORM GRID ── */
@@ -171,26 +241,57 @@
     }
 
     input, select, textarea {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(212,175,55,0.15);
-      color: var(--cream);
+      background: rgba(255,255,255,0.55);
+      border: 1.5px solid rgba(212,175,55,0.3);
+      color: #1A0800;
       font-family: 'Montserrat', sans-serif;
       font-size: 13px;
       padding: 13px 16px;
       outline: none;
-      transition: border-color var(--tr), background var(--tr);
+      transition: all var(--tr);
       width: 100%;
       -webkit-appearance: none;
+      border-radius: 2px;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A0800' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      background-size: 20px;
+      padding-right: 36px;
     }
 
     input:focus, select:focus, textarea:focus {
-      border-color: rgba(212,175,55,0.5);
-      background: rgba(212,175,55,0.04);
+      border-color: rgba(212,175,55,0.7);
+      background: rgba(255,255,255,0.7);
     }
 
-    input::placeholder, textarea::placeholder { color: rgba(245,241,232,0.2); }
+    input::placeholder, textarea::placeholder { color: rgba(26,8,0,0.3); }
 
-    select option { background: #1a1608; color: var(--cream); }
+    select option {
+      background: #DDB870;
+      color: #1A0800;
+      padding: 8px;
+      line-height: 1.6;
+    }
+
+    select option:checked {
+      background: linear-gradient(rgba(212,175,55,0.3), rgba(212,175,55,0.3));
+    }
+
+    input[type="date"] {
+      font-size: 14px;
+      letter-spacing: 0.05em;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+      opacity: 0.8;
+      filter: invert(0.25);
+      width: 24px;
+      height: 24px;
+    }
 
     textarea { resize: vertical; min-height: 100px; }
 
@@ -214,56 +315,102 @@
     }
     .radio-item span, .check-item span {
       font-size: 13px;
-      color: rgba(245,241,232,0.7);
+      color: #1A0800;
+      opacity: 0.8;
     }
 
     /* ── FILE UPLOAD ── */
     .file-upload {
-      border: 1px dashed rgba(212,175,55,0.25);
-      padding: 32px;
+      border: 2px dashed rgba(212,175,55,0.35);
+      padding: 40px 32px;
       text-align: center;
       cursor: pointer;
-      transition: border-color var(--tr), background var(--tr);
+      transition: all var(--tr);
       position: relative;
+      background: rgba(255,255,255,0.25);
+      border-radius: 4px;
     }
     .file-upload:hover {
-      border-color: rgba(212,175,55,0.5);
-      background: rgba(212,175,55,0.03);
+      border-color: rgba(212,175,55,0.6);
+      background: rgba(255,255,255,0.35);
+      box-shadow: 0 2px 8px rgba(212,175,55,0.08);
     }
     .file-upload input[type="file"] {
       position: absolute; inset: 0; opacity: 0; cursor: pointer;
       width: 100%; border: none; background: none; padding: 0;
     }
-    .file-upload-icon { font-size: 28px; margin-bottom: 12px; opacity: 0.5; }
-    .file-upload p { font-size: 12px; color: rgba(245,241,232,0.65); }
-    .file-upload strong { color: var(--gold); font-weight: 500; }
+    .file-upload-icon {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .file-upload-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    @keyframes bronzeIconFlow {
+      0%   { filter: brightness(0.9); }
+      50%  { filter: brightness(1.1); }
+      100% { filter: brightness(0.9); }
+    }
+    .file-upload-icon svg {
+      animation: bronzeIconFlow 6s ease-in-out infinite;
+    }
+    .file-upload p {
+      font-size: 13px;
+      color: #1A0800;
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+    .file-upload strong {
+      color: #C9922A;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
 
     /* ── REQUIREMENTS BOX ── */
     .req-box {
-      background: rgba(212,175,55,0.04);
-      border: 1px solid rgba(212,175,55,0.12);
-      padding: 20px 24px;
-      margin-bottom: 20px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(212,175,55,0.06) 100%);
+      border: 2px solid rgba(212,175,55,0.25);
+      padding: 24px 28px;
+      margin-bottom: 28px;
+      border-radius: 4px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
     }
-    .req-box h4 { font-size: 11px; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 12px; }
+    .req-box h4 {
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      color: #C9922A;
+      margin-bottom: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
     .req-box ul { list-style: none; }
     .req-box ul li {
-      font-size: 12px;
-      color: rgba(245,241,232,0.78);
-      padding: 4px 0;
-      padding-left: 16px;
+      font-size: 13px;
+      color: #1A0800;
+      opacity: 0.9;
+      padding: 6px 0;
+      padding-left: 20px;
       position: relative;
+      line-height: 1.6;
     }
     .req-box ul li::before {
-      content: '—';
+      content: '◆';
       position: absolute; left: 0;
-      color: var(--gold); opacity: 0.5;
+      color: var(--gold);
+      opacity: 0.6;
+      font-size: 8px;
     }
 
     /* ── PAYMENT SECTION ── */
     .payment-section {
-      background: rgba(212,175,55,0.03);
-      border: 1px solid rgba(212,175,55,0.15);
+      background: rgba(212,175,55,0.08);
+      border: 1px solid rgba(212,175,55,0.2);
       padding: 40px;
       margin-bottom: 32px;
     }
@@ -271,9 +418,9 @@
       display: flex; align-items: center; justify-content: space-between;
       margin-bottom: 28px;
       padding-bottom: 20px;
-      border-bottom: 1px solid rgba(212,175,55,0.1);
+      border-bottom: 1px solid rgba(212,175,55,0.15);
     }
-    .payment-header h3 { font-size: 15px; color: var(--white); letter-spacing: 0.2em; }
+    .payment-header h3 { font-size: 15px; color: #1A0800; letter-spacing: 0.2em; }
     .price-tag {
       font-family: 'Cinzel', serif;
       font-size: 32px;
@@ -283,10 +430,10 @@
     .price-tag span { font-size: 14px; color: rgba(212,175,55,0.6); }
 
     .payment-includes { margin-bottom: 28px; }
-    .payment-includes h4 { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(245,241,232,0.65); margin-bottom: 14px; }
+    .payment-includes h4 { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #1A0800; opacity: 0.7; margin-bottom: 14px; }
     .payment-includes ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .payment-includes ul li {
-      font-size: 12px; color: rgba(245,241,232,0.6);
+      font-size: 12px; color: #1A0800; opacity: 0.75;
       display: flex; align-items: center; gap: 8px;
     }
     .payment-includes ul li::before { content: '✦'; font-size: 8px; color: var(--gold); opacity: 0.7; flex-shrink: 0; }
@@ -294,21 +441,23 @@
     .card-icons { display: flex; gap: 8px; margin-bottom: 20px; }
     .card-icon {
       padding: 4px 10px;
-      border: 1px solid rgba(212,175,55,0.15);
+      border: 1px solid rgba(212,175,55,0.25);
       font-size: 10px;
-      color: rgba(245,241,232,0.65);
+      color: #1A0800;
+      opacity: 0.7;
       letter-spacing: 0.1em;
+      background: rgba(255,255,255,0.3);
     }
 
     /* Stripe placeholder */
     .stripe-placeholder {
-      background: rgba(0,0,0,0.3);
-      border: 1px solid rgba(212,175,55,0.1);
+      background: rgba(255,255,255,0.3);
+      border: 1px solid rgba(212,175,55,0.2);
       padding: 20px;
       text-align: center;
     }
-    .stripe-placeholder p { font-size: 12px; color: rgba(245,241,232,0.78); }
-    .stripe-placeholder strong { color: var(--gold); }
+    .stripe-placeholder p { font-size: 12px; color: #1A0800; opacity: 0.8; }
+    .stripe-placeholder strong { color: #C9922A; font-weight: 700; }
 
     /* ── TERMS ── */
     .terms-box {
@@ -320,52 +469,109 @@
     .submit-area { text-align: center; }
     .btn-submit {
       display: inline-flex; align-items: center; gap: 12px;
-      padding: 18px 64px;
-      background: var(--gold);
-      color: var(--black);
+      padding: 16px 46px;
+      background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
+      background-size: 250% auto;
+      color: #FFF8E7;
       font-family: 'Cinzel', serif;
-      font-size: 13px;
+      font-size: 11px;
       letter-spacing: 0.25em;
       font-weight: 700;
       text-transform: uppercase;
-      border: none;
       cursor: pointer;
-      transition: all var(--tr);
-      width: 100%;
+      border: none;
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+      animation: bronzeFlow 8s ease-in-out infinite;
       justify-content: center;
     }
-    .btn-submit:hover { background: #c9a227; }
+    .btn-submit::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 55%; height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,248,220,0.3) 50%, transparent 100%);
+      animation: bronzeSheen 7s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes bronzeSheen {
+      0%   { left: -100%; opacity: 0; }
+      10%  { opacity: 1; }
+      40%  { left: 160%; opacity: 1; }
+      42%  { opacity: 0; }
+      100% { left: 160%; opacity: 0; }
+    }
+    .btn-submit:hover {
+      background-position: right center;
+    }
     .submit-note {
       margin-top: 16px;
       font-size: 11px;
-      color: rgba(245,241,232,0.78);
+      color: #1A0800;
+      opacity: 0.8;
       text-align: center;
       line-height: 1.8;
     }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--black);
-      border-top: 1px solid rgba(212,175,55,0.12);
+      background: #CCA55A;
+      border-top: 1px solid rgba(212,175,55,0.3);
       padding: 48px 56px 32px;
     }
     .footer-bottom {
       display: flex; align-items: center; justify-content: space-between;
     }
-    .footer-bottom p { font-size: 11px; color: rgba(245,241,232,0.78); }
+    .footer-bottom p { font-size: 11px; color: #1A0800; opacity: 0.8; }
     .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: 11px; color: rgba(245,241,232,0.78); transition: color var(--tr); }
-    .footer-links a:hover { color: var(--gold); }
+    .footer-links a { font-size: 11px; color: #1A0800; transition: color var(--tr); opacity: 0.8; }
+    .footer-links a:hover { color: var(--gold); opacity: 1; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       header { padding: 0 24px; height: 72px; }
       nav { display: none; }
       nav.open {
-        display: flex; flex-direction: column;
-        position: fixed; inset: 72px 0 0 0;
-        background: rgba(13,13,13,0.97);
-        padding: 40px 32px; gap: 28px; z-index: 99;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #DDB870 0%, #CCA55A 100%);
+        padding: 28px 20px;
+        gap: 2px;
+        z-index: 98;
+        box-shadow: inset 0 2px 12px rgba(0,0,0,0.12);
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+      nav.open a {
+        padding: 14px 16px;
+        border-bottom: 1px solid rgba(212,175,55,0.2);
+        border-radius: 3px;
+        transition: all var(--tr);
+        display: block;
+        font-size: 14px;
+        color: #1A0800;
+      }
+      nav.open a:hover {
+        background: rgba(212,175,55,0.15);
+      }
+      nav.open a.btn-account {
+        border: 2px solid rgba(212,175,55,0.4);
+        margin-top: 12px;
+        border-radius: 4px;
+      }
+      nav.open a.btn-nav {
+        background: linear-gradient(135deg, #D4AF37 0%, #C9A227 100%);
+        border-radius: 20px;
+        margin-top: 16px;
+        border: none;
+        color: #1A0800;
+        font-weight: 700;
       }
       .menu-toggle { display: flex; }
       .page-hero { padding: 120px 24px 60px; }
@@ -405,6 +611,9 @@
       <span></span><span></span><span></span>
     </button>
   </header>
+
+  <!-- Mobile Menu Backdrop -->
+  <div id="menu-backdrop" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4); z-index:97;"></div>
 
   <!-- PAGE HERO -->
   <div class="page-hero">
@@ -451,7 +660,7 @@
     <form id="apply-form" novalidate>
 
       <!-- 1. PERSONAL INFO -->
-      <div class="form-section visible">
+      <div class="form-section visible" style="opacity: 1 !important; transform: translateY(0) !important;">
         <div class="form-section-title">
           <div class="num">1</div>
           <h3>Personal Information</h3>
@@ -467,7 +676,10 @@
           </div>
           <div class="field">
             <label>Date of Birth *</label>
-            <input type="date" name="dob" required />
+            <div style="position: relative;">
+              <input type="text" id="dob-input" name="dob" placeholder="MM/DD/YYYY" readonly style="cursor: pointer; background: #FFF8E7;" required />
+              <div id="date-picker" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 2px solid #C9922A; border-radius: 8px; padding: 16px; z-index: 10000; min-width: 300px; max-height: 400px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"></div>
+            </div>
           </div>
           <div class="field">
             <label>City of Residence *</label>
@@ -557,48 +769,64 @@
         </div>
       </div>
 
-      <!-- 4. PHOTOS -->
+      <!-- 4. PHOTOS & VIDEOS -->
       <div class="form-section">
         <div class="form-section-title">
           <div class="num">4</div>
-          <h3>Photo Submission</h3>
+          <h3>Photo & Video Submission</h3>
         </div>
 
         <div class="req-box">
           <h4>Photo Requirements</h4>
           <ul>
-            <li>Headshot: professional quality, clear face, recent (within 6 months)</li>
-            <li>Full-length photo: formal or evening attire preferred</li>
-            <li>Casual photo: natural setting, showing your personality</li>
+            <li>Minimum 3 photos required: Headshot, Full-length (formal/evening), Casual</li>
+            <li>Professional quality, clear face, recent (within 6 months)</li>
             <li>Format: JPG or PNG, minimum 1MB, maximum 10MB per photo</li>
             <li>No heavy filters or extreme editing</li>
           </ul>
         </div>
 
-        <div class="form-grid three">
+        <div class="form-grid full">
           <div class="field">
-            <label>Headshot *</label>
+            <label>Upload Photos (Headshot, Full-length, Casual, etc.) *</label>
             <div class="file-upload">
-              <input type="file" name="photo_headshot" accept="image/*" />
-              <div class="file-upload-icon">👤</div>
-              <p><strong>Click to upload</strong><br/>Headshot photo</p>
+              <input type="file" name="photos" accept="image/*" multiple />
+              <div class="file-upload-icon">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="photoBronze" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#C9922A;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#7A4F10;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="10" y="10" width="44" height="44" fill="url(#photoBronze)" stroke="#1A0800" stroke-width="2"/>
+                </svg>
+              </div>
+              <p><strong>Click to upload</strong> or drag files here<br/><span style="font-size: 12px; opacity: 0.7;">JPG, PNG — Multiple photos accepted</span></p>
             </div>
+            <div id="photo-list" style="margin-top: 16px; font-size: 12px; color: #1A0800; opacity: 0.75;"></div>
           </div>
+
           <div class="field">
-            <label>Full-Length Photo *</label>
+            <label>Upload Videos (optional)</label>
             <div class="file-upload">
-              <input type="file" name="photo_full" accept="image/*" />
-              <div class="file-upload-icon">👗</div>
-              <p><strong>Click to upload</strong><br/>Evening or formal wear</p>
+              <input type="file" name="videos" accept="video/*" multiple />
+              <div class="file-upload-icon">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="videoBronze" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#C9922A;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#7A4F10;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <polygon points="18,14 18,54 50,34" fill="url(#videoBronze)" stroke="#1A0800" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <p><strong>Click to upload</strong> or drag files here<br/><span style="font-size: 12px; opacity: 0.7;">MP4, MOV — Video clips (optional)</span></p>
             </div>
-          </div>
-          <div class="field">
-            <label>Casual Photo</label>
-            <div class="file-upload">
-              <input type="file" name="photo_casual" accept="image/*" />
-              <div class="file-upload-icon">🌟</div>
-              <p><strong>Click to upload</strong><br/>Natural, candid shot</p>
-            </div>
+            <div id="video-list" style="margin-top: 16px; font-size: 12px; color: #1A0800; opacity: 0.75;"></div>
           </div>
         </div>
       </div>
@@ -614,7 +842,7 @@
           <div class="payment-header">
             <div>
               <h3>Miss Miami 2026</h3>
-              <p style="font-size:12px;color:rgba(245,241,232,0.4);margin-top:4px;font-weight:300;">Application & Registration Fee</p>
+              <p style="font-size:12px;color:#1A0800;opacity:0.6;margin-top:4px;font-weight:300;">Application & Registration Fee</p>
             </div>
             <div class="price-tag">$250<span> USD</span></div>
           </div>
@@ -700,11 +928,31 @@
   </footer>
 
   <script>
-    // Mobile menu
+    // Mobile menu with animated toggle
     const toggle = document.getElementById('menu-toggle');
     const nav = document.getElementById('main-nav');
+    const backdrop = document.getElementById('menu-backdrop');
+
     toggle.addEventListener('click', () => {
       nav.classList.toggle('open');
+      toggle.classList.toggle('active');
+      backdrop.style.display = nav.classList.contains('open') ? 'block' : 'none';
+    });
+
+    // Close menu when clicking backdrop
+    backdrop.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.classList.remove('active');
+      backdrop.style.display = 'none';
+    });
+
+    // Close menu when clicking nav links
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.classList.remove('active');
+        backdrop.style.display = 'none';
+      });
     });
 
     // Scroll animations
@@ -721,10 +969,25 @@
     // File upload labels
     document.querySelectorAll('.file-upload input[type="file"]').forEach(input => {
       input.addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-          const p = this.closest('.file-upload').querySelector('p');
-          p.innerHTML = `<strong>${file.name}</strong><br/>${(file.size/1024/1024).toFixed(1)} MB`;
+        const files = this.files;
+        const p = this.closest('.file-upload').querySelector('p');
+        const listContainer = this.closest('.field').querySelector('[id$="-list"]');
+
+        if (files.length > 0) {
+          p.innerHTML = `<strong>${files.length} file(s) selected</strong><br/>${Array.from(files).map(f => f.name).join(', ')}`;
+
+          if (listContainer) {
+            const fileList = Array.from(files).map((f, i) => {
+              const sizeMB = (f.size / 1024 / 1024).toFixed(1);
+              return `<div style="padding: 4px 0; border-bottom: 1px solid rgba(212,175,55,0.1);">
+                <strong>${i + 1}.</strong> ${f.name} (${sizeMB} MB)
+              </div>`;
+            }).join('');
+            listContainer.innerHTML = `<div style="padding: 12px; background: rgba(255,255,255,0.2); border-radius: 4px;">${fileList}</div>`;
+          }
+        } else {
+          p.innerHTML = `<strong>Click to upload or drag files</strong><br/>Multiple files accepted`;
+          if (listContainer) listContainer.innerHTML = '';
         }
       });
     });
@@ -745,6 +1008,147 @@
       });
     }, { threshold: 0.4 });
     sections.forEach(s => scrollObs.observe(s));
+
+    // Custom date picker
+    const dobInput = document.getElementById('dob-input');
+    const datePicker = document.getElementById('date-picker');
+    let currentDate = new Date();
+
+    const months = ['January', 'February', 'March', 'April', 'May', 'June',
+                    'July', 'August', 'September', 'October', 'November', 'December'];
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    function updateDateDisplay() {
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const date = String(currentDate.getDate()).padStart(2, '0');
+      const year = currentDate.getFullYear();
+      dobInput.value = `${month}/${date}/${year}`;
+    }
+
+    function renderCalendar() {
+      datePicker.innerHTML = '';
+
+      // Month and Year selectors
+      const header = document.createElement('div');
+      header.style.cssText = 'display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px;';
+
+      // Month dropdown
+      const monthLabel = document.createElement('span');
+      monthLabel.textContent = 'Month:';
+      monthLabel.style.cssText = 'font-size: 12px; color: #1A0800; min-width: 40px;';
+      const monthSelect = document.createElement('select');
+      monthSelect.style.cssText = 'padding: 6px; border: 1px solid #C9922A; border-radius: 4px; font-size: 12px; flex: 1;';
+      months.forEach((m, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.textContent = m;
+        if (idx === currentDate.getMonth()) opt.selected = true;
+        monthSelect.appendChild(opt);
+      });
+      monthSelect.onchange = (e) => {
+        e.stopPropagation();
+        currentDate.setMonth(parseInt(e.target.value));
+        updateDateDisplay();
+        renderCalendar();
+      };
+      monthSelect.onclick = (e) => { e.stopPropagation(); };
+
+      // Year dropdown
+      const yearLabel = document.createElement('span');
+      yearLabel.textContent = 'Year:';
+      yearLabel.style.cssText = 'font-size: 12px; color: #1A0800; min-width: 35px;';
+      const yearSelect = document.createElement('select');
+      yearSelect.style.cssText = 'padding: 6px; border: 1px solid #C9922A; border-radius: 4px; font-size: 12px; flex: 1;';
+      for (let y = 1950; y <= new Date().getFullYear(); y++) {
+        const opt = document.createElement('option');
+        opt.value = y;
+        opt.textContent = y;
+        if (y === currentDate.getFullYear()) opt.selected = true;
+        yearSelect.appendChild(opt);
+      }
+      yearSelect.onchange = (e) => {
+        e.stopPropagation();
+        currentDate.setFullYear(parseInt(e.target.value));
+        updateDateDisplay();
+        renderCalendar();
+      };
+      yearSelect.onclick = (e) => { e.stopPropagation(); };
+
+      header.appendChild(monthLabel);
+      header.appendChild(monthSelect);
+      header.appendChild(yearLabel);
+      header.appendChild(yearSelect);
+      datePicker.appendChild(header);
+
+      // Days header
+      const daysHeader = document.createElement('div');
+      daysHeader.style.cssText = 'display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 8px;';
+      days.forEach(d => {
+        const dayEl = document.createElement('div');
+        dayEl.textContent = d;
+        dayEl.style.cssText = 'text-align: center; font-size: 11px; color: #C9922A; font-weight: 600;';
+        daysHeader.appendChild(dayEl);
+      });
+      datePicker.appendChild(daysHeader);
+
+      // Calendar grid
+      const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
+      const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+
+      const grid = document.createElement('div');
+      grid.style.cssText = 'display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;';
+
+      // Empty cells
+      for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement('div');
+        grid.appendChild(empty);
+      }
+
+      // Days
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.textContent = day;
+        dayDiv.style.cssText = `
+          background: ${new Date(currentDate.getFullYear(), currentDate.getMonth(), day) <= new Date() ? '#DDB870' : '#E8E8E8'};
+          border: 1px solid #C9922A;
+          border-radius: 4px;
+          padding: 8px;
+          cursor: pointer;
+          font-size: 12px;
+          color: #1A0800;
+          transition: all 0.2s;
+          text-align: center;
+          user-select: none;
+        `;
+        dayDiv.onmouseover = () => { dayDiv.style.background = '#C9922A'; dayDiv.style.color = '#FFF8E7'; };
+        dayDiv.onmouseout = () => {
+          dayDiv.style.background = new Date(currentDate.getFullYear(), currentDate.getMonth(), day) <= new Date() ? '#DDB870' : '#E8E8E8';
+          dayDiv.style.color = '#1A0800';
+        };
+        dayDiv.onclick = (e) => {
+          e.stopPropagation();
+          currentDate.setDate(day);
+          updateDateDisplay();
+        };
+        grid.appendChild(dayDiv);
+      }
+      datePicker.appendChild(grid);
+    }
+
+    dobInput.onclick = (e) => {
+      e.stopPropagation();
+      if (datePicker.style.display === 'none') {
+        datePicker.style.display = 'block';
+        renderCalendar();
+      }
+    };
+
+    document.addEventListener('click', (e) => {
+      // Закрывать календарь только если клик вне календаря И вне input поля
+      if (!dobInput.contains(e.target) && !datePicker.contains(e.target)) {
+        datePicker.style.display = 'none';
+      }
+    });
 
     // Form submit
     document.getElementById('apply-form').addEventListener('submit', function(e) {
