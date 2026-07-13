@@ -1295,6 +1295,13 @@
       if (validateForm()) {
         alert('Thank you! Your application has been received. We will contact you within 5–7 business days.');
         // Here you would send form data to server
+      } else {
+        // Scroll to first error field
+        const firstError = document.querySelector('.error');
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          firstError.focus();
+        }
       }
     });
   </script>
