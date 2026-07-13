@@ -262,6 +262,23 @@
       padding-right: 36px;
     }
 
+    input.error, select.error, textarea.error {
+      border-color: #E74C3C !important;
+      background: #FADBD8 !important;
+    }
+
+    .error-message {
+      color: #E74C3C;
+      font-size: 12px;
+      margin-top: 4px;
+      display: none;
+      font-weight: 500;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
     input:focus, select:focus, textarea:focus {
       border-color: rgba(212,175,55,0.7);
       background: rgba(255,255,255,0.7);
@@ -668,11 +685,13 @@
         <div class="form-grid">
           <div class="field">
             <label>First Name *</label>
-            <input type="text" name="first_name" placeholder="Isabella" required />
+            <input type="text" id="first_name" name="first_name" placeholder="Isabella" required />
+            <span class="error-message"></span>
           </div>
           <div class="field">
             <label>Last Name *</label>
-            <input type="text" name="last_name" placeholder="Moretti" required />
+            <input type="text" id="last_name" name="last_name" placeholder="Moretti" required />
+            <span class="error-message"></span>
           </div>
           <div class="field">
             <label>Date of Birth *</label>
@@ -680,10 +699,12 @@
               <input type="text" id="dob-input" name="dob" placeholder="MM/DD/YYYY" readonly style="cursor: pointer; background: #FFF8E7;" required />
               <div id="date-picker" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 2px solid #C9922A; border-radius: 8px; padding: 16px; z-index: 10000; min-width: 300px; max-height: 400px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"></div>
             </div>
+            <span class="error-message"></span>
           </div>
           <div class="field">
             <label>City of Residence *</label>
-            <input type="text" name="city" placeholder="Miami, FL" required />
+            <input type="text" id="city" name="city" placeholder="Miami, FL" required />
+            <span class="error-message"></span>
           </div>
           <div class="field">
             <label>Email Address *</label>
@@ -1155,10 +1176,89 @@
       }
     });
 
+    // Validation function
+    function showError(inputId, message) {
+      const input = document.getElementById(inputId);
+      const errorEl = input.parentElement.querySelector('.error-message');
+      if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.classList.add('show');
+      }
+      input.classList.add('error');
+    }
+
+    function clearError(inputId) {
+      const input = document.getElementById(inputId);
+      const errorEl = input.parentElement.querySelector('.error-message');
+      if (errorEl) errorEl.classList.remove('show');
+      input.classList.remove('error');
+    }
+
+    function validateForm() {
+      let isValid = true;
+      const form = document.getElementById('apply-form');
+
+      // Validate required fields
+      const requiredFields = form.querySelectorAll('[required]');
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          showError(field.id || field.name, 'This field is required');
+          isValid = false;
+        } else {
+          clearError(field.id || field.name);
+        }
+      });
+
+      // Validate email
+      const email = document.querySelector('input[type="email"]');
+      if (email && email.value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email.value)) {
+          showError(email.id || email.name, 'Invalid email format');
+          isValid = false;
+        } else {
+          clearError(email.id || email.name);
+        }
+      }
+
+      // Validate phone
+      const phone = document.querySelector('input[type="tel"], input[name*="phone"]');
+      if (phone && phone.value) {
+        const phoneRegex = /^\+?[\d\s\-\(\)]{10,}$/;
+        if (!phoneRegex.test(phone.value.replace(/\s/g, ''))) {
+          showError(phone.id || phone.name, 'Invalid phone format');
+          isValid = false;
+        } else {
+          clearError(phone.id || phone.name);
+        }
+      }
+
+      return isValid;
+    }
+
+    // Add real-time validation
+    document.getElementById('apply-form').querySelectorAll('input, select, textarea').forEach(field => {
+      field.addEventListener('blur', function() {
+        if (this.value.trim()) {
+          clearError(this.id || this.name);
+        }
+      });
+
+      field.addEventListener('input', function() {
+        if (this.classList.contains('error') && this.value.trim()) {
+          clearError(this.id || this.name);
+        }
+      });
+    });
+
     // Form submit
     document.getElementById('apply-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Thank you! Your application has been received. We will contact you within 5–7 business days.');
+
+      if (validateForm()) {
+        alert('Thank you! Your application has been received. We will contact you within 5–7 business days.');
+        // Here you would send form data to server
+      }
     });
   </script>
 </body>
