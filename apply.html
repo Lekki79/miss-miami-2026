@@ -1201,11 +1201,32 @@
       // Validate required fields
       const requiredFields = form.querySelectorAll('[required]');
       requiredFields.forEach(field => {
-        if (!field.value.trim()) {
+        const value = field.value.trim();
+
+        if (!value) {
           showError(field.id || field.name, 'This field is required');
           isValid = false;
         } else {
-          clearError(field.id || field.name);
+          // Validate name fields (minimum 2 characters)
+          if (field.name === 'first_name' || field.name === 'last_name') {
+            if (value.length < 2) {
+              showError(field.id || field.name, 'Minimum 2 characters required');
+              isValid = false;
+            } else {
+              clearError(field.id || field.name);
+            }
+          }
+          // Validate city (minimum 2 characters)
+          else if (field.name === 'city') {
+            if (value.length < 2) {
+              showError(field.id || field.name, 'Minimum 2 characters required');
+              isValid = false;
+            } else {
+              clearError(field.id || field.name);
+            }
+          } else {
+            clearError(field.id || field.name);
+          }
         }
       });
 
@@ -1214,22 +1235,38 @@
       if (email && email.value) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email.value)) {
-          showError(email.id || email.name, 'Invalid email format');
+          showError(email.id || email.name, 'Invalid email format (example@domain.com)');
           isValid = false;
         } else {
           clearError(email.id || email.name);
         }
       }
 
-      // Validate phone
-      const phone = document.querySelector('input[type="tel"], input[name*="phone"]');
-      if (phone && phone.value) {
-        const phoneRegex = /^\+?[\d\s\-\(\)]{10,}$/;
-        if (!phoneRegex.test(phone.value.replace(/\s/g, ''))) {
-          showError(phone.id || phone.name, 'Invalid phone format');
-          isValid = false;
-        } else {
-          clearError(phone.id || phone.name);
+      // Validate date of birth (age 18+)
+      const dob = document.getElementById('dob-input');
+      if (dob && dob.value) {
+        const parts = dob.value.split('/');
+        if (parts.length === 3) {
+          const month = parseInt(parts[0]);
+          const day = parseInt(parts[1]);
+          const year = parseInt(parts[2]);
+          const birthDate = new Date(year, month - 1, day);
+          const today = new Date();
+          let age = today.getFullYear() - birthDate.getFullYear();
+          const monthDiff = today.getMonth() - birthDate.getMonth();
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+          }
+
+          if (age < 18) {
+            showError('dob-input', 'Must be at least 18 years old');
+            isValid = false;
+          } else if (age > 100) {
+            showError('dob-input', 'Please enter a valid date of birth');
+            isValid = false;
+          } else {
+            clearError('dob-input');
+          }
         }
       }
 
