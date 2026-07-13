@@ -352,6 +352,10 @@
       background: rgba(255,255,255,0.35);
       box-shadow: 0 2px 8px rgba(212,175,55,0.08);
     }
+    .file-upload.error {
+      border-color: #E74C3C !important;
+      background: #FADBD8 !important;
+    }
     .file-upload input[type="file"] {
       position: absolute; inset: 0; opacity: 0; cursor: pointer;
       width: 100%; border: none; background: none; padding: 0;
@@ -814,8 +818,8 @@
         <div class="form-grid full">
           <div class="field">
             <label>Upload Photos (Headshot, Full-length, Casual, etc.) *</label>
-            <div class="file-upload">
-              <input type="file" name="photos" accept="image/*" multiple />
+            <div class="file-upload" id="photo-upload">
+              <input type="file" id="photos" name="photos" accept="image/*" multiple required />
               <div class="file-upload-icon">
                 <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                   <defs>
@@ -831,12 +835,13 @@
               <p><strong>Click to upload</strong> or drag files here<br/><span style="font-size: 12px; opacity: 0.7;">JPG, PNG — Multiple photos accepted</span></p>
             </div>
             <div id="photo-list" style="margin-top: 16px; font-size: 12px; color: #1A0800; opacity: 0.75;"></div>
+            <span class="error-message"></span>
           </div>
 
           <div class="field">
             <label>Upload Videos (optional)</label>
-            <div class="file-upload">
-              <input type="file" name="videos" accept="video/*" multiple />
+            <div class="file-upload" id="video-upload">
+              <input type="file" id="videos" name="videos" accept="video/*" multiple />
               <div class="file-upload-icon">
                 <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                   <defs>
@@ -997,6 +1002,7 @@
         const files = this.files;
         const p = this.closest('.file-upload').querySelector('p');
         const listContainer = this.closest('.field').querySelector('[id$="-list"]');
+        const uploadContainer = this.closest('.file-upload');
 
         if (files.length > 0) {
           p.innerHTML = `<strong>${files.length} file(s) selected</strong><br/>${Array.from(files).map(f => f.name).join(', ')}`;
@@ -1010,6 +1016,10 @@
             }).join('');
             listContainer.innerHTML = `<div style="padding: 12px; background: rgba(255,255,255,0.2); border-radius: 4px;">${fileList}</div>`;
           }
+
+          // Clear error when files are added
+          if (uploadContainer.id === 'photo-upload') clearFileUploadError('photo-upload');
+          if (uploadContainer.id === 'video-upload') clearFileUploadError('video-upload');
         } else {
           p.innerHTML = `<strong>Click to upload or drag files</strong><br/>Multiple files accepted`;
           if (listContainer) listContainer.innerHTML = '';
@@ -1183,6 +1193,7 @@
     // Validation function
     function showError(inputId, message) {
       const input = document.getElementById(inputId);
+      if (!input) return;
       const errorEl = input.parentElement.querySelector('.error-message');
       if (errorEl) {
         errorEl.textContent = message;
@@ -1193,9 +1204,27 @@
 
     function clearError(inputId) {
       const input = document.getElementById(inputId);
+      if (!input) return;
       const errorEl = input.parentElement.querySelector('.error-message');
       if (errorEl) errorEl.classList.remove('show');
       input.classList.remove('error');
+    }
+
+    function showFileUploadError(uploadContainerId, message) {
+      const container = document.getElementById(uploadContainerId);
+      const errorEl = container.parentElement.querySelector('.error-message');
+      if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.classList.add('show');
+      }
+      container.classList.add('error');
+    }
+
+    function clearFileUploadError(uploadContainerId) {
+      const container = document.getElementById(uploadContainerId);
+      const errorEl = container.parentElement.querySelector('.error-message');
+      if (errorEl) errorEl.classList.remove('show');
+      container.classList.remove('error');
     }
 
     function validateForm() {
@@ -1272,6 +1301,15 @@
             clearError('dob-input');
           }
         }
+      }
+
+      // Validate photos (required)
+      const photosInput = document.getElementById('photos');
+      if (!photosInput.files || photosInput.files.length === 0) {
+        showFileUploadError('photo-upload', 'At least one photo is required');
+        isValid = false;
+      } else {
+        clearFileUploadError('photo-upload');
       }
 
       return isValid;
