@@ -623,6 +623,21 @@
       footer { padding: 32px 24px; }
       .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
     }
+    /* Modal Styles */
+    .modal { display: none; position: fixed; z-index: 10001; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
+    .modal.show { display: flex; align-items: center; justify-content: center; }
+    .modal-content { background-color: white; padding: 32px; border-radius: 8px; max-width: 700px; max-height: 80vh; overflow-y: auto; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 2px solid #C9922A; padding-bottom: 16px; }
+    .modal-header h2 { color: #1A0800; font-family: 'Cinzel', serif; font-size: 20px; margin: 0; }
+    .modal-close { background: none; border: none; font-size: 28px; cursor: pointer; color: #C9922A; padding: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+    .modal-close:hover { color: #D4AF37; }
+    .modal-body { color: #1A0800; font-size: 14px; line-height: 1.8; }
+    .modal-body h3 { color: #C9922A; margin-top: 20px; margin-bottom: 10px; font-family: 'Cinzel', serif; }
+    .modal-body p { margin-bottom: 12px; }
+    .modal-body ul { margin-left: 20px; margin-bottom: 12px; }
+    .modal-body li { margin-bottom: 8px; }
+    .read-rules-btn { background: none; border: none; color: #C9922A; text-decoration: underline; cursor: pointer; font-weight: 600; padding: 0 4px; margin-left: 4px; }
+    .read-rules-btn:hover { color: #D4AF37; }
   </style>
 </head>
 <body>
@@ -949,7 +964,7 @@
           </div>
           <div class="check-item">
             <input type="checkbox" id="rules" name="rules" required />
-            <span>I have read and agree to the Miss Miami Official Rules & Regulations. *</span>
+            <span>I have read and agree to the Miss Miami Official Rules & Regulations. <button type="button" class="read-rules-btn" onclick="openRulesModal()">READ RULES</button> *</span>
             <span class="error-message"></span>
           </div>
           <div class="check-item">
@@ -972,6 +987,82 @@
       </div>
 
     </form>
+  </div>
+
+  <!-- RULES MODAL -->
+  <div id="rulesModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Miss Miami 2026 Official Rules & Regulations</h2>
+        <button class="modal-close" onclick="closeRulesModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h3>Eligibility Requirements</h3>
+        <ul>
+          <li>Must be between 18 and 28 years of age as of November 15, 2026</li>
+          <li>Must be a citizen or permanent resident of the United States</li>
+          <li>Must have a high school diploma or equivalent</li>
+          <li>No professional modeling experience required</li>
+          <li>Never been married or in a civil union</li>
+          <li>No children or pregnant</li>
+        </ul>
+
+        <h3>Application Requirements</h3>
+        <ul>
+          <li>Complete all sections of the application form</li>
+          <li>Provide accurate and truthful information</li>
+          <li>Submit 3 professional photos (headshot, full-length, casual)</li>
+          <li>Pay the $250 application fee</li>
+          <li>Accept all pageant rules and regulations</li>
+          <li>Consent to use of photos for promotional materials</li>
+        </ul>
+
+        <h3>Conduct & Behavior</h3>
+        <ul>
+          <li>Maintain respectful conduct at all times</li>
+          <li>No disruptive behavior during events or rehearsals</li>
+          <li>Must be present for all scheduled events and appearances</li>
+          <li>Must represent Miss Miami with grace and dignity</li>
+          <li>Follow all COVID-19 and health protocols</li>
+        </ul>
+
+        <h3>Judging & Competition</h3>
+        <ul>
+          <li>Scoring based on: Interview (30%), Evening Gown (30%), Swimwear (20%), Overall Presence (20%)</li>
+          <li>Judges' decisions are final</li>
+          <li>No appeals process for judging decisions</li>
+          <li>Ties will be broken by judges' vote</li>
+        </ul>
+
+        <h3>Disqualification</h3>
+        <p>Participants may be disqualified for:</p>
+        <ul>
+          <li>Providing false or misleading information</li>
+          <li>Violating pageant conduct rules</li>
+          <li>Engaging in illegal activities</li>
+          <li>Failure to comply with pageant requirements</li>
+          <li>Inappropriate social media posts</li>
+        </ul>
+
+        <h3>Rights & Permissions</h3>
+        <ul>
+          <li>Miss Miami retains the right to use contestant photos for promotional purposes</li>
+          <li>Contestants grant permission for video/audio recording</li>
+          <li>Photos may be shared on official social media accounts</li>
+          <li>No compensation for use of contestant images</li>
+        </ul>
+
+        <h3>Refund Policy</h3>
+        <p>The $250 application fee is non-refundable after submission. Contestants who withdraw before the pageant forfeit their entry fee.</p>
+
+        <h3>Technical Support</h3>
+        <p>Contestants will receive 365 days of technical support after platform launch for all application-related inquiries.</p>
+
+        <p style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #ddd; font-weight: 600;">
+          By checking the agreement box, you confirm that you have read and understood these rules and agree to comply with all requirements.
+        </p>
+      </div>
+    </div>
   </div>
 
   <!-- FOOTER -->
@@ -1072,6 +1163,38 @@
       });
     }, { threshold: 0.1 });
     sections.forEach(s => scrollObs.observe(s));
+
+    // Modal functions for Rules
+    function openRulesModal() {
+      const modal = document.getElementById('rulesModal');
+      if (modal) {
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeRulesModal() {
+      const modal = document.getElementById('rulesModal');
+      if (modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    // Close modal when clicking outside content
+    window.addEventListener('click', function(event) {
+      const modal = document.getElementById('rulesModal');
+      if (modal && event.target === modal) {
+        closeRulesModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeRulesModal();
+      }
+    });
 
     // Set first step as active on load
     if (stepEls.length > 0) {
