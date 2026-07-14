@@ -36,14 +36,14 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 56px; height: 90px;
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(212,175,55,0.15);
+      background: transparent;
+      backdrop-filter: none;
+      border-bottom: none;
     }
     .logo { display: flex; align-items: center; gap: 12px; }
     .logo-img { height: 80px; width: auto; display: block; object-fit: contain; }
     nav { display: flex; align-items: center; gap: 32px; }
-    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #1A0800; transition: color var(--tr); position: relative; opacity: 0.8; }
+    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #1A0800; transition: color var(--tr); position: relative; opacity: 1; }
     nav a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform var(--tr); }
     nav a:hover { color: var(--gold); }
     nav a:hover::after, nav a.active::after { transform: scaleX(1); }
@@ -77,9 +77,9 @@
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.15); }
     }
-    .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.78) !important; border: 1px solid rgba(212,175,55,0.25); padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
+    .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9922A !important; border: 1.5px solid #7A4F10; padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
     .btn-account::after { display: none !important; }
-    .btn-account:hover { color: var(--gold) !important; border-color: rgba(212,175,55,0.6); }
+    .btn-account:hover { color: #D4AF37 !important; border-color: #C9922A; }
     .menu-toggle {
       display: none;
       flex-direction: column;
