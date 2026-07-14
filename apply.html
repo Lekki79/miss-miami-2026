@@ -1282,7 +1282,13 @@
         // Handle checkboxes differently
         if (field.type === 'checkbox') {
           if (!field.checked) {
-            showError(field.id || field.name, 'This field is required');
+            const labels = {
+              'terms': 'You must confirm information accuracy',
+              'age': 'You must confirm you are 18-28 years old',
+              'rules': 'You must accept the pageant rules',
+              'photo_consent': 'You must consent to photo usage'
+            };
+            showError(field.id || field.name, labels[field.id] || 'This field is required');
             isValid = false;
           } else {
             clearError(field.id || field.name);
@@ -1293,7 +1299,25 @@
         const value = field.value.trim();
 
         if (!value) {
-          showError(field.id || field.name, 'This field is required');
+          const labels = {
+            'first_name': 'First name is required',
+            'last_name': 'Last name is required',
+            'dob': 'Date of birth is required',
+            'city': 'City is required',
+            'email': 'Email address is required',
+            'phone': 'Phone number is required',
+            'address': 'Home address is required',
+            'education': 'Education level is required',
+            'occupation': 'Occupation is required',
+            'height': 'Height is required',
+            'competed': 'Competition history is required',
+            'languages': 'Languages spoken is required',
+            'talents': 'Talents/skills are required',
+            'essay1': 'Essay 1 is required',
+            'essay2': 'Essay 2 is required',
+            'essay3': 'Essay 3 is required'
+          };
+          showError(field.id || field.name, labels[field.id] || 'This field is required');
           isValid = false;
         } else {
           // First Name & Last Name - min 2 chars
