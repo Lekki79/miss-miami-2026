@@ -319,21 +319,37 @@
     .radio-item, .check-item {
       display: flex; align-items: center; gap: 12px;
       cursor: pointer;
+      flex-wrap: wrap;
     }
     .radio-item input[type="radio"],
     .check-item input[type="checkbox"] {
       width: 18px; height: 18px;
-      border: 1px solid rgba(212,175,55,0.3);
-      background: transparent;
+      border: 1.5px solid #1A0800;
+      background: #DDB870;
       cursor: pointer;
       flex-shrink: 0;
       padding: 0;
-      accent-color: var(--gold);
+      accent-color: #C9922A;
+      transition: all var(--tr);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .check-item input[type="checkbox"]:checked {
+      background: #C9922A;
+    }
+    .check-item input[type="checkbox"].error {
+      border-color: #E74C3C;
+      background: #FADBD8;
     }
     .radio-item span, .check-item span {
       font-size: 13px;
       color: #1A0800;
       opacity: 0.8;
+    }
+    .check-item .error-message {
+      width: 100%;
+      margin-left: 30px;
+      margin-top: 0;
     }
 
     /* ── FILE UPLOAD ── */
@@ -699,7 +715,7 @@
           </div>
           <div class="field">
             <label>Date of Birth *</label>
-            <div style="position: relative;">
+            <div style="position: relative; width: 100%;">
               <input type="text" id="dob-input" name="dob" placeholder="MM/DD/YYYY" readonly style="cursor: pointer; background: #FFF8E7;" required />
               <div id="date-picker" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 2px solid #C9922A; border-radius: 8px; padding: 16px; z-index: 10000; min-width: 300px; max-height: 400px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"></div>
             </div>
@@ -721,8 +737,9 @@
             <span class="error-message"></span>
           </div>
           <div class="field span2">
-            <label>Home Address</label>
-            <input type="text" name="address" placeholder="Street, City, State, ZIP" />
+            <label>Home Address *</label>
+            <input type="text" id="address" name="address" placeholder="Street, City, State, ZIP" required />
+            <span class="error-message"></span>
           </div>
         </div>
       </div>
@@ -735,8 +752,8 @@
         </div>
         <div class="form-grid">
           <div class="field">
-            <label>Education Level</label>
-            <select name="education">
+            <label>Education Level *</label>
+            <select id="education" name="education" required>
               <option value="" disabled selected>Select...</option>
               <option>High School</option>
               <option>Some College</option>
@@ -744,32 +761,38 @@
               <option>Master's Degree</option>
               <option>Doctoral Degree</option>
             </select>
+            <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>Current Occupation</label>
-            <input type="text" name="occupation" placeholder="Student / Professional" />
+            <label>Current Occupation *</label>
+            <input type="text" id="occupation" name="occupation" placeholder="Student / Professional" required />
+            <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>Height</label>
-            <input type="text" name="height" placeholder='e.g. 5&apos;7"' />
+            <label>Height *</label>
+            <input type="text" id="height" name="height" placeholder='e.g. 5&apos;7"' required />
+            <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>Have you competed before?</label>
-            <select name="competed">
+            <label>Have you competed before? *</label>
+            <select id="competed" name="competed" required>
               <option value="" disabled selected>Select...</option>
               <option>No, this is my first time</option>
               <option>Yes, local pageant</option>
               <option>Yes, state pageant</option>
               <option>Yes, national pageant</option>
             </select>
+            <span class="error-message"></span>
           </div>
           <div class="field span2">
-            <label>Languages Spoken</label>
-            <input type="text" name="languages" placeholder="English, Spanish, French..." />
+            <label>Languages Spoken *</label>
+            <input type="text" id="languages" name="languages" placeholder="English, Spanish, French..." required />
+            <span class="error-message"></span>
           </div>
           <div class="field span2">
-            <label>Special Talents or Skills</label>
-            <textarea name="talents" placeholder="Dancing, singing, public speaking, athletics..."></textarea>
+            <label>Special Talents or Skills *</label>
+            <textarea id="talents" name="talents" placeholder="Dancing, singing, public speaking, athletics..." required></textarea>
+            <span class="error-message"></span>
           </div>
         </div>
       </div>
@@ -792,8 +815,9 @@
             <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>How do you embody the values of Beauty, Confidence and Purpose?</label>
-            <textarea name="essay3" rows="5" placeholder="Share a personal experience that reflects these values..."></textarea>
+            <label>How do you embody the values of Beauty, Confidence and Purpose? *</label>
+            <textarea id="essay3" name="essay3" rows="5" placeholder="Share a personal experience that reflects these values..." required></textarea>
+            <span class="error-message"></span>
           </div>
         </div>
       </div>
@@ -839,9 +863,9 @@
           </div>
 
           <div class="field">
-            <label>Upload Videos (optional)</label>
+            <label>Upload Videos *</label>
             <div class="file-upload" id="video-upload">
-              <input type="file" id="videos" name="videos" accept="video/*" multiple />
+              <input type="file" id="videos" name="videos" accept="video/*" multiple required />
               <div class="file-upload-icon">
                 <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                   <defs>
@@ -915,18 +939,22 @@
           <div class="check-item">
             <input type="checkbox" id="terms" name="terms" required />
             <span>I confirm that all information provided is accurate and truthful. I understand that false information may result in disqualification. *</span>
+            <span class="error-message"></span>
           </div>
           <div class="check-item">
             <input type="checkbox" id="age" name="age" required />
             <span>I confirm that I am between 18 and 28 years of age as of the pageant date (November 15, 2026). *</span>
+            <span class="error-message"></span>
           </div>
           <div class="check-item">
             <input type="checkbox" id="rules" name="rules" required />
             <span>I have read and agree to the Miss Miami Official Rules & Regulations. *</span>
+            <span class="error-message"></span>
           </div>
           <div class="check-item">
-            <input type="checkbox" id="photo_consent" name="photo_consent" />
-            <span>I consent to my photos and likeness being used for Miss Miami promotional materials.</span>
+            <input type="checkbox" id="photo_consent" name="photo_consent" required />
+            <span>I consent to my photos and likeness being used for Miss Miami promotional materials. *</span>
+            <span class="error-message"></span>
           </div>
         </div>
 
@@ -1194,7 +1222,12 @@
     function showError(inputId, message) {
       const input = document.getElementById(inputId);
       if (!input) return;
-      const errorEl = input.parentElement.querySelector('.error-message');
+
+      // Find .field parent (handles nested divs like date picker)
+      let fieldEl = input.closest('.field');
+      if (!fieldEl) fieldEl = input.parentElement;
+
+      const errorEl = fieldEl.querySelector('.error-message');
       if (errorEl) {
         errorEl.textContent = message;
         errorEl.classList.add('show');
@@ -1205,14 +1238,22 @@
     function clearError(inputId) {
       const input = document.getElementById(inputId);
       if (!input) return;
-      const errorEl = input.parentElement.querySelector('.error-message');
+
+      // Find .field parent (handles nested divs like date picker)
+      let fieldEl = input.closest('.field');
+      if (!fieldEl) fieldEl = input.parentElement;
+
+      const errorEl = fieldEl.querySelector('.error-message');
       if (errorEl) errorEl.classList.remove('show');
       input.classList.remove('error');
     }
 
     function showFileUploadError(uploadContainerId, message) {
       const container = document.getElementById(uploadContainerId);
-      const errorEl = container.parentElement.querySelector('.error-message');
+      let fieldEl = container.closest('.field');
+      if (!fieldEl) fieldEl = container.parentElement;
+
+      const errorEl = fieldEl.querySelector('.error-message');
       if (errorEl) {
         errorEl.textContent = message;
         errorEl.classList.add('show');
@@ -1222,7 +1263,10 @@
 
     function clearFileUploadError(uploadContainerId) {
       const container = document.getElementById(uploadContainerId);
-      const errorEl = container.parentElement.querySelector('.error-message');
+      let fieldEl = container.closest('.field');
+      if (!fieldEl) fieldEl = container.parentElement;
+
+      const errorEl = fieldEl.querySelector('.error-message');
       if (errorEl) errorEl.classList.remove('show');
       container.classList.remove('error');
     }
@@ -1234,6 +1278,18 @@
       // Validate required fields
       const requiredFields = form.querySelectorAll('[required]');
       requiredFields.forEach(field => {
+        // Handle checkboxes differently
+        if (field.type === 'checkbox') {
+          if (!field.checked) {
+            showError(field.id || field.name, 'This field is required');
+            isValid = false;
+          } else {
+            clearError(field.id || field.name);
+          }
+          return; // ← ВАЖНО: скип остального кода для checkbox!
+        }
+
+        // Handle text, email, tel, textarea, file, etc.
         const value = field.value.trim();
 
         if (!value) {
@@ -1263,7 +1319,7 @@
         }
       });
 
-      // Validate email
+      // Validate email (only if has value)
       const email = document.querySelector('input[type="email"]');
       if (email && email.value) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1274,6 +1330,7 @@
           clearError(email.id || email.name);
         }
       }
+      // Note: empty email is handled by required fields check above
 
       // Validate date of birth (age 18+)
       const dob = document.getElementById('dob-input');
@@ -1318,13 +1375,24 @@
     // Add real-time validation
     document.getElementById('apply-form').querySelectorAll('input, select, textarea').forEach(field => {
       field.addEventListener('blur', function() {
+        if (this.type === 'checkbox') return; // Skip checkboxes
         if (this.value.trim()) {
           clearError(this.id || this.name);
         }
       });
 
       field.addEventListener('input', function() {
+        if (this.type === 'checkbox') return; // Skip checkboxes
         if (this.classList.contains('error') && this.value.trim()) {
+          clearError(this.id || this.name);
+        }
+      });
+    });
+
+    // Real-time validation for checkboxes
+    document.getElementById('apply-form').querySelectorAll('input[type="checkbox"][required]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
           clearError(this.id || this.name);
         }
       });
