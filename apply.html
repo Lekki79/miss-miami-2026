@@ -1287,17 +1287,16 @@
           } else {
             clearError(field.id || field.name);
           }
-          return; // ← ВАЖНО: скип остального кода для checkbox!
+          return;
         }
 
-        // Handle text, email, tel, textarea, file, etc.
         const value = field.value.trim();
 
         if (!value) {
           showError(field.id || field.name, 'This field is required');
           isValid = false;
         } else {
-          // Validate name fields (minimum 2 characters)
+          // First Name & Last Name - min 2 chars
           if (field.name === 'first_name' || field.name === 'last_name') {
             if (value.length < 2) {
               showError(field.id || field.name, 'Minimum 2 characters required');
@@ -1306,10 +1305,80 @@
               clearError(field.id || field.name);
             }
           }
-          // Validate city (minimum 2 characters)
+          // City - min 3 chars, letters only
           else if (field.name === 'city') {
+            if (value.length < 3) {
+              showError(field.id || field.name, 'City minimum 3 letters');
+              isValid = false;
+            } else if (!/^[a-zA-Z\s]+$/.test(value)) {
+              showError(field.id || field.name, 'City letters only, no numbers');
+              isValid = false;
+            } else {
+              clearError(field.id || field.name);
+            }
+          }
+          // Home Address - min 15 chars
+          else if (field.name === 'address') {
+            if (value.length < 15) {
+              showError(field.id || field.name, 'Address minimum 15 characters');
+              isValid = false;
+            } else {
+              clearError(field.id || field.name);
+            }
+          }
+          // Occupation - min 2 chars
+          else if (field.name === 'occupation') {
             if (value.length < 2) {
-              showError(field.id || field.name, 'Minimum 2 characters required');
+              showError(field.id || field.name, 'Occupation required');
+              isValid = false;
+            } else {
+              clearError(field.id || field.name);
+            }
+          }
+          // Languages - min 2 chars
+          else if (field.name === 'languages') {
+            if (value.length < 2) {
+              showError(field.id || field.name, 'Languages required');
+              isValid = false;
+            } else {
+              clearError(field.id || field.name);
+            }
+          }
+          // Talents - min 10 chars
+          else if (field.name === 'talents') {
+            if (value.length < 10) {
+              showError(field.id || field.name, 'Talents minimum 10 characters');
+              isValid = false;
+            } else {
+              clearError(field.id || field.name);
+            }
+          }
+          // Essay 1 - 200-400 words
+          else if (field.name === 'essay1') {
+            const wordCount = value.split(/\s+/).filter(w => w).length;
+            if (wordCount < 200) {
+              showError(field.id || field.name, `Essay minimum 200 words (current: ${wordCount})`);
+              isValid = false;
+            } else if (wordCount > 400) {
+              showError(field.id || field.name, `Essay maximum 400 words (current: ${wordCount})`);
+              isValid = false;
+            } else {
+              clearError(field.id || field.name);
+            }
+          }
+          // Essay 2 - min 150 chars
+          else if (field.name === 'essay2') {
+            if (value.length < 150) {
+              showError(field.id || field.name, 'Essay minimum 150 characters');
+              isValid = false;
+            } else {
+              clearError(field.id || field.name);
+            }
+          }
+          // Essay 3 - min 150 chars
+          else if (field.name === 'essay3') {
+            if (value.length < 150) {
+              showError(field.id || field.name, 'Essay minimum 150 characters');
               isValid = false;
             } else {
               clearError(field.id || field.name);
@@ -1320,20 +1389,43 @@
         }
       });
 
-      // Validate email (only if has value)
+      // Validate email format
       const email = document.querySelector('input[type="email"]');
       if (email && email.value) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email.value)) {
-          showError(email.id || email.name, 'Invalid email format (example@domain.com)');
+          showError(email.id || email.name, 'Invalid email format');
           isValid = false;
         } else {
           clearError(email.id || email.name);
         }
       }
-      // Note: empty email is handled by required fields check above
 
-      // Validate date of birth (age 18+)
+      // Validate phone format +1 (305) 000-0000
+      const phone = document.querySelector('input[type="tel"]');
+      if (phone && phone.value) {
+        const phoneRegex = /^\+1\s\(\d{3}\)\s\d{3}-\d{4}$/;
+        if (!phoneRegex.test(phone.value)) {
+          showError(phone.id || phone.name, 'Invalid phone format. Use: +1 (305) 000-0000');
+          isValid = false;
+        } else {
+          clearError(phone.id || phone.name);
+        }
+      }
+
+      // Validate height format
+      const height = document.getElementById('height');
+      if (height && height.value) {
+        const heightRegex = /^[4-7]'[0-9]"$/;
+        if (!heightRegex.test(height.value)) {
+          showError(height.id || height.name, 'Invalid height format. Use: 5\'7"');
+          isValid = false;
+        } else {
+          clearError(height.id || height.name);
+        }
+      }
+
+      // Validate date of birth (age 18-28)
       const dob = document.getElementById('dob-input');
       if (dob && dob.value) {
         const parts = dob.value.split('/');
@@ -1349,11 +1441,8 @@
             age--;
           }
 
-          if (age < 18) {
-            showError('dob-input', 'Must be at least 18 years old');
-            isValid = false;
-          } else if (age > 100) {
-            showError('dob-input', 'Please enter a valid date of birth');
+          if (age < 18 || age > 28) {
+            showError('dob-input', 'Must be between 18-28 years old');
             isValid = false;
           } else {
             clearError('dob-input');
@@ -1361,23 +1450,17 @@
         }
       }
 
-      // Validate photos (required)
+      // Validate photos (minimum 3 required)
       const photosInput = document.getElementById('photos');
-      if (!photosInput.files || photosInput.files.length === 0) {
-        showFileUploadError('photo-upload', 'At least one photo is required');
+      if (!photosInput.files || photosInput.files.length < 3) {
+        showFileUploadError('photo-upload', 'Minimum 3 photos required');
         isValid = false;
       } else {
         clearFileUploadError('photo-upload');
       }
 
-      // Validate videos (required)
-      const videosInput = document.getElementById('videos');
-      if (!videosInput.files || videosInput.files.length === 0) {
-        showFileUploadError('video-upload', 'At least one video is required');
-        isValid = false;
-      } else {
-        clearFileUploadError('video-upload');
-      }
+      // Validate videos (optional now)
+      // Videos are optional, so no validation needed
 
       return isValid;
     }
