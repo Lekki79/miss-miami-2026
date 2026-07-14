@@ -636,8 +636,8 @@
     .modal-body p { margin-bottom: 12px; }
     .modal-body ul { margin-left: 20px; margin-bottom: 12px; }
     .modal-body li { margin-bottom: 8px; }
-    .read-rules-btn { background: none; border: none; color: #C9922A; text-decoration: underline; cursor: pointer; font-weight: 600; padding: 0 4px; margin-left: 4px; }
-    .read-rules-btn:hover { color: #D4AF37; }
+    .read-rules-btn { background: #C9922A; color: white; border: 2px solid #C9922A; cursor: pointer; font-weight: 700; padding: 6px 14px; margin: 0 6px; border-radius: 4px; font-size: 13px; transition: all 0.3s ease; display: inline-block; }
+    .read-rules-btn:hover { background: #D4AF37; border-color: #D4AF37; transform: scale(1.05); }
   </style>
 </head>
 <body>
@@ -964,7 +964,7 @@
           </div>
           <div class="check-item">
             <input type="checkbox" id="rules" name="rules" required />
-            <span>I have read and agree to the Miss Miami Official Rules & Regulations. <button type="button" class="read-rules-btn" onclick="openRulesModal()">READ RULES</button> *</span>
+            <span>I have read and agree to the Miss Miami Official Rules & Regulations. <button type="button" class="read-rules-btn" onclick="openRulesModal()">📖 READ RULES</button> *</span>
             <span class="error-message"></span>
           </div>
           <div class="check-item">
