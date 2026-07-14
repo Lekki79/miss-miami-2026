@@ -47,7 +47,7 @@
     nav a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform var(--tr); }
     nav a:hover { color: var(--gold); }
     nav a:hover::after, nav a.active::after { transform: scaleX(1); }
-    nav a.active { color: var(--gold); }
+    nav a.active { color: #1A0800; }
     .btn-nav {
       padding: 10px 28px;
       background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
@@ -77,9 +77,9 @@
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.15); }
     }
-    .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9922A !important; border: 1.5px solid #7A4F10; padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
+    .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #1A0800 !important; border: 1.5px solid #7A4F10; padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
     .btn-account::after { display: none !important; }
-    .btn-account:hover { color: #D4AF37 !important; border-color: #C9922A; }
+    .btn-account:hover { color: #C9922A !important; border-color: #C9922A; }
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -641,7 +641,7 @@
       <a href="sponsors.html">Sponsors</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
-      <a href="dashboard.html" class="btn-account">My Account</a>
+      <a href="dashboard.html" class="btn-account" style="color: #1A0800 !important;">My Account</a>
       <a href="apply.html" class="btn-nav">Apply Now</a>
     </nav>
     <button class="menu-toggle" id="menu-toggle">
