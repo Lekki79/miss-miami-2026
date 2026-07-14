@@ -636,8 +636,39 @@
     .modal-body p { margin-bottom: 12px; }
     .modal-body ul { margin-left: 20px; margin-bottom: 12px; }
     .modal-body li { margin-bottom: 8px; }
-    .read-rules-btn { background: #C9922A; color: white; border: 2px solid #C9922A; cursor: pointer; font-weight: 700; padding: 6px 14px; margin: 0 6px; border-radius: 4px; font-size: 13px; transition: all 0.3s ease; display: inline-block; }
-    .read-rules-btn:hover { background: #D4AF37; border-color: #D4AF37; transform: scale(1.05); }
+    .read-rules-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px;
+      background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
+      background-size: 250% auto;
+      color: #FFF8E7;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+      animation: bronzeFlow 8s ease-in-out infinite;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .read-rules-btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 55%; height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,248,220,0.3) 50%, transparent 100%);
+      animation: bronzeSheen 7s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .read-rules-btn:hover {
+      background-position: right center;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -719,17 +750,17 @@
         </div>
         <div class="form-grid">
           <div class="field">
-            <label>First Name *</label>
+            <label>First Name</label>
             <input type="text" id="first_name" name="first_name" placeholder="Isabella" required />
             <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>Last Name *</label>
+            <label>Last Name</label>
             <input type="text" id="last_name" name="last_name" placeholder="Moretti" required />
             <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>Date of Birth *</label>
+            <label>Date of Birth</label>
             <div style="position: relative; width: 100%;">
               <input type="text" id="dob-input" name="dob" placeholder="MM/DD/YYYY" readonly style="cursor: pointer; background: #FFF8E7;" required />
               <div id="date-picker" style="display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 8px; background: white; border: 2px solid #C9922A; border-radius: 8px; padding: 16px; z-index: 10000; min-width: 300px; max-height: 400px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"></div>
@@ -737,22 +768,22 @@
             <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>City of Residence *</label>
+            <label>City of Residence</label>
             <input type="text" id="city" name="city" placeholder="Miami, FL" required />
             <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>Email Address *</label>
+            <label>Email Address</label>
             <input type="email" id="email" name="email" placeholder="your@email.com" required />
             <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>Phone Number *</label>
+            <label>Phone Number</label>
             <input type="tel" id="phone" name="phone" placeholder="+1 (305) 000-0000" required />
             <span class="error-message"></span>
           </div>
           <div class="field span2">
-            <label>Home Address *</label>
+            <label>Home Address</label>
             <input type="text" id="address" name="address" placeholder="Street, City, State, ZIP" required />
             <span class="error-message"></span>
           </div>
@@ -767,7 +798,7 @@
         </div>
         <div class="form-grid">
           <div class="field">
-            <label>Education Level *</label>
+            <label>Education Level</label>
             <select id="education" name="education" required>
               <option value="" disabled selected>Select...</option>
               <option>High School</option>
@@ -779,17 +810,17 @@
             <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>Current Occupation *</label>
+            <label>Current Occupation</label>
             <input type="text" id="occupation" name="occupation" placeholder="Student / Professional" required />
             <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>Height *</label>
+            <label>Height</label>
             <input type="text" id="height" name="height" placeholder='e.g. 5&apos;7"' required />
             <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>Have you competed before? *</label>
+            <label>Have you competed before?</label>
             <select id="competed" name="competed" required>
               <option value="" disabled selected>Select...</option>
               <option>No, this is my first time</option>
@@ -800,12 +831,12 @@
             <span class="error-message"></span>
           </div>
           <div class="field span2">
-            <label>Languages Spoken *</label>
+            <label>Languages Spoken</label>
             <input type="text" id="languages" name="languages" placeholder="English, Spanish, French..." required />
             <span class="error-message"></span>
           </div>
           <div class="field span2">
-            <label>Special Talents or Skills *</label>
+            <label>Special Talents or Skills</label>
             <textarea id="talents" name="talents" placeholder="Dancing, singing, public speaking, athletics..." required></textarea>
             <span class="error-message"></span>
           </div>
@@ -820,17 +851,17 @@
         </div>
         <div class="form-grid full">
           <div class="field">
-            <label>Why do you want to become Miss Miami? (200–400 words) *</label>
+            <label>Why do you want to become Miss Miami? (200–400 words)</label>
             <textarea id="essay1" name="essay1" rows="6" placeholder="Share your story, your goals and what Miss Miami means to you..." required></textarea>
             <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>What cause or platform would you champion during your reign? *</label>
+            <label>What cause or platform would you champion during your reign?</label>
             <textarea id="essay2" name="essay2" rows="6" placeholder="Describe your passion and how you would use the Miss Miami title to create impact..." required></textarea>
             <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>How do you embody the values of Beauty, Confidence and Purpose? *</label>
+            <label>How do you embody the values of Beauty, Confidence and Purpose?</label>
             <textarea id="essay3" name="essay3" rows="5" placeholder="Share a personal experience that reflects these values..." required></textarea>
             <span class="error-message"></span>
           </div>
@@ -856,7 +887,7 @@
 
         <div class="form-grid full">
           <div class="field">
-            <label>Upload Photos (Headshot, Full-length, Casual, etc.) *</label>
+            <label>Upload Photos (Headshot, Full-length, Casual, etc.)</label>
             <div class="file-upload" id="photo-upload">
               <input type="file" id="photos" name="photos" accept="image/*" multiple required />
               <div class="file-upload-icon">
@@ -878,7 +909,7 @@
           </div>
 
           <div class="field">
-            <label>Upload Videos *</label>
+            <label>Upload Videos</label>
             <div class="file-upload" id="video-upload">
               <input type="file" id="videos" name="videos" accept="video/*" multiple required />
               <div class="file-upload-icon">
@@ -954,22 +985,22 @@
         <div class="terms-box">
           <div class="check-item">
             <input type="checkbox" id="terms" name="terms" required />
-            <span>I confirm that all information provided is accurate and truthful. I understand that false information may result in disqualification. *</span>
+            <span>I confirm that all information provided is accurate and truthful. I understand that false information may result in disqualification.</span>
             <span class="error-message"></span>
           </div>
           <div class="check-item">
             <input type="checkbox" id="age" name="age" required />
-            <span>I confirm that I am between 18 and 28 years of age as of the pageant date (November 15, 2026). *</span>
+            <span>I confirm that I am between 18 and 28 years of age as of the pageant date (November 15, 2026).</span>
             <span class="error-message"></span>
           </div>
           <div class="check-item">
             <input type="checkbox" id="rules" name="rules" required />
-            <span>I have read and agree to the Miss Miami Official Rules & Regulations. <button type="button" class="read-rules-btn" onclick="openRulesModal()">📖 READ RULES</button> *</span>
+            <span>I have read and agree to the Miss Miami Official Rules & Regulations. <button type="button" class="read-rules-btn" onclick="openRulesModal()">READ RULES</button></span>
             <span class="error-message"></span>
           </div>
           <div class="check-item">
             <input type="checkbox" id="photo_consent" name="photo_consent" required />
-            <span>I consent to my photos and likeness being used for Miss Miami promotional materials. *</span>
+            <span>I consent to my photos and likeness being used for Miss Miami promotional materials.</span>
             <span class="error-message"></span>
           </div>
         </div>
