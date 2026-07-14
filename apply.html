@@ -1370,6 +1370,15 @@
         clearFileUploadError('photo-upload');
       }
 
+      // Validate videos (required)
+      const videosInput = document.getElementById('videos');
+      if (!videosInput.files || videosInput.files.length === 0) {
+        showFileUploadError('video-upload', 'At least one video is required');
+        isValid = false;
+      } else {
+        clearFileUploadError('video-upload');
+      }
+
       return isValid;
     }
 
