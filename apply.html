@@ -227,7 +227,6 @@
     .form-section-title .num {
       width: 40px; height: 40px;
       background: #C9922A;
-      border: 2px solid #7A4F10;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-family: 'Cinzel', serif; font-size: 16px;
@@ -237,21 +236,20 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       transition: all 0.3s ease;
       position: relative;
-      overflow: hidden;
     }
     .form-section-title .num::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border: 2px dashed #7A4F10;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border: 2px solid #7A4F10;
       border-radius: 50%;
-      animation: rotateDashedBorder 4s linear infinite;
-      pointer-events: none;
+      animation: rotateBorder 4s linear infinite;
+      z-index: -1;
     }
-    @keyframes rotateDashedBorder {
+    @keyframes rotateBorder {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
