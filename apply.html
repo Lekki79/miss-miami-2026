@@ -237,9 +237,21 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       transition: all 0.3s ease;
       position: relative;
-      animation: rotateBorder 3s linear infinite;
+      overflow: hidden;
     }
-    @keyframes rotateBorder {
+    .form-section-title .num::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px dashed #7A4F10;
+      border-radius: 50%;
+      animation: rotateDashedBorder 4s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes rotateDashedBorder {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
