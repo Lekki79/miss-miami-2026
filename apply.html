@@ -1666,8 +1666,14 @@
         clearFileUploadError('photo-upload');
       }
 
-      // Validate videos (optional now)
-      // Videos are optional, so no validation needed
+      // Validate videos (minimum 1 required)
+      const videosInput = document.getElementById('videos');
+      if (!videosInput.files || videosInput.files.length < 1) {
+        showFileUploadError('video-upload', 'Minimum 1 video required');
+        isValid = false;
+      } else {
+        clearFileUploadError('video-upload');
+      }
 
       // Update section status circles
       updateSectionStatus();
