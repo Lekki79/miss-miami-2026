@@ -161,7 +161,20 @@
       flex-shrink: 0;
       background: #C9922A;
       font-weight: 700;
+      animation: stepPopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      opacity: 0;
+      transform: scale(0);
     }
+    @keyframes stepPopIn {
+      0% { opacity: 0; transform: scale(0); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .step:nth-child(1) .step-num { animation-delay: 0.1s; }
+    .step:nth-child(3) .step-num { animation-delay: 0.3s; }
+    .step:nth-child(5) .step-num { animation-delay: 0.5s; }
+    .step:nth-child(7) .step-num { animation-delay: 0.7s; }
+    .step:nth-child(9) .step-num { animation-delay: 0.9s; }
+    .step:nth-child(11) .step-num { animation-delay: 1.1s; }
     .step.active .step-num {
       border-color: #C9922A;
       color: #FFF8E7;
@@ -222,6 +235,22 @@
       flex-shrink: 0;
       font-weight: 700;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .form-section-title .num.completed {
+      background: #2ECC71;
+      border-color: #27AE60;
+      animation: numPopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .form-section-title .num.error {
+      border-color: #E74C3C;
+      box-shadow: 0 0 8px rgba(231, 76, 60, 0.4);
+    }
+    @keyframes numPopIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     /* ── FORM GRID ── */
@@ -1640,7 +1669,43 @@
       // Validate videos (optional now)
       // Videos are optional, so no validation needed
 
+      // Update section status circles
+      updateSectionStatus();
+
       return isValid;
+    }
+
+    function updateSectionStatus() {
+      const sections = document.querySelectorAll('.form-section');
+      sections.forEach((section, index) => {
+        const sectionNum = index + 1;
+        const numCircle = section.querySelector('.num');
+        if (!numCircle) return;
+
+        // Get all required fields in this section
+        const requiredFields = section.querySelectorAll('[required]');
+        let sectionValid = true;
+
+        requiredFields.forEach(field => {
+          if (field.classList.contains('error')) {
+            sectionValid = false;
+          }
+        });
+
+        // Update circle appearance
+        if (sectionValid && requiredFields.length > 0) {
+          numCircle.classList.add('completed');
+          numCircle.classList.remove('error');
+          numCircle.textContent = '✓';
+        } else if (!sectionValid) {
+          numCircle.classList.add('error');
+          numCircle.classList.remove('completed');
+          numCircle.textContent = sectionNum;
+        } else {
+          numCircle.classList.remove('completed', 'error');
+          numCircle.textContent = sectionNum;
+        }
+      });
     }
 
     // Add real-time validation
