@@ -244,12 +244,12 @@
       left: -2px;
       right: -2px;
       bottom: -2px;
-      border: 2px solid #7A4F10;
       border-radius: 50%;
-      animation: rotateBorder 4s linear infinite;
+      background: conic-gradient(from 0deg, #D4AF37, #C9922A, #7A4F10, #C9922A, #D4AF37);
+      animation: rotateGradient 3s linear infinite;
       z-index: -1;
     }
-    @keyframes rotateBorder {
+    @keyframes rotateGradient {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
