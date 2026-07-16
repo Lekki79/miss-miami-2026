@@ -85,28 +85,23 @@
       flex-direction: column;
       gap: 6px;
       cursor: pointer;
+      padding: 10px 12px;
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 4px;
       background: none;
-      border: none;
-      padding: 8px;
-      z-index: 101;
+      transition: border-color var(--transition);
     }
+    .menu-toggle:hover { border-color: rgba(201,168,76,0.55); }
     .menu-toggle span {
       display: block;
-      width: 24px;
-      height: 2.5px;
-      background: #1A0800;
-      transition: all var(--tr);
-      border-radius: 2px;
+      height: 1px;
+      background: var(--gold);
+      transition: var(--transition);
+      border-radius: 1px;
     }
-    .menu-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(10px, 10px);
-    }
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -7px);
-    }
+    .menu-toggle span:nth-child(1) { width: 20px; }
+    .menu-toggle span:nth-child(2) { width: 14px; }
+    .menu-toggle span:nth-child(3) { width: 20px; }
 
     /* ── PAGE HERO ── */
     .page-hero {
@@ -1197,21 +1192,29 @@
   </footer>
 
   <script>
-    // Mobile menu with animated toggle
+    // Mobile menu with animated toggle (matching Home design)
     const toggle = document.getElementById('menu-toggle');
     const nav = document.getElementById('main-nav');
     const backdrop = document.getElementById('menu-backdrop');
 
     toggle.addEventListener('click', () => {
       nav.classList.toggle('open');
-      toggle.classList.toggle('active');
-      backdrop.style.display = nav.classList.contains('open') ? 'block' : 'none';
+      const spans = toggle.querySelectorAll('span');
+      if (nav.classList.contains('open')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+        backdrop.style.display = 'block';
+      } else {
+        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+        backdrop.style.display = 'none';
+      }
     });
 
     // Close menu when clicking backdrop
     backdrop.addEventListener('click', () => {
       nav.classList.remove('open');
-      toggle.classList.remove('active');
+      toggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
       backdrop.style.display = 'none';
     });
 
@@ -1219,7 +1222,7 @@
     nav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         nav.classList.remove('open');
-        toggle.classList.remove('active');
+        toggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
         backdrop.style.display = 'none';
       });
     });
