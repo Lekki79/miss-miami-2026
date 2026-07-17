@@ -127,6 +127,22 @@
     .page-hero h1 { font-size: clamp(32px, 4vw, 52px); color: var(--white); margin-bottom: 16px; }
     .page-hero p { font-size: 14px; color: #1A0800; opacity: 0.85; max-width: 540px; margin: 0 auto; line-height: 1.9; }
 
+    /* ── SECTION DIVIDER ── */
+    .section-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, #C9922A 20%, #C9922A 80%, transparent 100%);
+      margin: 24px 0;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1A0800;
+      letter-spacing: 0.8px;
+      margin: 24px 0;
+      font-family: 'Cinzel', serif;
+    }
+
     /* ── STEPS BAR ── */
     .steps-bar {
       display: flex;
@@ -729,9 +745,12 @@
       justify-content: center;
       width: 24px;
       height: 24px;
-      color: var(--gold);
+      color: #C9922A;
       font-size: 20px;
       transition: transform 0.3s ease;
+      font-weight: 700;
+      -webkit-text-stroke: 1px #1A0800;
+      text-stroke: 1px #1A0800;
     }
     .accordion-item.active .accordion-toggle {
       transform: rotate(180deg);
@@ -750,14 +769,6 @@
     .accordion-body ul { margin: 0; padding-left: 20px; }
     .accordion-body li { margin-bottom: 8px; color: #333; line-height: 1.5; }
     .accordion-body strong { color: #1A0800; font-weight: 600; }
-    .rules-title {
-      text-align: center;
-      margin-bottom: 32px;
-      font-size: 24px;
-      font-weight: 700;
-      color: #1A0800;
-      letter-spacing: 0.5px;
-    }
 
   </style>
 </head>
@@ -795,43 +806,14 @@
     <p>Take the first step toward the crown. Complete your application below and join a legacy of beauty, confidence and purpose.</p>
   </div>
 
-  <!-- STEPS -->
-  <div class="steps-bar">
-    <div class="step active">
-      <div class="step-num">1</div>
-      <span>Personal Info</span>
-    </div>
-    <div class="step-sep"></div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <span>Background</span>
-    </div>
-    <div class="step-sep"></div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <span>Essay</span>
-    </div>
-    <div class="step-sep"></div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <span>Photos</span>
-    </div>
-    <div class="step-sep"></div>
-    <div class="step">
-      <div class="step-num">5</div>
-      <span>Payment</span>
-    </div>
-    <div class="step-sep"></div>
-    <div class="step">
-      <div class="step-num">6</div>
-      <span>Submit</span>
-    </div>
-  </div>
+  <!-- RULES SECTION HEADER -->
+  <div class="section-divider"></div>
+  <h2 class="section-title">Official Miss Miami 2026 Rules</h2>
+  <div class="section-divider"></div>
 
   <!-- FORM -->
   <div class="apply-wrap">
     <!-- RULES ACCORDION -->
-    <div class="rules-title">📋 Official Miss Miami 2026 Rules</div>
     <div class="rules-accordion">
       <div class="accordion-item">
         <div class="accordion-header">
