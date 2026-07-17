@@ -691,52 +691,74 @@
       footer { padding: 32px 24px; }
       .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
     }
-    /* Modal Styles */
-    .modal { display: none; position: fixed; z-index: 10001; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
-    .modal.show { display: flex; align-items: center; justify-content: center; }
-    .modal-content { background-color: white; padding: 32px; border-radius: 8px; max-width: 700px; max-height: 80vh; overflow-y: auto; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 2px solid #C9922A; padding-bottom: 16px; }
-    .modal-header h2 { color: #1A0800; font-family: 'Cinzel', serif; font-size: 20px; margin: 0; }
-    .modal-close { background: none; border: none; font-size: 28px; cursor: pointer; color: #C9922A; padding: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
-    .modal-close:hover { color: #D4AF37; }
-    .modal-body { color: #1A0800; font-size: 14px; line-height: 1.8; }
-    .modal-body h3 { color: #C9922A; margin-top: 20px; margin-bottom: 10px; font-family: 'Cinzel', serif; }
-    .modal-body p { margin-bottom: 12px; }
-    .modal-body ul { margin-left: 20px; margin-bottom: 12px; }
-    .modal-body li { margin-bottom: 8px; }
-    .read-rules-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 16px;
-      background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
-      background-size: 250% auto;
-      color: #FFF8E7;
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      cursor: pointer;
-      border: none;
-      border-radius: 6px;
-      position: relative;
+    /* Accordion Styles */
+    .rules-accordion {
+      margin-bottom: 48px;
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 8px;
       overflow: hidden;
-      animation: bronzeFlow 8s ease-in-out infinite;
-      justify-content: center;
+      background: rgba(212,175,55,0.03);
+    }
+    .accordion-item {
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+    }
+    .accordion-item:last-child { border-bottom: none; }
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      background: rgba(212,175,55,0.05);
+      cursor: pointer;
       transition: all 0.3s ease;
+      user-select: none;
     }
-    .read-rules-btn::after {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 55%; height: 100%;
-      background: linear-gradient(90deg, transparent 0%, rgba(255,248,220,0.3) 50%, transparent 100%);
-      animation: bronzeSheen 7s ease-in-out infinite;
-      pointer-events: none;
+    .accordion-header:hover {
+      background: rgba(212,175,55,0.12);
     }
-    .read-rules-btn:hover {
-      background-position: right center;
-      transform: scale(1.05);
+    .accordion-header h4 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1A0800;
+      letter-spacing: 0.5px;
     }
+    .accordion-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      color: var(--gold);
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+    .accordion-item.active .accordion-toggle {
+      transform: rotate(180deg);
+    }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 24px;
+    }
+    .accordion-item.active .accordion-body {
+      max-height: 2000px;
+      padding: 0 24px 24px 24px;
+    }
+    .accordion-body p { margin: 0 0 12px 0; color: #333; line-height: 1.6; }
+    .accordion-body ul { margin: 0; padding-left: 20px; }
+    .accordion-body li { margin-bottom: 8px; color: #333; line-height: 1.5; }
+    .accordion-body strong { color: #1A0800; font-weight: 600; }
+    .rules-title {
+      text-align: center;
+      margin-bottom: 32px;
+      font-size: 24px;
+      font-weight: 700;
+      color: #1A0800;
+      letter-spacing: 0.5px;
+    }
+
   </style>
 </head>
 <body>
@@ -808,6 +830,142 @@
 
   <!-- FORM -->
   <div class="apply-wrap">
+    <!-- RULES ACCORDION -->
+    <div class="rules-title">📋 Official Miss Miami 2026 Rules</div>
+    <div class="rules-accordion">
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <h4>Eligibility Requirements</h4>
+          <span class="accordion-toggle">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Must be 18 years old or older as of November 15, 2026</li>
+            <li>Must be a citizen or permanent resident of the United States with ties to Miami or Florida</li>
+            <li>Must have a high school diploma or equivalent education</li>
+            <li>Prior pageant experience is not required</li>
+            <li>Open to all women regardless of marital status or family status</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <h4>Application Requirements</h4>
+          <span class="accordion-toggle">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Complete all sections of the application form with accurate information</li>
+            <li>Submit a minimum of 3 professional-quality photos: headshot, full-length, and casual</li>
+            <li>Submit a minimum of 1 video introduction (60 seconds maximum) speaking about yourself and your goals</li>
+            <li>Pay the non-refundable $250 application fee</li>
+            <li>Accept all pageant rules and regulations by signing the agreement</li>
+            <li>Consent to the use of photos and videos for promotional purposes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <h4>Pre-Pageant Conduct</h4>
+          <span class="accordion-toggle">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Maintain professional behavior in all interactions with pageant staff and other contestants</li>
+            <li>Follow all social media guidelines set by Miss Miami</li>
+            <li>Attend all mandatory rehearsals and events</li>
+            <li>Respect all venue policies and regulations</li>
+            <li>Comply with health and safety protocols</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <h4>Competition Criteria</h4>
+          <span class="accordion-toggle">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Interview (30%)</strong> - Communication skills, personality, and vision</li>
+            <li><strong>Evening Gown (30%)</strong> - Elegance, confidence, and stage presence</li>
+            <li><strong>Swimwear (20%)</strong> - Fitness, confidence, and poise</li>
+            <li><strong>Overall Presence (20%)</strong> - Charisma, intelligence, and connection with audience</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <h4>Judges' Decisions</h4>
+          <span class="accordion-toggle">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Judges' decisions are final and binding</li>
+            <li>No appeals process for scoring or placement</li>
+            <li>In case of a tie, judges will conduct a brief re-evaluation</li>
+            <li>Winners are determined by the judges' cumulative scores</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <h4>Grounds for Disqualification</h4>
+          <span class="accordion-toggle">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>Contestants may be disqualified for:</p>
+          <ul>
+            <li>Providing false or misleading information on the application</li>
+            <li>Violating pageant conduct rules or venue policies</li>
+            <li>Engaging in disruptive or disrespectful behavior</li>
+            <li>Failure to attend mandatory events or rehearsals</li>
+            <li>Posting inappropriate content on social media that damages pageant reputation</li>
+            <li>Violation of any local, state, or federal laws</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <h4>Rights & Permissions</h4>
+          <span class="accordion-toggle">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Miss Miami retains the right to use all contestant photos and videos for promotional purposes</li>
+            <li>Contestants grant Miss Miami permission to record and broadcast the pageant</li>
+            <li>Photos and videos may be shared on official social media accounts and website</li>
+            <li>Contestants will not receive compensation for use of their images</li>
+            <li>Miss Miami may feature contestants in press releases and media coverage</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <h4>Refund Policy & Post-Pageant Responsibilities</h4>
+          <span class="accordion-toggle">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p><strong>Refund Policy:</strong></p>
+          <p>The $250 application fee is non-refundable after submission. Contestants who withdraw after being selected as finalists forfeit their entry fee. No refunds will be issued for any reason after payment is processed.</p>
+          <p style="margin-top: 16px;"><strong>Post-Pageant Responsibilities (Winners):</strong></p>
+          <ul>
+            <li>The winner agrees to fulfill the duties of Miss Miami 2026 for one year</li>
+            <li>Must make public appearances and represent Miss Miami with grace and dignity</li>
+            <li>Must participate in community events, charity work, and promotional activities as requested</li>
+            <li>Must maintain professional conduct on and off social media</li>
+            <li>Must comply with all Miss Miami policies and procedures</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <form id="apply-form" novalidate>
 
       <!-- 1. PERSONAL INFO -->
@@ -1063,7 +1221,7 @@
           </div>
           <div class="check-item">
             <input type="checkbox" id="rules" name="rules" required />
-            <span>I have read and agree to the Miss Miami Official Rules & Regulations. <button type="button" class="read-rules-btn" onclick="openRulesModal()">READ RULES</button></span>
+            <span>I have read and agree to the Miss Miami Official Rules & Regulations.</span>
             <span class="error-message"></span>
           </div>
           <div class="check-item">
@@ -1088,96 +1246,6 @@
     </form>
   </div>
 
-  <!-- RULES MODAL -->
-  <div id="rulesModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Miss Miami 2026 Official Rules & Regulations</h2>
-        <button class="modal-close" onclick="closeRulesModal()">&times;</button>
-      </div>
-      <div class="modal-body">
-        <h3>Eligibility Requirements</h3>
-        <ul>
-          <li>Must be 18 years old or older as of November 15, 2026</li>
-          <li>Must be a citizen or permanent resident of the United States with ties to Miami or Florida</li>
-          <li>Must have a high school diploma or equivalent education</li>
-          <li>Prior pageant experience is not required</li>
-          <li>Open to all women regardless of marital status or family status</li>
-        </ul>
-
-        <h3>Application Requirements</h3>
-        <ul>
-          <li>Complete all sections of the application form with accurate information</li>
-          <li>Submit a minimum of 3 professional-quality photos: headshot, full-length, and casual</li>
-          <li>Submit a minimum of 1 video introduction (60 seconds maximum) speaking about yourself and your goals</li>
-          <li>Pay the non-refundable $250 application fee</li>
-          <li>Accept all pageant rules and regulations by signing the agreement</li>
-          <li>Consent to the use of photos and videos for promotional purposes</li>
-        </ul>
-
-        <h3>Pre-Pageant Conduct</h3>
-        <ul>
-          <li>Maintain professional behavior in all interactions with pageant staff and other contestants</li>
-          <li>Follow all social media guidelines set by Miss Miami</li>
-          <li>Attend all mandatory rehearsals and events</li>
-          <li>Respect all venue policies and regulations</li>
-          <li>Comply with health and safety protocols</li>
-        </ul>
-
-        <h3>Competition Criteria</h3>
-        <ul>
-          <li><strong>Interview (30%)</strong> - Communication skills, personality, and vision</li>
-          <li><strong>Evening Gown (30%)</strong> - Elegance, confidence, and stage presence</li>
-          <li><strong>Swimwear (20%)</strong> - Fitness, confidence, and poise</li>
-          <li><strong>Overall Presence (20%)</strong> - Charisma, intelligence, and connection with audience</li>
-        </ul>
-
-        <h3>Judges' Decisions</h3>
-        <ul>
-          <li>Judges' decisions are final and binding</li>
-          <li>No appeals process for scoring or placement</li>
-          <li>In case of a tie, judges will conduct a brief re-evaluation</li>
-          <li>Winners are determined by the judges' cumulative scores</li>
-        </ul>
-
-        <h3>Grounds for Disqualification</h3>
-        <p>Contestants may be disqualified for:</p>
-        <ul>
-          <li>Providing false or misleading information on the application</li>
-          <li>Violating pageant conduct rules or venue policies</li>
-          <li>Engaging in disruptive or disrespectful behavior</li>
-          <li>Failure to attend mandatory events or rehearsals</li>
-          <li>Posting inappropriate content on social media that damages pageant reputation</li>
-          <li>Violation of any local, state, or federal laws</li>
-        </ul>
-
-        <h3>Rights & Permissions</h3>
-        <ul>
-          <li>Miss Miami retains the right to use all contestant photos and videos for promotional purposes</li>
-          <li>Contestants grant Miss Miami permission to record and broadcast the pageant</li>
-          <li>Photos and videos may be shared on official social media accounts and website</li>
-          <li>Contestants will not receive compensation for use of their images</li>
-          <li>Miss Miami may feature contestants in press releases and media coverage</li>
-        </ul>
-
-        <h3>Refund Policy</h3>
-        <p>The $250 application fee is non-refundable after submission. Contestants who withdraw after being selected as finalists forfeit their entry fee. No refunds will be issued for any reason after payment is processed.</p>
-
-        <h3>Post-Pageant Responsibilities (Winners)</h3>
-        <ul>
-          <li>The winner agrees to fulfill the duties of Miss Miami 2026 for one year</li>
-          <li>Must make public appearances and represent Miss Miami with grace and dignity</li>
-          <li>Must participate in community events, charity work, and promotional activities as requested</li>
-          <li>Must maintain professional conduct on and off social media</li>
-          <li>Must comply with all Miss Miami policies and procedures</li>
-        </ul>
-
-        <p style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #ddd; font-weight: 600;">
-          By checking the agreement box, you confirm that you have read and understood these rules and agree to comply with all Miss Miami 2026 Official Rules & Regulations.
-        </p>
-      </div>
-    </div>
-  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -1224,6 +1292,14 @@
         nav.classList.remove('open');
         toggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
         backdrop.style.display = 'none';
+      });
+    });
+
+    // Accordion functionality
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.closest('.accordion-item');
+        item.classList.toggle('active');
       });
     });
 
@@ -1286,37 +1362,6 @@
     }, { threshold: 0.1 });
     sections.forEach(s => scrollObs.observe(s));
 
-    // Modal functions for Rules
-    function openRulesModal() {
-      const modal = document.getElementById('rulesModal');
-      if (modal) {
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-
-    function closeRulesModal() {
-      const modal = document.getElementById('rulesModal');
-      if (modal) {
-        modal.classList.remove('show');
-        document.body.style.overflow = 'auto';
-      }
-    }
-
-    // Close modal when clicking outside content
-    window.addEventListener('click', function(event) {
-      const modal = document.getElementById('rulesModal');
-      if (modal && event.target === modal) {
-        closeRulesModal();
-      }
-    });
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closeRulesModal();
-      }
-    });
 
     // Set first step as active on load
     if (stepEls.length > 0) {
