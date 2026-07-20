@@ -1878,7 +1878,7 @@
           numCircle.classList.add('completed');
           numCircle.classList.remove('error');
           numCircle.textContent = '';
-          // Add elegant animated checkmark
+          // Add elegant animated checkmark with glow
           if (!numCircle.querySelector('svg')) {
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             svg.setAttribute('viewBox', '0 0 24 24');
@@ -1886,14 +1886,16 @@
             svg.setAttribute('height', '18');
             svg.style.cssText = 'overflow:visible;';
 
-            const checkPath = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
-            checkPath.setAttribute('points', '6 12 10 16 18 8');
+            const checkPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            checkPath.setAttribute('d', 'M 6 12 L 10 16 L 18 8');
             checkPath.setAttribute('stroke', '#1A0800');
             checkPath.setAttribute('stroke-width', '1.8');
             checkPath.setAttribute('stroke-linecap', 'round');
             checkPath.setAttribute('stroke-linejoin', 'round');
             checkPath.setAttribute('fill', 'none');
-            checkPath.style.cssText = 'animation: drawCheckmark 0.8s ease-out forwards;';
+            checkPath.setAttribute('stroke-dasharray', '24');
+            checkPath.setAttribute('stroke-dashoffset', '24');
+            checkPath.style.cssText = 'animation: drawCheckmark 0.8s ease-out 0.2s forwards;';
 
             svg.appendChild(checkPath);
             numCircle.appendChild(svg);
