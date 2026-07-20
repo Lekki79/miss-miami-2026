@@ -1,0 +1,35 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- Elegant M Logo for Miss Miami -->
+
+  <!-- Left vertical bar -->
+  <rect x="2" y="4" width="2.5" height="16" fill="#D4AF37" rx="1"/>
+
+  <!-- Left diagonal -->
+  <path d="M 4.5 4 Q 8 12 9 16 L 11 16 Q 10 12 6.5 4 Z" fill="#D4AF37"/>
+
+  <!-- Right diagonal -->
+  <path d="M 13 4 Q 9 12 8 16 L 10 16 Q 11 12 15 4 Z" fill="#D4AF37"/>
+
+  <!-- Actually, let me create a better M -->
+</svg>
+
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Premium M Logo for Miss Miami -->
+
+  <!-- Left vertical stroke -->
+  <line x1="15" y1="20" x2="15" y2="80" stroke="#D4AF37" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Left diagonal down-right -->
+  <line x1="15" y1="20" x2="50" y2="55" stroke="#D4AF37" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Right diagonal down-left -->
+  <line x1="50" y1="55" x2="85" y2="20" stroke="#D4AF37" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Right vertical stroke -->
+  <line x1="85" y1="20" x2="85" y2="80" stroke="#D4AF37" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Decorative crown top -->
+  <circle cx="50" cy="15" r="3" fill="#D4AF37"/>
+  <circle cx="35" cy="18" r="2.5" fill="#D4AF37"/>
+  <circle cx="65" cy="18" r="2.5" fill="#D4AF37"/>
+</svg>
