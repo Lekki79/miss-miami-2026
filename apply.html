@@ -322,7 +322,7 @@
       background: #A67C1A;
       border-color: #1A0800;
       animation: numPopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-      font-size: 0;
+      font-size: 14px;
     }
     .form-section-title .num.completed::before {
       background: #1A0800;
@@ -352,11 +352,11 @@
     .field.span2 { grid-column: span 2; }
 
     label {
-      font-size: 10px;
-      letter-spacing: 0.3em;
+      font-size: 13px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(212,175,55,0.7);
-      font-weight: 500;
+      color: #1A0800;
+      font-weight: 600;
     }
 
     input, select, textarea {
@@ -460,11 +460,12 @@
       border-color: #E74C3C;
       background: #FADBD8;
     }
-    .radio-item span, .check-item span {
+    .radio-item span, .check-item span, .check-item label {
       font-size: 13px;
       color: #1A0800;
       opacity: 1;
       text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      cursor: pointer;
     }
     .check-item .error-message {
       width: 100%;
@@ -1078,7 +1079,7 @@
         </div>
         <div class="form-grid">
           <div class="field">
-            <label>Education Level</label>
+            <label>What is your highest level of education?</label>
             <select id="education" name="education" required>
               <option value="" disabled selected>Select...</option>
               <option>High School</option>
@@ -1090,14 +1091,72 @@
             <span class="error-message"></span>
           </div>
           <div class="field">
-            <label>Current Occupation</label>
-            <input type="text" id="occupation" name="occupation" placeholder="Student / Professional" required />
+            <label>What is your current occupation?</label>
+            <select id="occupation" name="occupation" required>
+              <option value="" disabled selected>Select...</option>
+              <option>Student</option>
+              <option>Unemployed</option>
+              <option>Self-Employed</option>
+              <option>Employed (Full-time)</option>
+              <option>Employed (Part-time)</option>
+              <option>Healthcare Professional</option>
+              <option>Business Professional</option>
+              <option>Other</option>
+            </select>
             <span class="error-message"></span>
           </div>
           <div class="field">
             <label>Height</label>
             <input type="text" id="height" name="height" placeholder='e.g. 5&apos;7"' required />
             <span class="error-message"></span>
+          </div>
+          <div class="field span2">
+            <label>Languages Spoken</label>
+            <div class="check-group">
+              <div class="check-item">
+                <input type="checkbox" id="lang_english" name="languages" value="English" />
+                <label for="lang_english">English</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="lang_spanish" name="languages" value="Spanish" />
+                <label for="lang_spanish">Spanish</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="lang_french" name="languages" value="French" />
+                <label for="lang_french">French</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="lang_german" name="languages" value="German" />
+                <label for="lang_german">German</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="lang_italian" name="languages" value="Italian" />
+                <label for="lang_italian">Italian</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="lang_russian" name="languages" value="Russian" />
+                <label for="lang_russian">Russian</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="lang_chinese" name="languages" value="Chinese" />
+                <label for="lang_chinese">Chinese</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="lang_japanese" name="languages" value="Japanese" />
+                <label for="lang_japanese">Japanese</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="lang_portuguese" name="languages" value="Portuguese" />
+                <label for="lang_portuguese">Portuguese</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="lang_other" name="languages" value="other" />
+                <label for="lang_other">Other:</label>
+                <input type="text" id="languages_other" placeholder="Specify..." style="margin-left: 8px; flex: 1;" />
+              </div>
+            </div>
+            <span class="error-message"></span>
+            <div id="languages-selected" style="margin-top: 12px; font-size: 12px; color: #A67C1A; font-weight: 500;"></div>
           </div>
           <div class="field">
             <label>Have you competed before?</label>
@@ -1108,11 +1167,6 @@
               <option>Yes, state pageant</option>
               <option>Yes, national pageant</option>
             </select>
-            <span class="error-message"></span>
-          </div>
-          <div class="field span2">
-            <label>Languages Spoken</label>
-            <input type="text" id="languages" name="languages" placeholder="English, Spanish, French..." required />
             <span class="error-message"></span>
           </div>
           <div class="field span2">
@@ -1708,10 +1762,13 @@
           showError(field.id || field.name, labels[field.id] || 'This field is required');
           isValid = false;
         } else {
-          // First Name & Last Name - min 2 chars
+          // First Name & Last Name - min 2 chars, English only
           if (field.name === 'first_name' || field.name === 'last_name') {
             if (value.length < 2) {
               showError(field.id || field.name, 'Minimum 2 characters required');
+              isValid = false;
+            } else if (!/^[a-zA-Z\s]+$/.test(value)) {
+              showError(field.id || field.name, 'English letters only, no numbers or special characters');
               isValid = false;
             } else {
               clearError(field.id || field.name);
@@ -1828,7 +1885,7 @@
       // Validate height format
       const height = document.getElementById('height');
       if (height && height.value) {
-        const heightRegex = /^[4-7]'[0-9]"$/;
+        const heightRegex = /^[4-7]'[0-9]{1,2}"$/;
         if (!heightRegex.test(height.value)) {
           showError(height.id || height.name, 'Invalid height format. Use: 5\'7"');
           isValid = false;
@@ -1932,30 +1989,153 @@
       });
     }
 
+    // Валидирует ОДНО поле с правильными правилами
+    function validateField(field) {
+      if (!field) return;
+
+      const value = field.value.trim();
+      const fieldId = field.id || field.name;
+      let errorMsg = null;
+
+      // SKIP пустые поля - проверим на submit
+      if (!value && field.tagName !== 'SELECT') {
+        clearError(fieldId);
+        return;
+      }
+
+      // ПРАВИЛА ВАЛИДАЦИИ для КАЖДОГО ПОЛЯ
+      switch(field.name) {
+        case 'first_name':
+        case 'last_name':
+          if (value.length < 2) {
+            errorMsg = 'Minimum 2 characters required';
+          } else if (!/^[a-zA-Z\s]+$/.test(value)) {
+            errorMsg = 'English letters only';
+          }
+          break;
+
+        case 'city':
+          if (value.length < 3) {
+            errorMsg = 'City minimum 3 letters';
+          } else if (!/^[a-zA-Z\s]+$/.test(value)) {
+            errorMsg = 'City letters only';
+          }
+          break;
+
+        case 'address':
+          if (value.length < 15) {
+            errorMsg = 'Address minimum 15 characters';
+          }
+          break;
+
+        case 'email':
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+            errorMsg = 'Invalid email format';
+          }
+          break;
+
+        case 'phone':
+          if (!/^\+1\s\(\d{3}\)\s\d{3}-\d{4}$/.test(value)) {
+            errorMsg = 'Use: +1 (305) 000-0000';
+          }
+          break;
+
+        case 'occupation':
+          if (!value || value === '') {
+            errorMsg = 'Occupation required';
+          }
+          break;
+
+        case 'languages':
+          // Для checkboxes - проверяем если хотя бы один выбран
+          const languageCheckboxes = document.querySelectorAll('input[name="languages"][type="checkbox"]:checked');
+          if (languageCheckboxes.length === 0) {
+            errorMsg = 'Select at least one language';
+          }
+          break;
+
+        case 'height':
+          if (!/^[4-7]'[0-9]{1,2}"$/.test(value)) {
+            errorMsg = 'Use: 5\'7"';
+          }
+          break;
+
+        case 'talents':
+          if (value.length < 10) {
+            errorMsg = 'Talents minimum 10 characters';
+          }
+          break;
+
+        case 'essay1':
+          const words1 = value.split(/\s+/).filter(w => w).length;
+          if (words1 < 200) {
+            errorMsg = `Essay minimum 200 words (${words1})`;
+          } else if (words1 > 400) {
+            errorMsg = `Essay maximum 400 words (${words1})`;
+          }
+          break;
+
+        case 'essay2':
+          if (value.length < 150) {
+            errorMsg = 'Essay minimum 150 characters';
+          }
+          break;
+
+        case 'essay3':
+          if (value.length < 150) {
+            errorMsg = 'Essay minimum 150 characters';
+          }
+          break;
+
+        case 'education':
+        case 'competed':
+          if (!value || value === '') {
+            errorMsg = field.name === 'education' ? 'Education required' : 'Competition history required';
+          }
+          break;
+
+        case 'dob':
+          if (field.id === 'dob-input') {
+            const parts = value.split('/');
+            if (parts.length === 3) {
+              const month = parseInt(parts[0]);
+              const day = parseInt(parts[1]);
+              const year = parseInt(parts[2]);
+              const birthDate = new Date(year, month - 1, day);
+              const pageantDate = new Date(2026, 10, 15);
+              let age = pageantDate.getFullYear() - birthDate.getFullYear();
+              const monthDiff = pageantDate.getMonth() - birthDate.getMonth();
+              if (monthDiff < 0 || (monthDiff === 0 && pageantDate.getDate() < birthDate.getDate())) {
+                age--;
+              }
+              if (age < 18 || age > 28) {
+                errorMsg = 'Must be 18-28 years old';
+              } else if (birthDate > new Date()) {
+                errorMsg = 'Date cannot be in future';
+              }
+            }
+          }
+          break;
+      }
+
+      if (errorMsg) {
+        showError(fieldId, errorMsg);
+      } else {
+        clearError(fieldId);
+      }
+    }
+
     // Add real-time validation
     document.getElementById('apply-form').querySelectorAll('input, select, textarea').forEach(field => {
-      if (field.tagName === 'SELECT') {
-        field.addEventListener('change', function() {
-          updateSectionStatus();
-        });
-      }
+      // BLUR - валидирует ОДНО поле используя validateField()
       field.addEventListener('blur', function() {
-        if (this.type === 'checkbox') return; // Skip checkboxes
-        if (this.value.trim()) {
-          clearError(this.id || this.name);
-        }
-      });
-
-      field.addEventListener('input', function() {
-        if (this.type === 'checkbox') return; // Skip checkboxes
-        if (this.classList.contains('error') && this.value.trim()) {
-          clearError(this.id || this.name);
-        }
+        if (this.type === 'checkbox') return;
+        validateField(this);
         updateSectionStatus();
       });
     });
 
-    // Real-time validation for checkboxes
+    // Checkboxes - простая проверка
     document.getElementById('apply-form').querySelectorAll('input[type="checkbox"][required]').forEach(checkbox => {
       checkbox.addEventListener('change', function() {
         if (this.checked) {
@@ -1964,6 +2144,54 @@
         updateSectionStatus();
       });
     });
+
+    // Languages checkboxes - update display when selected
+    function updateLanguagesDisplay() {
+      const checkboxes = document.querySelectorAll('input[name="languages"][type="checkbox"]');
+      const selectedDisplay = document.getElementById('languages-selected');
+      const languagesOtherInput = document.getElementById('languages_other');
+      const otherCheckbox = document.getElementById('lang_other');
+
+      const selected = [];
+      checkboxes.forEach(cb => {
+        if (cb.checked && cb.value !== 'other') {
+          selected.push(cb.value);
+        }
+      });
+
+      // Show selected languages
+      if (selected.length > 0) {
+        let display = `Selected: ${selected.join(', ')}`;
+        if (otherCheckbox.checked && languagesOtherInput.value.trim()) {
+          display += ` + ${languagesOtherInput.value.trim()}`;
+        }
+        selectedDisplay.textContent = display;
+        clearError('languages');
+      } else {
+        selectedDisplay.textContent = '';
+      }
+
+      // Show/hide "Other" input field
+      if (otherCheckbox.checked) {
+        languagesOtherInput.style.display = 'block';
+        languagesOtherInput.required = true;
+      } else {
+        languagesOtherInput.style.display = 'none';
+        languagesOtherInput.required = false;
+        languagesOtherInput.value = '';
+      }
+    }
+
+    // Add listeners to language checkboxes
+    document.querySelectorAll('input[name="languages"][type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', updateLanguagesDisplay);
+    });
+
+    // Add listener to "Other" input
+    const languagesOtherInput = document.getElementById('languages_other');
+    if (languagesOtherInput) {
+      languagesOtherInput.addEventListener('input', updateLanguagesDisplay);
+    }
 
     // Form submit
     document.getElementById('apply-form').addEventListener('submit', function(e) {
