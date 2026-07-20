@@ -1894,9 +1894,7 @@
             checkPath.setAttribute('stroke-linecap', 'round');
             checkPath.setAttribute('stroke-linejoin', 'round');
             checkPath.setAttribute('fill', 'none');
-            checkPath.setAttribute('stroke-dasharray', '24');
-            checkPath.setAttribute('stroke-dashoffset', '24');
-            checkPath.style.cssText = 'animation: drawCheckmark 0.8s ease-out 0.2s forwards;';
+            checkPath.style.cssText = 'stroke-dasharray: 20; stroke-dashoffset: 20; animation: drawCheckmark 0.8s ease-out 0.2s forwards;';
 
             svg.appendChild(checkPath);
             numCircle.appendChild(svg);
