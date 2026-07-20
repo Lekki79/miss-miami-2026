@@ -1428,10 +1428,11 @@
       const yearSelect = document.createElement('select');
       yearSelect.style.cssText = 'padding: 6px; border: 1px solid #C9922A; border-radius: 4px; font-size: 12px; flex: 1;';
 
-      // Determine which year to select - if currentDate is outside range, use closest valid year
+      // Determine which year to select - if currentDate is outside range, use first valid year (1998)
       let displayYear = currentDate.getFullYear();
-      if (displayYear < 1998) displayYear = 1998;
-      if (displayYear > 2008) displayYear = 2008;
+      if (displayYear > 2008 || displayYear < 1998) {
+        displayYear = 1998;
+      }
 
       for (let y = 1998; y <= 2008; y++) {
         const opt = document.createElement('option');
