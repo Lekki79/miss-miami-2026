@@ -296,17 +296,18 @@
     }
 
     .field.valid::after {
-      content: '✓';
+      content: '';
       position: absolute;
-      right: 12px;
+      right: 14px;
       top: 50%;
-      transform: translateY(-55%);
-      color: #A67C1A;
-      font-weight: 700;
-      font-size: 26px;
-      letter-spacing: 0.05em;
-      text-shadow: 0 1px 2px rgba(26, 8, 0, 0.2);
+      width: 20px;
+      height: 12px;
       pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 16'%3E%3Cpath d='M2 8L8 14L18 2' stroke='%23A67C1A' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: translateY(-50%);
       animation: checkmarkDraw 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
 
