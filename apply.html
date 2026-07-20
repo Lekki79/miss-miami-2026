@@ -73,6 +73,11 @@
       50%  { background-position: 100% center; }
       100% { background-position: 0% center; }
     }
+    @keyframes bronzeArrowFlow {
+      0%   { color: #D4AF37; }
+      50%  { color: #C9922A; }
+      100% { color: #D4AF37; }
+    }
     @keyframes stepPulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.15); }
@@ -764,7 +769,7 @@
       font-weight: 700;
       -webkit-text-stroke: 1px #1A0800;
       text-stroke: 1px #1A0800;
-      animation: bronzeFlow 8s ease-in-out infinite;
+      animation: bronzeArrowFlow 8s ease-in-out infinite;
     }
     .accordion-item.active .accordion-toggle {
       transform: rotate(180deg);
