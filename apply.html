@@ -1375,7 +1375,8 @@
     // Custom date picker
     const dobInput = document.getElementById('dob-input');
     const datePicker = document.getElementById('date-picker');
-    let currentDate = new Date(); // Start with today's date
+    const today = new Date();
+    let currentDate = new Date(2003, today.getMonth(), 1); // July 2003: current month but valid year (1998-2008)
     let selectedDate = null;
 
     // Age restrictions: 18-28 as of November 15, 2026
@@ -1405,7 +1406,7 @@
       monthLabel.textContent = 'Month:';
       monthLabel.style.cssText = 'font-size: 12px; color: #1A0800; min-width: 40px;';
       const monthSelect = document.createElement('select');
-      monthSelect.style.cssText = 'padding: 6px; border: 1px solid #C9922A; border-radius: 4px; font-size: 12px; flex: 1;';
+      monthSelect.style.cssText = 'padding: 6px 24px 6px 6px; border: 1px solid #C9922A; border-radius: 4px; font-size: 12px; width: auto; min-width: 100px; max-width: 150px;';
       months.forEach((m, idx) => {
         const opt = document.createElement('option');
         opt.value = idx;
@@ -1428,17 +1429,11 @@
       const yearSelect = document.createElement('select');
       yearSelect.style.cssText = 'padding: 6px; border: 1px solid #C9922A; border-radius: 4px; font-size: 12px; flex: 1;';
 
-      // Determine which year to select - if currentDate is outside range, use first valid year (1998)
-      let displayYear = currentDate.getFullYear();
-      if (displayYear > 2008 || displayYear < 1998) {
-        displayYear = 1998;
-      }
-
       for (let y = 1998; y <= 2008; y++) {
         const opt = document.createElement('option');
         opt.value = y;
         opt.textContent = y;
-        if (y === displayYear) opt.selected = true;
+        if (y === currentDate.getFullYear()) opt.selected = true;
         yearSelect.appendChild(opt);
       }
       yearSelect.onchange = (e) => {
