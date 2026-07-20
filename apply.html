@@ -1375,7 +1375,7 @@
     // Custom date picker
     const dobInput = document.getElementById('dob-input');
     const datePicker = document.getElementById('date-picker');
-    let currentDate = new Date();
+    let currentDate = new Date(2003, 0, 1); // Start with middle of valid range (2003)
     let selectedDate = null;
 
     // Age restrictions: 18-28 as of November 15, 2026
