@@ -764,6 +764,7 @@
       font-weight: 700;
       -webkit-text-stroke: 1px #1A0800;
       text-stroke: 1px #1A0800;
+      animation: bronzeFlow 8s ease-in-out infinite;
     }
     .accordion-item.active .accordion-toggle {
       transform: rotate(180deg);
@@ -772,7 +773,7 @@
     .accordion-body {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease;
+      transition: max-height 0.4s ease, padding 0.4s ease;
       padding: 0 24px;
     }
     .accordion-item.active .accordion-body {
