@@ -1529,7 +1529,7 @@
             selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
             currentDate.setDate(day);
             updateDateDisplay();
-            renderCalendar();
+            datePicker.style.display = 'none';
           };
         }
         grid.appendChild(dayDiv);
