@@ -274,6 +274,19 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    @keyframes drawCheckmark {
+      0% {
+        stroke-dasharray: 24;
+        stroke-dashoffset: 24;
+        opacity: 0;
+      }
+      50% { opacity: 1; }
+      100% {
+        stroke-dasharray: 24;
+        stroke-dashoffset: 0;
+        opacity: 1;
+      }
+    }
     .form-section-title .num.completed {
       background: #A67C1A;
       border-color: #1A0800;
@@ -1863,58 +1876,24 @@
           numCircle.classList.add('completed');
           numCircle.classList.remove('error');
           numCircle.textContent = '';
-          // Add Miss Miami logo SVG
+          // Add animated checkmark
           if (!numCircle.querySelector('svg')) {
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            svg.setAttribute('viewBox', '0 0 100 100');
-            svg.setAttribute('width', '24');
-            svg.setAttribute('height', '24');
-            svg.style.cssText = 'opacity:1;';
+            svg.setAttribute('viewBox', '0 0 24 24');
+            svg.setAttribute('width', '20');
+            svg.setAttribute('height', '20');
+            svg.style.cssText = 'overflow:visible;';
 
-            // Left stroke
-            const line1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            line1.setAttribute('x1', '15');
-            line1.setAttribute('y1', '20');
-            line1.setAttribute('x2', '15');
-            line1.setAttribute('y2', '80');
-            line1.setAttribute('stroke', '#D4AF37');
-            line1.setAttribute('stroke-width', '6');
-            line1.setAttribute('stroke-linecap', 'round');
+            const checkPath = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+            checkPath.setAttribute('points', '6 12 10 16 18 8');
+            checkPath.setAttribute('stroke', '#1A0800');
+            checkPath.setAttribute('stroke-width', '2.5');
+            checkPath.setAttribute('stroke-linecap', 'round');
+            checkPath.setAttribute('stroke-linejoin', 'round');
+            checkPath.setAttribute('fill', 'none');
+            checkPath.style.cssText = 'animation: drawCheckmark 0.6s ease-out forwards;';
 
-            // Left diagonal
-            const line2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            line2.setAttribute('x1', '15');
-            line2.setAttribute('y1', '20');
-            line2.setAttribute('x2', '50');
-            line2.setAttribute('y2', '55');
-            line2.setAttribute('stroke', '#D4AF37');
-            line2.setAttribute('stroke-width', '6');
-            line2.setAttribute('stroke-linecap', 'round');
-
-            // Right diagonal
-            const line3 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            line3.setAttribute('x1', '50');
-            line3.setAttribute('y1', '55');
-            line3.setAttribute('x2', '85');
-            line3.setAttribute('y2', '20');
-            line3.setAttribute('stroke', '#D4AF37');
-            line3.setAttribute('stroke-width', '6');
-            line3.setAttribute('stroke-linecap', 'round');
-
-            // Right stroke
-            const line4 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            line4.setAttribute('x1', '85');
-            line4.setAttribute('y1', '20');
-            line4.setAttribute('x2', '85');
-            line4.setAttribute('y2', '80');
-            line4.setAttribute('stroke', '#D4AF37');
-            line4.setAttribute('stroke-width', '6');
-            line4.setAttribute('stroke-linecap', 'round');
-
-            svg.appendChild(line1);
-            svg.appendChild(line2);
-            svg.appendChild(line3);
-            svg.appendChild(line4);
+            svg.appendChild(checkPath);
             numCircle.appendChild(svg);
           }
         } else if (!sectionValid) {
