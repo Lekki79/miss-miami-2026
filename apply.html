@@ -289,6 +289,35 @@
         filter: drop-shadow(0 0 4px rgba(26, 8, 0, 0.4));
       }
     }
+
+    /* Input checkmark indicator */
+    .field {
+      position: relative;
+    }
+
+    .field.valid::after {
+      content: '✓';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #C9922A;
+      font-weight: bold;
+      font-size: 18px;
+      pointer-events: none;
+      animation: checkmarkDraw 0.4s ease-in-out forwards;
+    }
+
+    @keyframes checkmarkDraw {
+      0% {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.5);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+      }
+    }
     .form-section-title .num.completed {
       background: #A67C1A;
       border-color: #1A0800;
@@ -1591,6 +1620,7 @@
         errorEl.classList.add('show');
       }
       input.classList.add('error');
+      fieldEl.classList.remove('valid');
     }
 
     function clearError(inputId) {
@@ -1604,6 +1634,7 @@
       const errorEl = fieldEl.querySelector('.error-message');
       if (errorEl) errorEl.classList.remove('show');
       input.classList.remove('error');
+      fieldEl.classList.add('valid');
     }
 
     function showFileUploadError(uploadContainerId, message) {
@@ -1880,40 +1911,23 @@
         if (sectionValid && requiredFields.length > 0) {
           numCircle.classList.add('completed');
           numCircle.classList.remove('error');
-          numCircle.textContent = '';
-          // Add elegant animated checkmark with glow
-          if (!numCircle.querySelector('svg')) {
-            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            svg.setAttribute('viewBox', '0 0 24 24');
-            svg.setAttribute('width', '18');
-            svg.setAttribute('height', '18');
-            svg.style.cssText = 'overflow:visible;';
-
-            const checkPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            checkPath.setAttribute('d', 'M 6 12 L 10 16 L 18 8');
-            checkPath.setAttribute('stroke', '#1A0800');
-            checkPath.setAttribute('stroke-width', '1.8');
-            checkPath.setAttribute('stroke-linecap', 'round');
-            checkPath.setAttribute('stroke-linejoin', 'round');
-            checkPath.setAttribute('fill', 'none');
-            checkPath.style.cssText = 'stroke-dasharray: 20; stroke-dashoffset: 20; animation: drawCheckmark 0.8s ease-out 0.2s forwards;';
-
-            svg.appendChild(checkPath);
-            numCircle.appendChild(svg);
-          }
+          numCircle.textContent = sectionNum;
+          // Remove any SVG if present
+          const svg = numCircle.querySelector('svg');
+          if (svg) svg.remove();
         } else if (!sectionValid) {
           numCircle.classList.add('error');
           numCircle.classList.remove('completed');
           numCircle.textContent = sectionNum;
-          // Remove logo if present
-          const img = numCircle.querySelector('img');
-          if (img) img.remove();
+          // Remove any SVG if present
+          const svg = numCircle.querySelector('svg');
+          if (svg) svg.remove();
         } else {
           numCircle.classList.remove('completed', 'error');
           numCircle.textContent = sectionNum;
-          // Remove logo if present
-          const img = numCircle.querySelector('img');
-          if (img) img.remove();
+          // Remove any SVG if present
+          const svg = numCircle.querySelector('svg');
+          if (svg) svg.remove();
         }
       });
     }
