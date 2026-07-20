@@ -2000,9 +2000,15 @@
       const fieldId = field.id || field.name;
       let errorMsg = null;
 
-      // SKIP пустые поля - проверим на submit
+      // SKIP пустые поля - НЕ показывать ни ошибку ни успех
       if (!value && field.tagName !== 'SELECT') {
-        clearError(fieldId);
+        const input = document.getElementById(fieldId);
+        let fieldEl = input.closest('.field');
+        if (!fieldEl) fieldEl = input.parentElement;
+        input.classList.remove('error');
+        fieldEl.classList.remove('valid');  // НЕ добавлять .valid на пустое поле!
+        const errorEl = fieldEl.querySelector('.error-message');
+        if (errorEl) errorEl.classList.remove('show');
         return;
       }
 
