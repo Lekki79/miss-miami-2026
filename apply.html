@@ -1446,6 +1446,14 @@
       header.appendChild(monthSelect);
       header.appendChild(yearLabel);
       header.appendChild(yearSelect);
+
+      // Close button (X)
+      const closeBtn = document.createElement('button');
+      closeBtn.textContent = '✕';
+      closeBtn.style.cssText = 'background: none; border: none; font-size: 20px; cursor: pointer; color: #C9922A; padding: 0 4px; font-weight: bold;';
+      closeBtn.onclick = (e) => { e.stopPropagation(); datePicker.style.display = 'none'; };
+      header.appendChild(closeBtn);
+
       datePicker.appendChild(header);
 
       // Days header
@@ -1529,7 +1537,7 @@
             selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
             currentDate.setDate(day);
             updateDateDisplay();
-            datePicker.style.display = 'none';
+            renderCalendar();
           };
         }
         grid.appendChild(dayDiv);
