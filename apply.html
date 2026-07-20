@@ -1340,6 +1340,7 @@
     // File upload labels
     document.querySelectorAll('.file-upload input[type="file"]').forEach(input => {
       input.addEventListener('change', function() {
+        updateSectionStatus();
         const files = this.files;
         const p = this.closest('.file-upload').querySelector('p');
         const listContainer = this.closest('.field').querySelector('[id$="-list"]');
@@ -1919,6 +1920,11 @@
 
     // Add real-time validation
     document.getElementById('apply-form').querySelectorAll('input, select, textarea').forEach(field => {
+      if (field.tagName === 'SELECT') {
+        field.addEventListener('change', function() {
+          updateSectionStatus();
+        });
+      }
       field.addEventListener('blur', function() {
         if (this.type === 'checkbox') return; // Skip checkboxes
         if (this.value.trim()) {
@@ -1931,6 +1937,7 @@
         if (this.classList.contains('error') && this.value.trim()) {
           clearError(this.id || this.name);
         }
+        updateSectionStatus();
       });
     });
 
@@ -1940,6 +1947,7 @@
         if (this.checked) {
           clearError(this.id || this.name);
         }
+        updateSectionStatus();
       });
     });
 
