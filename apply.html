@@ -702,8 +702,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      html, body { overflow: hidden; height: 100%; }
-      header { padding: 0 24px; height: 72px; position: relative; z-index: 100; }
+      header { padding: 0 24px; height: 72px; }
       nav { display: none; }
       nav.open {
         display: flex;
@@ -769,12 +768,7 @@
       }
       .menu-toggle { display: flex; }
       .page-hero { padding: 120px 24px 60px; }
-      .apply-wrap {
-        padding: 48px 24px 72px;
-        max-height: calc(100vh - 72px);
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-      }
+      .apply-wrap { padding: 48px 24px 72px; }
       .form-grid, .form-grid.three { grid-template-columns: 1fr; }
       .field.span2 { grid-column: span 1; }
       .steps-bar { padding: 24px; gap: 6px; }
