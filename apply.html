@@ -708,15 +708,14 @@
     @media (max-width: 768px) {
       header { padding: 0 24px; height: 72px; }
       nav { display: none; }
-      nav.open {
-        display: flex;
+      .mobile-menu {
+        display: none;
         flex-direction: column;
         position: fixed;
         top: 72px;
         left: 0;
         right: 0;
-        bottom: auto;
-        height: calc(100dvh - 72px);
+        bottom: 0;
         background: #3A1A04;
         z-index: 9999;
         padding: 32px;
@@ -724,7 +723,10 @@
         align-items: flex-start;
         overflow-y: auto;
       }
-      nav.open a {
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu a {
         font-family: 'Montserrat', sans-serif;
         font-size: 14px;
         font-weight: 500;
@@ -736,15 +738,15 @@
         padding: 8px 0;
         border-bottom: 1px solid rgba(212,175,55,0.08);
       }
-      nav.open a:hover {
+      .mobile-menu a:hover {
         color: var(--gold);
       }
-      nav.open a.btn-account {
+      .mobile-menu a.btn-account-nav {
         border: 1px solid rgba(212,175,55,0.25);
         padding: 10px 20px;
         color: rgba(245,230,200,0.78);
       }
-      nav.open a.btn-nav {
+      .mobile-menu a.btn-apply-nav {
         background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
         background-size: 250% auto;
         color: #FFF8E7 !important;
@@ -758,9 +760,8 @@
         width: 100%;
         border: none;
         font-size: 13px !important;
-        margin-top: 12px;
       }
-      nav.open a.btn-nav::after {
+      .mobile-menu a.btn-apply-nav::after {
         content: '';
         position: absolute;
         top: 0;
@@ -905,8 +906,19 @@
     </button>
   </header>
 
-  <!-- Mobile Menu Backdrop -->
-  <div id="menu-backdrop" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4); z-index:97;"></div>
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="apply.html" class="active">Apply</a>
+    <a href="competition.html">Competition</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="sponsors.html">Sponsors</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+    <a href="dashboard.html" class="btn-account-nav">My Account</a>
+    <a href="apply.html" class="btn-apply-nav">Apply Now</a>
+  </div>
 
   <!-- PAGE HERO -->
   <div class="page-hero">
@@ -1361,38 +1373,27 @@
   </footer>
 
   <script>
-    // Mobile menu with animated toggle (matching Home design)
+    // Mobile menu (matching Home design)
     const toggle = document.getElementById('menu-toggle');
-    const nav = document.getElementById('main-nav');
-    const backdrop = document.getElementById('menu-backdrop');
+    const mobileMenu = document.getElementById('mobile-menu');
 
     toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
       const spans = toggle.querySelectorAll('span');
-      if (nav.classList.contains('open')) {
+      if (mobileMenu.classList.contains('open')) {
         spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
         spans[1].style.opacity = '0';
         spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
-        backdrop.style.display = 'block';
       } else {
         spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-        backdrop.style.display = 'none';
       }
     });
 
-    // Close menu when clicking backdrop
-    backdrop.addEventListener('click', () => {
-      nav.classList.remove('open');
-      toggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-      backdrop.style.display = 'none';
-    });
-
     // Close menu when clicking nav links
-    nav.querySelectorAll('a').forEach(link => {
+    mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        nav.classList.remove('open');
+        mobileMenu.classList.remove('open');
         toggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-        backdrop.style.display = 'none';
       });
     });
 
