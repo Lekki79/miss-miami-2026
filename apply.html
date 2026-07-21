@@ -1133,51 +1133,8 @@
           </div>
           <div class="field span2">
             <label>Languages Spoken</label>
-            <div class="check-group">
-              <div class="check-item">
-                <input type="checkbox" id="lang_english" name="languages" value="English" />
-                <label for="lang_english">English</label>
-              </div>
-              <div class="check-item">
-                <input type="checkbox" id="lang_spanish" name="languages" value="Spanish" />
-                <label for="lang_spanish">Spanish</label>
-              </div>
-              <div class="check-item">
-                <input type="checkbox" id="lang_french" name="languages" value="French" />
-                <label for="lang_french">French</label>
-              </div>
-              <div class="check-item">
-                <input type="checkbox" id="lang_german" name="languages" value="German" />
-                <label for="lang_german">German</label>
-              </div>
-              <div class="check-item">
-                <input type="checkbox" id="lang_italian" name="languages" value="Italian" />
-                <label for="lang_italian">Italian</label>
-              </div>
-              <div class="check-item">
-                <input type="checkbox" id="lang_russian" name="languages" value="Russian" />
-                <label for="lang_russian">Russian</label>
-              </div>
-              <div class="check-item">
-                <input type="checkbox" id="lang_chinese" name="languages" value="Chinese" />
-                <label for="lang_chinese">Chinese</label>
-              </div>
-              <div class="check-item">
-                <input type="checkbox" id="lang_japanese" name="languages" value="Japanese" />
-                <label for="lang_japanese">Japanese</label>
-              </div>
-              <div class="check-item">
-                <input type="checkbox" id="lang_portuguese" name="languages" value="Portuguese" />
-                <label for="lang_portuguese">Portuguese</label>
-              </div>
-              <div class="check-item">
-                <input type="checkbox" id="lang_other" name="languages" value="other" />
-                <label for="lang_other">Other:</label>
-                <input type="text" id="languages_other" placeholder="Specify..." style="margin-left: 8px; flex: 1;" />
-              </div>
-            </div>
+            <input type="text" id="languages" name="languages" placeholder="e.g. English, Spanish, French..." required />
             <span class="error-message"></span>
-            <div id="languages-selected" style="margin-top: 12px; font-size: 12px; color: #A67C1A; font-weight: 500;"></div>
           </div>
           <div class="field">
             <label>Have you competed before?</label>
@@ -2074,10 +2031,9 @@
           break;
 
         case 'languages':
-          // Для checkboxes - проверяем если хотя бы один выбран
-          const languageCheckboxes = document.querySelectorAll('input[name="languages"][type="checkbox"]:checked');
-          if (languageCheckboxes.length === 0) {
-            errorMsg = 'Select at least one language';
+          // Text field - check if not empty
+          if (!value.trim()) {
+            errorMsg = 'Languages spoken is required';
           }
           break;
 
@@ -2172,53 +2128,6 @@
       });
     });
 
-    // Languages checkboxes - update display when selected
-    function updateLanguagesDisplay() {
-      const checkboxes = document.querySelectorAll('input[name="languages"][type="checkbox"]');
-      const selectedDisplay = document.getElementById('languages-selected');
-      const languagesOtherInput = document.getElementById('languages_other');
-      const otherCheckbox = document.getElementById('lang_other');
-
-      const selected = [];
-      checkboxes.forEach(cb => {
-        if (cb.checked && cb.value !== 'other') {
-          selected.push(cb.value);
-        }
-      });
-
-      // Show selected languages
-      if (selected.length > 0) {
-        let display = `Selected: ${selected.join(', ')}`;
-        if (otherCheckbox.checked && languagesOtherInput.value.trim()) {
-          display += ` + ${languagesOtherInput.value.trim()}`;
-        }
-        selectedDisplay.textContent = display;
-        clearError('languages');
-      } else {
-        selectedDisplay.textContent = '';
-      }
-
-      // Show/hide "Other" input field
-      if (otherCheckbox.checked) {
-        languagesOtherInput.style.display = 'block';
-        languagesOtherInput.required = true;
-      } else {
-        languagesOtherInput.style.display = 'none';
-        languagesOtherInput.required = false;
-        languagesOtherInput.value = '';
-      }
-    }
-
-    // Add listeners to language checkboxes
-    document.querySelectorAll('input[name="languages"][type="checkbox"]').forEach(checkbox => {
-      checkbox.addEventListener('change', updateLanguagesDisplay);
-    });
-
-    // Add listener to "Other" input
-    const languagesOtherInput = document.getElementById('languages_other');
-    if (languagesOtherInput) {
-      languagesOtherInput.addEventListener('input', updateLanguagesDisplay);
-    }
 
     // Form submit
     document.getElementById('apply-form').addEventListener('submit', function(e) {
