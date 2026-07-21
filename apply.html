@@ -439,9 +439,8 @@
       display: flex; flex-direction: column; gap: 10px;
     }
     .radio-item, .check-item {
-      display: flex; align-items: center; gap: 12px;
+      display: flex; align-items: flex-start; gap: 12px;
       cursor: pointer;
-      flex-wrap: wrap;
     }
     .radio-item input[type="radio"],
     .check-item input[type="checkbox"] {
@@ -451,6 +450,7 @@
       cursor: pointer;
       flex-shrink: 0;
       padding: 0;
+      margin-top: 3px;
       accent-color: #C9922A;
       transition: all var(--tr);
       appearance: none;
