@@ -310,6 +310,10 @@
       transform: translateY(-8%);
     }
 
+    .field:has(> select).valid::after {
+      display: none;
+    }
+
     @keyframes checkmarkDraw {
       0% {
         opacity: 0;
