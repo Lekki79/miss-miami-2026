@@ -702,7 +702,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      header { padding: 0 24px; height: 72px; }
+      header { padding: 0 24px; height: 72px; position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
       nav { display: none; }
       nav.open {
         display: flex;
@@ -767,7 +767,8 @@
         pointer-events: none;
       }
       .menu-toggle { display: flex; }
-      .page-hero { padding: 120px 24px 60px; }
+      body { padding-top: 72px; }
+      .page-hero { padding: 48px 24px 60px; }
       .apply-wrap { padding: 48px 24px 72px; }
       .form-grid, .form-grid.three { grid-template-columns: 1fr; }
       .field.span2 { grid-column: span 1; }
@@ -780,8 +781,13 @@
       .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
 
       /* Мобильные стили для input полей - предотвращение смещения */
+      input, select, textarea {
+        box-shadow: none !important;
+      }
       input:focus, select:focus, textarea:focus {
-        background: rgba(255,255,255,0.7);
+        background: rgba(255,255,255,0.7) !important;
+        box-shadow: none !important;
+        outline: none !important;
       }
 
       /* Мобильные стили для select и checkbox */
