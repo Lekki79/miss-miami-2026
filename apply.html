@@ -688,6 +688,180 @@
       text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
     }
 
+    .submit-progress {
+      min-height: 22px;
+      margin-top: 14px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: #7A4F10;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .submit-progress.show { opacity: 1; }
+    .btn-submit:disabled { cursor: wait; opacity: 0.85; }
+
+    /* TEMPORARY: frontend-only prototype of the future backend/CRM/Stripe success flow. */
+    .apply-success {
+      display: none;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 72px 64px;
+      background: linear-gradient(145deg, #FFFDF7 0%, #F9EED8 100%);
+      border: 1px solid rgba(201,146,42,0.35);
+      border-radius: 16px;
+      box-shadow: 0 28px 80px rgba(58,26,4,0.16);
+      text-align: center;
+      color: #1A0800;
+    }
+    .apply-success.show {
+      display: block;
+      animation: successReveal 0.7s cubic-bezier(.2,.8,.2,1) both;
+    }
+    @keyframes successReveal {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .success-mark {
+      width: 76px; height: 76px;
+      margin: 0 auto 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #7A4F10, #D4AF37);
+      color: #FFF8E7;
+      font-size: 32px;
+      box-shadow: 0 12px 32px rgba(201,146,42,0.3);
+    }
+    .success-eyebrow {
+      margin-bottom: 12px;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: #A67C1A;
+    }
+    .apply-success h2 {
+      margin-bottom: 18px;
+      font-size: clamp(30px, 5vw, 48px);
+      color: #1A0800;
+    }
+    .apply-success h2:focus { outline: none; }
+    .success-lead {
+      max-width: 650px;
+      margin: 0 auto 36px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #5A3215;
+    }
+    .success-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-bottom: 40px;
+      border: 1px solid rgba(201,146,42,0.24);
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.58);
+    }
+    .success-summary-item {
+      padding: 24px 18px;
+      border-right: 1px solid rgba(201,146,42,0.18);
+    }
+    .success-summary-item:last-child { border-right: none; }
+    .success-summary-label {
+      display: block;
+      margin-bottom: 9px;
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #9A6010;
+    }
+    .success-summary-value {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 14px; font-weight: 700;
+      color: #3A1A04;
+    }
+    .success-payment {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #27613B;
+    }
+    .success-next {
+      max-width: 650px;
+      margin: 0 auto 40px;
+      padding: 30px 32px;
+      border-radius: 10px;
+      background: rgba(201,146,42,0.09);
+      text-align: left;
+    }
+    .success-next h3 {
+      margin-bottom: 20px;
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      color: #3A1A04;
+    }
+    .success-step {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+    .success-step:last-child { margin-bottom: 0; }
+    .success-step-num {
+      width: 28px; height: 28px;
+      border: 1px solid rgba(166,124,26,0.45);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      color: #9A6010;
+    }
+    .success-step p {
+      padding-top: 3px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #5A3215;
+    }
+    .success-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .success-actions a {
+      min-width: 220px;
+      padding: 14px 26px;
+      border-radius: 6px;
+      font-family: 'Cinzel', serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+    .success-actions .primary {
+      background: linear-gradient(110deg, #7A4F10, #D4AF37, #C9922A);
+      color: #FFF8E7;
+    }
+    .success-actions .secondary {
+      border: 1px solid rgba(58,26,4,0.35);
+      color: #3A1A04;
+    }
+    .success-actions a:hover { transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .apply-success { padding: 48px 22px; border-radius: 10px; }
+      .success-summary { grid-template-columns: 1fr; }
+      .success-summary-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(201,146,42,0.18);
+      }
+      .success-summary-item:last-child { border-bottom: none; }
+      .success-next { padding: 24px 20px; }
+      .success-actions { flex-direction: column; }
+      .success-actions a { width: 100%; min-width: 0; }
+    }
+
     /* ── FOOTER ── */
     footer {
       background: #CCA55A;
@@ -1358,6 +1532,7 @@
           <button type="submit" class="btn-submit">
             Submit Application & Pay $250
           </button>
+          <div class="submit-progress" id="submit-progress" role="status" aria-live="polite"></div>
           <p class="submit-note">
             Your application will be reviewed within 5–7 business days.<br />
             You will receive a confirmation email immediately after submission.<br />
@@ -1367,6 +1542,52 @@
       </div>
 
     </form>
+
+    <!-- TEMPORARY: static prototype; replace simulated states with confirmed backend/CRM/Stripe responses. -->
+    <section class="apply-success" id="apply-success" aria-live="polite" aria-labelledby="success-title">
+      <div class="success-mark" aria-hidden="true">✓</div>
+      <p class="success-eyebrow">Application Confirmation</p>
+      <h2 id="success-title" tabindex="-1">Application Submitted</h2>
+      <p class="success-lead">
+        Thank you for applying to Miss Miami 2026. Your application and registration payment have been successfully received.
+      </p>
+
+      <div class="success-summary" aria-label="Application summary">
+        <div class="success-summary-item">
+          <span class="success-summary-label">Application ID</span>
+          <span class="success-summary-value" id="success-application-id">MM26-000000</span>
+        </div>
+        <div class="success-summary-item">
+          <span class="success-summary-label">Status</span>
+          <span class="success-summary-value">Under Review</span>
+        </div>
+        <div class="success-summary-item">
+          <span class="success-summary-label">Registration Fee</span>
+          <span class="success-summary-value success-payment">✓ $250 USD Paid</span>
+        </div>
+      </div>
+
+      <div class="success-next">
+        <h3>What happens next</h3>
+        <div class="success-step">
+          <span class="success-step-num">1</span>
+          <p>Our team will review your application within 5–7 business days.</p>
+        </div>
+        <div class="success-step">
+          <span class="success-step-num">2</span>
+          <p>A confirmation email with your application details and payment receipt has been sent to <strong id="success-email">your email address</strong>.</p>
+        </div>
+        <div class="success-step">
+          <span class="success-step-num">3</span>
+          <p>Visit your Contestant Portal to follow your application status and continue your Road to the Crown.</p>
+        </div>
+      </div>
+
+      <div class="success-actions">
+        <a href="dashboard.html" class="primary">Go to Contestant Portal</a>
+        <a href="index.html" class="secondary">Return to Home</a>
+      </div>
+    </section>
   </div>
 
 
@@ -1678,6 +1899,7 @@
         errorEl.classList.add('show');
       }
       input.classList.add('error');
+      input.setAttribute('aria-invalid', 'true');
       fieldEl.classList.remove('valid');
     }
 
@@ -1692,6 +1914,7 @@
       const errorEl = fieldEl.querySelector('.error-message');
       if (errorEl) errorEl.classList.remove('show');
       input.classList.remove('error');
+      input.removeAttribute('aria-invalid');
       fieldEl.classList.add('valid');
     }
 
@@ -1706,6 +1929,7 @@
         errorEl.classList.add('show');
       }
       container.classList.add('error');
+      container.querySelector('input[type="file"]')?.setAttribute('aria-invalid', 'true');
     }
 
     function clearFileUploadError(uploadContainerId) {
@@ -1716,6 +1940,7 @@
       const errorEl = fieldEl.querySelector('.error-message');
       if (errorEl) errorEl.classList.remove('show');
       container.classList.remove('error');
+      container.querySelector('input[type="file"]')?.removeAttribute('aria-invalid');
     }
 
     function validateForm() {
@@ -2155,16 +2380,62 @@
     });
 
 
+    // TEMPORARY: frontend-only simulation of the future backend/CRM/Stripe submission flow.
+    let prototypeSubmissionInProgress = false;
+
+    const waitForPrototypeStage = (duration) => new Promise(resolve => setTimeout(resolve, duration));
+
+    async function runSubmissionPrototype(form) {
+      if (prototypeSubmissionInProgress) return;
+
+      prototypeSubmissionInProgress = true;
+      const submitButton = form.querySelector('.btn-submit');
+      const submitProgress = document.getElementById('submit-progress');
+      const successPanel = document.getElementById('apply-success');
+      const successEmail = document.getElementById('success-email');
+      const applicationId = document.getElementById('success-application-id');
+
+      form.setAttribute('aria-busy', 'true');
+      submitButton.disabled = true;
+      submitProgress.classList.add('show');
+
+      submitButton.textContent = 'Submitting Application…';
+      submitProgress.textContent = 'Securely submitting your application…';
+      await waitForPrototypeStage(900);
+
+      submitButton.textContent = 'Processing Payment…';
+      submitProgress.textContent = 'Processing your $250 registration payment…';
+      await waitForPrototypeStage(1100);
+
+      submitButton.textContent = 'Finalizing…';
+      submitProgress.textContent = 'Creating your contestant profile…';
+      await waitForPrototypeStage(800);
+
+      const emailValue = document.getElementById('email').value.trim();
+      const reference = Math.floor(100000 + Math.random() * 900000);
+      successEmail.textContent = emailValue || 'your email address';
+      applicationId.textContent = `MM26-${reference}`;
+
+      form.removeAttribute('aria-busy');
+      form.style.display = 'none';
+      successPanel.classList.add('show');
+      successPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('success-title').focus({ preventScroll: true });
+    }
+
     // Form submit
     document.getElementById('apply-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
+      if (prototypeSubmissionInProgress) return;
+
       if (validateForm()) {
-        alert('Thank you! Your application has been received. We will contact you within 5–7 business days.');
-        // Here you would send form data to server
+        runSubmissionPrototype(this);
       } else {
         // Scroll to first error field
-        const firstError = document.querySelector('.error');
+        const firstError = document.querySelector(
+          'input.error, select.error, textarea.error, .file-upload.error input[type="file"]'
+        );
         if (firstError) {
           firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
           firstError.focus();
