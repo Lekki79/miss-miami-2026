@@ -483,6 +483,11 @@
       align-items: flex-start; overflow-y: auto;
     }
     .mobile-menu.open { display: flex; }
+    .mobile-menu::after {
+      content: '';
+      display: block;
+      flex: 0 0 calc(100lvh - 100svh);
+    }
     .mobile-menu a {
       font-family: 'Montserrat', sans-serif; font-size: 14px;
       font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
@@ -493,6 +498,7 @@
     .mobile-menu a:hover { color: var(--gold); }
     .mobile-menu .btn-account-nav { border: 1px solid rgba(212,175,55,0.25); padding: 10px 20px; }
     .mobile-menu .btn-apply-nav {
+      display: flex; align-items: center;
       margin-top: 12px; padding: 16px 32px;
       font-size: 13px !important; width: 100%; border: none;
       background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);

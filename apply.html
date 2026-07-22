@@ -726,6 +726,11 @@
       .mobile-menu.open {
         display: flex;
       }
+      .mobile-menu::after {
+        content: '';
+        display: block;
+        flex: 0 0 calc(100lvh - 100svh);
+      }
       .mobile-menu a {
         font-family: 'Montserrat', sans-serif;
         font-size: 14px;
@@ -747,6 +752,8 @@
         color: rgba(245,230,200,0.78);
       }
       .mobile-menu a.btn-apply-nav {
+        display: flex;
+        align-items: center;
         background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
         background-size: 250% auto;
         color: #FFF8E7 !important;
