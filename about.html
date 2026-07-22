@@ -496,26 +496,28 @@
       border-bottom: 1px solid rgba(212,175,55,0.08);
     }
     .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu a.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
     .mobile-menu .btn-account-nav { border: 1px solid rgba(212,175,55,0.25); padding: 10px 20px; }
     .mobile-menu .btn-apply-nav {
-      display: flex; align-items: center;
+      display: inline-flex; align-items: center;
       margin-top: 12px; padding: 16px 32px;
       font-size: 13px !important; width: 100%; border: none;
+      border-radius: 6px; cursor: pointer;
       background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
       background-size: 250% auto;
       color: #FFF8E7 !important;
-      font-family: 'Cinzel', serif; letter-spacing: 0.25em; font-weight: 700;
+      font-family: 'Cinzel', serif !important;
+      letter-spacing: 0.25em !important; font-weight: 700 !important;
       text-transform: uppercase;
       animation: bronzeFlow 8s ease-in-out infinite;
       position: relative; overflow: hidden;
       text-align: center; justify-content: center;
     }
     .mobile-menu .btn-apply-nav::after {
-      content: '';
-      position: absolute; top: 0; left: -100%; width: 55%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,248,220,0.3), transparent);
-      animation: bronzeSheen 7s ease-in-out infinite;
-      pointer-events: none;
+      display: none !important;
     }
 
     @media (max-width: 640px) {

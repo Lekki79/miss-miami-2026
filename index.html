@@ -675,6 +675,10 @@
       border-bottom: 1px solid rgba(212,175,55,0.08);
     }
     .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu a.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
     .mobile-menu .btn-apply-nav {
       margin-top: 12px; padding: 16px 32px;
       font-size: 13px !important; width: 100%; border: none;
@@ -801,7 +805,7 @@
 
   <!-- ═══ MOBILE MENU ══════════════════════════════════════════════ -->
   <div id="mobile-menu" class="mobile-menu">
-    <a href="index.html">Home</a>
+    <a href="index.html" class="active">Home</a>
     <a href="about.html">About</a>
     <a href="apply.html">Apply</a>
     <a href="competition.html">Competition</a>
