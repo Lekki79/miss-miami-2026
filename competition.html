@@ -94,11 +94,11 @@
     .menu-toggle {
       display: none; flex-direction: column; gap: 6px;
       padding: 10px 12px; cursor: pointer;
-      border: 1px solid rgba(201,168,76,0.25);
+      border: 1px solid #A67C1A;
       border-radius: 4px; background: none;
     }
     .menu-toggle span {
-      display: block; height: 1px; background: var(--gold);
+      display: block; height: 1px; background: #A67C1A;
       transition: var(--tr);
     }
     .menu-toggle span:nth-child(1), .menu-toggle span:nth-child(3) { width: 20px; }
@@ -643,7 +643,7 @@
     @media (max-width: 768px) {
       header {
         height: 72px; padding: 0 24px;
-        background: rgba(221,184,112,0.94);
+        background: transparent;
       }
       .logo-img { height: 68px; }
       nav { display: none; }
@@ -697,13 +697,19 @@
       .intro-layout { grid-template-columns: 1fr; gap: 34px; }
       .intro-title h2 { font-size: 39px; }
       .intro-copy { padding-top: 0; }
-      .intro-copy > p { font-size: 16px; line-height: 1.9; }
+      .intro-copy > p {
+        color: rgba(40,20,0,0.78);
+        font-size: 16px; font-weight: 400; line-height: 1.75;
+      }
       .value-words { gap: 14px 22px; margin-top: 34px; }
 
       .road-story { padding: 95px 0 115px; }
       .road-intro { margin-bottom: 76px; text-align: left; }
-      .road-intro h2 { font-size: 40px; }
-      .road-intro p { font-size: 16px; }
+      .road-intro h2 { font-size: 36px; }
+      .road-intro p {
+        color: rgba(40,20,0,0.78);
+        font-size: 16px; font-weight: 400; line-height: 1.75;
+      }
       .journey { gap: 28px; }
       .journey::before { left: 7px; }
       .journey-step,
@@ -727,19 +733,29 @@
       }
       .journey-step:nth-child(odd) h3::after { margin-left: 0; }
       .journey-step h3 { max-width: 270px; font-size: 21px; }
-      .journey-step p { max-width: 310px; font-size: 15px; }
+      .journey-step p {
+        max-width: 310px;
+        color: rgba(40,20,0,0.78);
+        font-size: 15px; font-weight: 400; line-height: 1.75;
+      }
       .road-disclaimer { margin-top: 64px; font-size: 12px; }
 
       .purpose-story { min-height: 620px; }
       .purpose-story::before { width: 86vw; right: -46vw; }
       .purpose-narrative { width: calc(100% - 48px); padding: 100px 0; }
-      .purpose-narrative h2 { font-size: 35px; }
-      .purpose-narrative > p { font-size: 16px; }
+      .purpose-narrative h2 { font-size: 32px; }
+      .purpose-narrative > p {
+        color: rgba(40,20,0,0.78);
+        font-size: 16px; font-weight: 400; line-height: 1.75;
+      }
 
       .season-story { padding: 95px 0 115px; }
       .season-header { grid-template-columns: 1fr; gap: 28px; margin-bottom: 56px; }
       .season-header h2 { font-size: 38px; }
-      .season-header p { font-size: 16px; }
+      .season-header p {
+        color: rgba(40,20,0,0.78);
+        font-size: 16px; font-weight: 400; line-height: 1.75;
+      }
       .season-line {
         grid-template-columns: 1fr;
         gap: 42px; padding: 0 0 0 42px;
@@ -754,14 +770,20 @@
       .season-moment { padding-top: 0; }
       .season-moment::before { top: 4px; left: -48px; }
       .season-moment h3 { font-size: 18px; }
-      .season-moment p { font-size: 15px; }
+      .season-moment p {
+        color: rgba(40,20,0,0.78);
+        font-size: 15px; font-weight: 400; line-height: 1.7;
+      }
 
       .opportunity-story {
         min-height: 640px;
       }
       .opportunity-copy { padding: 100px 0 92px; align-self: flex-end; }
-      .opportunity-copy h2 { font-size: 40px; }
-      .opportunity-copy > p { font-size: 16px; }
+      .opportunity-copy h2 { font-size: 36px; }
+      .opportunity-copy > p {
+        color: rgba(40,20,0,0.78);
+        font-size: 16px; font-weight: 400; line-height: 1.75;
+      }
       .opportunity-list { gap: 15px 24px; }
 
     }
@@ -826,7 +848,6 @@
           </div>
         </div>
       </div>
-      <div class="hero-scroll" aria-hidden="true">Discover</div>
     </section>
 
     <!-- DEMONSTRATION CONCEPT: copy remains replaceable after Customer review. -->
