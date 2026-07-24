@@ -849,6 +849,25 @@
     }
     .success-actions a:hover { transform: translateY(-2px); }
 
+    .after-apply-info {
+      margin: 0 0 28px;
+      padding: 24px 26px;
+      border: 1px solid rgba(166,124,26,0.24);
+      border-radius: 8px;
+      background: rgba(255,248,231,0.45);
+    }
+    .after-apply-info h4 {
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      color: #3A1A04;
+    }
+    .after-apply-info p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #5A3215;
+    }
+
     @media (max-width: 768px) {
       .apply-success { padding: 48px 22px; border-radius: 10px; }
       .success-summary { grid-template-columns: 1fr; }
@@ -1080,13 +1099,12 @@
     <nav id="main-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="apply.html" class="active">Apply</a>
       <a href="competition.html">Competition</a>
       <a href="gallery.html">Gallery</a>
       <a href="sponsors.html">Sponsors</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
-      <a href="dashboard.html" class="btn-account" style="color: #1A0800 !important;">My Account</a>
+      <a href="dashboard.html" class="btn-account" style="color: #1A0800 !important;">Contestant Portal</a>
       <a href="apply.html" class="btn-nav">Apply Now</a>
     </nav>
     <button class="menu-toggle" id="menu-toggle">
@@ -1098,13 +1116,12 @@
   <div id="mobile-menu" class="mobile-menu">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="apply.html" class="active">Apply</a>
     <a href="competition.html">Competition</a>
     <a href="gallery.html">Gallery</a>
     <a href="sponsors.html">Sponsors</a>
     <a href="faq.html">FAQ</a>
     <a href="contact.html">Contact</a>
-    <a href="dashboard.html" class="btn-account-nav">My Account</a>
+    <a href="dashboard.html" class="btn-account-nav">Contestant Portal</a>
     <a href="apply.html" class="btn-apply-nav">Apply Now</a>
   </div>
 
@@ -1153,6 +1170,7 @@
             <li>Pay the non-refundable $250 application fee</li>
             <li>Accept all pageant rules and regulations by signing the agreement</li>
             <li>Consent to the use of photos and videos for promotional purposes</li>
+            <li>Approved contestants will receive access to the Contestant Portal and subsequent competition materials</li>
           </ul>
         </div>
       </div>
@@ -1509,6 +1527,11 @@
           <h3>Agreement & Submission</h3>
         </div>
 
+        <div class="after-apply-info" aria-labelledby="after-apply-title">
+          <h4 id="after-apply-title">What Happens After You Apply</h4>
+          <p>Your application will be submitted for review. You will receive the decision by email. If your application is approved, that email will include a secure invitation to activate your Contestant Portal access.</p>
+        </div>
+
         <div class="terms-box">
           <div class="check-item">
             <input type="checkbox" id="terms" name="terms" required />
@@ -1538,8 +1561,8 @@
           </button>
           <div class="submit-progress" id="submit-progress" role="status" aria-live="polite"></div>
           <p class="submit-note">
-            Your application will be reviewed within 5–7 business days.<br />
-            You will receive a confirmation email immediately after submission.<br />
+            Your application will be reviewed by the Miss Miami team.<br />
+            A confirmation and the decision will be sent to your email.<br />
             Questions? <a href="contact.html">Contact us</a>
           </p>
         </div>
@@ -1575,7 +1598,7 @@
         <h3>What happens next</h3>
         <div class="success-step">
           <span class="success-step-num">1</span>
-          <p>Our team will review your application within 5–7 business days.</p>
+          <p>Our team will review your application.</p>
         </div>
         <div class="success-step">
           <span class="success-step-num">2</span>
@@ -1583,13 +1606,12 @@
         </div>
         <div class="success-step">
           <span class="success-step-num">3</span>
-          <p>Visit your Contestant Portal to follow your application status and continue your Road to the Crown.</p>
+          <p>If your application is approved, you will receive a secure email invitation to activate your Contestant Portal access and continue your Road to the Crown.</p>
         </div>
       </div>
 
       <div class="success-actions">
-        <a href="dashboard.html" class="primary">Go to Contestant Portal</a>
-        <a href="index.html" class="secondary">Return to Home</a>
+        <a href="index.html" class="primary">Return to Home</a>
       </div>
     </section>
   </div>

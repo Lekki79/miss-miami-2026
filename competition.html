@@ -8,106 +8,779 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
+    /* ─── RESET & DESIGN TOKENS ───────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --gold: #D4AF37; --black: #0D0D0D; --cream: #F5F1E8; --white: #ffffff; --glass: rgba(13,13,13,0.85); --tr: 0.3s cubic-bezier(.4,0,.2,1); }
-    html { scroll-behavior: smooth; }
-    body { background: var(--black); color: var(--cream); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
-    h1,h2,h3 { font-family: 'Cinzel', serif; letter-spacing: 0.06em; }
-    a { text-decoration: none; color: inherit; }
+    :root {
+      --gold: #D4AF37;
+      --gold2: #B8960A;
+      --bronze: #C9922A;
+      --champagne: #E7C985;
+      --cream: #DDB870;
+      --warm-white: #FFF8E7;
+      --espresso: #3A1A04;
+      --dark-brown: #1A0800;
+      --mid-text: rgba(40,20,0,0.66);
+      --tr: 0.35s cubic-bezier(.4,0,.2,1);
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      background: var(--cream);
+      color: var(--dark-brown);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: 'Cinzel', serif; letter-spacing: 0.07em; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
     ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-track { background: var(--cream); }
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
+    /* ─── SHARED HEADER ───────────────────────────────────────── */
     header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 56px; height: 90px;
-      background: var(--glass); backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(212,175,55,0.15);
+      height: 90px; padding: 0 56px;
+      background: transparent;
     }
-    .logo { display: flex; align-items: center; }
-    .logo-img { height: 80px; width: auto; display: block; object-fit: contain; }
+    .logo { display: flex; align-items: center; flex-shrink: 0; }
+    .logo-img { display: block; width: auto; height: 80px; object-fit: contain; }
     nav { display: flex; align-items: center; gap: 32px; }
-    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.7); transition: color var(--tr); position: relative; }
-    nav a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform var(--tr); }
-    nav a:hover { color: var(--gold); }
-    nav a:hover::after, nav a.active::after { transform: scaleX(1); }
-    nav a.active { color: var(--gold); }
-    .btn-nav { padding: 10px 28px; background: var(--gold); color: var(--black) !important; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em; font-weight: 700; text-transform: uppercase; transition: all var(--tr); }
-    .btn-nav:hover { background: #c9a227; }
-    .btn-nav::after, .btn-account::after { display: none !important; }
-    .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.78) !important; border: 1px solid rgba(212,175,55,0.25); padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
-    .btn-account:hover { color: var(--gold) !important; border-color: rgba(212,175,55,0.6); }
-    .menu-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; }
-    .menu-toggle span { display:block; width:24px; height:1.5px; background:var(--gold); }
-
-    .coming-soon {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      padding: 120px 24px 80px;
+    nav a {
       position: relative;
+      color: rgba(245,230,200,0.78);
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      transition: color var(--tr);
+    }
+    nav a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--tr);
+    }
+    nav a:hover, nav a.active { color: var(--gold); }
+    nav a:hover::after, nav a.active::after { transform: scaleX(1); }
+    .btn-nav, .btn-apply-nav {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 28px;
+      border: none; border-radius: 6px;
+      color: #FFF8E7 !important;
+      background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
+      background-size: 250% auto;
+      font-family: 'Cinzel', serif !important;
+      font-size: 11px !important; font-weight: 700 !important;
+      letter-spacing: 0.22em !important; text-transform: uppercase;
+      animation: bronzeFlow 8s ease-in-out infinite;
+      transition: background-position var(--tr);
+    }
+    .btn-nav:hover, .btn-apply-nav:hover { background-position: right center; }
+    .btn-nav::after, .btn-account::after, .btn-account-nav::after, .btn-apply-nav::after { display: none !important; }
+    .btn-account, .btn-account-nav {
+      padding: 8px 18px;
+      border: 1px solid rgba(212,175,55,0.28);
+      border-radius: 6px;
+      color: rgba(245,230,200,0.78) !important;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      transition: border-color var(--tr), color var(--tr);
+    }
+    .btn-account:hover, .btn-account-nav:hover {
+      color: var(--gold) !important;
+      border-color: rgba(212,175,55,0.6);
+    }
+    .menu-toggle {
+      display: none; flex-direction: column; gap: 6px;
+      padding: 10px 12px; cursor: pointer;
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 4px; background: none;
+    }
+    .menu-toggle span {
+      display: block; height: 1px; background: var(--gold);
+      transition: var(--tr);
+    }
+    .menu-toggle span:nth-child(1), .menu-toggle span:nth-child(3) { width: 20px; }
+    .menu-toggle span:nth-child(2) { width: 14px; }
+
+    /* ─── SHARED ELEMENTS ─────────────────────────────────────── */
+    .section-shell { width: min(1180px, calc(100% - 112px)); margin: 0 auto; }
+    .section-heading { max-width: 760px; margin-bottom: 56px; }
+    .section-heading.center { margin-left: auto; margin-right: auto; text-align: center; }
+    .eyebrow {
+      display: block; margin-bottom: 18px;
+      color: #8C570D;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.42em; text-transform: uppercase;
+    }
+    .section-heading h2 {
+      margin-bottom: 18px;
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1.15;
+    }
+    .section-heading p {
+      color: var(--mid-text);
+      font-size: 15px; line-height: 1.95;
+    }
+    .ornament {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; margin: 22px 0;
+    }
+    .ornament::before, .ornament::after {
+      content: ''; width: 64px; height: 1px;
+      background: rgba(140,87,13,0.34);
+    }
+    .ornament span { color: var(--gold2); font-size: 12px; }
+    .btn-primary, .btn-secondary {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 14px 34px;
+      border-radius: 6px;
+      font-family: 'Cinzel', serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      transition: transform var(--tr), background var(--tr), border-color var(--tr);
+    }
+    .btn-primary {
+      color: #FFF8E7;
+      border: 1px solid transparent;
+      background: linear-gradient(110deg, #7A4F10, #C9922A 35%, #D4AF37 50%, #C9922A 70%, #7A4F10);
+      background-size: 250% auto;
+      animation: bronzeFlow 8s ease-in-out infinite;
+    }
+    .btn-secondary {
+      color: var(--dark-brown);
+      border: 1px solid rgba(122,79,16,0.5);
+      background: rgba(255,248,231,0.18);
+    }
+    .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
+    .btn-secondary:hover { border-color: var(--bronze); background: rgba(255,248,231,0.34); }
+    .dark .eyebrow { color: var(--champagne); }
+    .dark .section-heading h2, .dark .section-heading p { color: #F8E8C7; }
+    .dark .btn-secondary { color: #F8E8C7; border-color: rgba(212,175,55,0.48); background: transparent; }
+
+    /* ─── HERO ────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 760px; height: 100vh;
+      display: flex; align-items: center;
       overflow: hidden;
+      /* TEMPORARY APPROVED DEMO MEDIA: replace when Customer supplies final campaign assets. */
+      background: url('competition-hero-approved.png') center center/cover no-repeat, var(--cream);
     }
-    .coming-soon-bg {
-      position: absolute; inset: 0;
-      background-image: url('hero.jpg');
-      background-size: cover; background-position: center;
-      opacity: 0.07;
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(42,18,0,0.58) 0%, rgba(42,18,0,0.3) 36%, rgba(42,18,0,0.02) 68%),
+        linear-gradient(0deg, rgba(58,26,4,0.42) 0%, transparent 30%);
+      z-index: 1;
     }
-    .coming-soon-overlay {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at center, transparent 0%, var(--black) 70%);
+    .hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 180px;
+      background: linear-gradient(to bottom, transparent, var(--cream));
+      z-index: 2;
     }
-    .coming-soon-content { position: relative; z-index: 2; max-width: 640px; }
-    .cs-icon { font-size: 56px; margin-bottom: 32px; display: block; opacity: 0.6; }
-    .cs-eyebrow { font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; display: block; }
-    .cs-title { font-size: clamp(36px, 6vw, 72px); color: var(--white); margin-bottom: 24px; line-height: 1.1; }
-    .cs-title em { font-style: normal; color: var(--gold); }
-    .cs-text { font-size: 15px; color: rgba(245,241,232,0.65); line-height: 2; margin-bottom: 48px; max-width: 480px; margin-left: auto; margin-right: auto; }
-    .cs-divider { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 48px; }
-    .cs-divider-line { width: 60px; height: 1px; background: rgba(212,175,55,0.3); }
-    .cs-divider span { color: var(--gold); opacity: 0.6; font-size: 14px; }
-    .btn-gold {
-      display: inline-block; padding: 16px 52px;
-      background: var(--gold); color: var(--black);
-      font-family: 'Cinzel', serif; font-size: 12px;
-      letter-spacing: 0.25em; font-weight: 700;
-      text-transform: uppercase; transition: background var(--tr);
+    .hero-content {
+      position: relative; z-index: 3;
+      width: min(1180px, calc(100% - 112px));
+      margin: 0 auto; padding-top: 70px;
     }
-    .btn-gold:hover { background: #c9a227; }
+    .hero-copy { max-width: 630px; }
+    .hero-kicker {
+      display: block; margin-bottom: 22px;
+      color: var(--champagne);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.46em; text-transform: uppercase;
+    }
+    .hero h1 {
+      color: #FFF4D8;
+      font-size: clamp(50px, 7vw, 90px);
+      line-height: 0.98;
+      text-shadow: 0 8px 48px rgba(0,0,0,0.35);
+    }
+    .hero h1 em {
+      display: block;
+      color: var(--gold);
+      font-style: normal; font-size: 0.52em;
+      letter-spacing: 0.26em;
+    }
+    .hero-text {
+      max-width: 540px; margin-top: 28px;
+      color: rgba(255,244,216,0.82);
+      font-size: 16px; line-height: 1.9;
+    }
+    .hero-actions { display: flex; gap: 14px; margin-top: 36px; }
+    .hero .btn-secondary { color: #FFF4D8; border-color: rgba(212,175,55,0.5); background: rgba(58,26,4,0.24); }
+    .hero-scroll {
+      position: absolute; z-index: 4;
+      bottom: 55px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      color: #FFF4D8;
+      font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase;
+    }
+    .hero-scroll::after {
+      content: ''; width: 1px; height: 42px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
 
-    footer { background: var(--black); border-top: 1px solid rgba(212,175,55,0.12); padding: 40px 56px 28px; }
+    /* ─── FINAL CTA & FOOTER ──────────────────────────────────── */
+    .final-cta {
+      position: relative; overflow: hidden;
+      min-height: 820px;
+      display: flex; align-items: flex-end;
+      padding: 132px 0 86px;
+      background: url('competition-final-cta-v2.png') center center/cover no-repeat, var(--espresso);
+    }
+    .final-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, var(--champagne) 0%, rgba(231,201,133,0.82) 5%, rgba(231,201,133,0.22) 14%, transparent 28%),
+        radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.3) 0%, rgba(212,175,55,0.12) 24%, transparent 52%),
+        radial-gradient(ellipse at 50% 100%, rgba(26,8,0,0.82) 0%, rgba(26,8,0,0.46) 25%, transparent 58%),
+        linear-gradient(0deg, rgba(26,8,0,0.44), transparent 38%);
+    }
+    .final-cta::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(0deg, var(--cream), transparent 11%);
+      opacity: 0.22;
+    }
+    .final-content {
+      position: relative; z-index: 1;
+      width: min(760px, calc(100% - 112px));
+      margin: 0 auto;
+      text-align: center;
+    }
+    .final-cta .eyebrow { color: var(--champagne); }
+    .final-cta h2 {
+      max-width: 680px;
+      margin: 0 auto 18px;
+      color: var(--warm-white); font-size: clamp(34px, 5vw, 60px); line-height: 1.15;
+    }
+    .final-cta p {
+      max-width: 610px; margin: 0 auto 30px;
+      color: rgba(255,248,231,0.86); font-size: 15px; line-height: 1.9;
+    }
+    .final-actions { display: flex; justify-content: center; gap: 14px; }
+    footer {
+      padding: 40px 56px 28px;
+      border-top: 1px solid rgba(122,79,16,0.12);
+      background: var(--cream);
+    }
     .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
-    .footer-bottom p { font-size: 11px; color: rgba(245,241,232,0.55); }
+    .footer-bottom p, .footer-links a { color: rgba(42,18,0,0.52); font-size: 11px; }
     .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: 11px; color: rgba(245,241,232,0.55); transition: color var(--tr); }
-    .footer-links a:hover { color: var(--gold); }
+    .footer-links a { transition: color var(--tr); }
+    .footer-links a:hover { color: var(--espresso); }
 
+    /* ─── COMPETITION EDITORIAL CONCEPT ───────────────────────── */
+    .story-intro {
+      position: relative;
+      padding: 150px 0 180px;
+      background:
+        radial-gradient(circle at 78% 36%, rgba(255,248,231,0.58), transparent 31%),
+        linear-gradient(180deg, var(--cream), var(--champagne));
+    }
+    .story-intro::after {
+      content: 'MISS MIAMI';
+      position: absolute; right: -24px; bottom: -34px;
+      color: rgba(122,79,16,0.055);
+      font-family: 'Cinzel', serif;
+      font-size: clamp(64px, 13vw, 190px);
+      letter-spacing: 0.08em; white-space: nowrap;
+      pointer-events: none;
+    }
+    .intro-layout {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1.15fr 0.85fr;
+      gap: 9vw; align-items: start;
+    }
+    .intro-title h2 {
+      max-width: 700px;
+      font-size: clamp(42px, 5.8vw, 78px);
+      font-weight: 400; line-height: 1.06;
+    }
+    .intro-title h2 em {
+      display: block; color: #8C570D;
+      font-style: normal; font-weight: 400;
+    }
+    .intro-copy { padding-top: 82px; }
+    .intro-copy > p {
+      color: var(--mid-text);
+      font-size: 16px; line-height: 2;
+    }
+    .value-words {
+      display: flex; flex-wrap: wrap;
+      gap: 15px 30px; margin-top: 44px;
+    }
+    .value-words span {
+      position: relative; padding-left: 22px;
+      color: #704106;
+      font-family: 'Cinzel', serif;
+      font-size: 12px; letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .value-words span::before {
+      content: ''; position: absolute;
+      top: 50%; left: 0; width: 11px; height: 1px;
+      background: var(--bronze);
+    }
+
+    .road-story {
+      position: relative; overflow: hidden;
+      padding: 160px 0 190px;
+      background:
+        linear-gradient(180deg, var(--champagne) 0%, var(--warm-white) 52%, var(--champagne) 100%);
+    }
+    .road-story::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 18% 26%, rgba(255,248,231,0.7), transparent 24%),
+        radial-gradient(circle at 82% 72%, rgba(212,175,55,0.1), transparent 26%);
+      pointer-events: none;
+    }
+    .road-intro {
+      position: relative; z-index: 2;
+      max-width: 860px; margin: 0 auto 120px;
+      text-align: center;
+    }
+    .road-intro h2 {
+      margin-bottom: 28px;
+      font-size: clamp(46px, 6.5vw, 86px);
+      font-weight: 400; line-height: 1;
+    }
+    .road-intro p {
+      max-width: 670px; margin: 0 auto;
+      color: var(--mid-text);
+      font-size: 15px; line-height: 2;
+    }
+    .journey {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column;
+      gap: 48px;
+    }
+    .journey::before {
+      content: ''; position: absolute;
+      top: 0; bottom: 0; left: 50%; width: 1px;
+      background: linear-gradient(transparent, rgba(184,150,10,0.38) 8%, rgba(184,150,10,0.38) 92%, transparent);
+      transform: scaleY(0); transform-origin: top;
+      transition: transform 1.4s cubic-bezier(.4,0,.2,1);
+    }
+    .journey.is-visible::before { transform: scaleY(1); }
+    .journey-step {
+      position: relative;
+      width: calc(50% - 66px);
+      min-height: 180px;
+      display: flex; flex-direction: column; justify-content: center;
+      opacity: 0;
+      transition: opacity 1.15s ease, transform 1.15s cubic-bezier(.22,.61,.36,1);
+    }
+    .journey-step:nth-child(odd) {
+      align-self: flex-start;
+      padding-right: 7vw; text-align: right;
+      transform: translateX(-56px);
+    }
+    .journey-step:nth-child(even) {
+      align-self: flex-end;
+      padding-left: 7vw;
+      transform: translateX(56px);
+    }
+    .journey-step.visible { opacity: 1; transform: translateX(0); }
+    .journey-step::after {
+      content: ''; position: absolute;
+      top: 50%; width: 54px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--bronze));
+    }
+    .journey-step:nth-child(odd)::after { right: -66px; }
+    .journey-step:nth-child(even)::after {
+      left: -66px; transform: rotate(180deg);
+    }
+    .journey-step::before {
+      content: ''; position: absolute;
+      top: calc(50% - 4px); width: 9px; height: 9px;
+      border: 1px solid var(--bronze); border-radius: 50%;
+      background: var(--cream); box-shadow: 0 0 0 8px rgba(201,146,42,0.08);
+    }
+    .journey-step:nth-child(odd)::before { right: -71px; }
+    .journey-step:nth-child(even)::before { left: -71px; }
+    .journey-step h3 {
+      position: relative; z-index: 1;
+      margin-bottom: 13px;
+      color: var(--espresso);
+      font-size: clamp(19px, 2vw, 26px);
+      font-weight: 400;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity 0.75s ease 0.12s, transform 0.75s ease 0.12s;
+    }
+    .journey-step h3::after {
+      content: ''; display: block;
+      width: 46px; height: 1px; margin-top: 15px;
+      background: var(--bronze);
+      opacity: 0.7;
+    }
+    .journey-step:nth-child(odd) h3::after { margin-left: auto; }
+    .journey-step p {
+      position: relative; z-index: 1;
+      color: var(--mid-text);
+      font-size: 13px; line-height: 1.9;
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+    }
+    .journey-step.visible h3,
+    .journey-step.visible p { opacity: 1; transform: translateY(0); }
+    .road-disclaimer {
+      position: relative; z-index: 2;
+      max-width: 610px; margin: 100px auto 0;
+      color: rgba(58,26,4,0.56);
+      font-size: 11px; line-height: 1.8; text-align: center;
+    }
+
+    .purpose-story {
+      position: relative;
+      min-height: 720px;
+      display: flex; align-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 78% 40%, rgba(255,248,231,0.72), transparent 28%),
+        linear-gradient(180deg, var(--champagne), var(--warm-white) 52%, var(--cream));
+    }
+    .purpose-story::before {
+      content: ''; position: absolute;
+      width: min(44vw, 620px); aspect-ratio: 1;
+      right: -9vw; top: 50%; transform: translateY(-50%);
+      border: 1px solid rgba(140,87,13,0.12);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 55px rgba(212,175,55,0.035),
+        0 0 0 110px rgba(255,248,231,0.05);
+    }
+    .purpose-narrative {
+      position: relative; z-index: 1;
+      width: min(1180px, calc(100% - 112px));
+      max-width: none; margin: 0 auto;
+      padding: 140px 0;
+    }
+    .purpose-narrative h2 {
+      margin-bottom: 32px;
+      font-size: clamp(38px, 5vw, 66px);
+      font-weight: 400; line-height: 1.1;
+    }
+    .purpose-narrative > p {
+      max-width: 700px;
+      color: var(--mid-text);
+      font-size: 15px; line-height: 2;
+    }
+    .purpose-narrative blockquote {
+      max-width: 760px;
+      margin-top: 46px; padding-left: 30px;
+      border-left: 1px solid var(--bronze);
+      color: #704106;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(18px, 2vw, 25px);
+      line-height: 1.65;
+    }
+
+    .season-story {
+      padding: 150px 0 170px;
+      background: linear-gradient(180deg, var(--cream), var(--champagne) 52%, var(--warm-white));
+    }
+    .season-header {
+      display: grid; grid-template-columns: 0.8fr 1.2fr;
+      gap: 8vw; align-items: end;
+      margin-bottom: 88px;
+    }
+    .season-header h2 {
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 400; line-height: 1.08;
+    }
+    .season-header p {
+      max-width: 540px;
+      color: var(--mid-text);
+      font-size: 15px; line-height: 1.95;
+    }
+    .season-line {
+      position: relative;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 32px; padding-top: 42px;
+      border-top: 1px solid rgba(122,79,16,0.28);
+    }
+    .season-line::before {
+      content: ''; position: absolute; top: -2px; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--gold2), var(--gold));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 1.2s ease;
+    }
+    .season-line.is-visible::before { transform: scaleX(1); }
+    .season-moment { position: relative; padding-top: 18px; }
+    .season-moment::before {
+      content: ''; position: absolute;
+      top: -49px; left: 0;
+      width: 11px; height: 11px;
+      border: 2px solid var(--cream); border-radius: 50%;
+      background: var(--bronze);
+      box-shadow: 0 0 0 1px rgba(122,79,16,0.25);
+    }
+    .season-moment small {
+      display: block; margin-bottom: 16px;
+      color: #8C570D; font-size: 9px; font-weight: 600;
+      letter-spacing: 0.24em; text-transform: uppercase;
+    }
+    .season-moment h3 {
+      margin-bottom: 12px;
+      font-size: 17px; font-weight: 400;
+    }
+    .season-moment p {
+      color: var(--mid-text);
+      font-size: 12px; line-height: 1.8;
+    }
+
+    .opportunity-story {
+      position: relative; overflow: hidden;
+      min-height: 690px;
+      display: flex; align-items: center;
+      color: var(--dark-brown);
+      background:
+        radial-gradient(circle at 82% 45%, rgba(255,248,231,0.72), transparent 26%),
+        linear-gradient(180deg, var(--warm-white), var(--warm-white) 55%, var(--champagne));
+    }
+    .opportunity-story::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(115deg, transparent 62%, rgba(212,175,55,0.09)),
+        radial-gradient(circle at 14% 86%, rgba(201,146,42,0.08), transparent 23%);
+    }
+    .opportunity-copy {
+      position: relative; z-index: 1;
+      max-width: 660px; padding: 130px 0;
+    }
+    .opportunity-copy h2 {
+      margin-bottom: 30px;
+      font-size: clamp(42px, 6vw, 78px);
+      font-weight: 400; line-height: 1.05;
+    }
+    .opportunity-copy > p {
+      max-width: 560px;
+      color: var(--mid-text);
+      font-size: 15px; line-height: 2;
+    }
+    .opportunity-list {
+      display: flex; flex-wrap: wrap;
+      gap: 18px 38px; margin-top: 46px;
+    }
+    .opportunity-list span {
+      color: #704106;
+      font-family: 'Cinzel', serif;
+      font-size: 12px; letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    /* ─── EXISTING MOTION SYSTEM ──────────────────────────────── */
+    .fade-up {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up-d1 { transition-delay: 0.15s; }
+    .fade-up-d2 { transition-delay: 0.3s; }
+    .fade-up-d3 { transition-delay: 0.45s; }
+    .fade-up-d4 { transition-delay: 0.6s; }
+    @keyframes bronzeFlow {
+      0% { background-position: 0% center; }
+      50% { background-position: 100% center; }
+      100% { background-position: 0% center; }
+    }
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+      50% { opacity: 0.9; transform: scaleY(1.12); }
+    }
+    /* ─── MOBILE MENU ─────────────────────────────────────────── */
     .mobile-menu {
       display: none; position: fixed;
-      top: 72px; left: 0; right: 0; bottom: auto;
-      height: calc(100dvh - 72px);
-      background: #0d0d0d; z-index: 9999;
-      flex-direction: column; padding: 32px; gap: 20px;
-      align-items: flex-start; overflow-y: auto;
+      top: 72px; left: 0; right: 0; bottom: 0;
+      z-index: 9999;
+      flex-direction: column; align-items: flex-start;
+      gap: 20px; padding: 32px;
+      overflow-y: auto;
+      background: #3A1A04;
     }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-size: 13px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.7); transition: color 0.3s; width: 100%; padding: 8px 0; border-bottom: 1px solid rgba(212,175,55,0.08); }
-    .mobile-menu a:hover { color: var(--gold); }
-    .mobile-menu .btn-apply-nav { margin-top: 12px; display: inline-block; padding: 16px 40px; background: var(--gold); color: var(--black) !important; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.25em; font-weight: 700; text-transform: uppercase; border: none; width: auto; }
+    .mobile-menu::after {
+      content: ''; display: block;
+      flex: 0 0 calc(100lvh - 100svh);
+    }
+    .mobile-menu a {
+      width: 100%; padding: 8px 0;
+      border-bottom: 1px solid rgba(212,175,55,0.08);
+      color: rgba(245,230,200,0.78);
+      font-size: 14px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      transition: color var(--tr);
+    }
+    .mobile-menu a:hover, .mobile-menu a.active { color: var(--gold); }
+    .mobile-menu a.active { border-bottom-color: var(--gold); }
+    .mobile-menu .btn-account-nav { padding: 10px 20px; }
+    .mobile-menu .btn-apply-nav {
+      width: 100%; margin-top: 12px; padding: 16px 32px;
+      font-size: 13px !important; border: none;
+    }
 
-    @media (max-width: 640px) {
-      header { padding: 0 24px; height: 72px; }
+    /* ─── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      header { padding: 0 32px; }
+      nav { gap: 20px; }
+      nav a { font-size: 10px; }
+      .section-shell, .hero-content { width: min(100% - 64px, 960px); }
+      .intro-layout { gap: 6vw; }
+      .journey-step { width: calc(50% - 54px); }
+      .journey-step:nth-child(odd)::after { right: -54px; width: 42px; }
+      .journey-step:nth-child(even)::after { left: -54px; width: 42px; }
+      .journey-step:nth-child(odd)::before { right: -59px; }
+      .journey-step:nth-child(even)::before { left: -59px; }
+      .purpose-narrative { padding-left: 6vw; padding-right: 6vw; }
+    }
+    @media (max-width: 768px) {
+      header {
+        height: 72px; padding: 0 24px;
+        background: rgba(221,184,112,0.94);
+      }
+      .logo-img { height: 68px; }
       nav { display: none; }
       .menu-toggle { display: flex; }
+      .section-shell, .hero-content { width: calc(100% - 48px); }
+      .section-heading { margin-bottom: 40px; }
+      .section-heading h2 { font-size: 28px; }
+      .section-heading p, .purpose-copy p, .final-cta p { font-size: 17px; line-height: 1.9; }
+      .eyebrow { font-size: 11px; letter-spacing: 0.3em; }
+
+      .hero {
+        min-height: 720px;
+        background-position: 64% center;
+      }
+      .hero::before {
+        background:
+          linear-gradient(0deg, rgba(42,18,0,0.82), rgba(42,18,0,0.08) 72%),
+          linear-gradient(90deg, rgba(42,18,0,0.5), transparent 92%);
+      }
+      .hero-content { display: flex; align-items: flex-end; min-height: 720px; padding: 110px 0 120px; }
+      .hero-copy { max-width: 100%; }
+      .hero h1 { font-size: 44px; }
+      .hero h1 em { margin-top: 8px; font-size: 0.46em; }
+      .hero-text { font-size: 16px; }
+      .hero-actions, .final-actions { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-secondary { width: 100%; }
+      .hero-scroll { display: none; }
+
+      .final-cta {
+        min-height: 760px;
+        align-items: flex-end;
+        padding: 90px 0 92px;
+        background-position: center center;
+      }
+      .final-cta::before {
+        background:
+          linear-gradient(180deg, var(--champagne) 0%, rgba(231,201,133,0.84) 7%, rgba(231,201,133,0.24) 17%, transparent 32%),
+          radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.3) 0%, rgba(212,175,55,0.12) 28%, transparent 58%),
+          radial-gradient(ellipse at 50% 100%, rgba(26,8,0,0.88) 0%, rgba(26,8,0,0.58) 30%, transparent 66%),
+          linear-gradient(0deg, rgba(26,8,0,0.36), transparent 44%);
+      }
+      .final-content { width: calc(100% - 48px); text-align: center; }
+      .final-cta h2 { font-size: 30px; }
       footer { padding: 28px 24px; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .footer-bottom p, .footer-links a { font-size: 13px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+      .story-intro { padding: 94px 0 110px; }
+      .story-intro::after { bottom: 0; font-size: 72px; }
+      .intro-layout { grid-template-columns: 1fr; gap: 34px; }
+      .intro-title h2 { font-size: 39px; }
+      .intro-copy { padding-top: 0; }
+      .intro-copy > p { font-size: 16px; line-height: 1.9; }
+      .value-words { gap: 14px 22px; margin-top: 34px; }
+
+      .road-story { padding: 95px 0 115px; }
+      .road-intro { margin-bottom: 76px; text-align: left; }
+      .road-intro h2 { font-size: 40px; }
+      .road-intro p { font-size: 16px; }
+      .journey { gap: 28px; }
+      .journey::before { left: 7px; }
+      .journey-step,
+      .journey-step:nth-child(odd),
+      .journey-step:nth-child(even) {
+        width: auto; min-height: 150px;
+        align-self: stretch; padding: 26px 0 26px 58px;
+        text-align: left;
+      }
+      .journey-step:nth-child(odd),
+      .journey-step:nth-child(even) { transform: translateX(44px); }
+      .journey-step.visible { transform: translateX(0); }
+      .journey-step:nth-child(odd)::after,
+      .journey-step:nth-child(even)::after {
+        top: 50%; left: 8px; right: auto;
+        width: 23px; transform: none;
+      }
+      .journey-step:nth-child(odd)::before,
+      .journey-step:nth-child(even)::before {
+        top: calc(50% - 4px); left: 3px; right: auto;
+      }
+      .journey-step:nth-child(odd) h3::after { margin-left: 0; }
+      .journey-step h3 { max-width: 270px; font-size: 21px; }
+      .journey-step p { max-width: 310px; font-size: 15px; }
+      .road-disclaimer { margin-top: 64px; font-size: 12px; }
+
+      .purpose-story { min-height: 620px; }
+      .purpose-story::before { width: 86vw; right: -46vw; }
+      .purpose-narrative { width: calc(100% - 48px); padding: 100px 0; }
+      .purpose-narrative h2 { font-size: 35px; }
+      .purpose-narrative > p { font-size: 16px; }
+
+      .season-story { padding: 95px 0 115px; }
+      .season-header { grid-template-columns: 1fr; gap: 28px; margin-bottom: 56px; }
+      .season-header h2 { font-size: 38px; }
+      .season-header p { font-size: 16px; }
+      .season-line {
+        grid-template-columns: 1fr;
+        gap: 42px; padding: 0 0 0 42px;
+        border-top: 0; border-left: 1px solid rgba(122,79,16,0.28);
+      }
+      .season-line::before {
+        top: 0; left: -2px;
+        width: 3px; height: 100%;
+        transform: scaleY(0); transform-origin: top;
+      }
+      .season-line.is-visible::before { transform: scaleY(1); }
+      .season-moment { padding-top: 0; }
+      .season-moment::before { top: 4px; left: -48px; }
+      .season-moment h3 { font-size: 18px; }
+      .season-moment p { font-size: 15px; }
+
+      .opportunity-story {
+        min-height: 640px;
+      }
+      .opportunity-copy { padding: 100px 0 92px; align-self: flex-end; }
+      .opportunity-copy h2 { font-size: 40px; }
+      .opportunity-copy > p { font-size: 16px; }
+      .opportunity-list { gap: 15px 24px; }
+
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .fade-up { opacity: 1; transform: none; }
+      .journey-step,
+      .journey-step h3,
+      .journey-step p { opacity: 1; transform: none; }
+      .journey::before { transform: scaleY(1); }
     }
   </style>
 </head>
 <body>
-
   <header>
     <a href="index.html" class="logo">
       <img src="logo-transparent.png" class="logo-img" alt="Miss Miami" />
@@ -115,49 +788,176 @@
     <nav id="main-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="apply.html">Apply</a>
       <a href="competition.html" class="active">Competition</a>
       <a href="gallery.html">Gallery</a>
       <a href="sponsors.html">Sponsors</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
-      <a href="dashboard.html" class="btn-account">My Account</a>
+      <a href="dashboard.html" class="btn-account">Contestant Portal</a>
       <a href="apply.html" class="btn-nav">Apply Now</a>
     </nav>
-    <button class="menu-toggle" id="menu-toggle">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </header>
 
-  <div id="mobile-menu" class="mobile-menu">
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="apply.html">Apply</a>
     <a href="competition.html" class="active">Competition</a>
     <a href="gallery.html">Gallery</a>
     <a href="sponsors.html">Sponsors</a>
     <a href="faq.html">FAQ</a>
     <a href="contact.html">Contact</a>
-    <a href="dashboard.html">My Account</a>
+    <a href="dashboard.html" class="btn-account-nav">Contestant Portal</a>
     <a href="apply.html" class="btn-apply-nav">Apply Now</a>
   </div>
 
-  <section class="coming-soon">
-    <div class="coming-soon-bg"></div>
-    <div class="coming-soon-overlay"></div>
-    <div class="coming-soon-content">
-      <span class="cs-icon">♛</span>
-      <span class="cs-eyebrow">Miss Miami 2026</span>
-      <h1 class="cs-title">Competition<br><em>Details</em></h1>
-      <div class="cs-divider">
-        <div class="cs-divider-line"></div>
-        <span>✦ ◈ ✦</span>
-        <div class="cs-divider-line"></div>
+  <main>
+    <!-- TEMPORARY APPROVED DEMO MEDIA: replace when Customer supplies final campaign assets. -->
+    <section class="hero" aria-labelledby="competition-title">
+      <div class="hero-content">
+        <div class="hero-copy">
+          <span class="hero-kicker fade-up">Miss Miami 2026 Competition</span>
+          <h1 id="competition-title" class="fade-up fade-up-d1">Your Moment <em>Begins Here</em></h1>
+          <p class="hero-text fade-up fade-up-d2">The crown is only one moment. The journey toward it is where confidence finds a voice, ambition finds a purpose and a new chapter begins</p>
+          <div class="hero-actions fade-up fade-up-d3">
+            <a href="#road-to-the-crown" class="btn-primary">Discover the Journey</a>
+          </div>
+        </div>
       </div>
-      <p class="cs-text">The full competition schedule, judging criteria, stages and prizes will be announced soon. Stay tuned — this is going to be extraordinary.</p>
-      <a href="apply.html" class="btn-gold">Apply Now</a>
-    </div>
-  </section>
+      <div class="hero-scroll" aria-hidden="true">Discover</div>
+    </section>
+
+    <!-- DEMONSTRATION CONCEPT: copy remains replaceable after Customer review. -->
+    <section class="story-intro" id="why">
+      <div class="section-shell">
+        <div class="intro-layout">
+          <div class="intro-title fade-up">
+            <span class="eyebrow">Why Miss Miami</span>
+            <h2>More than a title <em>A becoming</em></h2>
+          </div>
+          <div class="intro-copy fade-up fade-up-d1">
+            <p>Miss Miami is an invitation to step forward with intention—to discover the strength in your story, the clarity in your voice and the influence you can create when confidence meets purpose</p>
+            <div class="value-words" aria-label="Miss Miami values">
+              <span>Confidence</span>
+              <span>Connection</span>
+              <span>Purpose</span>
+              <span>Possibility</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMONSTRATION CONCEPT: names may change after Customer review. Public preview only. -->
+    <section class="road-story" id="road-to-the-crown">
+      <div class="section-shell">
+        <div class="road-intro fade-up">
+          <span class="eyebrow">Road to the Crown</span>
+          <h2>Becoming is the journey</h2>
+          <p>Eight chapters guide each contestant from the first expression of her story to the moment she steps into the spotlight—prepared, purposeful and unmistakably herself</p>
+        </div>
+        <div class="journey motion-line">
+          <article class="journey-step fade-up">
+            <h3>Discover Your Story</h3>
+            <p>Recognize the experiences, ambitions and values that have shaped the woman you are today</p>
+          </article>
+          <article class="journey-step fade-up">
+            <h3>Define Your Purpose</h3>
+            <p>Transform what matters to you into a platform that can reach, move and inspire others</p>
+          </article>
+          <article class="journey-step fade-up">
+            <h3>Find Your Voice</h3>
+            <p>Learn to communicate with honesty, composure and the confidence to own your point of view</p>
+          </article>
+          <article class="journey-step fade-up">
+            <h3>Shape Your Presence</h3>
+            <p>Refine the way you move, present and connect while remaining entirely true to yourself</p>
+          </article>
+          <article class="journey-step fade-up">
+            <h3>Reveal Your Talent</h3>
+            <p>Share the passion, discipline or creative expression that reveals another dimension of you</p>
+          </article>
+          <article class="journey-step fade-up">
+            <h3>Own the Stage</h3>
+            <p>Turn preparation into presence and let your confidence reach every part of the room</p>
+          </article>
+          <article class="journey-step fade-up">
+            <h3>Build Your Influence</h3>
+            <p>Carry your story into interviews, media and community moments with clarity and responsibility</p>
+          </article>
+          <article class="journey-step fade-up">
+            <h3>Step Into the Spotlight</h3>
+            <p>Bring every chapter together and arrive ready to be seen for the woman you have become</p>
+          </article>
+        </div>
+        <p class="road-disclaimer fade-up">Presentation concept for Customer review. Personal tasks, completion states and contestant progress remain exclusively in the Contestant Portal</p>
+      </div>
+    </section>
+
+    <!-- DEMONSTRATION COPY: replace after Customer review. -->
+    <section class="purpose-story" id="purpose">
+        <div class="purpose-narrative fade-up">
+          <span class="eyebrow">Beauty with Purpose</span>
+          <h2>Let your presence mean something</h2>
+          <p>The crown becomes powerful when it represents more than recognition. Beauty with Purpose gives each contestant space to champion what she believes in and turn personal conviction into visible leadership</p>
+          <blockquote>The most unforgettable woman in the room is the one who knows what she stands for</blockquote>
+        </div>
+    </section>
+
+    <!-- DEMONSTRATION SCHEDULE: Competition Night is confirmed; preparation dates remain pending Customer materials. -->
+    <section class="season-story" id="schedule">
+      <div class="section-shell">
+        <div class="season-header fade-up">
+          <div>
+            <span class="eyebrow">Competition Schedule</span>
+            <h2>The season unfolds</h2>
+          </div>
+          <p>From the first application to the final stage, each moment is designed to build confidence, connection and anticipation. Competition Night is confirmed for November 15, 2026; preparation dates and locations will follow after Customer approval</p>
+        </div>
+        <div class="season-line motion-line">
+          <article class="season-moment fade-up">
+            <small>Chapter One</small><h3>Applications Open</h3><p>The first invitation to introduce your story</p>
+          </article>
+          <article class="season-moment fade-up fade-up-d1">
+            <small>Chapter Two</small><h3>The Journey Begins</h3><p>Preparation, mentorship and Road to the Crown</p>
+          </article>
+          <article class="season-moment fade-up fade-up-d2">
+            <small>Chapter Three</small><h3>Miami Moments</h3><p>Rehearsals, community appearances and shared experiences</p>
+          </article>
+          <article class="season-moment fade-up fade-up-d3">
+            <small>November 15, 2026</small><h3>Competition Night</h3><p>The moment every chapter meets the stage</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMONSTRATION OPPORTUNITY COPY: final prizes require Customer approval. -->
+    <section class="opportunity-story" id="prizes">
+      <div class="section-shell">
+        <div class="opportunity-copy fade-up">
+          <span class="eyebrow">Prizes &amp; Opportunities</span>
+          <h2>The crown is a beginning</h2>
+          <p>Miss Miami is imagined as a platform for recognition, new connections and opportunities that continue beyond competition night. Final prizes, partnerships and benefits will be presented after Irina’s approval</p>
+          <div class="opportunity-list" aria-label="Demonstration opportunity categories">
+            <span>Recognition</span><span>Visibility</span><span>Partnerships</span><span>Growth</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="final-content fade-up">
+        <span class="eyebrow">The Next Chapter Could Be Yours</span>
+        <h2>Step into your story</h2>
+        <p>If you are ready to be seen for your confidence, your purpose and your potential, we are ready to meet you</p>
+        <div class="final-actions">
+          <a href="apply.html" class="btn-primary">Apply Now</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="footer-bottom">
@@ -171,25 +971,82 @@
   </footer>
 
   <script>
+    // Match the established Home/About navigation contrast behavior.
+    function updateNavColors() {
+      const onHero = window.scrollY < window.innerHeight * 0.85;
+      const darkColor = '#3A1A04';
+      const goldColor = '#D4AF37';
+      document.querySelectorAll('nav a:not(.btn-nav)').forEach(link => {
+        link.style.setProperty('color', onHero ? goldColor : darkColor, 'important');
+        if (link.classList.contains('btn-account')) {
+          link.style.borderColor = onHero ? 'rgba(212,175,55,0.28)' : 'rgba(58,26,4,0.4)';
+        }
+      });
+    }
+    updateNavColors();
+    window.addEventListener('scroll', updateNavColors, { passive: true });
+
     const toggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-    toggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-      const spans = toggle.querySelectorAll('span');
+
+    function setMobileMenuHeight() {
       if (mobileMenu.classList.contains('open')) {
+        const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+        mobileMenu.style.height = (vh - 72) + 'px';
+      }
+    }
+
+    function setMenuState(open) {
+      mobileMenu.classList.toggle('open', open);
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+      toggle.setAttribute('aria-expanded', String(open));
+      const spans = toggle.querySelectorAll('span');
+      if (open) {
         spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
         spans[1].style.opacity = '0';
         spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+        setMobileMenuHeight();
       } else {
-        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+        spans.forEach(span => {
+          span.style.transform = '';
+          span.style.opacity = '';
+        });
+        mobileMenu.style.height = '';
       }
+    }
+
+    toggle.addEventListener('click', () => {
+      setMenuState(!mobileMenu.classList.contains('open'));
     });
-    mobileMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        toggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    window.addEventListener('resize', setMobileMenuHeight);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', setMobileMenuHeight);
+    }
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => setMenuState(false));
+    });
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const animatedElements = document.querySelectorAll('.fade-up, .motion-line');
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      animatedElements.forEach(element => {
+        element.classList.add('visible');
+        if (element.classList.contains('motion-line')) element.classList.add('is-visible');
       });
-    });
+    } else {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('visible');
+          if (entry.target.classList.contains('motion-line')) {
+            entry.target.classList.add('is-visible');
+          }
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12 });
+      animatedElements.forEach(element => observer.observe(element));
+    }
   </script>
 </body>
 </html>

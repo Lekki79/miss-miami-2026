@@ -43,14 +43,19 @@
     .auth-logo { text-align: center; margin-bottom: 32px; }
     .auth-logo img { height: 64px; object-fit: contain; }
     .auth-title { font-family: 'Cinzel', serif; font-size: 18px; color: var(--white); text-align: center; margin-bottom: 6px; letter-spacing: 0.15em; }
-    .auth-sub { font-size: 11px; color: rgba(245,241,232,0.65); text-align: center; letter-spacing: 0.1em; margin-bottom: 36px; }
+    .auth-sub { font-size: 11px; color: rgba(245,241,232,0.65); text-align: center; letter-spacing: 0.1em; margin-bottom: 18px; }
+    .auth-access-note {
+      margin-bottom: 28px;
+      padding: 16px 18px;
+      border: 1px solid rgba(212,175,55,0.14);
+      color: rgba(245,241,232,0.7);
+      font-size: 11px;
+      line-height: 1.75;
+      text-align: center;
+    }
+    .auth-access-note strong { color: var(--gold); font-weight: 500; }
 
-    .auth-tabs { display: flex; margin-bottom: 28px; border-bottom: 1px solid rgba(212,175,55,0.12); }
-    .auth-tab { flex: 1; padding: 10px; text-align: center; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,241,232,0.78); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all var(--tr); font-weight: 500; }
-    .auth-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
-
-    .auth-form { display: none; flex-direction: column; gap: 14px; }
-    .auth-form.active { display: flex; }
+    .auth-form { display: flex; flex-direction: column; gap: 14px; }
 
     .auth-field { display: flex; flex-direction: column; gap: 6px; }
     .auth-field label { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(212,175,55,0.6); font-weight: 500; }
@@ -356,14 +361,10 @@
     </div>
     <div class="auth-title">Contestant Portal</div>
     <div class="auth-sub">Road to the Crown — Miss Miami 2026</div>
-
-    <div class="auth-tabs">
-      <div class="auth-tab active" data-tab="login">Sign In</div>
-      <div class="auth-tab" data-tab="register">Register</div>
-    </div>
+    <p class="auth-access-note"><strong>Approved contestants only.</strong><br />Portal access is created through the secure invitation sent after application approval. If your application is under review, please check your email for the decision.</p>
 
     <!-- LOGIN -->
-    <form class="auth-form active" id="login-form">
+    <form class="auth-form" id="login-form">
       <div class="auth-field">
         <label>Email</label>
         <input type="email" id="login-email" placeholder="your@email.com" required />
@@ -376,23 +377,6 @@
       <button type="submit" class="btn-auth">Sign In</button>
     </form>
 
-    <!-- REGISTER -->
-    <form class="auth-form" id="register-form">
-      <div class="auth-field">
-        <label>Full Name</label>
-        <input type="text" id="reg-name" placeholder="Isabella Moretti" required />
-      </div>
-      <div class="auth-field">
-        <label>Email</label>
-        <input type="email" id="reg-email" placeholder="your@email.com" required />
-      </div>
-      <div class="auth-field">
-        <label>Password</label>
-        <input type="password" id="reg-password" placeholder="Min. 6 characters" required />
-      </div>
-      <div class="auth-error" id="register-error"></div>
-      <button type="submit" class="btn-auth">Create Account</button>
-    </form>
     <a href="index.html" style="display:block; text-align:center; margin-top:24px; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(212,175,55,0.5); transition:color 0.3s;" onmouseover="this.style.color='rgba(212,175,55,0.9)'" onmouseout="this.style.color='rgba(212,175,55,0.5)'">← Back to site</a>
   </div>
 </div>
@@ -884,7 +868,7 @@
 <!-- Firebase -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
   import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
   const firebaseConfig = {
@@ -1084,31 +1068,6 @@
     });
     window.scrollTo(0, 0);
   };
-
-  // ── AUTH TABS ──
-  document.querySelectorAll('.auth-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.tab + '-form').classList.add('active');
-    });
-  });
-
-  // ── REGISTER ──
-  document.getElementById('register-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name  = document.getElementById('reg-name').value;
-    const email = document.getElementById('reg-email').value;
-    const pass  = document.getElementById('reg-password').value;
-    const err   = document.getElementById('register-error');
-    try {
-      const cred = await createUserWithEmailAndPassword(auth, email, pass);
-      await updateProfile(cred.user, { displayName: name });
-    } catch(ex) {
-      err.textContent = ex.message.replace('Firebase:', '').trim();
-    }
-  });
 
   // ── LOGIN ──
   document.getElementById('login-form').addEventListener('submit', async (e) => {
