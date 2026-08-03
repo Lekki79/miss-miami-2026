@@ -15,20 +15,21 @@
     :root {
       --gold:   #D4AF37;
       --black:  #1A0800;
-      --dark:   #DDB870;
+      --page-bg: #D6B77A;
+      --dark:   var(--page-bg);
       --dark2:  #CCA55A;
       --cream:  #1A0800;
       --white:  #1A0800;
-      --glass:  rgba(221,184,112,0.92);
+      --glass:  rgba(214,183,122,0.92);
       --tr: 0.3s cubic-bezier(.4,0,.2,1);
     }
 
     html { scroll-behavior: smooth; }
-    body { background: #DDB870; color: #1A0800; font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    body { background: var(--page-bg); color: #1A0800; font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
     h1,h2,h3,h4 { font-family: 'Cinzel', serif; letter-spacing: 0.06em; }
     a { text-decoration: none; color: inherit; }
     ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: #DDB870; }
+    ::-webkit-scrollbar-track { background: var(--page-bg); }
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
     /* ── HEADER ── */
@@ -160,7 +161,7 @@
       justify-content: center;
       gap: 12px;
       padding: 32px 56px;
-      background: linear-gradient(to right, #CCA55A 0%, #DDB870 50%, #CCA55A 100%);
+      background: linear-gradient(to right, #CCA55A 0%, var(--page-bg) 50%, #CCA55A 100%);
       border-bottom: 1px solid rgba(212,175,55,0.25);
       flex-wrap: wrap;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.1);
@@ -413,7 +414,7 @@
     input::placeholder, textarea::placeholder { color: rgba(26,8,0,0.3); }
 
     select option {
-      background: #DDB870;
+      background: var(--page-bg);
       color: #1A0800;
       padding: 8px;
       line-height: 1.6;
@@ -450,7 +451,7 @@
     .check-item input[type="checkbox"] {
       width: 18px; height: 18px;
       border: 1.5px solid #1A0800;
-      background: #DDB870;
+      background: var(--page-bg);
       cursor: pointer;
       flex-shrink: 0;
       padding: 0;
@@ -1020,72 +1021,183 @@
         white-space: normal;
       }
     }
-    /* Accordion Styles */
+    /* ── BEFORE YOU APPLY / RULES ── */
+    .before-apply { margin-bottom: 48px; }
+    .before-apply-trigger {
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 26px;
+      border: 1px solid rgba(122,79,16,0.42);
+      border-radius: 8px;
+      background: linear-gradient(110deg, #7A4F10 0%, #8C570D 58%, #7A4F10 100%);
+      color: #F2DFC0;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(58,26,4,0.12);
+    }
+    .before-apply-trigger:hover { background-position: right center; }
+    .before-apply-trigger:focus-visible,
+    .accordion-header:focus-visible {
+      outline: 2px solid #7A4F10;
+      outline-offset: 4px;
+    }
+    .before-apply-icon {
+      width: 48px; height: 48px;
+      display: grid; place-items: center;
+      border: 1px solid #E7C985;
+      border-radius: 50%;
+      background: #C9922A;
+      color: #F2DFC0;
+      box-shadow: 0 0 0 1px rgba(58,26,4,0.55);
+      font-family: 'Cinzel', serif;
+      font-size: 24px; font-weight: 600;
+    }
+    .before-apply-title {
+      display: block;
+      margin-bottom: 4px;
+      font-family: 'Cinzel', serif;
+      font-size: 18px; font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .before-apply-copy {
+      display: block;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .before-apply-arrow,
+    .accordion-toggle {
+      position: relative;
+      width: 24px; height: 18px;
+      transition: transform 300ms ease;
+      flex: 0 0 24px;
+    }
+    .before-apply-arrow::before,
+    .accordion-toggle::before {
+      content: '';
+      position: absolute;
+      top: 2px; left: 2px;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 15px solid #3A1A04;
+    }
+    .before-apply-arrow::after,
+    .accordion-toggle::after {
+      content: '';
+      position: absolute;
+      top: 4px; left: 4px;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 12px solid #C9922A;
+      animation: triangleShimmer 5.8s ease-in-out infinite;
+    }
+    @keyframes triangleShimmer {
+      0%, 32%, 68%, 100% { border-top-color: #C9922A; }
+      50% { border-top-color: #D4AF37; }
+    }
+    [aria-expanded="true"] .before-apply-arrow,
+    .accordion-header[aria-expanded="true"] .accordion-toggle {
+      transform: rotate(180deg);
+    }
+    .official-rules-panel { padding-top: 30px; }
+    .official-rules-heading {
+      margin: 18px 0;
+      color: #1A0800;
+      font-size: 18px;
+      text-align: center;
+      text-transform: uppercase;
+    }
     .rules-accordion {
-      margin-bottom: 48px;
-      border: 1px solid rgba(212,175,55,0.2);
+      margin-top: 28px;
+      border: 1px solid rgba(122,79,16,0.28);
       border-radius: 8px;
       overflow: hidden;
-      background: rgba(212,175,55,0.03);
+      background: rgba(255,248,231,0.2);
     }
     .accordion-item {
-      border-bottom: 1px solid rgba(212,175,55,0.15);
+      border-bottom: 1px solid rgba(122,79,16,0.18);
     }
     .accordion-item:last-child { border-bottom: none; }
     .accordion-header {
-      display: flex;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
-      justify-content: space-between;
+      gap: 18px;
       padding: 18px 24px;
-      background: rgba(212,175,55,0.05);
+      border: 0;
+      background: rgba(255,248,231,0.18);
+      color: #1A0800;
+      text-align: left;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: background var(--tr);
       user-select: none;
     }
-    .accordion-header:hover {
-      background: rgba(212,175,55,0.12);
-    }
-    .accordion-header h4 {
-      margin: 0;
+    .accordion-header:hover { background: rgba(255,248,231,0.34); }
+    .accordion-title {
+      min-width: 0;
       font-size: 16px;
       font-weight: 600;
-      color: #1A0800;
       letter-spacing: 0.5px;
-    }
-    .accordion-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      color: #C9922A;
-      font-size: 20px;
-      transition: transform 0.4s ease;
-      font-weight: 700;
-      -webkit-text-stroke: 1px #1A0800;
-      text-stroke: 1px #1A0800;
-      animation: bronzeArrowFlow 8s ease-in-out infinite;
-    }
-    .accordion-item.active .accordion-toggle {
-      transform: rotate(180deg);
-      transition: transform 0.4s ease;
+      overflow-wrap: anywhere;
     }
     .accordion-body {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 1.2s ease-in-out, padding 1.2s ease-in-out, opacity 1.2s ease-in-out;
-      padding: 0 24px;
+      visibility: hidden;
       opacity: 0;
+      padding: 0 24px;
+      background: rgba(255,248,231,0.28);
+      transition:
+        max-height 300ms ease,
+        padding 300ms ease,
+        opacity 250ms ease,
+        visibility 0s linear 300ms;
     }
-    .accordion-item.active .accordion-body {
-      max-height: 500px;
-      padding: 0 24px 24px 24px;
+    .accordion-header[aria-expanded="true"] + .accordion-body {
+      max-height: var(--accordion-height, 1000px);
+      visibility: visible;
       opacity: 1;
+      padding: 4px 24px 24px;
+      transition:
+        max-height 300ms ease,
+        padding 300ms ease,
+        opacity 250ms ease,
+        visibility 0s;
     }
     .accordion-body p { margin: 0 0 12px 0; color: #333; line-height: 1.6; }
     .accordion-body ul { margin: 0; padding-left: 20px; }
     .accordion-body li { margin-bottom: 8px; color: #333; line-height: 1.5; }
     .accordion-body strong { color: #1A0800; font-weight: 600; }
+    @media (max-width: 768px) {
+      .before-apply-trigger {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 14px;
+        padding: 20px 18px;
+      }
+      .before-apply-icon { width: 40px; height: 40px; font-size: 20px; }
+      .before-apply-title { font-size: 15px; }
+      .before-apply-copy { font-size: 12px; }
+      .official-rules-heading { font-size: 16px; }
+      .accordion-header { padding: 17px 18px; gap: 14px; }
+      .accordion-title { font-size: 14px; line-height: 1.45; }
+      .accordion-body { padding-right: 18px; padding-left: 18px; }
+      .accordion-header[aria-expanded="true"] + .accordion-body { padding: 4px 18px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .before-apply-arrow,
+      .accordion-toggle,
+      .accordion-body {
+        transition: none !important;
+      }
+      .before-apply-arrow::after,
+      .accordion-toggle::after {
+        animation: none !important;
+      }
+    }
 
   </style>
 </head>
@@ -1132,21 +1244,31 @@
     <p>Take the first step toward the crown. Complete your application below and join a legacy of beauty, confidence and purpose.</p>
   </div>
 
-  <!-- RULES SECTION HEADER -->
-  <div class="section-divider"></div>
-  <h2 class="section-title">Official Miss Miami 2026 Rules</h2>
-  <div class="section-divider"></div>
-
   <!-- FORM -->
   <div class="apply-wrap">
-    <!-- RULES ACCORDION -->
-    <div class="rules-accordion">
+    <!-- BEFORE YOU APPLY / RULES ACCORDION -->
+    <section class="before-apply" aria-labelledby="before-apply-title">
+      <button class="before-apply-trigger" type="button" aria-expanded="false" aria-controls="official-rules-panel">
+        <span class="before-apply-icon" aria-hidden="true">i</span>
+        <span>
+          <span class="before-apply-title" id="before-apply-title">Before You Apply</span>
+          <span class="before-apply-copy">Please review the eligibility requirements, competition rules, and important policies before completing your application.</span>
+        </span>
+        <span class="before-apply-arrow" aria-hidden="true"></span>
+      </button>
+
+      <div class="official-rules-panel" id="official-rules-panel" hidden>
+        <div class="section-divider"></div>
+        <h2 class="official-rules-heading">Official Miss Miami 2026 Rules</h2>
+        <div class="section-divider"></div>
+
+        <div class="rules-accordion">
       <div class="accordion-item">
-        <div class="accordion-header">
-          <h4>Eligibility Requirements</h4>
-          <span class="accordion-toggle">▼</span>
-        </div>
-        <div class="accordion-body">
+        <button class="accordion-header" id="eligibility-trigger" type="button" aria-expanded="false" aria-controls="eligibility-rules">
+          <span class="accordion-title">Eligibility Requirements</span>
+          <span class="accordion-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="eligibility-rules" role="region" aria-labelledby="eligibility-trigger" aria-hidden="true">
           <ul>
             <li>Must be 18 years old or older as of November 15, 2026</li>
             <li>Must be a citizen or permanent resident of the United States with ties to Miami or Florida</li>
@@ -1158,11 +1280,11 @@
       </div>
 
       <div class="accordion-item">
-        <div class="accordion-header">
-          <h4>Application Requirements</h4>
-          <span class="accordion-toggle">▼</span>
-        </div>
-        <div class="accordion-body">
+        <button class="accordion-header" id="application-trigger" type="button" aria-expanded="false" aria-controls="application-rules">
+          <span class="accordion-title">Application Requirements</span>
+          <span class="accordion-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="application-rules" role="region" aria-labelledby="application-trigger" aria-hidden="true">
           <ul>
             <li>Complete all sections of the application form with accurate information</li>
             <li>Submit a minimum of 3 professional-quality photos: headshot, full-length, and casual</li>
@@ -1176,11 +1298,11 @@
       </div>
 
       <div class="accordion-item">
-        <div class="accordion-header">
-          <h4>Pre-Pageant Conduct</h4>
-          <span class="accordion-toggle">▼</span>
-        </div>
-        <div class="accordion-body">
+        <button class="accordion-header" id="conduct-trigger" type="button" aria-expanded="false" aria-controls="conduct-rules">
+          <span class="accordion-title">Pre-Pageant Conduct</span>
+          <span class="accordion-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="conduct-rules" role="region" aria-labelledby="conduct-trigger" aria-hidden="true">
           <ul>
             <li>Maintain professional behavior in all interactions with pageant staff and other contestants</li>
             <li>Follow all social media guidelines set by Miss Miami</li>
@@ -1192,11 +1314,11 @@
       </div>
 
       <div class="accordion-item">
-        <div class="accordion-header">
-          <h4>Competition Criteria</h4>
-          <span class="accordion-toggle">▼</span>
-        </div>
-        <div class="accordion-body">
+        <button class="accordion-header" id="criteria-trigger" type="button" aria-expanded="false" aria-controls="criteria-rules">
+          <span class="accordion-title">Competition Criteria</span>
+          <span class="accordion-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="criteria-rules" role="region" aria-labelledby="criteria-trigger" aria-hidden="true">
           <ul>
             <li><strong>Interview (30%)</strong> - Communication skills, personality, and vision</li>
             <li><strong>Evening Gown (30%)</strong> - Elegance, confidence, and stage presence</li>
@@ -1207,11 +1329,11 @@
       </div>
 
       <div class="accordion-item">
-        <div class="accordion-header">
-          <h4>Judges' Decisions</h4>
-          <span class="accordion-toggle">▼</span>
-        </div>
-        <div class="accordion-body">
+        <button class="accordion-header" id="judges-trigger" type="button" aria-expanded="false" aria-controls="judges-rules">
+          <span class="accordion-title">Judges' Decisions</span>
+          <span class="accordion-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="judges-rules" role="region" aria-labelledby="judges-trigger" aria-hidden="true">
           <ul>
             <li>Judges' decisions are final and binding</li>
             <li>No appeals process for scoring or placement</li>
@@ -1222,11 +1344,11 @@
       </div>
 
       <div class="accordion-item">
-        <div class="accordion-header">
-          <h4>Grounds for Disqualification</h4>
-          <span class="accordion-toggle">▼</span>
-        </div>
-        <div class="accordion-body">
+        <button class="accordion-header" id="disqualification-trigger" type="button" aria-expanded="false" aria-controls="disqualification-rules">
+          <span class="accordion-title">Grounds for Disqualification</span>
+          <span class="accordion-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="disqualification-rules" role="region" aria-labelledby="disqualification-trigger" aria-hidden="true">
           <p>Contestants may be disqualified for:</p>
           <ul>
             <li>Providing false or misleading information on the application</li>
@@ -1240,11 +1362,11 @@
       </div>
 
       <div class="accordion-item">
-        <div class="accordion-header">
-          <h4>Rights & Permissions</h4>
-          <span class="accordion-toggle">▼</span>
-        </div>
-        <div class="accordion-body">
+        <button class="accordion-header" id="permissions-trigger" type="button" aria-expanded="false" aria-controls="permissions-rules">
+          <span class="accordion-title">Rights &amp; Permissions</span>
+          <span class="accordion-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="permissions-rules" role="region" aria-labelledby="permissions-trigger" aria-hidden="true">
           <ul>
             <li>Miss Miami retains the right to use all contestant photos and videos for promotional purposes</li>
             <li>Contestants grant Miss Miami permission to record and broadcast the pageant</li>
@@ -1256,11 +1378,11 @@
       </div>
 
       <div class="accordion-item">
-        <div class="accordion-header">
-          <h4>Refund Policy & Post-Pageant Responsibilities</h4>
-          <span class="accordion-toggle">▼</span>
-        </div>
-        <div class="accordion-body">
+        <button class="accordion-header" id="refund-trigger" type="button" aria-expanded="false" aria-controls="refund-rules">
+          <span class="accordion-title">Refund Policy &amp; Post-Pageant Responsibilities</span>
+          <span class="accordion-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="refund-rules" role="region" aria-labelledby="refund-trigger" aria-hidden="true">
           <p><strong>Refund Policy:</strong></p>
           <p>The $250 application fee is non-refundable after submission. Contestants who withdraw after being selected as finalists forfeit their entry fee. No refunds will be issued for any reason after payment is processed.</p>
           <p style="margin-top: 16px;"><strong>Post-Pageant Responsibilities (Winners):</strong></p>
@@ -1274,6 +1396,8 @@
         </div>
       </div>
     </div>
+      </div>
+    </section>
 
     <form id="apply-form" novalidate>
 
@@ -1654,12 +1778,45 @@
       });
     });
 
-    // Accordion functionality
-    document.querySelectorAll('.accordion-header').forEach(header => {
+    // Before You Apply and rules accordions
+    const beforeApplyTrigger = document.querySelector('.before-apply-trigger');
+    const officialRulesPanel = document.getElementById('official-rules-panel');
+
+    beforeApplyTrigger.addEventListener('click', () => {
+      const isExpanded = beforeApplyTrigger.getAttribute('aria-expanded') === 'true';
+      beforeApplyTrigger.setAttribute('aria-expanded', String(!isExpanded));
+      officialRulesPanel.hidden = isExpanded;
+    });
+
+    const ruleHeaders = [...document.querySelectorAll('.accordion-header')];
+
+    const closeRule = header => {
+      const panel = document.getElementById(header.getAttribute('aria-controls'));
+      header.setAttribute('aria-expanded', 'false');
+      panel.setAttribute('aria-hidden', 'true');
+    };
+
+    const openRule = header => {
+      const panel = document.getElementById(header.getAttribute('aria-controls'));
+      panel.style.setProperty('--accordion-height', `${panel.scrollHeight + 32}px`);
+      panel.setAttribute('aria-hidden', 'false');
+      header.setAttribute('aria-expanded', 'true');
+    };
+
+    ruleHeaders.forEach(header => {
       header.addEventListener('click', () => {
-        const item = header.closest('.accordion-item');
-        item.classList.toggle('active');
+        const isExpanded = header.getAttribute('aria-expanded') === 'true';
+        ruleHeaders.forEach(otherHeader => {
+          if (otherHeader !== header) closeRule(otherHeader);
+        });
+        if (isExpanded) closeRule(header);
+        else openRule(header);
       });
+    });
+
+    window.addEventListener('resize', () => {
+      const openHeader = ruleHeaders.find(header => header.getAttribute('aria-expanded') === 'true');
+      if (openHeader) openRule(openHeader);
     });
 
     // Scroll animations
@@ -1859,7 +2016,7 @@
             bgColor = '#C9922A';
             textColor = '#FFF8E7';
           } else if (isToday) {
-            bgColor = '#DDB870';
+            bgColor = '#D6B77A';
           }
         }
 
@@ -1884,7 +2041,7 @@
               dayDiv.style.background = '#C9922A';
               dayDiv.style.color = '#FFF8E7';
             } else if (isToday) {
-              dayDiv.style.background = '#DDB870';
+              dayDiv.style.background = '#D6B77A';
               dayDiv.style.color = '#1A0800';
             } else {
               dayDiv.style.background = '#E8E8E8';
