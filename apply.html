@@ -11,21 +11,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
 
     :root {
       --gold:   #D4AF37;
       --black:  #1A0800;
-      --page-bg: #D6B77A;
+      --page-bg: #E7D0AD;
       --dark:   var(--page-bg);
       --dark2:  #CCA55A;
       --cream:  #1A0800;
       --white:  #1A0800;
-      --glass:  rgba(214,183,122,0.92);
+      --glass:  rgba(231,208,173,0.92);
       --tr: 0.3s cubic-bezier(.4,0,.2,1);
     }
 
     html { scroll-behavior: smooth; }
-    body { background: var(--page-bg); color: #1A0800; font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    body { background: linear-gradient(180deg, #E1C7A2 0%, #E7D0AD 42%, #EBD8BA 100%) fixed; color: #1A0800; font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
     h1,h2,h3,h4 { font-family: 'Cinzel', serif; letter-spacing: 0.06em; }
     a { text-decoration: none; color: inherit; }
     ::-webkit-scrollbar { width: 4px; }
@@ -111,27 +112,39 @@
 
     /* ── PAGE HERO ── */
     .page-hero {
-      padding: 160px 56px 80px;
+      padding: 132px 56px 14px;
       text-align: center;
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 60%),
-        var(--dark);
-      border-bottom: 1px solid rgba(212,175,55,0.12);
+      background: transparent;
+      border-bottom: 0;
       position: relative;
     }
-    .page-hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(212,175,55,0.5) 50%, transparent);
-    }
+    .page-hero::after { display: none; }
     .eyebrow {
       font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 20px; font-weight: 500;
     }
-    .page-hero h1 { font-size: clamp(32px, 4vw, 52px); color: var(--white); margin-bottom: 16px; }
+    .page-hero h1 { font-size: clamp(36px, 4vw, 52px); color: var(--white); margin: 0; }
     .page-hero p { font-size: 14px; color: #1A0800; opacity: 0.85; max-width: 540px; margin: 0 auto; line-height: 1.9; }
+    .application-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      max-width: 520px;
+      margin: 14px auto 0;
+      color: #C9922A;
+      font-size: 15px;
+      line-height: 1;
+    }
+    .application-ornament::before,
+    .application-ornament::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,146,42,0.72));
+    }
+    .application-ornament::after { transform: scaleX(-1); }
+    .before-apply-end { margin: 26px auto 0; }
 
     /* ── SECTION DIVIDER ── */
     .section-divider {
@@ -220,12 +233,12 @@
     .apply-wrap {
       max-width: 860px;
       margin: 0 auto;
-      padding: 72px 40px 100px;
+      padding: 10px 40px 100px;
     }
 
     /* ── FORM SECTIONS ── */
     .form-section {
-      margin-bottom: 64px;
+      margin-bottom: 44px;
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.6s ease, transform 0.6s ease;
@@ -236,7 +249,7 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-bottom: 32px;
+      margin-bottom: 22px;
       padding-bottom: 16px;
       border-bottom: 1px solid rgba(212,175,55,0.12);
     }
@@ -351,12 +364,20 @@
     }
 
     /* ── FORM GRID ── */
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; }
     .form-grid.full { grid-template-columns: 1fr; }
     .form-grid.three { grid-template-columns: 1fr 1fr 1fr; }
 
     .field { display: flex; flex-direction: column; gap: 8px; }
     .field.span2 { grid-column: span 2; }
+    @media (min-width: 769px) {
+      .form-grid:not(.full) > .field:not(.span2) > label {
+        display: flex;
+        align-items: flex-end;
+        min-height: 44px;
+      }
+      .form-grid.question-grid > .field:not(.span2) > label { min-height: 74px; }
+    }
 
     label {
       font-size: 13px;
@@ -438,6 +459,14 @@
     }
 
     textarea { resize: vertical; min-height: 100px; }
+    .field-note, .word-count { color: rgba(26,8,0,0.72); font-size: 11px; line-height: 1.5; }
+    .word-count { text-align: right; }
+    .conditional-fields {
+      display: none; grid-column: 1 / -1; grid-template-columns: 1fr 1fr;
+      gap: 20px; padding: 20px; border: 1px solid rgba(201,146,42,0.3);
+      background: rgba(255,253,245,0.32);
+    }
+    .conditional-fields.show { display: grid; }
 
     /* ── RADIO / CHECKBOX ── */
     .radio-group, .check-group {
@@ -461,6 +490,8 @@
       appearance: none;
       -webkit-appearance: none;
     }
+    .radio-item input[type="radio"] { border-radius: 50%; }
+    .radio-item input[type="radio"]:checked { border: 5px solid #C9922A; background: #FFF8E7; }
     .check-item input[type="checkbox"]:checked {
       background: #A67C1A;
     }
@@ -484,7 +515,7 @@
     /* ── FILE UPLOAD ── */
     .file-upload {
       border: 2px dashed rgba(212,175,55,0.35);
-      padding: 40px 32px;
+      padding: 26px 28px;
       text-align: center;
       cursor: pointer;
       transition: all var(--tr);
@@ -502,13 +533,15 @@
       background: #FADBD8 !important;
     }
     .file-upload input[type="file"] {
-      position: absolute; inset: 0; opacity: 0; cursor: pointer;
-      width: 100%; border: none; background: none; padding: 0;
+      position: absolute; inset: -2px; opacity: 0; cursor: pointer;
+      width: auto; height: auto; border: none; background: none; padding: 0;
+      z-index: 2;
     }
+    .file-upload > *:not(input[type="file"]) { pointer-events: none; }
     .file-upload-icon {
       width: 64px;
       height: 64px;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -542,8 +575,8 @@
     .req-box {
       background: linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(212,175,55,0.06) 100%);
       border: 2px solid rgba(212,175,55,0.25);
-      padding: 24px 28px;
-      margin-bottom: 28px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
       border-radius: 4px;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
     }
@@ -980,9 +1013,17 @@
         display: none !important;
       }
       .menu-toggle { display: flex; }
-      .page-hero { padding: 120px 24px 60px; }
-      .apply-wrap { padding: 48px 24px 72px; }
+      .page-hero { padding: 124px 24px 12px; }
+      .page-hero h1 { font-size: 38px; }
+      .application-ornament { margin-top: 12px; }
+      .apply-wrap { padding: 10px 24px 72px; }
       .form-grid, .form-grid.three { grid-template-columns: 1fr; }
+      .conditional-fields { grid-template-columns: 1fr; padding: 16px; }
+      .form-section { margin-bottom: 36px; }
+      .form-section-title { margin-bottom: 18px; }
+      .form-grid { gap: 14px; }
+      .file-upload { padding: 22px 18px; }
+      .file-upload-icon { width: 54px; height: 54px; margin-bottom: 8px; }
       .field.span2 { grid-column: span 1; }
       .steps-bar { padding: 24px; gap: 6px; }
       .step-sep { width: 16px; }
@@ -1022,17 +1063,27 @@
       }
     }
     /* ── BEFORE YOU APPLY / RULES ── */
-    .before-apply { margin-bottom: 48px; }
+    .before-apply { margin-bottom: 34px; }
+    .before-apply-heading {
+      margin: 0 0 18px;
+      color: #1A0800;
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-align: center;
+      text-transform: uppercase;
+    }
     .before-apply-trigger {
       width: 100%;
       display: grid;
       grid-template-columns: auto minmax(0, 1fr) auto;
       align-items: center;
       gap: 20px;
-      padding: 24px 26px;
+      padding: 18px 22px;
       border: 1px solid rgba(122,79,16,0.42);
       border-radius: 8px;
-      background: linear-gradient(110deg, #7A4F10 0%, #8C570D 58%, #7A4F10 100%);
+      background: linear-gradient(110deg, #8B601C 0%, #A9741F 56%, #CFA345 100%);
       color: #F2DFC0;
       text-align: left;
       cursor: pointer;
@@ -1049,24 +1100,17 @@
       display: grid; place-items: center;
       border: 1px solid #E7C985;
       border-radius: 50%;
-      background: #C9922A;
+      background: transparent;
       color: #F2DFC0;
-      box-shadow: 0 0 0 1px rgba(58,26,4,0.55);
-      font-family: 'Cinzel', serif;
-      font-size: 24px; font-weight: 600;
-    }
-    .before-apply-title {
-      display: block;
-      margin-bottom: 4px;
-      font-family: 'Cinzel', serif;
-      font-size: 18px; font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      box-shadow: 0 0 0 1px rgba(242,223,192,0.34);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 24px; font-weight: 400;
+      line-height: 1;
     }
     .before-apply-copy {
       display: block;
       font-size: 13px;
-      line-height: 1.65;
+      line-height: 1.55;
     }
     .before-apply-arrow,
     .accordion-toggle {
@@ -1094,6 +1138,17 @@
       border-top: 12px solid #C9922A;
       animation: triangleShimmer 5.8s ease-in-out infinite;
     }
+    .before-apply-arrow::before {
+      top: 0;
+      left: 4px;
+      width: 13px;
+      height: 13px;
+      border: 0;
+      border-right: 3px solid #F2DFC0;
+      border-bottom: 3px solid #F2DFC0;
+      transform: rotate(45deg);
+    }
+    .before-apply-arrow::after { display: none; }
     @keyframes triangleShimmer {
       0%, 32%, 68%, 100% { border-top-color: #C9922A; }
       50% { border-top-color: #D4AF37; }
@@ -1176,10 +1231,10 @@
       .before-apply-trigger {
         grid-template-columns: auto minmax(0, 1fr) auto;
         gap: 14px;
-        padding: 20px 18px;
+        padding: 15px 16px;
       }
-      .before-apply-icon { width: 40px; height: 40px; font-size: 20px; }
-      .before-apply-title { font-size: 15px; }
+      .before-apply-heading { margin-bottom: 14px; font-size: 21px; }
+      .before-apply-icon { width: 40px; height: 40px; font-size: 23px; }
       .before-apply-copy { font-size: 12px; }
       .official-rules-heading { font-size: 16px; }
       .accordion-header { padding: 17px 18px; gap: 14px; }
@@ -1239,21 +1294,18 @@
 
   <!-- PAGE HERO -->
   <div class="page-hero">
-    <p class="eyebrow">Miss Miami 2026</p>
-    <h1>Begin Your Journey</h1>
-    <p>Take the first step toward the crown. Complete your application below and join a legacy of beauty, confidence and purpose.</p>
+    <h1>Application</h1>
+    <div class="application-ornament" aria-hidden="true"><span>✦</span></div>
   </div>
 
   <!-- FORM -->
   <div class="apply-wrap">
     <!-- BEFORE YOU APPLY / RULES ACCORDION -->
     <section class="before-apply" aria-labelledby="before-apply-title">
+      <h2 class="before-apply-heading" id="before-apply-title">Before You Apply</h2>
       <button class="before-apply-trigger" type="button" aria-expanded="false" aria-controls="official-rules-panel">
         <span class="before-apply-icon" aria-hidden="true">i</span>
-        <span>
-          <span class="before-apply-title" id="before-apply-title">Before You Apply</span>
-          <span class="before-apply-copy">Please review the eligibility requirements, competition rules, and important policies before completing your application.</span>
-        </span>
+        <span class="before-apply-copy">Please review the eligibility requirements, competition rules, and important policies before completing your application.</span>
         <span class="before-apply-arrow" aria-hidden="true"></span>
       </button>
 
@@ -1289,7 +1341,7 @@
             <li>Complete all sections of the application form with accurate information</li>
             <li>Submit a minimum of 3 professional-quality photos: headshot, full-length, and casual</li>
             <li>Submit a minimum of 1 video introduction (60 seconds maximum) speaking about yourself and your goals</li>
-            <li>Pay the non-refundable $250 application fee</li>
+            <li>Pay the non-refundable $50 application fee</li>
             <li>Accept all pageant rules and regulations by signing the agreement</li>
             <li>Consent to the use of photos and videos for promotional purposes</li>
             <li>Approved contestants will receive access to the Contestant Portal and subsequent competition materials</li>
@@ -1384,7 +1436,7 @@
         </button>
         <div class="accordion-body" id="refund-rules" role="region" aria-labelledby="refund-trigger" aria-hidden="true">
           <p><strong>Refund Policy:</strong></p>
-          <p>The $250 application fee is non-refundable after submission. Contestants who withdraw after being selected as finalists forfeit their entry fee. No refunds will be issued for any reason after payment is processed.</p>
+          <p>The $50 application fee is non-refundable after submission. Contestants who withdraw after being selected as finalists forfeit their entry fee. No refunds will be issued for any reason after payment is processed.</p>
           <p style="margin-top: 16px;"><strong>Post-Pageant Responsibilities (Winners):</strong></p>
           <ul>
             <li>The winner agrees to fulfill the duties of Miss Miami 2026 for one year</li>
@@ -1397,214 +1449,89 @@
       </div>
     </div>
       </div>
+      <div class="application-ornament before-apply-end" aria-hidden="true"><span>✦</span></div>
     </section>
 
     <form id="apply-form" novalidate>
-
-      <!-- 1. PERSONAL INFO -->
-      <div class="form-section visible" style="opacity: 1 !important; transform: translateY(0) !important;">
-        <div class="form-section-title">
-          <div class="num">1</div>
-          <h3>Personal Information</h3>
-        </div>
+      <div class="form-section visible" style="opacity:1!important;transform:translateY(0)!important">
+        <div class="form-section-title"><div class="num">1</div><h3>Personal Information</h3></div>
         <div class="form-grid">
-          <div class="field">
-            <label>First Name</label>
-            <input type="text" id="first_name" name="first_name" placeholder="Isabella" required />
-            <span class="error-message"></span>
-          </div>
-          <div class="field">
-            <label>Last Name</label>
-            <input type="text" id="last_name" name="last_name" placeholder="Moretti" required />
-            <span class="error-message"></span>
-          </div>
-          <div class="field">
-            <label>Date of Birth</label>
-            <div style="position: relative; width: 100%;">
-              <input type="text" id="dob-input" name="dob" placeholder="MM/DD/YYYY" readonly style="cursor: pointer; background: #FFF8E7;" required />
-              <div id="date-picker" style="display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 8px; background: white; border: 2px solid #C9922A; border-radius: 8px; padding: 16px; z-index: 10000; min-width: 300px; max-height: 400px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"></div>
-            </div>
-            <span class="error-message"></span>
-          </div>
-          <div class="field">
-            <label>City of Residence</label>
-            <input type="text" id="city" name="city" placeholder="Miami, FL" required />
-            <span class="error-message"></span>
-          </div>
-          <div class="field">
-            <label>Email Address</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required />
-            <span class="error-message"></span>
-          </div>
-          <div class="field">
-            <label>Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="+1 (305) 000-0000" required />
-            <span class="error-message"></span>
-          </div>
-          <div class="field span2">
-            <label>Home Address</label>
-            <input type="text" id="address" name="address" placeholder="Street, City, State, ZIP" required />
-            <span class="error-message"></span>
-          </div>
+          <div class="field"><label>First Name</label><input type="text" id="first_name" name="first_name" placeholder="Isabella" required><span class="error-message"></span></div>
+          <div class="field"><label>Last Name</label><input type="text" id="last_name" name="last_name" placeholder="Moretti" required><span class="error-message"></span></div>
+          <div class="field"><label>Preferred Name (Optional)</label><input type="text" id="preferred_name" name="preferred_name" placeholder="How should we address you?"><span class="error-message"></span></div>
+          <div class="field"><label>Date of Birth</label><div style="position:relative;width:100%"><input type="text" id="dob-input" name="dob" placeholder="MM/DD/YYYY" readonly style="cursor:pointer;background:#FFF8E7" required><div id="date-picker" style="display:none;position:absolute;bottom:100%;left:0;margin-bottom:8px;background:white;border:2px solid #C9922A;border-radius:8px;padding:16px;z-index:10000;min-width:300px;max-height:400px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,.15)"></div></div><span class="error-message"></span></div>
+          <div class="field"><label>Age</label><input type="number" id="calculated-age" name="age" min="18" inputmode="numeric" placeholder="Calculated automatically" required><span class="field-note">Calculated from your date of birth and available for correction.</span><span class="error-message"></span></div>
+          <div class="field"><label>Email Address</label><input type="email" id="email" name="email" placeholder="your@email.com" required><span class="error-message"></span></div>
+          <div class="field"><label>Phone Number</label><input type="tel" id="phone" name="phone" placeholder="+1 (305) 000-0000" required><span class="error-message"></span></div>
+          <div class="field span2"><label>Residential Address</label><input type="text" id="address" name="address" placeholder="Street, City, State, ZIP" required><span class="error-message"></span></div>
+          <div class="field span2"><label>How long have you lived in South Florida?</label><input type="text" id="south-florida-duration" name="south_florida_duration" placeholder="For example: 5 years" required><span class="error-message"></span></div>
         </div>
       </div>
 
-      <!-- 2. BACKGROUND -->
-      <div class="form-section">
-        <div class="form-section-title">
-          <div class="num">2</div>
-          <h3>Background & Eligibility</h3>
-        </div>
-        <div class="form-grid">
-          <div class="field">
-            <label>What is your highest level of education?</label>
-            <select id="education" name="education" required>
-              <option value="" disabled selected>Select...</option>
-              <option>High School</option>
-              <option>Some College</option>
-              <option>Bachelor's Degree</option>
-              <option>Master's Degree</option>
-              <option>Doctoral Degree</option>
-            </select>
-            <span class="error-message"></span>
-          </div>
-          <div class="field">
-            <label>What is your current occupation?</label>
-            <select id="occupation" name="occupation" required>
-              <option value="" disabled selected>Select...</option>
-              <option>Student</option>
-              <option>Unemployed</option>
-              <option>Self-Employed</option>
-              <option>Employed (Full-time)</option>
-              <option>Employed (Part-time)</option>
-              <option>Healthcare Professional</option>
-              <option>Business Professional</option>
-              <option>Other</option>
-            </select>
-            <span class="error-message"></span>
-          </div>
-          <div class="field">
-            <label>Height</label>
-            <input type="text" id="height" name="height" placeholder='e.g. 5&apos;7"' required />
-            <span class="error-message"></span>
-          </div>
-          <div class="field span2">
-            <label>Languages Spoken</label>
-            <input type="text" id="languages" name="languages" placeholder="English, Spanish, French..." required />
-            <span class="error-message"></span>
-          </div>
-          <div class="field">
-            <label>Have you competed before?</label>
-            <select id="competed" name="competed" required>
-              <option value="" disabled selected>Select...</option>
-              <option>No, this is my first time</option>
-              <option>Yes, local pageant</option>
-              <option>Yes, state pageant</option>
-              <option>Yes, national pageant</option>
-            </select>
-            <span class="error-message"></span>
-          </div>
-          <div class="field span2">
-            <label>Special Talents or Skills</label>
-            <textarea id="talents" name="talents" placeholder="Dancing, singing, public speaking, athletics..." required></textarea>
-            <span class="error-message"></span>
-          </div>
-        </div>
-      </div>
+      <div class="form-section"><div class="form-section-title"><div class="num">2</div><h3>Eligibility Information</h3></div><div class="form-grid question-grid">
+        <div class="field"><label>Are you a legal resident of the United States?</label><select name="legal_resident" required><option value="" selected disabled>Select...</option><option value="yes">Yes</option><option value="no">No</option></select><span class="error-message"></span></div>
+        <div class="field"><label>Are you currently residing in Miami-Dade County or the South Florida area?</label><select name="south_florida_resident" required><option value="" selected disabled>Select...</option><option value="yes">Yes</option><option value="no">No</option></select><span class="error-message"></span></div>
+        <div class="field"><label>What is your current marital status?</label><select name="marital_status" required><option value="" selected disabled>Select...</option><option>Single</option><option>Married</option><option>Divorced</option><option>Widowed</option><option>Prefer not to say</option></select><span class="error-message"></span></div>
+        <div class="field"><label>Do you have children?</label><select name="has_children" required><option value="" selected disabled>Select...</option><option value="yes">Yes</option><option value="no">No</option></select><span class="error-message"></span></div>
+        <div class="field"><label>Are you available to participate in all required pageant activities, rehearsals and the final competition?</label><select name="all_activities" required><option value="" selected disabled>Select...</option><option value="yes">Yes</option><option value="no">No</option></select><span class="error-message"></span></div>
+        <div class="field"><label>Are you legally able to enter into an agreement with Miss Miami?</label><select name="legal_agreement" required><option value="" selected disabled>Select...</option><option value="yes">Yes</option><option value="no">No</option></select><span class="error-message"></span></div>
+      </div></div>
 
-      <!-- 3. ESSAY -->
-      <div class="form-section">
-        <div class="form-section-title">
-          <div class="num">3</div>
-          <h3>Essay Questions</h3>
+      <div class="form-section"><div class="form-section-title"><div class="num">3</div><h3>Background &amp; Education</h3></div><div class="form-grid">
+        <div class="field"><label>Highest Level of Education Completed</label><select id="education" name="education" required><option value="" disabled selected>Select...</option><option>High School or Equivalent</option><option>Some College</option><option>Associate Degree</option><option>Bachelor's Degree</option><option>Master's Degree</option><option>Doctorate or Professional Degree</option><option>Vocational or Trade School</option><option>Other</option><option>Prefer not to say</option></select><span class="error-message"></span></div>
+        <div class="field"><label>Current Occupation</label><input type="text" id="occupation" name="occupation" placeholder="Your current occupation" required><span class="error-message"></span></div>
+        <div class="field"><label>Languages Spoken</label><input type="text" id="languages" name="languages" placeholder="English, Spanish, French..." required><span class="error-message"></span></div>
+        <div class="field"><label>Height</label><input type="text" id="height" name="height" placeholder="e.g. 5'7\"" required><span class="error-message"></span></div>
+        <div class="field"><label>Instagram (Optional)</label><input type="url" name="instagram" placeholder="https://instagram.com/..."><span class="error-message"></span></div>
+        <div class="field"><label>TikTok (Optional)</label><input type="url" name="tiktok" placeholder="https://tiktok.com/@..."><span class="error-message"></span></div>
+        <div class="field span2"><label>Website or Professional Profile (Optional)</label><input type="url" name="professional_profile" placeholder="https://..."><span class="error-message"></span></div>
+      </div></div>
+
+      <div class="form-section"><div class="form-section-title"><div class="num">4</div><h3>Pageant Experience</h3></div><div class="form-grid">
+        <div class="field span2"><label>Have you competed in a pageant before?</label><select id="competed" name="competed" required><option value="" disabled selected>Select...</option><option value="yes">Yes</option><option value="no">No</option></select><span class="error-message"></span></div>
+        <div class="conditional-fields" id="pageant-experience-details" aria-hidden="true">
+          <div class="field span2"><label>Please list the pageants you have participated in.</label><textarea id="pageants-list" name="pageants_list"></textarea><span class="error-message"></span></div>
+          <div class="field"><label>Titles or Awards Received</label><input type="text" id="pageant-awards" name="pageant_awards"><span class="error-message"></span></div>
+          <div class="field"><label>Year of Participation</label><input type="text" id="pageant-year" name="pageant_year" inputmode="numeric" placeholder="YYYY"><span class="error-message"></span></div>
+          <div class="field"><label>Are you currently holding another pageant title?</label><select id="current-title" name="current_title"><option value="" disabled selected>Select...</option><option value="yes">Yes</option><option value="no">No</option></select><span class="error-message"></span></div>
+          <div class="field" id="current-title-details" hidden><label>If yes, please provide the title and organization.</label><input type="text" id="title-organization" name="title_organization"><span class="error-message"></span></div>
         </div>
+      </div></div>
+
+      <div class="form-section"><div class="form-section-title"><div class="num">5</div><h3>Personal Profile</h3></div><div class="form-grid full">
+        <div class="field"><label>Tell us about yourself.</label><textarea name="about_yourself" data-word-limit="150" required></textarea><span class="word-count" aria-live="polite">0 / 150 words</span><span class="error-message"></span></div>
+        <div class="field"><label>What are your hobbies and interests?</label><textarea name="hobbies" data-word-limit="150" required></textarea><span class="word-count" aria-live="polite">0 / 150 words</span><span class="error-message"></span></div>
+        <div class="field"><label>What are your special talents or skills?</label><textarea id="talents" name="talents" data-word-limit="150" required></textarea><span class="word-count" aria-live="polite">0 / 150 words</span><span class="error-message"></span></div>
+        <div class="field"><label>What cause or platform would you champion during your reign?</label><textarea name="social_mission" data-word-limit="150" required></textarea><span class="word-count" aria-live="polite">0 / 150 words</span><span class="error-message"></span></div>
+      </div></div>
+
+      <div class="form-section"><div class="form-section-title"><div class="num">6</div><h3>Media &amp; Public Speaking</h3></div><div class="form-grid question-grid">
+        <div class="field"><label>Do you have experience with public speaking?</label><select name="public_speaking" required><option value="" disabled selected>Select...</option><option value="yes">Yes</option><option value="no">No</option></select><span class="error-message"></span></div>
+        <div class="field"><label>Are you comfortable speaking on camera and attending public events?</label><select name="camera_events" required><option value="" disabled selected>Select...</option><option value="yes">Yes</option><option value="no">No</option></select><span class="error-message"></span></div>
+        <div class="field span2"><label>Are you comfortable creating social media content as part of the Miss Miami organization?</label><select name="social_content" required><option value="" disabled selected>Select...</option><option value="yes">Yes</option><option value="no">No</option></select><span class="error-message"></span></div>
+      </div></div>
+
+      <div class="form-section"><div class="form-section-title"><div class="num">7</div><h3>Availability &amp; Commitment</h3></div><div class="form-grid question-grid">
+        <div class="field"><label>Are you available for rehearsals, interviews, appearances and promotional events?</label><select name="event_availability" required><option value="" disabled selected>Select...</option><option value="yes">Yes</option><option value="no">No</option></select><span class="error-message"></span></div>
+        <div class="field"><label>Are you able to travel within South Florida for official Miss Miami activities?</label><select name="travel_availability" required><option value="" disabled selected>Select...</option><option value="yes">Yes</option><option value="no">No</option></select><span class="error-message"></span></div>
+        <div class="field span2"><label>If selected as Miss Miami, are you prepared to fulfill the responsibilities of the title for the full term?</label><select name="full_term_commitment" required><option value="" disabled selected>Select...</option><option value="yes">Yes</option><option value="no">No</option></select><span class="error-message"></span></div>
+      </div></div>
+
+      <div class="form-section"><div class="form-section-title"><div class="num">8</div><h3>Photo &amp; Video Submission</h3></div>
+        <div class="req-box"><h4>Photo Requirements</h4><ul><li>Upload one recent, clear and unfiltered headshot</li><li>Upload one recent, clear and unfiltered full-length photo</li><li>Photos do not need to be professionally taken</li></ul></div>
         <div class="form-grid full">
-          <div class="field">
-            <label>Why do you want to become Miss Miami? (200–400 words)</label>
-            <textarea id="essay1" name="essay1" rows="6" placeholder="Share your story, your goals and what Miss Miami means to you..." required></textarea>
-            <span class="error-message"></span>
-          </div>
-          <div class="field">
-            <label>What cause or platform would you champion during your reign?</label>
-            <textarea id="essay2" name="essay2" rows="6" placeholder="Describe your passion and how you would use the Miss Miami title to create impact..." required></textarea>
-            <span class="error-message"></span>
-          </div>
-          <div class="field">
-            <label>How do you embody the values of Beauty, Confidence and Purpose?</label>
-            <textarea id="essay3" name="essay3" rows="5" placeholder="Share a personal experience that reflects these values..." required></textarea>
-            <span class="error-message"></span>
-          </div>
+          <div class="field"><label>Upload a Headshot</label><div class="file-upload" id="headshot-upload"><input type="file" id="headshot" name="headshot" accept="image/*" required><div class="file-upload-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="44" height="44" fill="#C9922A" stroke="#1A0800" stroke-width="2"/></svg></div><p><strong>Click to upload</strong> or drag a file here<br><span style="font-size:12px;opacity:.7">Recent, clear and unfiltered image</span></p></div><div id="headshot-list"></div><span class="error-message"></span></div>
+          <div class="field"><label>Upload a Full-Length Photo</label><div class="file-upload" id="full-length-upload"><input type="file" id="full-length-photo" name="full_length_photo" accept="image/*" required><div class="file-upload-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="44" height="44" fill="#C9922A" stroke="#1A0800" stroke-width="2"/></svg></div><p><strong>Click to upload</strong> or drag a file here<br><span style="font-size:12px;opacity:.7">Recent, clear and unfiltered image</span></p></div><div id="full-length-list"></div><span class="error-message"></span></div>
+          <div class="field"><label>1-Minute Introduction Video</label><span class="field-note">Please record a one-minute video introducing yourself and telling us why you would like to become Miss Miami.</span><div class="file-upload" id="video-upload"><input type="file" id="videos" name="introduction_video" accept="video/*" required><div class="file-upload-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><polygon points="10,10 10,54 54,32" fill="#C9922A" stroke="#1A0800" stroke-width="2" stroke-linejoin="round"/></svg></div><p><strong>Click to upload</strong> or drag a file here<br><span style="font-size:12px;opacity:.7">Maximum 1 minute · no filters · no editing · one continuous take</span></p></div><div id="video-list"></div><span class="field-note">Good lighting and clear audio. We are looking for authenticity — not perfection. Just be yourself.</span><span class="error-message"></span></div>
+          <div class="field"><label>How Did You Hear About Us?</label><select id="referral-source" name="referral_source" required><option value="" disabled selected>Select...</option><option>Instagram</option><option>TikTok</option><option>Facebook</option><option>Google</option><option>Friend or Family</option><option>Former Contestant</option><option>Pageant Coach</option><option>Sponsor or Partner</option><option>Event</option><option>Other</option></select><span class="error-message"></span></div>
+          <div class="field" id="referral-other-field" hidden><label>Please tell us how you heard about us.</label><input type="text" id="referral-other" name="referral_other"><span class="error-message"></span></div>
         </div>
       </div>
 
-      <!-- 4. PHOTOS & VIDEOS -->
+      <!-- 9. PAYMENT -->
       <div class="form-section">
         <div class="form-section-title">
-          <div class="num">4</div>
-          <h3>Photo & Video Submission</h3>
-        </div>
-
-        <div class="req-box">
-          <h4>Photo Requirements</h4>
-          <ul>
-            <li>Minimum 3 photos required: Headshot, Full-length (formal/evening), Casual</li>
-            <li>Professional quality, clear face, recent (within 6 months)</li>
-            <li>Format: JPG or PNG, minimum 1MB, maximum 10MB per photo</li>
-            <li>No heavy filters or extreme editing</li>
-          </ul>
-        </div>
-
-        <div class="form-grid full">
-          <div class="field">
-            <label>Upload Photos (Headshot, Full-length, Casual, etc.)</label>
-            <div class="file-upload" id="photo-upload">
-              <input type="file" id="photos" name="photos" accept="image/*" multiple required />
-              <div class="file-upload-icon">
-                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="photoBronze" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
-                      <stop offset="50%" style="stop-color:#C9922A;stop-opacity:1" />
-                      <stop offset="100%" style="stop-color:#7A4F10;stop-opacity:1" />
-                    </linearGradient>
-                  </defs>
-                  <rect x="10" y="10" width="44" height="44" fill="url(#photoBronze)" stroke="#1A0800" stroke-width="2"/>
-                </svg>
-              </div>
-              <p><strong>Click to upload</strong> or drag files here<br/><span style="font-size: 12px; opacity: 0.7;">JPG, PNG — Multiple photos accepted</span></p>
-            </div>
-            <div id="photo-list" style="margin-top: 16px; font-size: 12px; color: #1A0800; opacity: 0.75;"></div>
-            <span class="error-message"></span>
-          </div>
-
-          <div class="field">
-            <label>Upload Videos</label>
-            <div class="file-upload" id="video-upload">
-              <input type="file" id="videos" name="videos" accept="video/*" multiple required />
-              <div class="file-upload-icon">
-                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="videoBronze" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
-                      <stop offset="50%" style="stop-color:#C9922A;stop-opacity:1" />
-                      <stop offset="100%" style="stop-color:#7A4F10;stop-opacity:1" />
-                    </linearGradient>
-                  </defs>
-                  <polygon points="10,10 10,54 54,32" fill="url(#videoBronze)" stroke="#1A0800" stroke-width="2" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <p><strong>Click to upload</strong> or drag files here<br/><span style="font-size: 12px; opacity: 0.7;">MP4, MOV — Video clips (optional)</span></p>
-            </div>
-            <div id="video-list" style="margin-top: 16px; font-size: 12px; color: #1A0800; opacity: 0.75;"></div>
-            <span class="error-message"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. PAYMENT -->
-      <div class="form-section">
-        <div class="form-section-title">
-          <div class="num">5</div>
+          <div class="num">9</div>
           <h3>Application Fee</h3>
         </div>
 
@@ -1614,7 +1541,7 @@
               <h3>Miss Miami 2026</h3>
               <p style="font-size:12px;color:#1A0800;opacity:1;margin-top:4px;font-weight:300;">Application & Registration Fee</p>
             </div>
-            <div class="price-tag">$250<span> USD</span></div>
+            <div class="price-tag">$50<span> USD</span></div>
           </div>
 
           <div class="payment-includes">
@@ -1644,10 +1571,10 @@
         </div>
       </div>
 
-      <!-- 6. TERMS & SUBMIT -->
+      <!-- 10. TERMS & SUBMIT -->
       <div class="form-section">
         <div class="form-section-title">
-          <div class="num">6</div>
+          <div class="num">10</div>
           <h3>Agreement & Submission</h3>
         </div>
 
@@ -1658,30 +1585,30 @@
 
         <div class="terms-box">
           <div class="check-item">
-            <input type="checkbox" id="terms" name="terms" required />
-            <span>I confirm that all information provided is accurate and truthful. I understand that false information may result in disqualification.</span>
-            <span class="error-message"></span>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="age" name="age" required />
-            <span>I confirm that I am between 18 and 28 years of age as of the pageant date (November 15, 2026).</span>
+            <input type="checkbox" id="accuracy" name="accuracy" required />
+            <span>I confirm that the information provided in this application is accurate and complete.</span>
             <span class="error-message"></span>
           </div>
           <div class="check-item">
             <input type="checkbox" id="rules" name="rules" required />
-            <span>I have read and agree to the Miss Miami Official Rules & Regulations.</span>
+            <span>I confirm that I have read and agree to the Official Miss Miami Rules.</span>
             <span class="error-message"></span>
           </div>
           <div class="check-item">
-            <input type="checkbox" id="photo_consent" name="photo_consent" required />
-            <span>I consent to my photos and likeness being used for Miss Miami promotional materials.</span>
+            <input type="checkbox" id="acceptance" name="acceptance" required />
+            <span>I understand that submission of an application does not guarantee acceptance into the competition.</span>
+            <span class="error-message"></span>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="privacy-terms" name="privacy_terms" required />
+            <span>I agree to the Privacy Policy and Terms &amp; Conditions.</span>
             <span class="error-message"></span>
           </div>
         </div>
 
         <div class="submit-area">
           <button type="submit" class="btn-submit">
-            Submit Application & Pay $250
+            Submit Application &amp; Pay $50
           </button>
           <div class="submit-progress" id="submit-progress" role="status" aria-live="polite"></div>
           <p class="submit-note">
@@ -1714,7 +1641,7 @@
         </div>
         <div class="success-summary-item">
           <span class="success-summary-label">Registration Fee</span>
-          <span class="success-summary-value success-payment">✓ $250 USD Paid</span>
+          <span class="success-summary-value success-payment">✓ $50 USD Paid</span>
         </div>
       </div>
 
@@ -1853,7 +1780,8 @@
           }
 
           // Clear error when files are added
-          if (uploadContainer.id === 'photo-upload') clearFileUploadError('photo-upload');
+          if (uploadContainer.id === 'headshot-upload') clearFileUploadError('headshot-upload');
+          if (uploadContainer.id === 'full-length-upload') clearFileUploadError('full-length-upload');
           if (uploadContainer.id === 'video-upload') clearFileUploadError('video-upload');
         } else {
           p.innerHTML = `<strong>Click to upload or drag files</strong><br/>Multiple files accepted`;
@@ -1889,12 +1817,12 @@
     const dobInput = document.getElementById('dob-input');
     const datePicker = document.getElementById('date-picker');
     const today = new Date();
-    let currentDate = new Date(2003, today.getMonth(), 1); // July 2003: current month but valid year (1998-2008)
+    let currentDate = new Date(2000, today.getMonth(), 1);
     let selectedDate = null;
 
-    // Age restrictions: 18-28 as of November 15, 2026
-    const maxBirthDate = new Date(2008, 10, 15); // Nov 15, 2008 (youngest/max 18 yo)
-    const minBirthDate = new Date(1998, 10, 15); // Nov 15, 1998 (oldest/min 28 yo)
+    // Confirmed public rule: applicants must be at least 18 as of November 15, 2026.
+    const maxBirthDate = new Date(2008, 10, 15);
+    const minBirthDate = new Date(1900, 0, 1);
 
     const months = ['January', 'February', 'March', 'April', 'May', 'June',
                     'July', 'August', 'September', 'October', 'November', 'December'];
@@ -1905,7 +1833,58 @@
       const date = String(currentDate.getDate()).padStart(2, '0');
       const year = currentDate.getFullYear();
       dobInput.value = `${month}/${date}/${year}`;
+      const pageantDate = new Date(2026, 10, 15);
+      let age = pageantDate.getFullYear() - currentDate.getFullYear();
+      const monthDiff = pageantDate.getMonth() - currentDate.getMonth();
+      if (monthDiff < 0 || (monthDiff === 0 && pageantDate.getDate() < currentDate.getDate())) age--;
+      document.getElementById('calculated-age').value = age;
     }
+
+    const competedSelect = document.getElementById('competed');
+    const pageantDetails = document.getElementById('pageant-experience-details');
+    const pageantDetailFields = pageantDetails.querySelectorAll('input, select, textarea');
+    const currentTitleSelect = document.getElementById('current-title');
+    const currentTitleDetails = document.getElementById('current-title-details');
+    const titleOrganization = document.getElementById('title-organization');
+
+    function syncPageantExperience() {
+      const show = competedSelect.value === 'yes';
+      pageantDetails.classList.toggle('show', show);
+      pageantDetails.setAttribute('aria-hidden', String(!show));
+      pageantDetailFields.forEach(field => { field.required = show; });
+      if (!show) {
+        currentTitleDetails.hidden = true;
+        titleOrganization.required = false;
+      }
+    }
+    function syncCurrentTitle() {
+      const show = competedSelect.value === 'yes' && currentTitleSelect.value === 'yes';
+      currentTitleDetails.hidden = !show;
+      titleOrganization.required = show;
+    }
+    competedSelect.addEventListener('change', () => { syncPageantExperience(); syncCurrentTitle(); });
+    currentTitleSelect.addEventListener('change', syncCurrentTitle);
+    syncPageantExperience();
+
+    const referralSource = document.getElementById('referral-source');
+    const referralOtherField = document.getElementById('referral-other-field');
+    const referralOther = document.getElementById('referral-other');
+    referralSource.addEventListener('change', () => {
+      const show = referralSource.value === 'Other';
+      referralOtherField.hidden = !show;
+      referralOther.required = show;
+    });
+
+    document.querySelectorAll('textarea[data-word-limit]').forEach(textarea => {
+      const counter = textarea.parentElement.querySelector('.word-count');
+      textarea.addEventListener('input', () => {
+        const limit = Number(textarea.dataset.wordLimit);
+        const words = textarea.value.trim().split(/\s+/).filter(Boolean);
+        if (words.length > limit) textarea.value = words.slice(0, limit).join(' ');
+        const count = textarea.value.trim() ? textarea.value.trim().split(/\s+/).length : 0;
+        counter.textContent = `${count} / ${limit} words`;
+      });
+    });
 
     let monthSelect;
     let yearSelect;
@@ -1945,7 +1924,7 @@
       yearSelect = document.createElement('select');
       yearSelect.style.cssText = 'padding: 6px 24px 6px 6px; border: 1px solid #C9922A; border-radius: 4px; font-size: 12px; width: auto; min-width: 75px;';
 
-      for (let y = 1998; y <= 2008; y++) {
+      for (let y = 2008; y >= 1900; y--) {
         const opt = document.createElement('option');
         opt.value = y;
         opt.textContent = y;
@@ -2077,7 +2056,7 @@
 
     // Validation function
     function showError(inputId, message) {
-      const input = document.getElementById(inputId);
+      const input = document.getElementById(inputId) || document.querySelector(`[name="${inputId}"]`);
       if (!input) return;
 
       // Find .field parent (handles nested divs like date picker)
@@ -2095,7 +2074,7 @@
     }
 
     function clearError(inputId) {
-      const input = document.getElementById(inputId);
+      const input = document.getElementById(inputId) || document.querySelector(`[name="${inputId}"]`);
       if (!input) return;
 
       // Find .field parent (handles nested divs like date picker)
@@ -2145,10 +2124,10 @@
         if (field.type === 'checkbox') {
           if (!field.checked) {
             const labels = {
-              'terms': 'You must confirm information accuracy',
-              'age': 'You must confirm you are 18-28 years old',
+              'accuracy': 'You must confirm information accuracy',
               'rules': 'You must accept the pageant rules',
-              'photo_consent': 'You must consent to photo usage'
+              'acceptance': 'You must confirm you understand the application review policy',
+              'privacy-terms': 'You must accept the Privacy Policy and Terms & Conditions'
             };
             showError(field.id || field.name, labels[field.id] || 'This field is required');
             isValid = false;
@@ -2165,7 +2144,7 @@
             'first_name': 'First name is required',
             'last_name': 'Last name is required',
             'dob': 'Date of birth is required',
-            'city': 'City is required',
+            'age': 'Age is required',
             'email': 'Email address is required',
             'phone': 'Phone number is required',
             'address': 'Home address is required',
@@ -2174,10 +2153,7 @@
             'height': 'Height is required',
             'competed': 'Competition history is required',
             'languages': 'Languages spoken is required',
-            'talents': 'Talents/skills are required',
-            'essay1': 'Essay 1 is required',
-            'essay2': 'Essay 2 is required',
-            'essay3': 'Essay 3 is required'
+            'talents': 'Talents/skills are required'
           };
           showError(field.id || field.name, labels[field.id] || 'This field is required');
           isValid = false;
@@ -2219,6 +2195,15 @@
           else if (field.name === 'occupation') {
             if (value.length < 2) {
               showError(field.id || field.name, 'Occupation required');
+              isValid = false;
+            } else {
+              clearError(field.id || field.name);
+            }
+          }
+          else if (field.name === 'age') {
+            const age = Number(value);
+            if (!Number.isInteger(age) || age < 18) {
+              showError(field.id || field.name, 'You must be at least 18 years old');
               isValid = false;
             } else {
               clearError(field.id || field.name);
@@ -2314,7 +2299,7 @@
         }
       }
 
-      // Validate date of birth (age 18-28 as of November 15, 2026)
+      // Validate date of birth against the confirmed minimum age.
       const dob = document.getElementById('dob-input');
       if (dob && dob.value) {
         const parts = dob.value.split('/');
@@ -2331,8 +2316,8 @@
             age--;
           }
 
-          if (age < 18 || age > 28) {
-            showError('dob-input', 'Must be 18-28 years old as of November 15, 2026');
+          if (age < 18) {
+            showError('dob-input', 'Must be at least 18 years old as of November 15, 2026');
             isValid = false;
           } else if (birthDate > new Date()) {
             showError('dob-input', 'Date of birth cannot be in the future');
@@ -2343,13 +2328,20 @@
         }
       }
 
-      // Validate photos (minimum 3 required)
-      const photosInput = document.getElementById('photos');
-      if (!photosInput.files || photosInput.files.length < 3) {
-        showFileUploadError('photo-upload', 'Minimum 3 photos required');
+      // Validate the two required photos separately.
+      const headshotInput = document.getElementById('headshot');
+      if (!headshotInput.files || headshotInput.files.length < 1) {
+        showFileUploadError('headshot-upload', 'Headshot is required');
         isValid = false;
       } else {
-        clearFileUploadError('photo-upload');
+        clearFileUploadError('headshot-upload');
+      }
+      const fullLengthInput = document.getElementById('full-length-photo');
+      if (!fullLengthInput.files || fullLengthInput.files.length < 1) {
+        showFileUploadError('full-length-upload', 'Full-length photo is required');
+        isValid = false;
+      } else {
+        clearFileUploadError('full-length-upload');
       }
 
       // Validate videos (minimum 1 required)
@@ -2419,7 +2411,7 @@
 
       // SKIP пустые поля - НЕ показывать ни ошибку ни успех
       if (!value && field.tagName !== 'SELECT') {
-        const input = document.getElementById(fieldId);
+        const input = document.getElementById(fieldId) || document.querySelector(`[name="${fieldId}"]`);
         let fieldEl = input.closest('.field');
         if (!fieldEl) fieldEl = input.parentElement;
         input.classList.remove('error');
@@ -2469,6 +2461,12 @@
         case 'occupation':
           if (!value || value === '') {
             errorMsg = 'Occupation required';
+          }
+          break;
+
+        case 'age':
+          if (!Number.isInteger(Number(value)) || Number(value) < 18) {
+            errorMsg = 'You must be at least 18 years old';
           }
           break;
 
@@ -2533,8 +2531,8 @@
               if (monthDiff < 0 || (monthDiff === 0 && pageantDate.getDate() < birthDate.getDate())) {
                 age--;
               }
-              if (age < 18 || age > 28) {
-                errorMsg = 'Must be 18-28 years old';
+              if (age < 18) {
+                errorMsg = 'Must be at least 18 years old';
               } else if (birthDate > new Date()) {
                 errorMsg = 'Date cannot be in future';
               }
@@ -2595,7 +2593,7 @@
       await waitForPrototypeStage(900);
 
       submitButton.textContent = 'Processing Payment…';
-      submitProgress.textContent = 'Processing your $250 registration payment…';
+      submitProgress.textContent = 'Processing your $50 registration payment…';
       await waitForPrototypeStage(1100);
 
       submitButton.textContent = 'Finalizing…';
