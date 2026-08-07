@@ -4,701 +4,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Miss Miami 2026</title>
+  <title>About — Miss Miami 2027</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --gold:       #D4AF37;
-      --gold2:      #B8960A;
-      --hero-dark:  #050100;
-      --hero-mid:   #160600;
-      --hero-light: #261000;
-      --cream:      #DDB870;
-      --cream2:     #DDB870;
-      --dark-text:  #1A0800;
-      --mid-text:   rgba(40,20,0,0.65);
-      --glass:      rgba(4,1,0,0.93);
-      --tr: 0.35s cubic-bezier(.4,0,.2,1);
-    }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { background: var(--cream); color: var(--dark-text); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
-    h1,h2,h3,h4 { font-family: 'Cinzel', serif; letter-spacing: 0.06em; }
-    a { text-decoration: none; color: inherit; }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--cream); }
-    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
-
-    /* ── HEADER ── */
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 56px; height: 90px;
-      background: transparent;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      box-shadow: none;
-      transition: none;
-    }
-    .logo { display: flex; align-items: center; }
-    .logo-img { height: 80px; width: auto; display: block; object-fit: contain; }
-    nav { display: flex; align-items: center; gap: 32px; }
-    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.7); transition: color var(--tr); position: relative; }
-    nav a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform var(--tr); }
-    nav a:hover { color: var(--gold); }
-    nav a:hover::after, nav a.active::after { transform: scaleX(1); }
-    nav a.active { color: var(--gold); }
-    .btn-nav {
-      padding: 10px 28px;
-      background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
-      background-size: 250% auto;
-      color: #FFF8E7 !important;
-      font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em;
-      font-weight: 700; text-transform: uppercase;
-      border-radius: 6px; border: none;
-      animation: bronzeFlow 8s ease-in-out infinite;
-      position: relative; overflow: hidden;
-    }
-    .btn-nav::after { display: none !important; }
-    .btn-nav:hover { background-position: right center; }
-    .btn-nav::after, .btn-account::after { display: none !important; }
-    .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid-text) !important; border: 1px solid rgba(212,175,55,0.25); padding: 8px 18px; transition: all var(--tr); font-weight: 500; border-radius: 6px; }
-    .btn-account:hover { color: var(--gold) !important; border-color: rgba(212,175,55,0.6); }
-    .menu-toggle {
-      display: none; flex-direction: column; gap: 6px;
-      cursor: pointer; padding: 10px 12px;
-      border: 1px solid rgba(166,124,26,0.55);
-      border-radius: 4px;
-      background: none;
-      transition: border-color var(--tr);
-    }
-    .menu-toggle:hover { border-color: rgba(166,124,26,0.85); }
-    .menu-toggle span {
-      display: block; height: 1px;
-      background: #A67C1A;
-      transition: var(--tr); border-radius: 1px;
-    }
-    .menu-toggle span:nth-child(1) { width: 20px; }
-    .menu-toggle span:nth-child(2) { width: 14px; }
-    .menu-toggle span:nth-child(3) { width: 20px; }
-
-    /* ── HERO ── */
-    .hero {
-      height: 100vh; min-height: 600px;
-      position: relative;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      /* Mobile default: portrait photo */
-      background: url('about-hero.jpg') center center/cover no-repeat,
-        radial-gradient(ellipse at 50% 35%, var(--hero-light) 0%, var(--hero-mid) 45%, var(--hero-dark) 100%);
-    }
-    /* Desktop: landscape photo (once about-hero-desktop.jpg is placed) */
-    @media (min-width: 641px) {
-      .hero {
-        background: url('about-hero-desktop.jpg') center center/cover no-repeat,
-          radial-gradient(ellipse at 50% 35%, var(--hero-light) 0%, var(--hero-mid) 45%, var(--hero-dark) 100%);
-      }
-    }
-    /* Hero fades to dark at bottom — divider sits on dark zone */
-    .hero::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 180px;
-      background: linear-gradient(to bottom, transparent 0%, rgba(8,4,0,0.55) 60%, #160500 100%);
-      z-index: 2; pointer-events: none;
-    }
-    .hero-bg { display: none; }
-    .hero-photo { display: none; }
-    .hero-bg-fallback { display: none; }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: rgba(90,40,5,0.22);
-      z-index: 1;
-    }
-    .hero-content {
-      position: absolute; z-index: 3;
-      top: 95px; bottom: 20px;
-      left: 50%; transform: translateX(-50%);
-      text-align: center; padding: 0 48px;
-      width: 100%; max-width: 720px;
-    }
-    .hero-ornament {
-      display: flex; align-items: center; justify-content: flex-start;
-      gap: 16px; margin-bottom: 32px;
-    }
-    .hero-ornament-line { width: 60px; height: 1px; background: rgba(212,175,55,0.4); }
-    .hero-ornament span { font-size: 14px; color: var(--gold); opacity: 0.7; }
-    .hero h1 {
-      font-size: clamp(32px, 3.6vw, 50px);
-      color: #FBF0D8;
-      line-height: 1.1;
-      margin-bottom: 16px;
-      text-shadow: 0 2px 40px rgba(0,0,0,0.5);
-    }
-    .hero h1 em {
-      font-style: normal;
-      background: linear-gradient(90deg,
-        #B8960C 0%,
-        #D4AF37 20%,
-        #F5E27A 35%,
-        #fff8dc 50%,
-        #F5E27A 65%,
-        #D4AF37 80%,
-        #B8960C 100%
-      );
-      background-size: 300% 100%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: shimmer 3s ease-in-out infinite;
-    }
-    @keyframes shimmer {
-      0%   { background-position: 100% 0; }
-      50%  { background-position: 0% 0; }
-      100% { background-position: 100% 0; }
-    }
-    .hero-sub {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      font-size: 17px; color: rgba(245,230,200,0.88);
-      line-height: 2; letter-spacing: 0.05em;
-    }
-    .hero-scroll {
-      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      z-index: 2;
-    }
-    .hero-scroll-line {
-      width: 1px; height: 48px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-      animation: scrollLine 2s ease-in-out infinite;
-    }
-    @keyframes scrollLine {
-      0%, 100% { opacity: 0.3; transform: scaleY(1); }
-      50% { opacity: 0.8; transform: scaleY(1.1); }
-    }
-    @keyframes bronzeFlow {
-      0%   { background-position: 0% center; }
-      50%  { background-position: 100% center; }
-      100% { background-position: 0% center; }
-    }
-    @keyframes bronzeSheen {
-      0%   { left: -100%; opacity: 0; }
-      10%  { opacity: 1; }
-      40%  { left: 160%; opacity: 1; }
-      42%  { opacity: 0; }
-      100% { left: 160%; opacity: 0; }
-    }
-
-    /* ── LOGO DIVIDER — transition band dark→cream ── */
-    .logo-divider {
-      display: flex; align-items: center; justify-content: center;
-      gap: 24px; padding: 44px 56px;
-      background: linear-gradient(to bottom, #160500 0%, #2A0D00 45%, #7A4020 72%, #DDB870 100%);
-    }
-    .logo-divider::before, .logo-divider::after {
-      content: ''; flex: 0 0 80px; height: 1px;
-      background: rgba(212,175,55,0.35);
-    }
-    .logo-divider img {
-      height: 32px; width: auto; opacity: 0.75;
-      filter: brightness(1.8) sepia(1) saturate(3) hue-rotate(5deg);
-      mix-blend-mode: screen;
-    }
-
-    /* ── PARTICLE CANVAS ── */
-    #hero-canvas {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      z-index: 2; pointer-events: none;
-      opacity: 0.75;
-    }
-
-    /* ── BIG QUOTE ── */
-    .quote-section {
-      padding: 0 56px 100px;
-      text-align: center;
-      position: relative;
-    }
-    .quote-mark {
-      font-family: 'Cinzel', serif;
-      font-size: 120px;
-      line-height: 0.5;
-      color: rgba(212,175,55,0.08);
-      display: block;
-      margin-bottom: 20px;
-    }
-    .quote-text {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(22px, 3.5vw, 42px);
-      color: var(--dark-text);
-      line-height: 1.4;
-      max-width: 860px;
-      margin: 0 auto 28px;
-      font-weight: 400;
-    }
-    .quote-text em {
-      font-style: normal;
-      background: linear-gradient(110deg, #4A1F00 0%, #8C4A08 18%, #C07820 35%, #E8B840 50%, #C07820 65%, #8C4A08 82%, #4A1F00 100%);
-      background-size: 300% 100%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: bronzeFlow 4s ease-in-out infinite;
-    }
-    .quote-author { font-size: 14px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(40,20,0,0.85); }
-
-    /* ── FULL BLEED MISSION ── */
-.mission-section {
-  position: relative;
-  min-height: 80vh;
-  display: grid;
-  grid-template-columns: minmax(420px, 0.92fr) minmax(0, 1.08fr);
-    }
-    .mission-photo {
-      position: relative;
-      background-color: #1A0800;
-      overflow: hidden;
-      min-height: 500px;
-      box-shadow: inset 0 0 0 1px rgba(212,175,55,0.55),
-                  inset 0 0 0 5px rgba(212,175,55,0.08);
-    }
-.mission-photo img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center 18%;
-      filter: sepia(15%) contrast(1.05) brightness(0.85);
-      display: block;
-    }
-.mission-photo-overlay {
-  position: absolute; inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(
-      to right,
-      var(--cream) 0%,
-      rgba(221, 184, 112, 0.08) 5%,
-      transparent 12%,
-      transparent 68%,
-      rgba(221, 184, 112, 0.22) 84%,
-      var(--cream) 100%
-    ),
-    linear-gradient(
-      to bottom,
-      var(--cream) 0%,
-      rgba(221, 184, 112, 0.06) 5%,
-      transparent 12%,
-      transparent 84%,
-      rgba(221, 184, 112, 0.22) 94%,
-      var(--cream) 100%
-    );
-}
-    .mission-photo-placeholder {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cinzel', serif; font-size: 100px;
-      color: rgba(212,175,55,0.06);
-    }
-    .mission-text-panel {
-      background: var(--cream);
-      padding: 80px 72px 80px 64px;
-      display: flex; flex-direction: column; justify-content: center;
-      position: relative;
-    }
-    .mission-text-panel::before {
-      content: '';
-      position: absolute; left: 0; top: 10%; bottom: 10%; width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba(212,175,55,0.2), transparent);
-    }
-    .eyebrow { font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 500; }
-    .mission-text-panel h2 { font-size: clamp(24px, 2.8vw, 38px); color: #1A0800; margin-bottom: 28px; line-height: 1.3; }
-    .mission-text-panel p { font-size: 16px; color: var(--mid-text); line-height: 2.1; margin-bottom: 18px; }
-    .mission-detail {
-      display: flex; gap: 32px; margin-top: 36px;
-    }
-    .mission-detail-item { flex: 1; }
-    .mission-detail-item .num {
-      font-family: 'Cinzel', serif; font-size: 32px; color: #3A1A04;
-      line-height: 1; margin-bottom: 6px;
-    }
-    .mission-detail-item .label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(40,20,0,0.75); }
-
-    /* ── VALUES — FULL SCREEN ── */
-    .values-section { background: var(--cream); }
-    .values-hero {
-      padding: 80px 56px 60px;
-      text-align: center;
-    }
-    .values-hero h2 { font-size: clamp(28px, 4vw, 52px); color: #1A0800; margin-bottom: 16px; }
-    .values-hero p { font-size: 17px; color: rgba(40,20,0,0.80); max-width: 480px; margin: 0 auto; line-height: 2; }
-
-    .values-panels { display: grid; grid-template-columns: repeat(3, 1fr); }
-    .value-panel {
-      position: relative; padding: 64px 48px;
-      border-top: 1px solid rgba(212,175,55,0.08);
-      border-right: 1px solid rgba(212,175,55,0.08);
-      overflow: hidden;
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease, background var(--tr);
-    }
-    .value-panel:last-child { border-right: none; }
-    .value-panel.visible { opacity: 1; transform: translateY(0); }
-    .value-panel:hover { background: rgba(212,175,55,0.03); }
-    .value-panel-num {
-      font-family: 'Cinzel', serif;
-      font-size: 100px; line-height: 1;
-      color: rgba(212,175,55,0.04);
-      position: absolute; top: 20px; right: 24px;
-      pointer-events: none;
-    }
-    .value-panel-icon { font-size: 28px; margin-bottom: 24px; display: block; }
-    .value-panel h3 {
-      font-size: 16px; letter-spacing: 0.2em; color: #3A1A04;
-      margin-bottom: 16px; font-weight: 600;
-    }
-    .value-panel p { font-size: 17px; color: rgba(40,20,0,0.80); line-height: 2; }
-
-    /* ── STORY — IMMERSIVE ── */
-    .story-section { background: var(--cream); padding: 100px 56px; }
-    .story-inner { max-width: 1100px; margin: 0 auto; }
-    .story-head { margin-bottom: 72px; }
-    .story-head h2 { font-size: clamp(28px, 4vw, 48px); color: var(--dark-text); margin-bottom: 14px; }
-    .story-head p { font-size: 16px; color: var(--mid-text); max-width: 420px; line-height: 2; }
-
-    .timeline { position: relative; }
-    .tl-track {
-      position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
-      background: rgba(212,175,55,0.08);
-    }
-    .tl-track-fill {
-      position: absolute; left: 0; top: 0; width: 1px;
-      background: linear-gradient(to bottom, var(--gold), rgba(212,175,55,0.3));
-      height: 0%;
-      transition: height 1.8s cubic-bezier(.4,0,.2,1);
-    }
-    .tl-track-fill.animated { height: 100%; }
-    .tl-item {
-      display: grid; grid-template-columns: 48px 1fr;
-      gap: 40px; padding-bottom: 56px;
-      opacity: 0; transform: translateY(28px);
-      filter: blur(3px);
-      transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  filter 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .tl-item:last-child { padding-bottom: 0; }
-    .tl-item.visible { opacity: 1; transform: translateY(0); filter: blur(0); }
-    .tl-left { display: flex; flex-direction: column; align-items: center; gap: 0; }
-    .tl-dot {
-      width: 48px; height: 48px; flex-shrink: 0;
-      border: 1px solid rgba(212,175,55,0.25);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cinzel', serif; font-size: 16px;
-      color: #9A6010; background: var(--cream);
-      position: relative; z-index: 1;
-      transition: border-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
-    }
-    .tl-item.visible .tl-dot {
-      border-color: #C9922A;
-      color: #C9922A;
-      background: linear-gradient(135deg, rgba(201,146,42,0.08), rgba(212,175,55,0.04));
-      box-shadow: 0 0 16px rgba(201,146,42,0.25), inset 0 0 8px rgba(212,175,55,0.08);
-    }
-    .tl-content { padding-top: 12px; padding-bottom: 8px; }
-    .tl-year { font-size: 9px; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; opacity: 0.7; }
-    .tl-content h4 { font-size: 17px; color: var(--dark-text); margin-bottom: 10px; letter-spacing: 0.1em; }
-    .tl-content p { font-size: 16px; color: var(--mid-text); line-height: 2; max-width: 540px; }
-
-    /* ── TEAM — EDITORIAL ── */
-    .team-section { background: var(--cream); padding: 100px 56px; }
-    .team-head { margin-bottom: 64px; }
-    .team-head h2 { font-size: clamp(28px, 4vw, 48px); color: var(--dark-text); margin-bottom: 14px; }
-    .team-head p { font-size: 16px; color: var(--mid-text); max-width: 400px; line-height: 2; }
-
-    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-    .team-card {
-      position: relative; overflow: hidden;
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .team-card.visible { opacity: 1; transform: translateY(0); }
-    .team-photo {
-      aspect-ratio: 3/4;
-      background: #100500;
-      position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .team-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; filter: sepia(10%) contrast(1.05) brightness(0.9); }
-    .team-card:hover .team-photo img { transform: scale(1.04); }
-    .team-photo-placeholder { font-size: 64px; color: rgba(212,175,55,0.06); }
-    .team-photo-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(60,20,5,0.92) 0%, rgba(40,15,5,0.35) 55%, rgba(200,120,30,0.12) 100%);
-    }
-    .team-info {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 28px 24px;
-    }
-    .team-name { font-family: 'Cinzel', serif; font-size: 16px; color: rgba(255,240,210,0.95); margin-bottom: 4px; }
-    .team-role { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: #D4AF37; opacity: 0.9; margin-bottom: 10px; }
-    .team-bio { font-size: 14px; color: rgba(220,185,140,0.75); line-height: 1.8; }
-
-    /* ── CTA — FULL BLEED ── */
-.cta-section {
-  position: relative;
-  padding: 120px 56px;
-  text-align: center;
-  overflow: hidden;
-  background-color: var(--cream);
-}
-.cta-bg {
-  position: absolute; inset: 0;
-  background-image: url('hero.jpg');
-  background-size: cover; background-position: center;
-  opacity: 0.08;
-  filter: sepia(1) saturate(0.55);
-}
-.cta-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(221, 184, 112, 0.98) 0%,
-    rgba(221, 184, 112, 0.84) 48%,
-    rgba(221, 184, 112, 0.98) 100%
-  );
-    }
-    .cta-content { position: relative; z-index: 2; }
-.cta-section h2 { font-size: clamp(28px, 4.5vw, 56px); color: var(--dark-text); margin-bottom: 20px; line-height: 1.2; }
-.cta-section h2 em { font-style: normal; color: #C9922A; }
-.cta-section p { font-size: 14px; color: var(--mid-text); max-width: 480px; margin: 0 auto 48px; line-height: 2; }
-    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
-.btn-gold {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 16px 52px;
-  background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
-  background-size: 250% auto;
-  color: #FFF8E7;
-  font-family: 'Cinzel', serif;
-  font-size: 12px;
-  letter-spacing: 0.25em;
-  font-weight: 700;
-  text-transform: uppercase;
-  border-radius: 6px;
-  animation: bronzeFlow 8s ease-in-out infinite;
-  transition: transform var(--tr), box-shadow var(--tr), background-position var(--tr);
-}
-.btn-gold:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(122, 79, 16, 0.2);
-  background-position: right center;
-}
-    .btn-outline { display: inline-block; padding: 15px 52px; border: 1px solid rgba(212,175,55,0.35); color: var(--gold); font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.25em; font-weight: 600; text-transform: uppercase; transition: all var(--tr); }
-    .btn-outline:hover { background: rgba(212,175,55,0.08); border-color: rgba(212,175,55,0.6); }
-
-    /* ── FOOTER ── */
-    footer { background: var(--cream); border-top: 1px solid rgba(212,175,55,0.12); padding: 40px 56px 28px; }
-    .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
-    .footer-bottom p { font-size: 11px; color: var(--mid-text); }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: 11px; color: var(--mid-text); transition: color var(--tr); }
-    .footer-links a:hover { color: var(--gold); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .mission-section { grid-template-columns: 1fr; }
-      .mission-photo { min-height: 400px; aspect-ratio: 3/4; }
-  .mission-photo-overlay {
-    background:
-      linear-gradient(
-        to right,
-        var(--cream) 0%,
-        rgba(221, 184, 112, 0.05) 4%,
-        transparent 10%,
-        transparent 90%,
-        rgba(221, 184, 112, 0.08) 96%,
-        var(--cream) 100%
-      ),
-      linear-gradient(
-        to bottom,
-        var(--cream) 0%,
-        rgba(221, 184, 112, 0.06) 5%,
-        transparent 12%,
-        transparent 68%,
-        rgba(221, 184, 112, 0.22) 84%,
-        var(--cream) 100%
-      );
-  }
-      .mission-text-panel { padding: 56px 32px; }
-      .mission-text-panel::before { display: none; }
-      .mission-detail { gap: 20px; }
-      .values-panels { grid-template-columns: 1fr; }
-      .value-panel { border-right: none; border-bottom: 1px solid rgba(212,175,55,0.08); }
-      .team-grid { grid-template-columns: 1fr; max-width: 400px; }
-    }
-    /* ── MOBILE MENU OVERLAY ── */
-    .mobile-menu {
-      display: none; position: fixed;
-      top: 72px; left: 0; right: 0; bottom: 0;
-      background: #3A1A04;
-      z-index: 9999;
-      flex-direction: column; padding: 32px; gap: 20px;
-      align-items: flex-start; overflow-y: auto;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu::after {
-      content: '';
-      display: block;
-      flex: 0 0 calc(100lvh - 100svh);
-    }
-    .mobile-menu a {
-      font-family: 'Montserrat', sans-serif; font-size: 14px;
-      font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(245,230,200,0.78); transition: color 0.3s ease;
-      width: 100%; padding: 8px 0;
-      border-bottom: 1px solid rgba(212,175,55,0.08);
-    }
-    .mobile-menu a:hover { color: var(--gold); }
-    .mobile-menu a.active {
-      color: var(--gold);
-      border-bottom-color: var(--gold);
-    }
-    .mobile-menu .btn-account-nav { border: 1px solid rgba(212,175,55,0.25); padding: 10px 20px; }
-    .mobile-menu .btn-apply-nav {
-      display: inline-flex; align-items: center;
-      margin-top: 12px; padding: 16px 32px;
-      font-size: 13px !important; width: 100%; border: none;
-      border-radius: 6px; cursor: pointer;
-      background: linear-gradient(110deg, #7A4F10 0%, #C9922A 30%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%);
-      background-size: 250% auto;
-      color: #FFF8E7 !important;
-      font-family: 'Cinzel', serif !important;
-      letter-spacing: 0.25em !important; font-weight: 700 !important;
-      text-transform: uppercase;
-      animation: bronzeFlow 8s ease-in-out infinite;
-      position: relative; overflow: hidden;
-      text-align: center; justify-content: center;
-    }
-    .mobile-menu .btn-apply-nav::after {
-      display: none !important;
-    }
-
-    @media (max-width: 640px) {
-      header { padding: 0 24px; height: 72px; }
-      nav { display: none; }
-      .menu-toggle { display: flex; }
-
-      /* Hero mobile */
-      .hero { background-position: center center; }
-      .logo-divider { padding: 28px 24px; }
-      .logo-divider::before, .logo-divider::after { flex: 0 0 60px; }
-      .hero-content {
-        top: 116px !important;
-        bottom: 80px !important;
-        left: 28px !important; right: 28px !important;
-        transform: none !important;
-        width: auto !important;
-        padding: 0 !important;
-        max-width: 100% !important;
-        text-align: center !important;
-      }
-      .hero-sub {
-        position: absolute !important;
-        bottom: 0 !important;
-        left: 0 !important; right: 0 !important;
-        top: auto !important;
-        font-size: 13px !important;
-        max-width: 100% !important;
-        line-height: 1.8 !important;
-        color: rgba(245,230,200,0.75) !important;
-        margin: 0 !important;
-      }
-      .hero-ornament { justify-content: center !important; }
-      .hero h1 { font-size: 36px !important; line-height: 1.1 !important; }
-      .hero-sub { font-size: 16px !important; max-width: 100% !important; line-height: 1.85 !important; }
-
-      /* Quote section */
-      .quote-section { padding: 0 24px 56px; }
-      .quote-mark { font-size: 72px; }
-      .quote-text { font-size: 20px !important; line-height: 1.5; }
-      .quote-author { font-size: 10px; }
-
-      /* Mission section */
-      .mission-text-panel { padding: 40px 24px; }
-      .eyebrow { font-size: 11px; letter-spacing: 0.3em; }
-      .mission-text-panel h2 { font-size: 26px !important; margin-bottom: 20px; }
-      .mission-text-panel p { font-size: 17px; line-height: 1.9; }
-      .mission-detail { flex-direction: row; gap: 12px; margin-top: 24px; }
-      .mission-detail-item .num { font-size: 26px; }
-      .mission-detail-item .label { font-size: 10px; }
-
-      /* Values section */
-      .values-hero { padding: 48px 24px 40px; }
-      .values-hero h2 { font-size: 26px !important; margin-bottom: 14px; }
-      .values-hero p { font-size: 17px; line-height: 1.9; }
-      .value-panel { padding: 36px 24px; }
-      .value-panel h3 { font-size: 15px; letter-spacing: 0.15em; margin-bottom: 12px; }
-      .value-panel p { font-size: 17px; line-height: 1.9; }
-      .value-panel-icon { font-size: 24px; margin-bottom: 16px; }
-
-      /* Timeline mobile */
-      .tl-item { grid-template-columns: 36px 1fr; gap: 16px; padding-bottom: 40px; }
-      .tl-dot { width: 36px; height: 36px; font-size: 12px; }
-      .tl-content h4 { font-size: 17px; margin-bottom: 8px; }
-      .tl-content p { font-size: 17px; line-height: 1.85; }
-      .tl-year { font-size: 10px; letter-spacing: 0.25em; }
-
-      /* Team mobile */
-      .team-grid { max-width: 100%; margin: 0 auto; }
-      .team-head h2 { font-size: 26px !important; }
-      .team-head p { font-size: 17px; line-height: 1.9; }
-      .team-name { font-size: 16px; }
-      .team-bio { font-size: 14px; }
-
-      /* CTA section */
-      .cta-section { padding: 80px 24px; }
-      .cta-section h2 { font-size: 26px !important; margin-bottom: 16px; }
-      .cta-section p { font-size: 17px; line-height: 1.9; margin-bottom: 36px; }
-      .cta-btns { flex-direction: column; align-items: stretch; gap: 12px; }
-      .btn-gold, .btn-outline { padding: 16px 24px; font-size: 12px; text-align: center; }
-
-      /* Misc */
-      .gold-divider { padding: 40px 24px; }
-      .story-section, .team-section { padding: 64px 24px; }
-      .story-head h2 { font-size: 26px !important; }
-      .story-head p { font-size: 17px; line-height: 1.9; }
-
-      /* Footer */
-      footer { padding: 28px 24px; }
-      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-      .footer-bottom p { font-size: 13px; }
-      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
-      .footer-links a { font-size: 13px; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/site-header.css?v=20260805-3">
+  <link rel="stylesheet" href="assets/css/about.css?v=20260806-7">
 </head>
 <body>
 
   <!-- HEADER -->
-  <header>
+  <header id="site-header" class="on-hero">
     <a href="index.html" class="logo">
-      <img src="logo-transparent.png" class="logo-img" alt="Miss Miami" />
+      <img src="assets/brand/miss-miami-logo-header-c.svg"
+           data-hero-logo="assets/brand/miss-miami-logo-header-c.svg"
+           data-light-logo="assets/brand/miss-miami-logo-header-c-flat.svg"
+           class="logo-img" alt="Miss Miami" />
     </a>
     <nav id="main-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
-      <a href="competition.html">Competition</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="sponsors.html">Sponsors</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
-      <a href="dashboard.html" class="btn-account">Contestant Portal</a>
-      <a href="apply.html" class="btn-nav">Apply Now</a>
+      <div class="primary-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="competition.html">Competition</a>
+        <a href="apply.html">Apply</a>
+        <a href="sponsors.html">Sponsors</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="header-actions">
+        <a href="dashboard.html" class="btn-account-nav">Contestant Portal</a>
+      </div>
     </nav>
-    <button class="menu-toggle" id="menu-toggle">
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
   </header>
@@ -708,41 +45,37 @@
     <a href="index.html">Home</a>
     <a href="about.html" class="active">About</a>
     <a href="competition.html">Competition</a>
-    <a href="gallery.html">Gallery</a>
+    <a href="apply.html">Apply</a>
     <a href="sponsors.html">Sponsors</a>
     <a href="faq.html">FAQ</a>
     <a href="contact.html">Contact</a>
     <a href="dashboard.html" class="btn-account-nav">Contestant Portal</a>
-    <a href="apply.html" class="btn-apply-nav">Apply Now</a>
   </div>
 
-  <!-- CINEMATIC HERO -->
-  <section class="hero">
-    <canvas id="hero-canvas"></canvas>
-    <div class="hero-bg-fallback"></div>
-    <div class="hero-bg" id="hero-bg"></div>
-    <img class="hero-photo" src="about-hero.jpg" alt="Miss Miami 2026">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>More Than a <em>Crown</em></h1>
-      <p class="hero-sub">Miss Miami is a celebration of the modern woman — her intelligence, her ambition, her grace. A platform where beauty meets purpose.</p>
-    </div>
-    <div class="hero-scroll">
-      <div class="hero-scroll-line"></div>
+  <!-- ABOUT HERO -->
+  <section class="hero" aria-label="Miss Miami crown">
+    <img class="hero-photo" src="assets/images/about-hero-crown-crosslight.png" alt="Miss Miami crown illuminated by warm champagne light">
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-ambient-glow" aria-hidden="true"></div>
+    <canvas id="about-hero-sparkles" aria-hidden="true"></canvas>
+    <div class="hero-layout">
+      <h1 class="hero-title">
+        <span class="hero-title-line">More Than a</span>
+        <em class="hero-title-crown">Crown</em>
+      </h1>
+      <div class="hero-crown-group">
+        <div class="hero-crown-stage" aria-hidden="true"></div>
+        <p class="hero-description">Miss Miami is a celebration of the modern woman — her intelligence, her ambition, her grace. A platform where beauty meets purpose</p>
+      </div>
     </div>
   </section>
-
-  <!-- DIVIDER -->
-  <div class="logo-divider">
-    <img src="logo-icon.png" alt="Miss Miami">
-  </div>
 
   <!-- BIG QUOTE -->
   <section class="quote-section">
     <span class="quote-mark">"</span>
     <p class="quote-text">
-      We don't crown the most beautiful woman in the room.<br>
-      We crown the woman who makes the room <em>more beautiful</em>.
+      We don't crown the most beautiful woman in the room<br>
+      We crown the woman who makes the room <em>more beautiful</em>
     </p>
     <div class="quote-author">— Iryna, Founder of Miss Miami</div>
   </section>
@@ -750,7 +83,7 @@
   <!-- MISSION — FULL BLEED -->
   <section class="mission-section">
     <div class="mission-photo">
-      <img src="about-bg.jpg" alt="Miss Miami" onerror="this.style.display='none'" />
+      <img src="assets/images/about-portrait-champagne-v2.png" alt="Miss Miami" onerror="this.style.display='none'" />
       <div class="mission-photo-placeholder">♛</div>
       <div class="mission-photo-overlay"></div>
     </div>
@@ -762,8 +95,8 @@
       <p>Every year, Miss Miami brings together the brightest women of South Florida for an experience that challenges, transforms and elevates — whether you win the title or not, you leave as part of a lifelong sisterhood.</p>
       <div class="mission-detail">
         <div class="mission-detail-item">
-          <div class="num">2026</div>
-          <div class="label">Season</div>
+          <div class="num">2027</div>
+          <div class="label">Inaugural Season</div>
         </div>
         <div class="mission-detail-item">
           <div class="num">Nov 15</div>
@@ -786,22 +119,19 @@
     </div>
     <div class="values-panels">
       <div class="value-panel">
-        <div class="value-panel-num">I</div>
         <span class="value-panel-icon">✦</span>
         <h3>Beauty</h3>
         <p>We celebrate beauty in all its forms — inner radiance, authentic confidence, and the elegance of a woman who knows her worth. Beauty is not a standard. It is a presence.</p>
       </div>
       <div class="value-panel">
-        <div class="value-panel-num">II</div>
         <span class="value-panel-icon">♛</span>
         <h3>Confidence</h3>
         <p>The ability to walk into a room and own it. To speak with conviction and grace under pressure. We cultivate confidence that goes far beyond the stage — and lasts a lifetime.</p>
       </div>
       <div class="value-panel">
-        <div class="value-panel-num">III</div>
         <span class="value-panel-icon">◈</span>
         <h3>Purpose</h3>
-        <p>Every Miss Miami champion carries a platform — a cause that drives her. We believe that with influence comes responsibility, and we empower our queens to create lasting impact.</p>
+        <p>Every Miss Miami contestant brings a point of view and a cause that drives her. We believe that with influence comes responsibility, and we give each woman space to create meaningful impact.</p>
       </div>
     </div>
   </section>
@@ -812,7 +142,7 @@
       <div class="story-head">
         <p class="eyebrow">Our Journey</p>
         <h2>A Legacy<br>in the Making</h2>
-        <p>From a single vision to a South Florida institution.</p>
+      <p>The first Miss Miami season is being built with intention, one milestone at a time.</p>
       </div>
       <div class="timeline" id="timeline">
         <div class="tl-track"><div class="tl-track-fill" id="tl-fill"></div></div>
@@ -827,25 +157,25 @@
         <div class="tl-item">
           <div class="tl-left"><div class="tl-dot">◈</div></div>
           <div class="tl-content">
-            <div class="tl-year">Growing</div>
-            <h4>The Community Expands</h4>
-            <p>Word spread quickly. More contestants, more sponsors, more media coverage. Miss Miami became a fixture in the Miami social calendar — and a launchpad for remarkable women.</p>
+            <div class="tl-year">The Community</div>
+            <h4>Miami Comes Together</h4>
+            <p>Contestants, partners and supporters are coming together around a new platform for confidence, purpose and authentic connection.</p>
           </div>
         </div>
         <div class="tl-item">
           <div class="tl-left"><div class="tl-dot">♛</div></div>
           <div class="tl-content">
-            <div class="tl-year">Evolution</div>
-            <h4>Road to the Crown is Introduced</h4>
-            <p>We launched our exclusive contestant preparation program — eight steps designed to coach, inspire and fully prepare each participant for competition and beyond.</p>
+            <div class="tl-year">Preparation</div>
+            <h4>The Road to the Crown</h4>
+            <p>Our contestant preparation journey is designed to coach, inspire and prepare each participant for competition day and the opportunities beyond it.</p>
           </div>
         </div>
         <div class="tl-item">
           <div class="tl-left"><div class="tl-dot">★</div></div>
           <div class="tl-content">
-            <div class="tl-year">2026</div>
-            <h4>Miss Miami 2026 — Our Biggest Season Yet</h4>
-            <p>A new chapter begins. More contestants, a grander stage, and a renewed commitment to celebrating the extraordinary women of Miami. Applications are open now.</p>
+            <div class="tl-year">2027</div>
+            <h4>The Inaugural Miss Miami Season</h4>
+            <p>The first chapter begins with a new stage and a clear commitment to celebrating the extraordinary women of Miami. Applications are open now.</p>
           </div>
         </div>
       </div>
@@ -914,7 +244,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-bottom">
-      <p>© 2026 Miss Miami. All rights reserved.</p>
+      <p>© 2027 Miss Miami. All rights reserved.</p>
       <div class="footer-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Use</a>
@@ -924,28 +254,127 @@
   </footer>
 
   <script>
-    // Nav color switch (gold on hero, dark on content)
-    function updateNavColors() {
-      const onHero = window.scrollY < window.innerHeight * 0.85;
-      const darkColor = '#3A1A04';
-      const goldColor = '#D4AF37';
-      document.querySelectorAll('nav a:not(.btn-nav)').forEach(a => {
-        a.style.setProperty('color', onHero ? goldColor : darkColor, 'important');
-        if (a.classList.contains('btn-account')) {
-          a.style.borderColor = onHero ? 'rgba(212,175,55,0.28)' : 'rgba(58,26,4,0.4)';
-        }
-      });
+    // Keep the header legible over both the photographic hero and light sections.
+    const siteHeader = document.querySelector('header');
+    const headerLogo = siteHeader.querySelector('.logo-img');
+    const heroSection = document.querySelector('.hero');
+
+    function updateHeaderState() {
+      const switchAt = Math.max(0, (heroSection?.offsetHeight || window.innerHeight) - siteHeader.offsetHeight);
+      const onHero = window.scrollY < switchAt;
+      siteHeader.classList.toggle('on-hero', onHero);
+
+      const nextLogo = onHero ? headerLogo.dataset.heroLogo : headerLogo.dataset.lightLogo;
+      if (nextLogo && headerLogo.getAttribute('src') !== nextLogo) {
+        headerLogo.setAttribute('src', nextLogo);
+      }
     }
-    updateNavColors();
-    window.addEventListener('scroll', updateNavColors);
+
+    updateHeaderState();
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+    window.addEventListener('resize', updateHeaderState);
+
+    // Particle engine restored from the 226cb4a About implementation.
+    const sparkleCanvas = document.getElementById('about-hero-sparkles');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (sparkleCanvas && !reduceMotion) {
+      const sparkleContext = sparkleCanvas.getContext('2d');
+      let sparkleWidth;
+      let sparkleHeight;
+      let particles = [];
+
+      function sizeSparkleCanvas() {
+        sparkleWidth = sparkleCanvas.width = sparkleCanvas.offsetWidth;
+        sparkleHeight = sparkleCanvas.height = sparkleCanvas.offsetHeight;
+      }
+
+      const particleColors = [
+        'rgba(201,146,42,',
+        'rgba(231,201,133,',
+        'rgba(184,150,12,',
+        'rgba(255,239,196,'
+      ];
+
+      class Particle {
+        constructor() {
+          this.reset(true);
+        }
+
+        reset(initial) {
+          this.x = Math.random() * sparkleWidth;
+          // Keep the old continuous drift model, but replenish particles inside
+          // the visible field so the ambient layer never drains after intro.
+          this.y = Math.random() * sparkleHeight;
+          this.bokeh = Math.random() < 0.15;
+          this.radius = this.bokeh ? Math.random() * 18 + 8 : Math.random() * 2.5 + 0.5;
+          this.speed = this.bokeh ? Math.random() * 0.2 + 0.05 : Math.random() * 0.6 + 0.2;
+          this.drift = (Math.random() - 0.5) * (this.bokeh ? 0.15 : 0.4);
+          this.alpha = this.bokeh ? Math.random() * 0.12 + 0.04 : Math.random() * 0.65 + 0.2;
+          this.maxAlpha = this.alpha;
+          this.life = 0;
+          this.maxLife = this.bokeh ? Math.random() * 500 + 300 : Math.random() * 260 + 120;
+          this.color = particleColors[Math.floor(Math.random() * particleColors.length)];
+          this.star = !this.bokeh && this.radius > 1.5 && Math.random() < 0.3;
+        }
+
+        update() {
+          this.y -= this.speed;
+          this.x += this.drift;
+          this.life += 1;
+          this.alpha = this.maxAlpha * Math.sin(Math.PI * (this.life / this.maxLife));
+          if (this.life >= this.maxLife || this.y < -10) this.reset(false);
+        }
+
+        draw() {
+          if (this.star) {
+            sparkleContext.save();
+            sparkleContext.translate(this.x, this.y);
+            sparkleContext.strokeStyle = `${this.color}${this.alpha})`;
+            sparkleContext.lineWidth = 0.6;
+            sparkleContext.beginPath();
+            sparkleContext.moveTo(-this.radius * 2.5, 0);
+            sparkleContext.lineTo(this.radius * 2.5, 0);
+            sparkleContext.moveTo(0, -this.radius * 2.5);
+            sparkleContext.lineTo(0, this.radius * 2.5);
+            sparkleContext.stroke();
+            sparkleContext.restore();
+          }
+
+          sparkleContext.beginPath();
+          sparkleContext.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          sparkleContext.fillStyle = `${this.color}${this.alpha})`;
+          sparkleContext.fill();
+        }
+      }
+
+      function drawSparkles() {
+        sparkleContext.clearRect(0, 0, sparkleWidth, sparkleHeight);
+        particles.forEach((particle) => {
+          particle.update();
+          particle.draw();
+        });
+
+        requestAnimationFrame(drawSparkles);
+      }
+
+      sizeSparkleCanvas();
+      particles = Array.from({ length: 120 }, () => new Particle());
+      window.addEventListener('resize', sizeSparkleCanvas);
+      requestAnimationFrame(drawSparkles);
+    }
 
     // Mobile menu
     const toggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     toggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('open');
+      const menuIsOpen = mobileMenu.classList.contains('open');
+      toggle.setAttribute('aria-expanded', String(menuIsOpen));
+      toggle.setAttribute('aria-label', menuIsOpen ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('menu-open', menuIsOpen);
       const spans = toggle.querySelectorAll('span');
-      if (mobileMenu.classList.contains('open')) {
+      if (menuIsOpen) {
         spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
         spans[1].style.opacity = '0';
         spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
@@ -956,59 +385,20 @@
     mobileMenu.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         mobileMenu.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        document.body.classList.remove('menu-open');
         toggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
       });
     });
 
-
-    // Gold Particle Canvas
-    (function() {
-      const canvas = document.getElementById('hero-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let W, H, particles = [];
-      function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
-      resize();
-      window.addEventListener('resize', resize);
-      const COLORS = ['rgba(212,175,55,','rgba(240,210,80,','rgba(180,140,20,','rgba(255,225,100,'];
-      class Particle {
-        constructor() { this.reset(true); }
-        reset(init) {
-          this.x = Math.random() * W;
-          this.y = init ? Math.random() * H : H + 10;
-          this.bokeh = Math.random() < 0.15;
-          this.r = this.bokeh ? Math.random() * 18 + 8 : Math.random() * 2.5 + 0.5;
-          this.speed = this.bokeh ? Math.random() * 0.2 + 0.05 : Math.random() * 0.6 + 0.2;
-          this.drift = (Math.random() - 0.5) * (this.bokeh ? 0.15 : 0.4);
-          this.alpha = this.bokeh ? Math.random() * 0.12 + 0.04 : Math.random() * 0.65 + 0.2;
-          this.maxAlpha = this.alpha; this.life = 0;
-          this.maxLife = this.bokeh ? Math.random() * 500 + 300 : Math.random() * 260 + 120;
-          this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-          this.star = !this.bokeh && this.r > 1.5 && Math.random() < 0.3;
-        }
-        update() {
-          this.y -= this.speed; this.x += this.drift; this.life++;
-          const t = this.life / this.maxLife;
-          this.alpha = this.maxAlpha * Math.sin(Math.PI * t);
-          if (this.life >= this.maxLife || this.y < -10) this.reset(false);
-        }
-        draw() {
-          if (this.star) {
-            ctx.save(); ctx.translate(this.x, this.y);
-            ctx.strokeStyle = this.color + this.alpha + ')'; ctx.lineWidth = 0.6;
-            ctx.beginPath();
-            ctx.moveTo(-this.r * 2.5, 0); ctx.lineTo(this.r * 2.5, 0);
-            ctx.moveTo(0, -this.r * 2.5); ctx.lineTo(0, this.r * 2.5);
-            ctx.stroke(); ctx.restore();
-          }
-          ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-          ctx.fillStyle = this.color + this.alpha + ')'; ctx.fill();
-        }
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        toggle.click();
+        toggle.focus();
       }
-      for (let i = 0; i < 120; i++) particles.push(new Particle());
-      function animate() { ctx.clearRect(0, 0, W, H); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
-      animate();
-    })();
+    });
+
 
     // Scroll animations
     const observer = new IntersectionObserver((entries) => {

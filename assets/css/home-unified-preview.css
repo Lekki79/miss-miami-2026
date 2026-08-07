@@ -1,0 +1,494 @@
+/*
+ * Reversible Home visual preview for the unified Miss Miami champagne system.
+ * Remove this stylesheet link from index.html to restore the previous Home surfaces.
+ */
+
+:root {
+  --preview-champagne-start: #E1C7A2;
+  --preview-champagne-mid: #E7D0AD;
+  --preview-champagne-end: #EBD8BA;
+  --preview-surface: rgba(255, 253, 245, 0.72);
+  --preview-divider: rgba(201, 146, 42, 0.2);
+  --preview-page-gradient: linear-gradient(
+    180deg,
+    var(--preview-champagne-start) 0%,
+    var(--preview-champagne-mid) 46%,
+    var(--preview-champagne-end) 100%
+  );
+}
+
+body {
+  background: var(--preview-page-gradient) fixed;
+}
+
+#site-header::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0 -20px -28px;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 8, 0, 0.62) 0%,
+    rgba(26, 8, 0, 0.32) 58%,
+    transparent 100%
+  );
+  transition: opacity 240ms ease;
+}
+
+#site-header.on-hero::before {
+  opacity: 1;
+}
+
+#site-header nav a:not(.btn-apply-nav) {
+  color: #3A1A04 !important;
+}
+
+#site-header nav a:not(.btn-apply-nav):hover,
+#site-header nav a:not(.btn-apply-nav):focus-visible {
+  color: #A96508 !important;
+}
+
+#site-header.on-hero nav a:not(.btn-apply-nav) {
+  color: #F2DFC0 !important;
+}
+
+#site-header.on-hero nav a:not(.btn-apply-nav):hover,
+#site-header.on-hero nav a:not(.btn-apply-nav):focus-visible,
+#site-header.on-hero nav a.active:not(.btn-apply-nav) {
+  color: #E7C985 !important;
+}
+
+#site-header .btn-account-nav {
+  border-color: rgba(58, 26, 4, 0.48) !important;
+}
+
+#site-header.on-hero .btn-account-nav {
+  border-color: rgba(231, 201, 133, 0.58) !important;
+}
+
+#home {
+  height: 80svh;
+  min-height: 560px;
+  background: var(--preview-page-gradient) fixed;
+}
+
+#home::before {
+  background: url('../../hero-bg-champagne-v2.png') center 60% / cover no-repeat;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 68%,
+    rgba(0, 0, 0, 0.96) 76%,
+    rgba(0, 0, 0, 0.84) 84%,
+    rgba(0, 0, 0, 0.62) 90%,
+    rgba(0, 0, 0, 0.36) 95%,
+    rgba(0, 0, 0, 0.14) 98%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 68%,
+    rgba(0, 0, 0, 0.96) 76%,
+    rgba(0, 0, 0, 0.84) 84%,
+    rgba(0, 0, 0, 0.62) 90%,
+    rgba(0, 0, 0, 0.36) 95%,
+    rgba(0, 0, 0, 0.14) 98%,
+    transparent 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.hero-glow {
+  background: radial-gradient(
+    ellipse,
+    rgba(255, 213, 128, 0.12) 0%,
+    rgba(220, 175, 50, 0.05) 46%,
+    transparent 72%
+  );
+}
+
+#home::after {
+  display: block;
+  height: 100%;
+  background: radial-gradient(
+    ellipse 34% 20% at 50% 54%,
+    rgba(42, 18, 0, 0.44) 0%,
+    rgba(42, 18, 0, 0.24) 54%,
+    transparent 100%
+  );
+}
+
+#hero-canvas {
+  z-index: 3;
+}
+
+.hero-bottom-line {
+  display: none;
+}
+
+.hero-content {
+  z-index: 5;
+  transform: translateY(calc(3vh + 32px));
+}
+
+.hero-eyebrow-text {
+  color: #E7C985;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.hero-h1 {
+  font-size: clamp(40px, 6.5vw, 76px);
+  margin-top: 14px;
+  margin-bottom: 18px;
+}
+
+.hero-year {
+  font-size: clamp(15px, 2vw, 22px);
+  margin-bottom: 30px;
+  color: #F0D58E;
+  font-weight: 600;
+  opacity: 1;
+}
+
+.hero-desc {
+  color: #F2DFC0;
+  max-width: 480px;
+  font-weight: 400;
+  line-height: 2;
+  margin-bottom: 44px;
+  font-size: 17px;
+  opacity: 1;
+  text-shadow:
+    0 2px 14px rgba(5, 1, 0, 0.82),
+    0 1px 3px rgba(5, 1, 0, 0.95);
+}
+
+.btn-secondary {
+  color: #3A1A04;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  border-bottom-color: #C9922A;
+  text-shadow: none;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  color: #E7C985;
+  border-bottom-color: #B8960A;
+}
+
+section:not(#home) {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+#mission,
+#stats,
+#winners,
+#apply-banner,
+#faq-teaser {
+  background: transparent;
+}
+
+#mission {
+  margin-top: -1px;
+}
+
+#mission .section-eyebrow {
+  margin-bottom: 24px;
+}
+
+#mission .section-eyebrow span {
+  color: #C9922A;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+#mission .section-eyebrow::before,
+#mission .section-eyebrow::after {
+  background: rgba(201, 146, 42, 0.62);
+}
+
+#mission,
+#winners,
+#apply-banner,
+#faq-teaser {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+section#mission {
+  padding-top: 16px;
+  padding-bottom: 36px;
+}
+
+#stats {
+  padding-top: 52px;
+  padding-bottom: 52px;
+  border-color: var(--preview-divider);
+}
+
+.mission-card,
+.winner-info {
+  background: var(--preview-surface);
+  border-color: var(--preview-divider);
+}
+
+.mission-card {
+  padding: 34px 30px;
+}
+
+.section-title,
+.apply-cta-title {
+  font-size: clamp(30px, 4.2vw, 46px);
+}
+
+.hero-cta .btn-primary,
+#apply-banner .btn-primary {
+  font-size: 12px;
+}
+
+#apply-banner,
+#faq-teaser {
+  border-top: 1px solid var(--preview-divider);
+}
+
+.section-sub,
+.ornament {
+  margin-bottom: 44px;
+}
+
+.apply-cta-desc {
+  margin-bottom: 24px;
+}
+
+#apply-banner .section-eyebrow {
+  margin-bottom: 14px;
+}
+
+section#apply-banner {
+  padding-top: 36px;
+}
+
+#apply-banner .apply-cta-title {
+  margin-bottom: 14px;
+}
+
+#faq-teaser .faq-box p {
+  margin-top: 0 !important;
+  margin-bottom: 24px;
+}
+
+#faq-teaser .section-eyebrow {
+  margin-bottom: 20px;
+}
+
+footer {
+  background: transparent;
+  padding: 42px 48px 30px;
+  border-top: 1px solid rgba(201, 146, 42, 0.24);
+}
+
+.footer-grid {
+  gap: 36px;
+  margin-bottom: 36px;
+}
+
+.footer-bottom {
+  padding-top: 24px;
+  border-top-color: var(--preview-divider);
+}
+
+@media (max-width: 1024px) {
+  section:not(#home),
+  #mission,
+  #winners,
+  #apply-banner,
+  #faq-teaser {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+
+  #mission {
+    padding-top: 36px;
+    padding-bottom: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  #home {
+    height: 68svh;
+    min-height: 570px;
+    background: var(--preview-page-gradient) fixed;
+  }
+
+  #home::before {
+    background-image: url('../../hero-bg-champagne-mobile.png');
+    background-size: cover;
+    background-position: center top;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 64%,
+      rgba(0, 0, 0, 0.96) 72%,
+      rgba(0, 0, 0, 0.84) 80%,
+      rgba(0, 0, 0, 0.62) 88%,
+      rgba(0, 0, 0, 0.36) 94%,
+      rgba(0, 0, 0, 0.14) 98%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 64%,
+      rgba(0, 0, 0, 0.96) 72%,
+      rgba(0, 0, 0, 0.84) 80%,
+      rgba(0, 0, 0, 0.62) 88%,
+      rgba(0, 0, 0, 0.36) 94%,
+      rgba(0, 0, 0, 0.14) 98%,
+      transparent 100%
+    );
+  }
+
+  .hero-content {
+    transform: translateY(calc(1vh + 34px));
+  }
+
+  .hero-eyebrow-text {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  .hero-h1 {
+    font-size: 40px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+  }
+
+  .hero-year {
+    font-size: 15px;
+    margin-bottom: 26px;
+  }
+
+  .hero-desc {
+    max-width: 310px;
+    margin-bottom: 36px;
+    font-size: 16px !important;
+    line-height: 1.7;
+    font-weight: 400;
+    text-shadow: none;
+  }
+
+  .btn-secondary {
+    font-size: 12px;
+  }
+
+  section:not(#home),
+  #mission,
+  #winners,
+  #apply-banner,
+  #faq-teaser {
+    padding: 42px 24px;
+  }
+
+  section#mission {
+    padding-top: 12px;
+    padding-bottom: 28px;
+  }
+
+  #mission .section-eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .mission-card {
+    padding: 28px 22px;
+  }
+
+  .mission-grid {
+    gap: 14px;
+  }
+
+  section#apply-banner {
+    padding-top: 32px;
+    padding-bottom: 44px;
+  }
+
+  #apply-banner .section-eyebrow {
+    margin-bottom: 14px;
+  }
+
+  .apply-cta-desc {
+    margin-bottom: 24px;
+  }
+
+  .section-title,
+  .apply-cta-title {
+    font-size: 32px !important;
+  }
+
+  .hero-cta .btn-primary,
+  #apply-banner .btn-primary {
+    font-size: 13px;
+  }
+
+  #faq-teaser {
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+
+  #faq-teaser .section-eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .section-sub,
+  .ornament {
+    margin-bottom: 34px;
+  }
+
+  footer {
+    padding: 36px 24px 26px;
+  }
+
+  .footer-grid {
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-cta .btn-secondary {
+    color: #3A1A04;
+  }
+}
+
+@media (max-width: 340px) {
+  #home {
+    padding-inline: 24px;
+  }
+
+  .hero-h1 {
+    white-space: nowrap;
+  }
+
+  #mission .section-eyebrow {
+    gap: 10px;
+  }
+
+  #mission .section-eyebrow::before,
+  #mission .section-eyebrow::after {
+    flex-basis: 28px;
+  }
+
+  #mission .section-eyebrow span {
+    white-space: nowrap;
+  }
+}

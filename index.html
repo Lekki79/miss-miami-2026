@@ -60,8 +60,8 @@
       transition: none;
     }
 
-    .logo { display: flex; align-items: center; flex-shrink: 0; }
-    .logo-img { height: 80px; width: auto; display: block; object-fit: contain; }
+    .logo { display: flex; align-items: center; flex-shrink: 0; margin-right: 18px; transform: translateY(7px); }
+    .logo-img { height: 76px; width: auto; display: block; object-fit: contain; }
 
     nav { display: flex; align-items: center; gap: 36px; }
 
@@ -219,17 +219,6 @@
       color: var(--gold);
       margin-bottom: 24px;
     }
-
-    .hero-divider {
-      display: flex; align-items: center; gap: 14px;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
-    .hero-divider::before, .hero-divider::after {
-      content: ''; flex: 0 0 60px; height: 1px;
-      background: rgba(212,175,55,0.35);
-    }
-    .hero-divider span { font-size: 12px; color: var(--gold); opacity: 0.7; }
 
     .hero-desc {
       font-size: 15px;
@@ -715,6 +704,7 @@
 
     @media (max-width: 768px) {
       header { padding: 0 24px; height: 68px; }
+      .logo-img { height: 68px; }
       nav { display: none !important; }
       .menu-toggle { display: flex; }
 
@@ -791,25 +781,30 @@
       .btn-outline { font-size: 13px; padding: 14px 28px; }
     }
   </style>
+  <link rel="stylesheet" href="assets/css/site-header.css?v=20260805-3">
+  <link rel="stylesheet" href="assets/css/home-unified-preview.css?v=20260805-16">
 </head>
 <body>
 
   <!-- ═══ HEADER ═════════════════════════════════════════════════ -->
   <header id="site-header">
     <a href="index.html" class="logo">
-      <img src="logo-transparent.png" class="logo-img" alt="Miss Miami" />
+      <img src="assets/brand/miss-miami-logo-header-c.svg" class="logo-img" alt="Miss Miami" />
     </a>
 
     <nav id="main-nav">
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About</a>
-      <a href="competition.html">Competition</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="sponsors.html">Sponsors</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
-      <a href="dashboard.html" class="btn-account-nav">Contestant Portal</a>
-      <a href="apply.html" class="btn-apply-nav">Apply Now</a>
+      <div class="primary-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="competition.html">Competition</a>
+        <a href="apply.html">Apply</a>
+        <a href="sponsors.html">Sponsors</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="header-actions">
+        <a href="dashboard.html" class="btn-account-nav">Contestant Portal</a>
+      </div>
     </nav>
 
     <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
@@ -822,12 +817,11 @@
     <a href="index.html" class="active">Home</a>
     <a href="about.html">About</a>
     <a href="competition.html">Competition</a>
-    <a href="gallery.html">Gallery</a>
+    <a href="apply.html">Apply</a>
     <a href="sponsors.html">Sponsors</a>
     <a href="faq.html">FAQ</a>
     <a href="contact.html">Contact</a>
     <a href="dashboard.html" class="btn-account-nav">Contestant Portal</a>
-    <a href="apply.html" class="btn-apply-nav">Apply Now</a>
   </div>
 
   <!-- ═══ HERO ════════════════════════════════════════════════════ -->
@@ -837,18 +831,14 @@
     <div class="hero-bottom-line"></div>
 
     <div class="hero-content">
-      <p class="hero-eyebrow-text">Miami · Florida · 2026</p>
+      <p class="hero-eyebrow-text">Miami · Florida · 2027</p>
 
 
       <h1 class="hero-h1">Miss Miami</h1>
-      <p class="hero-year">2 &ensp; 0 &ensp; 2 &ensp; 6</p>
-
-      <div class="hero-divider">
-        <img src="logo-icon.png" alt="" style="height:32px;opacity:0.7;filter:brightness(1.8) sepia(1) saturate(3) hue-rotate(5deg);mix-blend-mode:screen;">
-      </div>
+      <p class="hero-year">2 &ensp; 0 &ensp; 2 &ensp; 7</p>
 
       <p class="hero-desc">
-        More than a pageant — a movement of confident, intelligent and compassionate women who inspire the future.
+        More than a pageant — a movement of confident, intelligent and compassionate women who inspire the future
       </p>
 
       <div class="hero-cta">
@@ -920,7 +910,7 @@
     <div class="apply-cta-box fade-up">
       <div class="section-eyebrow fade-up fade-up-d1"><span>Ready to Begin?</span></div>
       <h2 class="apply-cta-title fade-up fade-up-d2">Take the First Step<br>Towards the Crown</h2>
-      <p class="apply-cta-desc fade-up fade-up-d3">Applications for Miss Miami 2026 are now open.<br>Join a legacy of beauty, confidence, and purpose.</p>
+      <p class="apply-cta-desc fade-up fade-up-d3">Applications for Miss Miami 2027 are now open.<br>Join a legacy of beauty, confidence, and purpose.</p>
       <a href="apply.html" class="btn-primary fade-up fade-up-d3">Apply Now</a>
     </div>
   </section>
@@ -954,7 +944,6 @@
           <li><a href="about.html">About</a></li>
           <li><a href="competition.html">Competition</a></li>
           <li><a href="apply.html">Apply Now</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
         </ul>
       </div>
 
@@ -1007,7 +996,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2026 Miss Miami. All rights reserved.</p>
+      <p>© 2027 Miss Miami. All rights reserved.</p>
       <div class="footer-bottom-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Use</a>
@@ -1041,15 +1030,14 @@
 
     // ── Header: transparent, text color switches on scroll ──
     function updateNavColors() {
-      const onHero = window.scrollY < window.innerHeight * 0.85;
-      const darkColor = '#3A1A04';
-      const goldColor = '#D4AF37';
-      document.querySelectorAll('nav a:not(.btn-apply-nav)').forEach(a => {
-        a.style.setProperty('color', onHero ? goldColor : darkColor, 'important');
-        if (a.classList.contains('btn-account-nav')) {
-          a.style.borderColor = onHero ? 'rgba(212,175,55,0.28)' : 'rgba(58,26,4,0.4)';
-        }
-      });
+      const hero = document.getElementById('home');
+      const header = document.getElementById('site-header');
+      const logo = header.querySelector('.logo-img');
+      const onHero = window.scrollY < hero.offsetHeight - header.offsetHeight;
+      header.classList.toggle('on-hero', onHero);
+      logo.src = onHero
+        ? 'assets/brand/miss-miami-logo-header-c.svg'
+        : 'assets/brand/miss-miami-logo-header-c-flat.svg';
     }
     updateNavColors();
     window.addEventListener('scroll', updateNavColors);
