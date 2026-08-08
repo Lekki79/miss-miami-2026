@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-US" />
   <meta name="language" content="English" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apply — Miss Miami 2026</title>
+  <title>Apply — Miss Miami 2027</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -42,8 +42,8 @@
       backdrop-filter: none;
       border-bottom: none;
     }
-    .logo { display: flex; align-items: center; gap: 12px; }
-    .logo-img { height: 80px; width: auto; display: block; object-fit: contain; }
+    .logo { display: flex; align-items: center; flex-shrink: 0; }
+    .logo-img { height: 76px; width: auto; display: block; object-fit: cover; }
     nav { display: flex; align-items: center; gap: 32px; }
     nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #1A0800; transition: color var(--tr); position: relative; opacity: 1; }
     nav a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform var(--tr); }
@@ -84,9 +84,9 @@
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.15); }
     }
-    .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #1A0800 !important; border: 1.5px solid #7A4F10; padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
-    .btn-account::after { display: none !important; }
-    .btn-account:hover { color: #C9922A !important; border-color: #C9922A; }
+    .btn-account-nav { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #1A0800 !important; border: 1px solid rgba(58,26,4,0.48); border-radius: 0; padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
+    .btn-account-nav::after { display: none !important; }
+    .btn-account-nav:hover { color: #C9922A !important; border-color: #C9922A; }
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -112,7 +112,7 @@
 
     /* ── PAGE HERO ── */
     .page-hero {
-      padding: 132px 56px 14px;
+      padding: 112px 56px 14px;
       text-align: center;
       background: transparent;
       border-bottom: 0;
@@ -238,7 +238,7 @@
 
     /* ── FORM SECTIONS ── */
     .form-section {
-      margin-bottom: 44px;
+      margin-bottom: 32px;
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.6s ease, transform 0.6s ease;
@@ -249,8 +249,8 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-bottom: 22px;
-      padding-bottom: 16px;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
       border-bottom: 1px solid rgba(212,175,55,0.12);
     }
     .form-section-title h3 {
@@ -364,19 +364,20 @@
     }
 
     /* ── FORM GRID ── */
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; }
     .form-grid.full { grid-template-columns: 1fr; }
     .form-grid.three { grid-template-columns: 1fr 1fr 1fr; }
 
     .field { display: flex; flex-direction: column; gap: 8px; }
     .field.span2 { grid-column: span 2; }
+    .form-grid.question-grid > .field { justify-content: flex-end; }
     @media (min-width: 769px) {
-      .form-grid:not(.full) > .field:not(.span2) > label {
+      .form-grid:not(.full) > .field > label {
         display: flex;
         align-items: flex-end;
-        min-height: 44px;
+        min-height: 32px;
       }
-      .form-grid.question-grid > .field:not(.span2) > label { min-height: 74px; }
+      .form-grid.question-grid > .field > label { min-height: 0; }
     }
 
     label {
@@ -711,15 +712,15 @@
       color: #1A0800 !important;
       opacity: 1 !important;
       text-align: center;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
+      text-shadow: none !important;
       line-height: 1.8;
-      font-weight: 500 !important;
+      font-weight: 600 !important;
     }
     .submit-note a {
       color: #C9922A !important;
       font-weight: 700 !important;
       text-decoration: underline;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+      text-shadow: none !important;
     }
 
     .submit-progress {
@@ -917,9 +918,9 @@
 
     /* ── FOOTER ── */
     footer {
-      background: #CCA55A;
-      border-top: 1px solid rgba(212,175,55,0.3);
-      padding: 48px 40px 32px;
+      background: transparent;
+      border-top: 1px solid rgba(201,146,42,0.24);
+      padding: 36px 40px 28px;
       width: 100%;
       box-sizing: border-box;
     }
@@ -938,6 +939,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       header { padding: 0 24px; height: 72px; }
+      .logo-img { height: 70px; }
       nav { display: none; }
       .mobile-menu {
         display: none;
@@ -1013,15 +1015,15 @@
         display: none !important;
       }
       .menu-toggle { display: flex; }
-      .page-hero { padding: 124px 24px 12px; }
+      .page-hero { padding: 102px 24px 12px; }
       .page-hero h1 { font-size: 38px; }
       .application-ornament { margin-top: 12px; }
       .apply-wrap { padding: 10px 24px 72px; }
       .form-grid, .form-grid.three { grid-template-columns: 1fr; }
       .conditional-fields { grid-template-columns: 1fr; padding: 16px; }
-      .form-section { margin-bottom: 36px; }
-      .form-section-title { margin-bottom: 18px; }
-      .form-grid { gap: 14px; }
+      .form-section { margin-bottom: 28px; }
+      .form-section-title { margin-bottom: 14px; }
+      .form-grid { gap: 12px; }
       .file-upload { padding: 22px 18px; }
       .file-upload-icon { width: 54px; height: 54px; margin-bottom: 8px; }
       .field.span2 { grid-column: span 1; }
@@ -1084,10 +1086,12 @@
       border: 1px solid rgba(122,79,16,0.42);
       border-radius: 8px;
       background: linear-gradient(110deg, #8B601C 0%, #A9741F 56%, #CFA345 100%);
+      background-size: 250% auto;
       color: #F2DFC0;
       text-align: left;
       cursor: pointer;
       box-shadow: 0 8px 22px rgba(58,26,4,0.12);
+      animation: bronzeFlow 8s ease-in-out infinite;
     }
     .before-apply-trigger:hover { background-position: right center; }
     .before-apply-trigger:focus-visible,
@@ -1252,27 +1256,37 @@
       .accordion-toggle::after {
         animation: none !important;
       }
+      .before-apply-trigger {
+        animation: none !important;
+      }
     }
 
   </style>
+  <link rel="stylesheet" href="assets/css/site-header.css?v=20260805-3">
 </head>
 <body>
 
   <!-- HEADER -->
-  <header>
+  <header id="site-header">
     <a href="index.html" class="logo">
-      <img src="logo-transparent.png" class="logo-img" alt="Miss Miami" />
+      <img src="assets/brand/miss-miami-logo-header-c-flat.svg"
+           data-hero-logo="assets/brand/miss-miami-logo-header-c.svg"
+           data-light-logo="assets/brand/miss-miami-logo-header-c-flat.svg"
+           class="logo-img" alt="Miss Miami" />
     </a>
     <nav id="main-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="competition.html">Competition</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="sponsors.html">Sponsors</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
-      <a href="dashboard.html" class="btn-account" style="color: #1A0800 !important;">Contestant Portal</a>
-      <a href="apply.html" class="btn-nav">Apply Now</a>
+      <div class="primary-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="competition.html">Competition</a>
+        <a href="apply.html" class="active">Apply</a>
+        <a href="sponsors.html">Sponsors</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="header-actions">
+        <a href="dashboard.html" class="btn-account-nav">Contestant Portal</a>
+      </div>
     </nav>
     <button class="menu-toggle" id="menu-toggle">
       <span></span><span></span><span></span>
@@ -1284,12 +1298,11 @@
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="competition.html">Competition</a>
-    <a href="gallery.html">Gallery</a>
+    <a href="apply.html" class="active">Apply</a>
     <a href="sponsors.html">Sponsors</a>
     <a href="faq.html">FAQ</a>
     <a href="contact.html">Contact</a>
     <a href="dashboard.html" class="btn-account-nav">Contestant Portal</a>
-    <a href="apply.html" class="btn-apply-nav">Apply Now</a>
   </div>
 
   <!-- PAGE HERO -->
@@ -1305,13 +1318,13 @@
       <h2 class="before-apply-heading" id="before-apply-title">Before You Apply</h2>
       <button class="before-apply-trigger" type="button" aria-expanded="false" aria-controls="official-rules-panel">
         <span class="before-apply-icon" aria-hidden="true">i</span>
-        <span class="before-apply-copy">Please review the eligibility requirements, competition rules, and important policies before completing your application.</span>
+        <span class="before-apply-copy">Please review the eligibility requirements, competition rules, and important policies before completing your application</span>
         <span class="before-apply-arrow" aria-hidden="true"></span>
       </button>
 
       <div class="official-rules-panel" id="official-rules-panel" hidden>
         <div class="section-divider"></div>
-        <h2 class="official-rules-heading">Official Miss Miami 2026 Rules</h2>
+        <h2 class="official-rules-heading">Official Miss Miami 2027 Rules</h2>
         <div class="section-divider"></div>
 
         <div class="rules-accordion">
@@ -1322,7 +1335,7 @@
         </button>
         <div class="accordion-body" id="eligibility-rules" role="region" aria-labelledby="eligibility-trigger" aria-hidden="true">
           <ul>
-            <li>Must be 18 years old or older as of November 15, 2026</li>
+            <li>Must be between 21 and 45 years old as of November 15, 2027</li>
             <li>Must be a citizen or permanent resident of the United States with ties to Miami or Florida</li>
             <li>Must have a high school diploma or equivalent education</li>
             <li>Prior pageant experience is not required</li>
@@ -1439,7 +1452,7 @@
           <p>The $50 application fee is non-refundable after submission. Contestants who withdraw after being selected as finalists forfeit their entry fee. No refunds will be issued for any reason after payment is processed.</p>
           <p style="margin-top: 16px;"><strong>Post-Pageant Responsibilities (Winners):</strong></p>
           <ul>
-            <li>The winner agrees to fulfill the duties of Miss Miami 2026 for one year</li>
+            <li>The winner agrees to fulfill the duties of Miss Miami 2027 for one year</li>
             <li>Must make public appearances and represent Miss Miami with grace and dignity</li>
             <li>Must participate in community events, charity work, and promotional activities as requested</li>
             <li>Must maintain professional conduct on and off social media</li>
@@ -1460,7 +1473,7 @@
           <div class="field"><label>Last Name</label><input type="text" id="last_name" name="last_name" placeholder="Moretti" required><span class="error-message"></span></div>
           <div class="field"><label>Preferred Name (Optional)</label><input type="text" id="preferred_name" name="preferred_name" placeholder="How should we address you?"><span class="error-message"></span></div>
           <div class="field"><label>Date of Birth</label><div style="position:relative;width:100%"><input type="text" id="dob-input" name="dob" placeholder="MM/DD/YYYY" readonly style="cursor:pointer;background:#FFF8E7" required><div id="date-picker" style="display:none;position:absolute;bottom:100%;left:0;margin-bottom:8px;background:white;border:2px solid #C9922A;border-radius:8px;padding:16px;z-index:10000;min-width:300px;max-height:400px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,.15)"></div></div><span class="error-message"></span></div>
-          <div class="field"><label>Age</label><input type="number" id="calculated-age" name="age" min="18" inputmode="numeric" placeholder="Calculated automatically" required><span class="field-note">Calculated from your date of birth and available for correction.</span><span class="error-message"></span></div>
+          <div class="field"><label>Age</label><input type="number" id="calculated-age" name="age" min="21" max="45" inputmode="numeric" placeholder="Calculated automatically" required><span class="field-note">Calculated from your date of birth and available for correction.</span><span class="error-message"></span></div>
           <div class="field"><label>Email Address</label><input type="email" id="email" name="email" placeholder="your@email.com" required><span class="error-message"></span></div>
           <div class="field"><label>Phone Number</label><input type="tel" id="phone" name="phone" placeholder="+1 (305) 000-0000" required><span class="error-message"></span></div>
           <div class="field span2"><label>Residential Address</label><input type="text" id="address" name="address" placeholder="Street, City, State, ZIP" required><span class="error-message"></span></div>
@@ -1482,7 +1495,7 @@
         <div class="field"><label>Current Occupation</label><input type="text" id="occupation" name="occupation" placeholder="Your current occupation" required><span class="error-message"></span></div>
         <div class="field"><label>Languages Spoken</label><input type="text" id="languages" name="languages" placeholder="English, Spanish, French..." required><span class="error-message"></span></div>
         <div class="field"><label>Height</label><input type="text" id="height" name="height" placeholder="e.g. 5'7\"" required><span class="error-message"></span></div>
-        <div class="field"><label>Instagram (Optional)</label><input type="url" name="instagram" placeholder="https://instagram.com/..."><span class="error-message"></span></div>
+        <div class="field"><label>Instagram</label><input type="url" name="instagram" placeholder="https://instagram.com/..." required><span class="error-message"></span></div>
         <div class="field"><label>TikTok (Optional)</label><input type="url" name="tiktok" placeholder="https://tiktok.com/@..."><span class="error-message"></span></div>
         <div class="field span2"><label>Website or Professional Profile (Optional)</label><input type="url" name="professional_profile" placeholder="https://..."><span class="error-message"></span></div>
       </div></div>
@@ -1502,7 +1515,6 @@
         <div class="field"><label>Tell us about yourself.</label><textarea name="about_yourself" data-word-limit="150" required></textarea><span class="word-count" aria-live="polite">0 / 150 words</span><span class="error-message"></span></div>
         <div class="field"><label>What are your hobbies and interests?</label><textarea name="hobbies" data-word-limit="150" required></textarea><span class="word-count" aria-live="polite">0 / 150 words</span><span class="error-message"></span></div>
         <div class="field"><label>What are your special talents or skills?</label><textarea id="talents" name="talents" data-word-limit="150" required></textarea><span class="word-count" aria-live="polite">0 / 150 words</span><span class="error-message"></span></div>
-        <div class="field"><label>What cause or platform would you champion during your reign?</label><textarea name="social_mission" data-word-limit="150" required></textarea><span class="word-count" aria-live="polite">0 / 150 words</span><span class="error-message"></span></div>
       </div></div>
 
       <div class="form-section"><div class="form-section-title"><div class="num">6</div><h3>Media &amp; Public Speaking</h3></div><div class="form-grid question-grid">
@@ -1538,7 +1550,7 @@
         <div class="payment-section">
           <div class="payment-header">
             <div>
-              <h3>Miss Miami 2026</h3>
+              <h3>Miss Miami 2027</h3>
               <p style="font-size:12px;color:#1A0800;opacity:1;margin-top:4px;font-weight:300;">Application & Registration Fee</p>
             </div>
             <div class="price-tag">$50<span> USD</span></div>
@@ -1627,7 +1639,7 @@
       <p class="success-eyebrow">Application Confirmation</p>
       <h2 id="success-title" tabindex="-1">Application Submitted</h2>
       <p class="success-lead">
-        Thank you for applying to Miss Miami 2026. Your application and registration payment have been successfully received.
+        Thank you for applying to Miss Miami 2027. Your application and registration payment have been successfully received.
       </p>
 
       <div class="success-summary" aria-label="Application summary">
@@ -1671,7 +1683,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-bottom">
-      <p>© 2026 Miss Miami. All rights reserved.</p>
+      <p>© 2027 Miss Miami. All rights reserved.</p>
       <div class="footer-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Use</a>
@@ -1820,9 +1832,9 @@
     let currentDate = new Date(2000, today.getMonth(), 1);
     let selectedDate = null;
 
-    // Confirmed public rule: applicants must be at least 18 as of November 15, 2026.
-    const maxBirthDate = new Date(2008, 10, 15);
-    const minBirthDate = new Date(1900, 0, 1);
+    // Confirmed public rule: applicants must be 21–45 as of November 15, 2027.
+    const maxBirthDate = new Date(2006, 10, 15);
+    const minBirthDate = new Date(1981, 10, 16);
 
     const months = ['January', 'February', 'March', 'April', 'May', 'June',
                     'July', 'August', 'September', 'October', 'November', 'December'];
@@ -1833,7 +1845,7 @@
       const date = String(currentDate.getDate()).padStart(2, '0');
       const year = currentDate.getFullYear();
       dobInput.value = `${month}/${date}/${year}`;
-      const pageantDate = new Date(2026, 10, 15);
+      const pageantDate = new Date(2027, 10, 15);
       let age = pageantDate.getFullYear() - currentDate.getFullYear();
       const monthDiff = pageantDate.getMonth() - currentDate.getMonth();
       if (monthDiff < 0 || (monthDiff === 0 && pageantDate.getDate() < currentDate.getDate())) age--;
@@ -2202,8 +2214,8 @@
           }
           else if (field.name === 'age') {
             const age = Number(value);
-            if (!Number.isInteger(age) || age < 18) {
-              showError(field.id || field.name, 'You must be at least 18 years old');
+            if (!Number.isInteger(age) || age < 21 || age > 45) {
+              showError(field.id || field.name, 'Age must be between 21 and 45');
               isValid = false;
             } else {
               clearError(field.id || field.name);
@@ -2299,7 +2311,7 @@
         }
       }
 
-      // Validate date of birth against the confirmed minimum age.
+      // Validate date of birth against the confirmed age range.
       const dob = document.getElementById('dob-input');
       if (dob && dob.value) {
         const parts = dob.value.split('/');
@@ -2308,7 +2320,7 @@
           const day = parseInt(parts[1]);
           const year = parseInt(parts[2]);
           const birthDate = new Date(year, month - 1, day);
-          const pageantDate = new Date(2026, 10, 15); // November 15, 2026
+          const pageantDate = new Date(2027, 10, 15); // November 15, 2027
 
           let age = pageantDate.getFullYear() - birthDate.getFullYear();
           const monthDiff = pageantDate.getMonth() - birthDate.getMonth();
@@ -2316,8 +2328,8 @@
             age--;
           }
 
-          if (age < 18) {
-            showError('dob-input', 'Must be at least 18 years old as of November 15, 2026');
+          if (age < 21 || age > 45) {
+            showError('dob-input', 'Must be between 21 and 45 years old as of November 15, 2027');
             isValid = false;
           } else if (birthDate > new Date()) {
             showError('dob-input', 'Date of birth cannot be in the future');
@@ -2465,8 +2477,8 @@
           break;
 
         case 'age':
-          if (!Number.isInteger(Number(value)) || Number(value) < 18) {
-            errorMsg = 'You must be at least 18 years old';
+          if (!Number.isInteger(Number(value)) || Number(value) < 21 || Number(value) > 45) {
+            errorMsg = 'Age must be between 21 and 45';
           }
           break;
 
@@ -2525,14 +2537,14 @@
               const day = parseInt(parts[1]);
               const year = parseInt(parts[2]);
               const birthDate = new Date(year, month - 1, day);
-              const pageantDate = new Date(2026, 10, 15);
+              const pageantDate = new Date(2027, 10, 15);
               let age = pageantDate.getFullYear() - birthDate.getFullYear();
               const monthDiff = pageantDate.getMonth() - birthDate.getMonth();
               if (monthDiff < 0 || (monthDiff === 0 && pageantDate.getDate() < birthDate.getDate())) {
                 age--;
               }
-              if (age < 18) {
-                errorMsg = 'Must be at least 18 years old';
+              if (age < 21 || age > 45) {
+                errorMsg = 'Must be between 21 and 45 years old';
               } else if (birthDate > new Date()) {
                 errorMsg = 'Date cannot be in future';
               }
@@ -2632,5 +2644,6 @@
       }
     });
   </script>
+  <script src="assets/js/site-header-scroll.js"></script>
 </body>
 </html>
