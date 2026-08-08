@@ -25,6 +25,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background-color: var(--cream);
 }
 
 body {
@@ -607,6 +608,11 @@ body.menu-open header .logo-img {
   margin: 0 auto;
 }
 
+.team-grid.team-grid-single {
+  grid-template-columns: minmax(0, 520px);
+  justify-content: center;
+}
+
 .value-panel,
 .team-card {
   overflow: hidden;
@@ -890,7 +896,6 @@ footer {
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
-    background: rgba(26, 8, 0, 0.985);
     -webkit-overflow-scrolling: touch;
   }
 

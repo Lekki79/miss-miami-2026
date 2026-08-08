@@ -73,6 +73,12 @@
     padding: var(--mobile-safe-top) 24px 0 !important;
     align-items: center !important;
     justify-content: space-between !important;
+    transition: transform 0.28s ease, background-color 0.26s ease, box-shadow 0.26s ease;
+  }
+
+  header.mobile-header-hidden {
+    transform: translateY(calc(-100% - env(safe-area-inset-top)));
+    pointer-events: none;
   }
 
   header .logo {
@@ -112,7 +118,27 @@
     gap: 24px;
     padding: 36px 32px;
     overflow-y: auto;
-    background: rgba(26, 8, 0, 0.98);
+    border-top: 1px solid rgba(201, 146, 42, 0.30);
+    background: linear-gradient(160deg, rgba(75, 39, 21, 0.74), rgba(34, 14, 6, 0.68));
+    -webkit-backdrop-filter: blur(24px) saturate(110%);
+    backdrop-filter: blur(24px) saturate(110%);
+  }
+
+  #mobile-menu.open a {
+    color: rgba(245, 230, 200, 0.88);
+    border-bottom-color: rgba(201, 146, 42, 0.16);
+  }
+
+  #mobile-menu.open a:hover,
+  #mobile-menu.open a:focus-visible,
+  #mobile-menu.open a.active {
+    color: #E7C985;
+    border-bottom-color: rgba(201, 146, 42, 0.72);
+  }
+
+  #mobile-menu.open .btn-account-nav {
+    color: #EBD8BA !important;
+    border-color: rgba(201, 146, 42, 0.58) !important;
   }
 
   header nav.open {
@@ -129,7 +155,10 @@
     margin: 0;
     padding: 36px 32px;
     overflow-y: auto;
-    background: rgba(26, 8, 0, 0.98);
+    border-top: 1px solid rgba(201, 146, 42, 0.30);
+    background: linear-gradient(160deg, rgba(75, 39, 21, 0.74), rgba(34, 14, 6, 0.68));
+    -webkit-backdrop-filter: blur(24px) saturate(110%);
+    backdrop-filter: blur(24px) saturate(110%);
   }
 
   header nav.open .primary-nav,
