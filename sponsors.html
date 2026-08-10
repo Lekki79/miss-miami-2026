@@ -3,763 +3,297 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sponsors — Miss Miami 2026</title>
+  <meta name="theme-color" content="#EBD8BA" />
+  <title>Sponsors — Miss Miami 2027</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --gold:   #D4AF37;
-      --gold2:  #B8960C;
-      --black:  #0D0D0D;
-      --dark:   #111008;
-      --dark2:  #161209;
-      --cream:  #F5F1E8;
-      --white:  #ffffff;
-      --glass:  rgba(13,13,13,0.85);
-      --tr: 0.3s cubic-bezier(.4,0,.2,1);
-    }
-
-    html { scroll-behavior: smooth; }
-    body { background: var(--black); color: var(--cream); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
-    h1,h2,h3,h4 { font-family: 'Cinzel', serif; letter-spacing: 0.06em; }
-    a { text-decoration: none; color: inherit; }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--black); }
-    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
-
-    /* ── HEADER ── */
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 56px; height: 90px;
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(212,175,55,0.15);
-    }
-    .logo { display: flex; align-items: center; }
-    .logo-img { height: 80px; width: auto; display: block; object-fit: contain; }
-    nav { display: flex; align-items: center; gap: 32px; }
-    nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.7); transition: color var(--tr); position: relative; }
-    nav a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform var(--tr); }
-    nav a:hover { color: var(--gold); }
-    nav a:hover::after, nav a.active::after { transform: scaleX(1); }
-    nav a.active { color: var(--gold); }
-    .btn-nav { padding: 10px 28px; background: var(--gold); color: var(--black); font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em; font-weight: 700; text-transform: uppercase; transition: all var(--tr); }
-    .btn-nav:hover { background: #c9a227; }
-    .btn-account { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.78) !important; border: 1px solid rgba(212,175,55,0.25); padding: 8px 18px; transition: all var(--tr); font-weight: 500; }
-    .btn-account::after { display: none !important; }
-    .btn-account:hover { color: var(--gold) !important; border-color: rgba(212,175,55,0.6); }
-    .menu-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; }
-    .menu-toggle span { display:block; width:24px; height:1.5px; background:var(--gold); }
-
-    /* ── PAGE HERO ── */
-    .page-hero {
-      padding: 160px 56px 90px;
-      text-align: center;
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.1) 0%, transparent 60%),
-        var(--dark);
-      position: relative;
-    }
-    .page-hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(212,175,55,0.45) 50%, transparent);
-    }
-    .eyebrow { font-size: 12px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 600; opacity: 1; }
-    .page-hero h1 { font-size: clamp(32px, 4vw, 54px); color: var(--white); margin-bottom: 20px; }
-    .page-hero p { font-size: 14px; color: rgba(245,241,232,0.72); max-width: 560px; margin: 0 auto; line-height: 2; }
-
-    /* ── SECTION WRAPPER ── */
-    .section { padding: 90px 56px; }
-    .section-alt { background: var(--dark2); }
-
-    .section-head { text-align: center; margin-bottom: 60px; }
-    .section-head .eyebrow { margin-bottom: 14px; }
-    .section-head h2 { font-size: clamp(24px, 3vw, 36px); color: var(--white); margin-bottom: 16px; }
-    .section-head p { font-size: 13px; color: rgba(245,241,232,0.65); max-width: 520px; margin: 0 auto; line-height: 2; }
-
-    /* ── WHY SPONSOR — STATS ── */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(212,175,55,0.1);
-      border: 1px solid rgba(212,175,55,0.1);
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .why-item {
-      background: var(--dark);
-      padding: 40px 32px;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .why-item.visible { opacity: 1; transform: translateY(0); }
-    .why-num {
-      font-family: 'Cinzel', serif;
-      font-size: 42px;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .why-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,241,232,0.65); font-weight: 500; }
-
-    /* ── TIERS ── */
-    .tiers-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      max-width: 1100px;
-      margin: 0 auto;
-      background: rgba(212,175,55,0.08);
-    }
-
-    .tier-card {
-      background: var(--dark);
-      padding: 48px 36px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.5s ease, transform 0.5s ease, background var(--tr);
-    }
-    .tier-card.visible { opacity: 1; transform: translateY(0); }
-    .tier-card:hover { background: #161208; }
-    .tier-card.featured {
-      background: rgba(212,175,55,0.06);
-      border-top: 2px solid var(--gold);
-    }
-    .tier-card.featured:hover { background: rgba(212,175,55,0.09); }
-    .tier-badge {
-      position: absolute;
-      top: -1px; right: 32px;
-      background: var(--gold);
-      color: var(--black);
-      font-size: 9px;
-      letter-spacing: 0.25em;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .tier-crown { font-size: 28px; margin-bottom: 20px; }
-    .tier-name {
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
-    .tier-title {
-      font-family: 'Cinzel', serif;
-      font-size: 22px;
-      color: var(--white);
-      margin-bottom: 24px;
-    }
-    .tier-price {
-      font-family: 'Cinzel', serif;
-      font-size: 38px;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .tier-price span { font-size: 16px; color: rgba(212,175,55,0.6); }
-    .tier-price-note { font-size: 11px; color: rgba(245,241,232,0.78); margin-bottom: 32px; }
-
-    .tier-divider { height: 1px; background: rgba(212,175,55,0.12); margin-bottom: 28px; }
-
-    .tier-features { list-style: none; flex: 1; }
-    .tier-features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 12px;
-      color: rgba(245,241,232,0.65);
-      padding: 7px 0;
-      border-bottom: 1px solid rgba(212,175,55,0.06);
-      line-height: 1.5;
-    }
-    .tier-features li:last-child { border-bottom: none; }
-    .tier-features li .check { color: var(--gold); flex-shrink: 0; font-size: 11px; margin-top: 2px; }
-    .tier-features li .cross { color: rgba(245,241,232,0.2); flex-shrink: 0; font-size: 11px; margin-top: 2px; }
-
-    .btn-tier {
-      display: block;
-      text-align: center;
-      margin-top: 32px;
-      padding: 13px 24px;
-      border: 1px solid rgba(212,175,55,0.35);
-      color: var(--gold);
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-weight: 600;
-      transition: all var(--tr);
-    }
-    .btn-tier:hover, .tier-card.featured .btn-tier {
-      background: var(--gold);
-      color: var(--black);
-      border-color: var(--gold);
-    }
-    .tier-card.featured .btn-tier:hover { background: #c9a227; }
-
-    /* ── WHAT YOU GET — FULL TABLE ── */
-    .benefits-table {
-      max-width: 1000px;
-      margin: 0 auto;
-      border: 1px solid rgba(212,175,55,0.12);
-      overflow: hidden;
-    }
-    .benefits-table-head {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      background: rgba(212,175,55,0.06);
-      border-bottom: 1px solid rgba(212,175,55,0.12);
-    }
-    .th {
-      padding: 16px 20px;
-      font-size: 10px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
-      font-family: 'Cinzel', serif;
-    }
-    .th:not(:first-child) { text-align: center; }
-
-    .benefits-table-row {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      border-bottom: 1px solid rgba(212,175,55,0.07);
-      transition: background var(--tr);
-    }
-    .benefits-table-row:last-child { border-bottom: none; }
-    .benefits-table-row:hover { background: rgba(212,175,55,0.03); }
-    .td {
-      padding: 14px 20px;
-      font-size: 12px;
-      color: rgba(245,241,232,0.6);
-    }
-    .td:not(:first-child) { text-align: center; }
-    .td .yes { color: var(--gold); font-size: 14px; }
-    .td .no { color: rgba(245,241,232,0.2); font-size: 14px; }
-    .td .val { color: var(--cream); font-weight: 500; }
-
-    /* ── AUDIENCE ── */
-    .audience-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .audience-card {
-      border: 1px solid rgba(212,175,55,0.12);
-      padding: 32px 28px;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .audience-card.visible { opacity: 1; transform: translateY(0); }
-    .audience-icon { font-size: 32px; margin-bottom: 16px; }
-    .audience-card h4 { font-size: 13px; color: var(--white); margin-bottom: 8px; letter-spacing: 0.15em; }
-    .audience-card p { font-size: 12px; color: rgba(245,241,232,0.65); line-height: 1.8; }
-
-    /* ── CURRENT SPONSORS PLACEHOLDER ── */
-    .sponsors-logos {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 32px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .sponsor-slot {
-      width: 160px;
-      height: 80px;
-      border: 1px dashed rgba(212,175,55,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      color: rgba(212,175,55,0.25);
-      text-transform: uppercase;
-      font-weight: 500;
-      transition: border-color var(--tr);
-    }
-    .sponsor-slot:hover { border-color: rgba(212,175,55,0.4); }
-
-    /* ── CONTACT FORM ── */
-    .inquiry-wrap {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .inquiry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .field { display: flex; flex-direction: column; gap: 8px; }
-    .field.full { grid-column: span 2; }
-    label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(212,175,55,0.7); font-weight: 500; }
-    input, select, textarea {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(212,175,55,0.15);
-      color: var(--cream);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      padding: 13px 16px;
-      outline: none;
-      transition: border-color var(--tr), background var(--tr);
-      width: 100%;
-      -webkit-appearance: none;
-    }
-    input:focus, select:focus, textarea:focus {
-      border-color: rgba(212,175,55,0.5);
-      background: rgba(212,175,55,0.04);
-    }
-    input::placeholder, textarea::placeholder { color: rgba(245,241,232,0.2); }
-    select option { background: #161209; color: var(--cream); }
-    textarea { resize: vertical; min-height: 120px; }
-
-    .btn-submit {
-      display: block;
-      width: 100%;
-      padding: 16px 32px;
-      background: var(--gold);
-      color: var(--black);
-      font-family: 'Cinzel', serif;
-      font-size: 12px;
-      letter-spacing: 0.25em;
-      font-weight: 700;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      transition: background var(--tr);
-      margin-top: 24px;
-    }
-    .btn-submit:hover { background: #c9a227; }
-
-    .or-line {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 32px 0;
-      color: rgba(245,241,232,0.2);
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-    .or-line::before, .or-line::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(212,175,55,0.1);
-    }
-
-    .contact-direct {
-      text-align: center;
-      font-size: 13px;
-      color: rgba(245,241,232,0.65);
-    }
-    .contact-direct a { color: var(--gold); transition: opacity var(--tr); }
-    .contact-direct a:hover { opacity: 0.7; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--black);
-      border-top: 1px solid rgba(212,175,55,0.12);
-      padding: 40px 56px 28px;
-    }
-    .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
-    .footer-bottom p { font-size: 11px; color: rgba(245,241,232,0.78); }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: 11px; color: rgba(245,241,232,0.78); transition: color var(--tr); }
-    .footer-links a:hover { color: var(--gold); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .tiers-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
-      .why-grid { grid-template-columns: 1fr 1fr; }
-      .audience-grid { grid-template-columns: 1fr; max-width: 400px; }
-      .benefits-table { overflow-x: auto; }
-      .inquiry-grid { grid-template-columns: 1fr; }
-      .field.full { grid-column: span 1; }
-    }
-    @media (max-width: 640px) {
-      header { padding: 0 24px; height: 72px; }
-      nav { display: none; }
-      nav.open { display: flex; flex-direction: column; position: fixed; inset: 72px 0 0 0; background: rgba(13,13,13,0.97); padding: 40px 32px; gap: 28px; z-index: 99; }
-      .menu-toggle { display: flex; }
-      .page-hero { padding: 120px 24px 60px; }
-      .section { padding: 60px 24px; }
-      .why-grid { grid-template-columns: 1fr 1fr; }
-      footer { padding: 28px 24px; }
-      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/site-header.css?v=20260805-3" />
+  <link rel="stylesheet" href="assets/css/sponsors.css?v=20260810-7" />
 </head>
 <body>
-
-  <!-- HEADER -->
-  <header>
-    <a href="index.html" class="logo">
-      <img src="logo-transparent.png" class="logo-img" alt="Miss Miami" />
+  <header id="site-header" class="on-hero">
+    <a href="index.html" class="logo" aria-label="Miss Miami home">
+      <img src="assets/brand/miss-miami-logo-header-c-flat.svg"
+           data-hero-logo="assets/brand/miss-miami-logo-header-c-flat.svg"
+           data-light-logo="assets/brand/miss-miami-logo-header-c-flat.svg"
+           class="logo-img" alt="Miss Miami" />
     </a>
     <nav id="main-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="apply.html">Apply</a>
-      <a href="competition.html">Competition</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="sponsors.html" class="active">Sponsors</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
-      <a href="dashboard.html" class="btn-account">My Account</a>
-      <a href="apply.html" class="btn-nav">Apply Now</a>
+      <div class="primary-nav">
+        <a href="index.html">Home</a><a href="about.html">About</a><a href="competition.html">Competition</a><a href="apply.html">Apply</a><a href="sponsors.html" class="active">Sponsors</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="header-actions"><a href="dashboard.html" class="btn-account-nav">Contestant Portal</a></div>
     </nav>
-    <button class="menu-toggle" id="menu-toggle">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
   </header>
 
-  <!-- PAGE HERO -->
-  <div class="page-hero">
-    <p class="eyebrow">Partnership Opportunities</p>
-    <h1>Become a Sponsor</h1>
-    <p>Align your brand with elegance, ambition and influence. Miss Miami 2026 connects you with an audience of affluent, aspirational women across South Florida and beyond.</p>
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="competition.html">Competition</a><a href="apply.html">Apply</a><a href="sponsors.html" class="active">Sponsors</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="dashboard.html" class="btn-account-nav">Contestant Portal</a>
   </div>
 
-  <!-- WHY SPONSOR -->
-  <section class="section">
-    <div class="section-head">
-      <p class="eyebrow">Why Partner With Us</p>
-      <h2>Your Brand in the Spotlight</h2>
-      <p>Miss Miami is more than a pageant — it's a platform that celebrates accomplished women and reaches a highly engaged, premium audience across South Florida and beyond.</p>
-    </div>
-  </section>
+  <main>
+    <section class="sponsor-hero" aria-labelledby="sponsor-title">
+      <div class="hero-light" aria-hidden="true"></div>
+      <picture class="hero-visual" aria-hidden="true">
+        <source media="(max-width: 900px)" srcset="assets/images/sponsors-hero-before-spotlight-mobile.webp" />
+        <img src="assets/images/sponsors-hero-before-spotlight-desktop.webp" alt="" width="1586" height="992" fetchpriority="high" />
+      </picture>
+      <div class="page-shell hero-inner">
+        <p class="eyebrow eyebrow-light">Miss Miami 2027 Partnerships</p>
+        <h1 id="sponsor-title">A Partnership<br><em>with Presence</em></h1>
+        <p class="hero-copy">Join a platform shaped by confidence, purpose and the unmistakable energy of Miami — and become part of a story designed to live beyond competition night</p>
+        <div class="hero-actions"><a class="btn-primary" href="#sponsor-inquiry">Become a Sponsor</a></div>
+      </div>
+    </section>
 
-  <!-- AUDIENCE -->
-  <section class="section section-alt">
-    <div class="section-head">
-      <p class="eyebrow">Our Audience</p>
-      <h2>Who You'll Reach</h2>
-    </div>
-    <div class="audience-grid">
-      <div class="audience-card">
-        <div class="audience-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 24 L4 18 L10 8 L16 14 L22 8 L28 18 L28 24 Z" stroke="#D4AF37" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
-            <line x1="4" y1="24" x2="28" y2="24" stroke="#D4AF37" stroke-width="1.2"/>
-            <circle cx="4" cy="18" r="1.5" fill="#D4AF37"/>
-            <circle cx="16" cy="14" r="1.5" fill="#D4AF37"/>
-            <circle cx="28" cy="18" r="1.5" fill="#D4AF37"/>
-          </svg>
+    <section class="why-section" id="why-partner">
+      <div class="page-shell why-layout">
+        <div class="section-intro">
+          <p class="eyebrow">Why Partner With Miss Miami</p>
+          <h2>More than visibility.<br><em>A meaningful place in the story.</em></h2>
+          <p>Miss Miami gives aligned brands a considered way to connect with a modern community through experiences rooted in ambition, confidence and purpose</p>
         </div>
-        <h4>Contestants & Families</h4>
-        <p>Ambitious women ages 18–28 and their networks — engaged, loyal and brand-conscious</p>
-      </div>
-      <div class="audience-card">
-        <div class="audience-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="11" stroke="#D4AF37" stroke-width="1.2"/>
-            <path d="M16 5 C16 5 12 12 12 16 C12 20 16 27 16 27" stroke="#D4AF37" stroke-width="1.2"/>
-            <path d="M16 5 C16 5 20 12 20 16 C20 20 16 27 16 27" stroke="#D4AF37" stroke-width="1.2"/>
-            <line x1="5" y1="16" x2="27" y2="16" stroke="#D4AF37" stroke-width="1.2"/>
-          </svg>
+        <div class="why-statements">
+          <article><h3>Meaningful Visibility</h3><p>Recognition placed within moments that feel natural to the Miss Miami experience</p></article>
+          <article><h3>Authentic Connection</h3><p>A thoughtful relationship with contestants, guests and a community drawn to possibility</p></article>
+          <article><h3>Lasting Association</h3><p>A brand story connected to purpose, personal growth and the women shaping Miami</p></article>
         </div>
-        <h4>Miami Elite</h4>
-        <p>South Florida's influential social circles: entrepreneurs, professionals and tastemakers</p>
       </div>
-      <div class="audience-card">
-        <div class="audience-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="9" y="3" width="14" height="26" rx="2" stroke="#D4AF37" stroke-width="1.2"/>
-            <line x1="9" y1="8" x2="23" y2="8" stroke="#D4AF37" stroke-width="1.2"/>
-            <line x1="9" y1="24" x2="23" y2="24" stroke="#D4AF37" stroke-width="1.2"/>
-            <circle cx="16" cy="27" r="1" fill="#D4AF37"/>
-          </svg>
+    </section>
+
+    <section class="world-section" id="partnership-world">
+      <div class="page-shell">
+        <div class="world-heading">
+          <div><p class="eyebrow">Where the Partnership Lives</p><h2>Across the world<br><em>of Miss Miami</em></h2></div>
+          <p>A connected partnership journey creates meaningful presence at the moments where the season, the stage and the community come together</p>
         </div>
-        <h4>Digital Followers</h4>
-        <p>An active online community following the pageant journey across Instagram, TikTok and YouTube</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SPONSORSHIP TIERS -->
-  <section class="section">
-    <div class="section-head">
-      <p class="eyebrow">Sponsorship Packages</p>
-      <h2>Choose Your Level</h2>
-      <p>From brand visibility to exclusive title partnerships, we have a tier for every goal and budget.</p>
-    </div>
-    <div class="tiers-grid">
-
-      <!-- SILVER -->
-      <div class="tier-card">
-        <div class="tier-crown">✦</div>
-        <div class="tier-name">Tier 1</div>
-        <div class="tier-title">Silver Partner</div>
-        <div class="tier-price">$1,000<span> USD</span></div>
-        <div class="tier-price-note">One-time sponsorship fee</div>
-        <div class="tier-divider"></div>
-        <ul class="tier-features">
-          <li><span class="check">✦</span> Logo on website sponsors page</li>
-          <li><span class="check">✦</span> 2 VIP event tickets</li>
-          <li><span class="check">✦</span> Social media mention (×1)</li>
-          <li><span class="check">✦</span> Program booklet listing</li>
-          <li><span class="cross">—</span> <span style="opacity:0.35">Stage backdrop logo</span></li>
-          <li><span class="cross">—</span> <span style="opacity:0.35">Dedicated post</span></li>
-          <li><span class="cross">—</span> <span style="opacity:0.35">Product placement</span></li>
-          <li><span class="cross">—</span> <span style="opacity:0.35">Category exclusivity</span></li>
-        </ul>
-        <a href="#inquiry" class="btn-tier">Become a Partner</a>
-      </div>
-
-      <!-- GOLD — FEATURED -->
-      <div class="tier-card featured">
-        <div class="tier-badge">Most Popular</div>
-        <div class="tier-crown">♛</div>
-        <div class="tier-name">Tier 2</div>
-        <div class="tier-title">Gold Partner</div>
-        <div class="tier-price">$3,500<span> USD</span></div>
-        <div class="tier-price-note">One-time sponsorship fee</div>
-        <div class="tier-divider"></div>
-        <ul class="tier-features">
-          <li><span class="check">✦</span> Logo on website & all materials</li>
-          <li><span class="check">✦</span> 4 VIP event tickets</li>
-          <li><span class="check">✦</span> Social media mentions (×3)</li>
-          <li><span class="check">✦</span> Program booklet full-page ad</li>
-          <li><span class="check">✦</span> Stage backdrop logo placement</li>
-          <li><span class="check">✦</span> Dedicated social media post</li>
-          <li><span class="cross">—</span> <span style="opacity:0.35">Product placement</span></li>
-          <li><span class="cross">—</span> <span style="opacity:0.35">Category exclusivity</span></li>
-        </ul>
-        <a href="#inquiry" class="btn-tier">Become a Partner</a>
-      </div>
-
-      <!-- CROWN -->
-      <div class="tier-card">
-        <div class="tier-crown">♔</div>
-        <div class="tier-name">Tier 3</div>
-        <div class="tier-title">Crown Sponsor</div>
-        <div class="tier-price">$8,500<span> USD</span></div>
-        <div class="tier-price-note">Exclusive title partnership</div>
-        <div class="tier-divider"></div>
-        <ul class="tier-features">
-          <li><span class="check">✦</span> Title naming rights ("Presented by")</li>
-          <li><span class="check">✦</span> 8 VIP event tickets + table</li>
-          <li><span class="check">✦</span> Social media throughout season</li>
-          <li><span class="check">✦</span> Program booklet — back cover</li>
-          <li><span class="check">✦</span> Prime stage backdrop placement</li>
-          <li><span class="check">✦</span> Weekly dedicated content</li>
-          <li><span class="check">✦</span> Product/service placement</li>
-          <li><span class="check">✦</span> Category exclusivity</li>
-        </ul>
-        <a href="#inquiry" class="btn-tier">Become a Partner</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- BENEFITS TABLE -->
-  <section class="section section-alt">
-    <div class="section-head">
-      <p class="eyebrow">At a Glance</p>
-      <h2>Package Comparison</h2>
-    </div>
-    <div class="benefits-table">
-      <div class="benefits-table-head">
-        <div class="th">Benefit</div>
-        <div class="th">Silver</div>
-        <div class="th">Gold</div>
-        <div class="th">Crown</div>
-      </div>
-      <div class="benefits-table-row">
-        <div class="td">Website logo placement</div>
-        <div class="td"><span class="yes">✦</span></div>
-        <div class="td"><span class="yes">✦</span></div>
-        <div class="td"><span class="yes">✦</span></div>
-      </div>
-      <div class="benefits-table-row">
-        <div class="td">VIP event tickets</div>
-        <div class="td"><span class="val">2</span></div>
-        <div class="td"><span class="val">4</span></div>
-        <div class="td"><span class="val">8 + table</span></div>
-      </div>
-      <div class="benefits-table-row">
-        <div class="td">Social media mentions</div>
-        <div class="td"><span class="val">1×</span></div>
-        <div class="td"><span class="val">3×</span></div>
-        <div class="td"><span class="val">Season-long</span></div>
-      </div>
-      <div class="benefits-table-row">
-        <div class="td">Program booklet</div>
-        <div class="td"><span class="val">Listing</span></div>
-        <div class="td"><span class="val">Full page</span></div>
-        <div class="td"><span class="val">Back cover</span></div>
-      </div>
-      <div class="benefits-table-row">
-        <div class="td">Stage backdrop logo</div>
-        <div class="td"><span class="no">—</span></div>
-        <div class="td"><span class="yes">✦</span></div>
-        <div class="td"><span class="yes">✦ Prime</span></div>
-      </div>
-      <div class="benefits-table-row">
-        <div class="td">Dedicated social post</div>
-        <div class="td"><span class="no">—</span></div>
-        <div class="td"><span class="yes">✦</span></div>
-        <div class="td"><span class="yes">✦ Weekly</span></div>
-      </div>
-      <div class="benefits-table-row">
-        <div class="td">Product / service placement</div>
-        <div class="td"><span class="no">—</span></div>
-        <div class="td"><span class="no">—</span></div>
-        <div class="td"><span class="yes">✦</span></div>
-      </div>
-      <div class="benefits-table-row">
-        <div class="td">Category exclusivity</div>
-        <div class="td"><span class="no">—</span></div>
-        <div class="td"><span class="no">—</span></div>
-        <div class="td"><span class="yes">✦</span></div>
-      </div>
-      <div class="benefits-table-row">
-        <div class="td">Title naming rights</div>
-        <div class="td"><span class="no">—</span></div>
-        <div class="td"><span class="no">—</span></div>
-        <div class="td"><span class="yes">✦</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CURRENT SPONSORS -->
-  <section class="section">
-    <div class="section-head">
-      <p class="eyebrow">2026 Season</p>
-      <h2>Our Partners</h2>
-      <p>Join the brands already supporting the Miss Miami vision.</p>
-    </div>
-    <div class="sponsors-logos">
-      <div class="sponsor-slot"><span>Your Logo</span></div>
-      <div class="sponsor-slot"><span>Your Logo</span></div>
-      <div class="sponsor-slot"><span>Your Logo</span></div>
-      <div class="sponsor-slot"><span>Your Logo</span></div>
-      <div class="sponsor-slot"><span>Your Logo</span></div>
-    </div>
-  </section>
-
-  <!-- INQUIRY FORM -->
-  <section class="section section-alt" id="inquiry">
-    <div class="section-head">
-      <p class="eyebrow">Get in Touch</p>
-      <h2>Sponsorship Inquiry</h2>
-      <p>Ready to partner with Miss Miami? Fill out the form below and we'll be in touch within 48 hours.</p>
-    </div>
-
-    <div class="inquiry-wrap">
-      <form id="sponsor-form" novalidate>
-        <div class="inquiry-grid">
-          <div class="field">
-            <label>First Name *</label>
-            <input type="text" name="first_name" placeholder="Your first name" required />
-          </div>
-          <div class="field">
-            <label>Last Name *</label>
-            <input type="text" name="last_name" placeholder="Your last name" required />
-          </div>
-          <div class="field">
-            <label>Company / Brand *</label>
-            <input type="text" name="company" placeholder="Your company name" required />
-          </div>
-          <div class="field">
-            <label>Position / Title</label>
-            <input type="text" name="position" placeholder="CEO, Marketing Director..." />
-          </div>
-          <div class="field">
-            <label>Email Address *</label>
-            <input type="email" name="email" placeholder="your@company.com" required />
-          </div>
-          <div class="field">
-            <label>Phone Number</label>
-            <input type="tel" name="phone" placeholder="+1 (305) 000-0000" />
-          </div>
-          <div class="field full">
-            <label>Sponsorship Level of Interest</label>
-            <select name="tier">
-              <option value="" disabled selected>Select a package...</option>
-              <option>Silver Partner — $1,000</option>
-              <option>Gold Partner — $3,500</option>
-              <option>Crown Sponsor — $8,500</option>
-              <option>Custom / Other</option>
-            </select>
-          </div>
-          <div class="field full">
-            <label>Industry / Product Category</label>
-            <input type="text" name="industry" placeholder="Beauty, Fashion, Real Estate, Wellness, Hospitality..." />
-          </div>
-          <div class="field full">
-            <label>Tell Us About Your Goals</label>
-            <textarea name="message" placeholder="What are you hoping to achieve through this partnership? Any specific requirements or ideas?"></textarea>
-          </div>
+        <div class="world-flow">
+          <article><span class="flow-star" aria-hidden="true">✦</span><h3>Before the Event</h3><p>Join selected campaign and community moments as the season takes shape</p></article>
+          <article><span class="flow-star" aria-hidden="true">✦</span><h3>Competition Night</h3><p>Create a considered presence within the live Miss Miami experience</p></article>
+          <article><span class="flow-star" aria-hidden="true">✦</span><h3>Digital Story</h3><p>Extend the partnership through relevant Miss Miami digital touchpoints</p></article>
+          <article><span class="flow-star" aria-hidden="true">✦</span><h3>Community Moments</h3><p>Explore ways to connect with the people and purpose surrounding the platform</p></article>
         </div>
-        <button type="submit" class="btn-submit">Send Inquiry</button>
-      </form>
-
-      <div class="or-line">or reach us directly</div>
-      <div class="contact-direct">
-        Email us at <a href="mailto:sponsors@missmiamiofficial.com">sponsors@missmiamiofficial.com</a><br />
-        or call <a href="tel:+13055550000">+1 (305) 555-0000</a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-bottom">
-      <p>© 2026 Miss Miami. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-        <a href="faq.html">FAQ</a>
+    <section class="packages-section" id="packages">
+      <div class="page-shell">
+        <div class="packages-heading package-reveal-intro">
+          <p class="eyebrow">Partnership Levels</p>
+          <h2>A Presence That Grows With the Story</h2>
+          <p>Three ways to enter the Miss Miami world — from a considered introduction to a defining presence within the 2027 experience.</p>
+        </div>
+        <div class="package-field">
+          <article class="package-level package-gold">
+            <h3 class="package-name">Gold</h3>
+            <p class="package-role">Enter the world</p>
+            <p class="package-positioning">A considered introduction to the Miss Miami audience and experience</p>
+            <ul class="package-directions"><li>Selected event presence</li><li>Curated digital visibility</li><li>Partnership recognition</li></ul>
+          </article>
+          <article class="package-level package-platinum">
+            <h3 class="package-name">Platinum</h3>
+            <p class="package-role">Shape the experience</p>
+            <p class="package-positioning">A visible partnership woven through the Miss Miami journey</p>
+            <ul class="package-directions"><li>Expanded event integration</li><li>Editorial and digital presence</li><li>Community touchpoints</li></ul>
+          </article>
+          <article class="package-level package-title">
+            <h3 class="package-name">Title Sponsor</h3>
+            <p class="package-role">At the heart of the story</p>
+            <p class="package-positioning">A defining partnership within the Miss Miami 2027 experience</p>
+            <ul class="package-directions"><li>Lead partnership positioning</li><li>Signature experience integration</li><li>Priority brand presence</li><li>Central narrative role</li></ul>
+          </article>
+        </div>
+        <p class="package-cue">Select your partnership interest in the inquiry below</p>
       </div>
-    </div>
-  </footer>
+    </section>
+
+    <section class="deck-section" id="sponsor-deck">
+      <div class="page-shell deck-layout">
+        <p class="eyebrow deck-eyebrow">Partnership Deck</p>
+        <h2 class="deck-heading"><span>A Closer Look</span><span>at the Partnership</span></h2>
+        <p class="deck-copy">A considered introduction to the Miss Miami world, the places a brand can become present and the partnership levels shaping the 2027 experience.</p>
+        <figure class="deck-visual">
+          <img src="assets/images/sponsor-deck-light-approved.png" alt="Demo concept for the Miss Miami 2027 Partnership Deck" />
+        </figure>
+        <ul class="deck-contents"><li>Miss Miami positioning</li><li>Brand presence and opportunities</li><li>Gold, Platinum and Title overview</li></ul>
+        <div class="deck-actions" aria-label="Partnership Deck actions">
+          <a class="btn-primary" href="assets/docs/miss-miami-2027-partnership-deck.pdf" target="_blank" rel="noopener noreferrer">View Partnership Deck</a>
+          <a class="deck-download" href="assets/docs/miss-miami-2027-partnership-deck.pdf" download="miss-miami-2027-partnership-deck.pdf">Download PDF</a>
+        </div>
+        <p class="deck-demo-note">Miss Miami 2027 Partnership Deck · PDF</p>
+      </div>
+    </section>
+
+    <section class="inquiry-section" id="sponsor-inquiry">
+      <div class="page-shell">
+        <div class="inquiry-heading">
+          <p class="eyebrow">Become a Sponsor</p>
+          <h2>Begin a meaningful<br><em>conversation</em></h2>
+          <p>Tell us about your company, your goals and the partnership level you would like to explore</p>
+        </div>
+        <form class="sponsor-form" id="sponsor-inquiry-form" aria-label="Sponsor inquiry" novalidate>
+          <section class="sponsor-form-section" aria-labelledby="sponsor-contact-title">
+            <div class="sponsor-form-title"><span class="sponsor-form-number" aria-hidden="true">1</span><h3 id="sponsor-contact-title">Contact</h3></div>
+            <div class="sponsor-form-grid">
+              <div class="sponsor-field"><label for="sponsor-first-name">First Name <span aria-hidden="true">*</span></label><input id="sponsor-first-name" type="text" name="first_name" autocomplete="given-name" required aria-describedby="sponsor-first-name-error" /><span class="sponsor-error" id="sponsor-first-name-error"></span></div>
+              <div class="sponsor-field"><label for="sponsor-last-name">Last Name <span aria-hidden="true">*</span></label><input id="sponsor-last-name" type="text" name="last_name" autocomplete="family-name" required aria-describedby="sponsor-last-name-error" /><span class="sponsor-error" id="sponsor-last-name-error"></span></div>
+              <div class="sponsor-field"><label for="sponsor-email">Email <span aria-hidden="true">*</span></label><input id="sponsor-email" type="email" name="email" autocomplete="email" placeholder="name@company.com" required aria-describedby="sponsor-email-error" /><span class="sponsor-error" id="sponsor-email-error"></span></div>
+              <div class="sponsor-field"><label for="sponsor-phone">Phone</label><input id="sponsor-phone" type="tel" name="phone" autocomplete="tel" placeholder="Your preferred contact number" aria-describedby="sponsor-phone-error" /><span class="sponsor-error" id="sponsor-phone-error"></span></div>
+            </div>
+          </section>
+          <section class="sponsor-form-section" aria-labelledby="sponsor-company-title">
+            <div class="sponsor-form-title"><span class="sponsor-form-number" aria-hidden="true">2</span><h3 id="sponsor-company-title">Company</h3></div>
+            <div class="sponsor-form-grid">
+              <div class="sponsor-field"><label for="sponsor-company">Company / Brand <span aria-hidden="true">*</span></label><input id="sponsor-company" type="text" name="company" autocomplete="organization" required aria-describedby="sponsor-company-error" /><span class="sponsor-error" id="sponsor-company-error"></span></div>
+              <div class="sponsor-field"><label for="sponsor-position">Position / Title</label><input id="sponsor-position" type="text" name="position" autocomplete="organization-title" aria-describedby="sponsor-position-error" /><span class="sponsor-error" id="sponsor-position-error"></span></div>
+              <div class="sponsor-field sponsor-field-wide"><label for="sponsor-industry">Industry / Product Category</label><input id="sponsor-industry" type="text" name="industry" aria-describedby="sponsor-industry-error" /><span class="sponsor-error" id="sponsor-industry-error"></span></div>
+            </div>
+          </section>
+          <section class="sponsor-form-section" aria-labelledby="sponsor-partnership-title">
+            <div class="sponsor-form-title"><span class="sponsor-form-number" aria-hidden="true">3</span><h3 id="sponsor-partnership-title">Partnership</h3></div>
+            <div class="sponsor-form-grid"><div class="sponsor-field sponsor-field-wide"><label for="sponsor-package">Partnership of Interest <span aria-hidden="true">*</span></label><select id="sponsor-package" name="package" required aria-describedby="sponsor-package-error"><option value="" selected disabled>Select a partnership level</option><option value="gold">Gold</option><option value="platinum">Platinum</option><option value="title">Title Sponsor</option><option value="not-sure">Not sure yet</option></select><span class="sponsor-error" id="sponsor-package-error"></span></div></div>
+          </section>
+          <section class="sponsor-form-section" aria-labelledby="sponsor-message-title">
+            <div class="sponsor-form-title"><span class="sponsor-form-number" aria-hidden="true">4</span><h3 id="sponsor-message-title">Message</h3></div>
+            <div class="sponsor-form-grid"><div class="sponsor-field sponsor-field-wide"><label for="sponsor-message">Tell Us About Your Partnership Goals <span aria-hidden="true">*</span></label><textarea id="sponsor-message" name="message" rows="5" required aria-describedby="sponsor-message-error"></textarea><span class="sponsor-error" id="sponsor-message-error"></span></div></div>
+          </section>
+          <div class="sponsor-form-action"><button class="btn-primary" type="submit">Submit Partnership Inquiry</button></div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer"><p>© 2027 Miss Miami. All rights reserved.</p><p>Beauty · Confidence · Purpose</p></footer>
 
   <script>
-    // Mobile menu
-    const toggle = document.getElementById('menu-toggle');
-    const nav = document.getElementById('main-nav');
-    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+    const siteHeader = document.getElementById('site-header');
+    const headerLogo = siteHeader.querySelector('.logo-img');
+    const heroSection = document.querySelector('.sponsor-hero');
+    function updateHeaderState() {
+      const onHero = window.scrollY < Math.max(0, heroSection.offsetHeight - siteHeader.offsetHeight);
+      siteHeader.classList.toggle('on-hero', onHero);
+      const nextLogo = onHero ? headerLogo.dataset.heroLogo : headerLogo.dataset.lightLogo;
+      if (nextLogo && headerLogo.getAttribute('src') !== nextLogo) headerLogo.setAttribute('src', nextLogo);
+    }
+    updateHeaderState();
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+    window.addEventListener('resize', updateHeaderState);
 
-    // Scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    function setMenuState(open) {
+      mobileMenu.classList.toggle('open', open);
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('menu-open', open);
+      const bars = menuToggle.querySelectorAll('span');
+      if (open) {
+        bars[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+        bars[1].style.opacity = '0';
+        bars[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+      } else {
+        bars.forEach(bar => { bar.style.transform = ''; bar.style.opacity = ''; });
+      }
+    }
+    menuToggle.addEventListener('click', () => setMenuState(!mobileMenu.classList.contains('open')));
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenuState(false)));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        setMenuState(false);
+        menuToggle.focus();
+      }
+    });
+
+    const sponsorForm = document.getElementById('sponsor-inquiry-form');
+    const sponsorValidatedFields = new WeakSet();
+    const sponsorEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const sponsorPhoneCharacters = /^[\d\s+()\-]+$/;
+
+    function updateSponsorSectionMarker(field) {
+      const section = field.closest('.sponsor-form-section');
+      const marker = section?.querySelector('.sponsor-form-number');
+      if (!section || !marker) return;
+      const requiredFields = [...section.querySelectorAll('[required]')];
+      const hasError = requiredFields.some(requiredField => requiredField.getAttribute('aria-invalid') === 'true');
+      const isComplete = requiredFields.length > 0 && requiredFields.every(requiredField => requiredField.value.trim() && !sponsorFieldMessage(requiredField));
+      marker.classList.toggle('error', hasError);
+      marker.classList.toggle('completed', !hasError && isComplete);
+    }
+
+    function sponsorFieldMessage(field) {
+      const value = field.value.trim();
+      if (field.required && !value) {
+        const requiredMessages = {
+          first_name: 'First name is required',
+          last_name: 'Last name is required',
+          email: 'Email is required',
+          company: 'Company or brand is required',
+          package: 'Select a partnership level',
+          message: 'Partnership goals are required'
+        };
+        return requiredMessages[field.name] || 'This field is required';
+      }
+      if (field.type === 'email' && value && !sponsorEmailPattern.test(value)) return 'Enter a valid email address';
+      if (field.type === 'tel' && value) {
+        const digitCount = value.replace(/\D/g, '').length;
+        if (!sponsorPhoneCharacters.test(value) || digitCount < 7 || digitCount > 15) return 'Enter a valid phone number using 7–15 digits';
+      }
+      return '';
+    }
+
+    function validateSponsorField(field) {
+      const message = sponsorFieldMessage(field);
+      const error = document.getElementById(`${field.id}-error`);
+      field.classList.toggle('sponsor-field-error', Boolean(message));
+      field.setAttribute('aria-invalid', String(Boolean(message)));
+      if (error) {
+        error.textContent = message;
+        error.classList.toggle('is-visible', Boolean(message));
+      }
+      if (message) sponsorValidatedFields.add(field);
+      updateSponsorSectionMarker(field);
+      return !message;
+    }
+
+    const sponsorFields = [...sponsorForm.querySelectorAll('input, select, textarea')];
+    sponsorFields.forEach(field => {
+      field.addEventListener('blur', () => validateSponsorField(field));
+      const liveEvent = field.tagName === 'SELECT' ? 'change' : 'input';
+      field.addEventListener(liveEvent, () => {
+        if (sponsorValidatedFields.has(field) || field.getAttribute('aria-invalid') === 'true') validateSponsorField(field);
       });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.why-item, .tier-card, .audience-card').forEach(el => observer.observe(el));
-
-    // Stagger tier cards
-    document.querySelectorAll('.tier-card').forEach((el, i) => {
-      el.style.transitionDelay = `${i * 0.12}s`;
     });
 
-    // Form submit
-    document.getElementById('sponsor-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for your inquiry! Our partnerships team will contact you within 48 hours.');
+    sponsorForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const validationResults = sponsorFields.map(field => ({ field, valid: validateSponsorField(field) }));
+      const firstInvalid = validationResults.find(result => !result.valid)?.field;
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        window.setTimeout(() => firstInvalid.focus({ preventScroll: true }), 320);
+      }
     });
+
+    const packageSection = document.querySelector('.packages-section');
+    if (packageSection) {
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        packageSection.classList.add('packages-visible');
+      } else {
+        const packageObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              packageSection.classList.add('packages-visible');
+              packageObserver.disconnect();
+            }
+          });
+        }, { threshold: 0.16 });
+        packageObserver.observe(packageSection);
+      }
+    }
   </script>
+  <script src="assets/js/site-header-scroll.js"></script>
 </body>
 </html>
