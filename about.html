@@ -54,7 +54,10 @@
 
   <!-- ABOUT HERO -->
   <section class="hero" aria-label="Miss Miami crown">
-    <img class="hero-photo" src="assets/images/about-hero-crown-crosslight.png" alt="Miss Miami crown illuminated by warm champagne light">
+    <picture class="hero-media">
+      <source media="(max-width: 900px)" srcset="assets/images/about-hero-crown-ivory-mobile-v3.png">
+      <img class="hero-photo" src="assets/images/about-hero-crown-ivory-desktop-v2.png" alt="Miss Miami crown illuminated by warm champagne light">
+    </picture>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-ambient-glow" aria-hidden="true"></div>
     <canvas id="about-hero-sparkles" aria-hidden="true"></canvas>
@@ -272,26 +275,68 @@
         'rgba(255,239,196,'
       ];
 
+      const mobileSparkleViewport = window.matchMedia('(max-width: 900px)');
+      const crownSparkleProfiles = {
+        desktop: {
+          field: { left: 0.31, right: 0.69, top: 0.30, bottom: 0.73 },
+          anchors: [
+            [0.50, 0.32], [0.41, 0.41], [0.59, 0.41],
+            [0.36, 0.50], [0.64, 0.50], [0.43, 0.60],
+            [0.57, 0.60], [0.50, 0.69]
+          ]
+        },
+        mobile: {
+          field: { left: 0.20, right: 0.80, top: 0.39, bottom: 0.66 },
+          anchors: [
+            [0.50, 0.41], [0.38, 0.47], [0.62, 0.47],
+            [0.28, 0.54], [0.72, 0.54], [0.40, 0.59],
+            [0.60, 0.59], [0.50, 0.63]
+          ]
+        }
+      };
+
+      function currentSparkleProfile() {
+        return mobileSparkleViewport.matches
+          ? crownSparkleProfiles.mobile
+          : crownSparkleProfiles.desktop;
+      }
+
       class Particle {
         constructor() {
           this.reset(true);
         }
 
         reset(initial) {
-          this.x = Math.random() * sparkleWidth;
-          // Keep the old continuous drift model, but replenish particles inside
-          // the visible field so the ambient layer never drains after intro.
-          this.y = Math.random() * sparkleHeight;
-          this.bokeh = Math.random() < 0.15;
-          this.radius = this.bokeh ? Math.random() * 18 + 8 : Math.random() * 2.5 + 0.5;
-          this.speed = this.bokeh ? Math.random() * 0.2 + 0.05 : Math.random() * 0.6 + 0.2;
-          this.drift = (Math.random() - 0.5) * (this.bokeh ? 0.15 : 0.4);
+          const profile = currentSparkleProfile();
+          const anchorToJewel = Math.random() < 0.38;
+          this.jewelGlint = anchorToJewel;
+
+          if (anchorToJewel) {
+            const anchor = profile.anchors[Math.floor(Math.random() * profile.anchors.length)];
+            this.x = (anchor[0] + (Math.random() - 0.5) * 0.022) * sparkleWidth;
+            this.y = (anchor[1] + (Math.random() - 0.5) * 0.018) * sparkleHeight;
+          } else {
+            this.x = (profile.field.left + Math.random() * (profile.field.right - profile.field.left)) * sparkleWidth;
+            this.y = (profile.field.top + Math.random() * (profile.field.bottom - profile.field.top)) * sparkleHeight;
+          }
+          this.bokeh = !this.jewelGlint && Math.random() < 0.15;
+          this.radius = this.jewelGlint
+            ? Math.random() * 0.8 + 1.7
+            : this.bokeh
+              ? Math.random() * 18 + 8
+              : Math.random() * 2.5 + 0.5;
+          this.speed = this.jewelGlint
+            ? Math.random() * 0.1 + 0.04
+            : this.bokeh
+              ? Math.random() * 0.2 + 0.05
+              : Math.random() * 0.6 + 0.2;
+          this.drift = (Math.random() - 0.5) * (this.jewelGlint ? 0.06 : this.bokeh ? 0.15 : 0.4);
           this.alpha = this.bokeh ? Math.random() * 0.12 + 0.04 : Math.random() * 0.65 + 0.2;
           this.maxAlpha = this.alpha;
           this.life = 0;
           this.maxLife = this.bokeh ? Math.random() * 500 + 300 : Math.random() * 260 + 120;
           this.color = particleColors[Math.floor(Math.random() * particleColors.length)];
-          this.star = !this.bokeh && this.radius > 1.5 && Math.random() < 0.3;
+          this.star = this.jewelGlint || (!this.bokeh && this.radius > 1.5 && Math.random() < 0.3);
         }
 
         update() {
