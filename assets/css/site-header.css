@@ -1,5 +1,20 @@
 /* Shared Miss Miami public header alignment and responsive safe area. */
 
+html.site-header-booting header#site-header {
+  visibility: hidden;
+}
+
+header#site-header {
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.26s ease, box-shadow 0.26s ease !important;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+header#site-header.site-header-hidden {
+  transform: translate3d(0, calc(-100% - env(safe-area-inset-top)), 0) !important;
+  pointer-events: none;
+}
+
 @media (min-width: 1181px) {
   header {
     display: grid !important;
@@ -74,11 +89,6 @@
     align-items: center !important;
     justify-content: space-between !important;
     transition: transform 0.28s ease, background-color 0.26s ease, box-shadow 0.26s ease;
-  }
-
-  header.mobile-header-hidden {
-    transform: translateY(calc(-100% - env(safe-area-inset-top)));
-    pointer-events: none;
   }
 
   header .logo {
@@ -173,5 +183,11 @@
 
   .page-hero {
     padding-top: calc(102px + env(safe-area-inset-top)) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header#site-header {
+    transition: none !important;
   }
 }

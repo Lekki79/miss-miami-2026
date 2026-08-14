@@ -1261,6 +1261,145 @@
       }
     }
 
+    /* B2-B local concept preview: Bronze by Interaction */
+    .steps-bar { display: none !important; }
+    .apply-wrap { max-width: 980px; padding-top: 18px; }
+    .form-section {
+      position: relative;
+      margin-bottom: 10px;
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none;
+      border: 1px solid rgba(122,79,16,0.58);
+      border-radius: 12px;
+      background: rgba(255,253,245,0.84);
+      box-shadow: 0 7px 17px rgba(76,48,25,0.11);
+      overflow: hidden;
+    }
+    .form-section:not(.is-open)::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      z-index: 3;
+      border-radius: inherit;
+      padding: 1.5px;
+      background: conic-gradient(from 0deg, transparent 0 76%, rgba(212,175,55,0.08) 80%, rgba(212,175,55,0.72) 84%, rgba(201,146,42,0.16) 88%, transparent 92% 100%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0;
+      transform: rotate(0deg);
+      animation: b2ClosedBronzeGlint 14s cubic-bezier(.4,0,.2,1) infinite;
+    }
+    .form-section:nth-child(2n)::before { animation-delay: -2.8s; }
+    .form-section:nth-child(3n)::before { animation-delay: -5.6s; }
+    .form-section:nth-child(5n)::before { animation-delay: -8.4s; }
+    @keyframes b2ClosedBronzeGlint {
+      0%, 72%, 100% { opacity: 0; transform: rotate(0deg); }
+      76% { opacity: .34; }
+      86% { opacity: .68; }
+      96% { opacity: 0; transform: rotate(360deg); }
+    }
+    .form-section-title {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 58px;
+      margin: 0;
+      padding: 16px 20px;
+      border: 0;
+      background: rgba(255,253,245,0.84);
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s cubic-bezier(.4,0,.2,1), border-color 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    .form-section-title h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 23.8px;
+      letter-spacing: 3.5px;
+      color: #1A0800;
+    }
+    .form-section-title .num { display: none !important; }
+    .form-section-title::after {
+      content: '';
+      width: 9px;
+      height: 9px;
+      flex: 0 0 auto;
+      border-right: 2px solid rgba(26,8,0,0.62);
+      border-bottom: 2px solid rgba(26,8,0,0.62);
+      transform: rotate(45deg);
+      transition: transform 0.24s ease;
+    }
+    .form-section:not(.is-open) .form-section-title:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(76,48,25,0.15);
+      outline: 1.5px solid rgba(201,146,42,0.9);
+      outline-offset: -1.5px;
+    }
+    .form-section-title:focus-visible {
+      outline: 2px solid #C9922A;
+      outline-offset: -3px;
+      box-shadow: 0 0 0 3px rgba(201,146,42,0.18);
+    }
+    .form-section.is-open {
+      border: 1px solid #C9922A;
+      box-shadow: inset 0 0 0 1px rgba(201,146,42,0.58), 0 10px 22px rgba(76,48,25,0.15);
+      overflow: visible;
+    }
+    .form-section.is-animating { overflow: hidden; }
+    .form-section.is-open .form-section-title {
+      border-bottom: 1px solid rgba(201,146,42,0.28);
+    }
+    .form-section.is-open .form-section-title::after { transform: rotate(225deg); }
+    .b2-content { height: 0; overflow: hidden; opacity: 0; transition: height 340ms cubic-bezier(0.22,1,0.36,1), opacity 300ms cubic-bezier(0.22,1,0.36,1); }
+    .b2-content-inner { padding: 24px 20px 26px; }
+    .form-section.is-open .b2-content { opacity: 1; }
+    .form-section.b2-flash { animation: b2BronzePass 900ms ease-in-out 1; }
+    @keyframes b2BronzePass {
+      0%,100% { border-color: #C9922A; box-shadow: 0 10px 22px rgba(76,48,25,0.15); }
+      48% { border-color: #D4AF37; box-shadow: 0 10px 26px rgba(201,146,42,0.32), 0 0 0 2px rgba(212,175,55,0.22); }
+    }
+    select.b2-native-select { position: absolute !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important; }
+    .b2-select {
+      position: relative;
+      width: 100%;
+      padding-bottom: 0;
+      transition: padding-bottom 240ms cubic-bezier(0.22,1,0.36,1);
+    }
+    .b2-select.is-open { padding-bottom: calc(var(--b2-list-height, 0px) + 5px); }
+    .b2-select-trigger {
+      width: 100%; min-height: 49px; display: flex; align-items: center; justify-content: space-between;
+      padding: 13px 15px; background: rgba(255,253,245,0.84); color: rgba(26,8,0,0.62);
+      border: 1.5px solid rgba(122,79,16,0.3); border-radius: 2px;
+      font-family: 'Montserrat', Arial, sans-serif; font-size: 14px; font-weight: 400; text-align: left;
+    }
+    .b2-select-trigger::after { content:''; width:9px; height:9px; border-right:2px solid rgba(26,8,0,.62); border-bottom:2px solid rgba(26,8,0,.62); transform:rotate(45deg); transition:transform .24s; }
+    .b2-select.is-open .b2-select-trigger { border-color: rgba(201,146,42,0.72); }
+    .b2-select.is-open .b2-select-trigger::after { transform: rotate(225deg); }
+    .b2-select-trigger:focus-visible { outline: 2px solid #C9922A; outline-offset: 2px; }
+    .b2-select-list {
+      position: absolute; z-index: 40; left: 0; right: 0; top: calc(var(--b2-trigger-height, 49px) + 5px);
+      display: none; padding: 7px; background: #FFF8E7; border: 2px solid #C9922A;
+      border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .b2-select.is-open .b2-select-list { display: block; }
+    .b2-select-option { width:100%; display:block; padding:11px 13px; border:0; border-radius:4px; background:transparent; color:#3A1A04; font-family:'Montserrat',Arial,sans-serif; font-size:13px; font-weight:400; line-height:18.85px; text-align:left; }
+    .b2-select-option:hover,.b2-select-option:focus-visible,.b2-select-option[aria-selected="true"] { background:rgba(201,146,42,0.12); color:#1A0800; outline:none; }
+    @media (max-width: 768px) {
+      .apply-wrap { padding-left: 24px; padding-right: 24px; }
+      .form-section-title { min-height: 56px; padding: 15px 16px; }
+      .form-section-title h3 { font-size: 14px; letter-spacing: 2px; }
+      .b2-content-inner { padding: 20px 16px 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .form-section-title,.form-section-title::after,.b2-content,.b2-select { transition: none !important; }
+      .form-section::before { animation: none !important; opacity: 0 !important; }
+      .form-section.b2-flash { animation: none !important; border-color: #C9922A; }
+    }
   </style>
   <link rel="stylesheet" href="assets/css/site-header.css?v=20260805-3">
 </head>
@@ -1469,14 +1608,14 @@
       <div class="form-section visible" style="opacity:1!important;transform:translateY(0)!important">
         <div class="form-section-title"><div class="num">1</div><h3>Personal Information</h3></div>
         <div class="form-grid">
-          <div class="field"><label>First Name</label><input type="text" id="first_name" name="first_name" placeholder="Isabella" required><span class="error-message"></span></div>
-          <div class="field"><label>Last Name</label><input type="text" id="last_name" name="last_name" placeholder="Moretti" required><span class="error-message"></span></div>
-          <div class="field"><label>Preferred Name (Optional)</label><input type="text" id="preferred_name" name="preferred_name" placeholder="How should we address you?"><span class="error-message"></span></div>
+          <div class="field"><label>First Name</label><input type="text" id="first_name" name="first_name" autocomplete="given-name" placeholder="Isabella" required><span class="error-message"></span></div>
+          <div class="field"><label>Last Name</label><input type="text" id="last_name" name="last_name" autocomplete="family-name" placeholder="Moretti" required><span class="error-message"></span></div>
+          <div class="field"><label>Preferred Name (Optional)</label><input type="text" id="preferred_name" name="preferred_name" autocomplete="off" placeholder="How should we address you?"><span class="error-message"></span></div>
           <div class="field"><label>Date of Birth</label><div style="position:relative;width:100%"><input type="text" id="dob-input" name="dob" placeholder="MM/DD/YYYY" readonly style="cursor:pointer;background:#FFF8E7" required><div id="date-picker" style="display:none;position:absolute;bottom:100%;left:0;margin-bottom:8px;background:white;border:2px solid #C9922A;border-radius:8px;padding:16px;z-index:10000;min-width:300px;max-height:400px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,.15)"></div></div><span class="error-message"></span></div>
           <div class="field"><label>Age</label><input type="number" id="calculated-age" name="age" min="21" max="45" inputmode="numeric" placeholder="Calculated automatically" required><span class="field-note">Calculated from your date of birth and available for correction.</span><span class="error-message"></span></div>
-          <div class="field"><label>Email Address</label><input type="email" id="email" name="email" placeholder="your@email.com" required><span class="error-message"></span></div>
-          <div class="field"><label>Phone Number</label><input type="tel" id="phone" name="phone" placeholder="+1 (305) 000-0000" required><span class="error-message"></span></div>
-          <div class="field span2"><label>Residential Address</label><input type="text" id="address" name="address" placeholder="Street, City, State, ZIP" required><span class="error-message"></span></div>
+          <div class="field"><label>Email Address</label><input type="email" id="email" name="email" autocomplete="email" placeholder="your@email.com" required><span class="error-message"></span></div>
+          <div class="field"><label>Phone Number</label><input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1 (305) 000-0000" required><span class="error-message"></span></div>
+          <div class="field span2"><label>Residential Address</label><input type="text" id="address" name="address" autocomplete="street-address" placeholder="Street, City, State, ZIP" required><span class="error-message"></span></div>
           <div class="field span2"><label>How long have you lived in South Florida?</label><input type="text" id="south-florida-duration" name="south_florida_duration" placeholder="For example: 5 years" required><span class="error-message"></span></div>
         </div>
       </div>
@@ -1553,7 +1692,7 @@
               <h3>Miss Miami 2027</h3>
               <p style="font-size:12px;color:#1A0800;opacity:1;margin-top:4px;font-weight:300;">Application & Registration Fee</p>
             </div>
-            <div class="price-tag">$50<span> USD</span></div>
+            <div class="price-tag">$50</div>
           </div>
 
           <div class="payment-includes">
@@ -2643,6 +2782,227 @@
         }
       }
     });
+  </script>
+  <script>
+    (() => {
+      const form = document.getElementById('apply-form');
+      if (!form) return;
+      const sections = [...form.querySelectorAll('.form-section')];
+      let activeSection = null;
+      const sectionAnimations = new WeakMap();
+      const transitionDuration = 340;
+
+      function refreshSectionHeight(section) {
+        if (!section?.classList.contains('is-open')) return;
+        const content = section.querySelector('.b2-content');
+        if (!content || content.style.height === 'auto') return;
+        content.style.height = `${content.scrollHeight}px`;
+      }
+
+      function closeSectionSelects(section) {
+        section?.querySelectorAll('.b2-select.is-open').forEach(wrap => {
+          wrap.classList.remove('is-open');
+          wrap.style.removeProperty('--b2-list-height');
+          wrap.querySelector('.b2-select-trigger')?.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      function buildSection(section, index) {
+        const title = section.querySelector('.form-section-title');
+        if (!title) return;
+        title.setAttribute('role', 'button');
+        title.setAttribute('tabindex', '0');
+        title.setAttribute('aria-expanded', 'false');
+        const content = document.createElement('div');
+        content.className = 'b2-content';
+        const inner = document.createElement('div');
+        inner.className = 'b2-content-inner';
+        [...section.children].filter(node => node !== title).forEach(node => inner.appendChild(node));
+        content.appendChild(inner);
+        section.appendChild(content);
+        content.style.height = '0px';
+        content.style.opacity = '0';
+        const activate = () => toggleSection(section);
+        title.addEventListener('click', activate);
+        title.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); activate(); }
+        });
+      }
+
+      function animate(section, open) {
+        const title = section.querySelector('.form-section-title');
+        const content = section.querySelector('.b2-content');
+        const running = sectionAnimations.get(section);
+        if (running) {
+          cancelAnimationFrame(running.raf);
+          content.removeEventListener('transitionend', running.done);
+          window.clearTimeout(running.timer);
+        }
+        const current = content.getBoundingClientRect().height;
+        section.classList.add('is-animating');
+        section.style.overflow = 'hidden';
+        content.style.transition = 'none';
+        content.style.height = current + 'px';
+        content.style.overflow = 'hidden';
+        void content.offsetHeight;
+        if (open) {
+          section.classList.add('is-open');
+          title.setAttribute('aria-expanded', 'true');
+          const raf = requestAnimationFrame(() => {
+            content.style.transition = '';
+            content.style.height = content.scrollHeight + 'px';
+            content.style.opacity = '1';
+          });
+          sectionAnimations.set(section, { raf, done: null, timer: 0 });
+        } else {
+          title.setAttribute('aria-expanded', 'false');
+          closeSectionSelects(section);
+          section.classList.remove('is-open');
+          const raf = requestAnimationFrame(() => {
+            content.style.transition = '';
+            content.style.height = '0px';
+            content.style.opacity = '0';
+          });
+          sectionAnimations.set(section, { raf, done: null, timer: 0 });
+        }
+        const done = event => {
+          if (event && event.propertyName !== 'height') return;
+          content.removeEventListener('transitionend', done);
+          const state = sectionAnimations.get(section);
+          if (state) window.clearTimeout(state.timer);
+          if (open) {
+            content.style.height = 'auto';
+            content.style.overflow = 'visible';
+            section.style.overflow = 'visible';
+          } else {
+            content.style.height = '0px';
+            content.style.overflow = 'hidden';
+            section.style.overflow = 'hidden';
+          }
+          section.classList.remove('is-animating');
+          sectionAnimations.delete(section);
+        };
+        const state = sectionAnimations.get(section);
+        if (state) {
+          state.done = done;
+          state.timer = window.setTimeout(() => done(), transitionDuration + 80);
+        }
+        content.addEventListener('transitionend', done);
+      }
+
+      function toggleSection(section) {
+        if (section === activeSection && section.classList.contains('is-open')) {
+          animate(section, false);
+          activeSection = null;
+          return;
+        }
+        if (activeSection) animate(activeSection, false);
+        activeSection = section;
+        animate(section, true);
+        section.classList.remove('b2-flash');
+        void section.offsetWidth;
+        section.classList.add('b2-flash');
+      }
+
+      sections.forEach(buildSection);
+
+      const contentResizeObserver = new ResizeObserver(entries => {
+        entries.forEach(entry => refreshSectionHeight(entry.target.closest('.form-section')));
+      });
+      sections.forEach(section => {
+        const inner = section.querySelector('.b2-content-inner');
+        if (inner) contentResizeObserver.observe(inner);
+      });
+
+      form.querySelectorAll('select').forEach(select => {
+        select.classList.add('b2-native-select');
+        const wrap = document.createElement('div');
+        wrap.className = 'b2-select';
+        const trigger = document.createElement('button');
+        trigger.type = 'button';
+        trigger.className = 'b2-select-trigger';
+        trigger.textContent = select.options[select.selectedIndex]?.textContent || 'Select...';
+        trigger.setAttribute('aria-haspopup', 'listbox');
+        trigger.setAttribute('aria-expanded', 'false');
+        const list = document.createElement('div');
+        list.className = 'b2-select-list';
+        list.setAttribute('role', 'listbox');
+        [...select.options].filter(option => !option.disabled).forEach(option => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'b2-select-option';
+          button.textContent = option.textContent;
+          button.setAttribute('role', 'option');
+          button.setAttribute('aria-selected', String(option.selected));
+          button.addEventListener('click', () => {
+            select.value = option.value;
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+            trigger.textContent = option.textContent;
+            list.querySelectorAll('[role="option"]').forEach(node => node.setAttribute('aria-selected', 'false'));
+            button.setAttribute('aria-selected', 'true');
+            wrap.classList.remove('is-open');
+            wrap.style.removeProperty('--b2-list-height');
+            wrap.style.removeProperty('--b2-trigger-height');
+            trigger.setAttribute('aria-expanded', 'false');
+            refreshSectionHeight(wrap.closest('.form-section'));
+            trigger.focus();
+          });
+          list.appendChild(button);
+        });
+        trigger.addEventListener('click', () => {
+          document.querySelectorAll('.b2-select.is-open').forEach(node => {
+            if (node === wrap) return;
+            node.classList.remove('is-open');
+            node.style.removeProperty('--b2-list-height');
+            node.querySelector('.b2-select-trigger')?.setAttribute('aria-expanded', 'false');
+            refreshSectionHeight(node.closest('.form-section'));
+          });
+          const open = wrap.classList.toggle('is-open');
+          if (open) {
+            wrap.style.setProperty('--b2-trigger-height', `${trigger.offsetHeight}px`);
+            wrap.style.setProperty('--b2-list-height', `${list.scrollHeight}px`);
+          } else {
+            wrap.style.removeProperty('--b2-list-height');
+            wrap.style.removeProperty('--b2-trigger-height');
+          }
+          trigger.setAttribute('aria-expanded', String(open));
+          refreshSectionHeight(wrap.closest('.form-section'));
+          if (open) list.querySelector('[role="option"]')?.focus();
+        });
+        trigger.addEventListener('keydown', event => {
+          if (event.key === 'ArrowDown') { event.preventDefault(); wrap.style.setProperty('--b2-trigger-height', `${trigger.offsetHeight}px`); wrap.style.setProperty('--b2-list-height', `${list.scrollHeight}px`); wrap.classList.add('is-open'); trigger.setAttribute('aria-expanded','true'); refreshSectionHeight(wrap.closest('.form-section')); list.querySelector('[role="option"]')?.focus(); }
+          if (event.key === 'Escape') { wrap.classList.remove('is-open'); wrap.style.removeProperty('--b2-list-height'); wrap.style.removeProperty('--b2-trigger-height'); trigger.setAttribute('aria-expanded','false'); refreshSectionHeight(wrap.closest('.form-section')); }
+        });
+        list.addEventListener('keydown', event => {
+          const options = [...list.querySelectorAll('[role="option"]')];
+          const current = options.indexOf(document.activeElement);
+          if (event.key === 'ArrowDown') { event.preventDefault(); options[(current + 1) % options.length].focus(); }
+          if (event.key === 'ArrowUp') { event.preventDefault(); options[(current - 1 + options.length) % options.length].focus(); }
+          if (event.key === 'Escape') { event.preventDefault(); wrap.classList.remove('is-open'); wrap.style.removeProperty('--b2-list-height'); wrap.style.removeProperty('--b2-trigger-height'); trigger.setAttribute('aria-expanded','false'); refreshSectionHeight(wrap.closest('.form-section')); trigger.focus(); }
+        });
+        select.insertAdjacentElement('afterend', wrap);
+        wrap.append(trigger, list);
+      });
+
+      document.addEventListener('click', event => {
+        if (!event.target.closest('.b2-select')) document.querySelectorAll('.b2-select.is-open').forEach(node => {
+          node.classList.remove('is-open');
+          node.style.removeProperty('--b2-list-height');
+          node.style.removeProperty('--b2-trigger-height');
+          node.querySelector('.b2-select-trigger')?.setAttribute('aria-expanded', 'false');
+          refreshSectionHeight(node.closest('.form-section'));
+        });
+      });
+
+      form.addEventListener('submit', event => {
+        const firstInvalid = form.querySelector(':invalid');
+        if (!firstInvalid) return;
+        event.preventDefault();
+        const section = firstInvalid.closest('.form-section');
+        if (section && section !== activeSection) toggleSection(section);
+        requestAnimationFrame(() => firstInvalid.focus({ preventScroll: false }));
+      }, true);
+    })();
   </script>
   <script src="assets/js/site-header-scroll.js"></script>
 </body>
