@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <script>document.documentElement.classList.add('site-header-booting');</script>
   <link rel="stylesheet" href="assets/css/site-header.css?v=20260812-6" />
-  <link rel="stylesheet" href="assets/css/sponsors.css?v=20260810-7" />
+  <link rel="stylesheet" href="assets/css/sponsors.css?v=20260814-9" />
 </head>
 <body>
   <header id="site-header" class="on-hero">
@@ -42,7 +42,7 @@
       </picture>
       <div class="page-shell hero-inner">
         <p class="eyebrow eyebrow-light">Miss Miami 2027 Partnerships</p>
-        <h1 id="sponsor-title">A Partnership<br><em>with Presence</em></h1>
+        <h1 id="sponsor-title"><span>A Partnership</span><em>With Presence</em></h1>
         <p class="hero-copy">Join a platform shaped by confidence, purpose and the unmistakable energy of Miami — and become part of a story designed to live beyond competition night</p>
         <div class="hero-actions"><a class="btn-primary" href="#sponsor-inquiry">Become a Sponsor</a></div>
       </div>
@@ -52,7 +52,7 @@
       <div class="page-shell why-layout">
         <div class="section-intro">
           <p class="eyebrow">Why Partner With Miss Miami</p>
-          <h2>More than visibility.<br><em>A meaningful place in the story.</em></h2>
+          <h2>More than visibility.<br><em>A meaningful place in the story</em></h2>
           <p>Miss Miami gives aligned brands a considered way to connect with a modern community through experiences rooted in ambition, confidence and purpose</p>
         </div>
         <div class="why-statements">
@@ -83,7 +83,7 @@
         <div class="packages-heading package-reveal-intro">
           <p class="eyebrow">Partnership Levels</p>
           <h2>A Presence That Grows With the Story</h2>
-          <p>Three ways to enter the Miss Miami world — from a considered introduction to a defining presence within the 2027 experience.</p>
+          <p>Three ways to enter the Miss Miami world — from a considered introduction to a defining presence within the 2027 experience</p>
         </div>
         <div class="package-field">
           <article class="package-level package-gold">
@@ -113,7 +113,7 @@
       <div class="page-shell deck-layout">
         <p class="eyebrow deck-eyebrow">Partnership Deck</p>
         <h2 class="deck-heading"><span>A Closer Look</span><span>at the Partnership</span></h2>
-        <p class="deck-copy">A considered introduction to the Miss Miami world, the places a brand can become present and the partnership levels shaping the 2027 experience.</p>
+        <p class="deck-copy">A considered introduction to the Miss Miami world, the places a brand can become present and the partnership levels shaping the 2027 experience</p>
         <figure class="deck-visual">
           <img src="assets/images/sponsor-deck-light-approved.png" alt="Demo concept for the Miss Miami 2027 Partnership Deck" />
         </figure>
@@ -213,6 +213,233 @@
     const sponsorEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const sponsorPhoneCharacters = /^[\d\s+()\-]+$/;
 
+    const sponsorAccordionSections = [...sponsorForm.querySelectorAll('.sponsor-form-section')];
+    const sponsorAccordionAnimations = new WeakMap();
+    const sponsorSelectControls = new WeakMap();
+    let activeSponsorSection = null;
+
+    function closeSponsorDropdown(wrap, returnFocus = false) {
+      if (!wrap) return;
+      wrap.classList.remove('is-open');
+      wrap.style.removeProperty('--b2-list-height');
+      wrap.style.removeProperty('--b2-trigger-height');
+      const trigger = wrap.querySelector('.b2-select-trigger');
+      const list = wrap.querySelector('.b2-select-list');
+      trigger?.setAttribute('aria-expanded', 'false');
+      trigger?.removeAttribute('aria-activedescendant');
+      list?.setAttribute('aria-hidden', 'true');
+      wrap.querySelectorAll('.b2-select-option').forEach(option => option.classList.remove('is-active'));
+      if (returnFocus) trigger?.focus();
+    }
+
+    function closeSponsorDropdowns(except = null) {
+      sponsorForm.querySelectorAll('.b2-select.is-open').forEach(wrap => {
+        if (wrap !== except) closeSponsorDropdown(wrap);
+      });
+    }
+
+    function finishSponsorSectionAnimation(section, open) {
+      const content = section.querySelector('.sponsor-accordion-content');
+      if (!content) return;
+      const running = sponsorAccordionAnimations.get(section);
+      if (running) window.clearTimeout(running.timer);
+      if (open) {
+        content.style.height = 'auto';
+        content.style.overflow = 'visible';
+        section.style.overflow = 'visible';
+      } else {
+        content.style.height = '0px';
+        content.style.overflow = 'hidden';
+        content.setAttribute('inert', '');
+        section.style.overflow = 'hidden';
+      }
+      section.classList.remove('is-animating');
+      sponsorAccordionAnimations.delete(section);
+    }
+
+    function animateSponsorSection(section, open) {
+      const title = section.querySelector('.sponsor-form-title');
+      const content = section.querySelector('.sponsor-accordion-content');
+      const running = sponsorAccordionAnimations.get(section);
+      if (running) {
+        content.removeEventListener('transitionend', running.done);
+        window.clearTimeout(running.timer);
+      }
+      const currentHeight = content.getBoundingClientRect().height;
+      section.classList.add('is-animating');
+      section.style.overflow = 'hidden';
+      content.style.transition = 'none';
+      content.style.height = `${currentHeight}px`;
+      content.style.overflow = 'hidden';
+      void content.offsetHeight;
+      section.classList.toggle('is-open', open);
+      title.setAttribute('aria-expanded', String(open));
+      content.setAttribute('aria-hidden', String(!open));
+      if (open) content.removeAttribute('inert');
+      else closeSponsorDropdowns();
+      requestAnimationFrame(() => {
+        content.style.transition = '';
+        content.style.height = open ? `${content.scrollHeight}px` : '0px';
+        content.style.opacity = open ? '1' : '0';
+      });
+      const done = event => {
+        if (event && event.propertyName !== 'height') return;
+        content.removeEventListener('transitionend', done);
+        finishSponsorSectionAnimation(section, open);
+      };
+      const timer = window.setTimeout(() => done(), 420);
+      sponsorAccordionAnimations.set(section, { done, timer });
+      content.addEventListener('transitionend', done);
+    }
+
+    function setSponsorSection(section, open) {
+      if (open && activeSponsorSection && activeSponsorSection !== section) {
+        animateSponsorSection(activeSponsorSection, false);
+      }
+      animateSponsorSection(section, open);
+      activeSponsorSection = open ? section : null;
+    }
+
+    sponsorAccordionSections.forEach((section, index) => {
+      const title = section.querySelector('.sponsor-form-title');
+      const content = document.createElement('div');
+      const inner = document.createElement('div');
+      const contentId = `sponsor-form-section-${index + 1}-content`;
+      content.className = 'sponsor-accordion-content';
+      content.id = contentId;
+      content.setAttribute('role', 'region');
+      content.setAttribute('aria-labelledby', title.querySelector('h3').id);
+      content.setAttribute('aria-hidden', 'true');
+      content.setAttribute('inert', '');
+      inner.className = 'sponsor-accordion-inner';
+      [...section.children].filter(child => child !== title).forEach(child => inner.appendChild(child));
+      content.appendChild(inner);
+      section.appendChild(content);
+      content.style.height = '0px';
+      content.style.opacity = '0';
+      title.setAttribute('role', 'button');
+      title.setAttribute('tabindex', '0');
+      title.setAttribute('aria-expanded', 'false');
+      title.setAttribute('aria-controls', contentId);
+      const activate = () => setSponsorSection(section, !section.classList.contains('is-open'));
+      title.addEventListener('click', activate);
+      title.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          activate();
+        }
+      });
+      new ResizeObserver(() => {
+        if (section.classList.contains('is-animating') && section.classList.contains('is-open')) {
+          content.style.height = `${content.scrollHeight}px`;
+        }
+      }).observe(inner);
+    });
+
+    sponsorForm.querySelectorAll('select').forEach((select, selectIndex) => {
+      const placeholder = select.options[select.selectedIndex]?.textContent || 'Select...';
+      const wrap = document.createElement('div');
+      const trigger = document.createElement('button');
+      const list = document.createElement('div');
+      const listId = `${select.id || `sponsor-select-${selectIndex + 1}`}-listbox`;
+      let activeIndex = -1;
+
+      select.classList.add('b2-native-select');
+      select.setAttribute('tabindex', '-1');
+      wrap.className = 'b2-select';
+      trigger.type = 'button';
+      trigger.className = 'b2-select-trigger';
+      trigger.textContent = placeholder;
+      trigger.setAttribute('role', 'combobox');
+      trigger.setAttribute('aria-haspopup', 'listbox');
+      trigger.setAttribute('aria-expanded', 'false');
+      trigger.setAttribute('aria-controls', listId);
+      if (select.getAttribute('aria-describedby')) trigger.setAttribute('aria-describedby', select.getAttribute('aria-describedby'));
+      list.className = 'b2-select-list';
+      list.id = listId;
+      list.setAttribute('role', 'listbox');
+      list.setAttribute('aria-hidden', 'true');
+      list.setAttribute('aria-label', select.labels?.[0]?.textContent?.trim() || 'Options');
+
+      const enabledOptions = [...select.options].filter(option => !option.disabled);
+      const optionButtons = enabledOptions.map((option, optionIndex) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'b2-select-option';
+        button.id = `${listId}-option-${optionIndex + 1}`;
+        button.textContent = option.textContent;
+        button.setAttribute('role', 'option');
+        button.setAttribute('tabindex', '-1');
+        button.setAttribute('aria-selected', String(option.selected));
+        list.appendChild(button);
+        return button;
+      });
+
+      function setActive(index) {
+        if (!optionButtons.length) return;
+        activeIndex = (index + optionButtons.length) % optionButtons.length;
+        optionButtons.forEach((button, currentIndex) => button.classList.toggle('is-active', currentIndex === activeIndex));
+        trigger.setAttribute('aria-activedescendant', optionButtons[activeIndex].id);
+        optionButtons[activeIndex].scrollIntoView({ block: 'nearest' });
+      }
+
+      function openDropdown(direction = 1) {
+        closeSponsorDropdowns(wrap);
+        wrap.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+        list.setAttribute('aria-hidden', 'false');
+        wrap.style.setProperty('--b2-trigger-height', `${trigger.offsetHeight}px`);
+        wrap.style.setProperty('--b2-list-height', `${list.scrollHeight}px`);
+        const selectedIndex = enabledOptions.findIndex(option => option.selected);
+        setActive(selectedIndex >= 0 ? selectedIndex : (direction < 0 ? optionButtons.length - 1 : 0));
+      }
+
+      function chooseOption(index) {
+        const option = enabledOptions[index];
+        if (!option) return;
+        select.value = option.value;
+        trigger.textContent = option.textContent;
+        optionButtons.forEach((button, currentIndex) => button.setAttribute('aria-selected', String(currentIndex === index)));
+        select.dispatchEvent(new Event('input', { bubbles: true }));
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+        closeSponsorDropdown(wrap, true);
+      }
+
+      trigger.addEventListener('click', () => {
+        if (wrap.classList.contains('is-open')) closeSponsorDropdown(wrap);
+        else openDropdown();
+      });
+      trigger.addEventListener('keydown', event => {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          if (!wrap.classList.contains('is-open')) openDropdown(event.key === 'ArrowUp' ? -1 : 1);
+          else setActive(activeIndex + (event.key === 'ArrowUp' ? -1 : 1));
+        } else if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          if (wrap.classList.contains('is-open')) chooseOption(activeIndex);
+          else openDropdown();
+        } else if (event.key === 'Escape' && wrap.classList.contains('is-open')) {
+          event.preventDefault();
+          closeSponsorDropdown(wrap);
+        } else if (event.key === 'Tab') {
+          closeSponsorDropdown(wrap);
+        }
+      });
+      optionButtons.forEach((button, index) => {
+        button.addEventListener('mousedown', event => event.preventDefault());
+        button.addEventListener('mouseenter', () => setActive(index));
+        button.addEventListener('click', () => chooseOption(index));
+      });
+
+      select.insertAdjacentElement('afterend', wrap);
+      wrap.append(trigger, list);
+      sponsorSelectControls.set(select, { wrap, trigger });
+    });
+
+    document.addEventListener('click', event => {
+      if (!event.target.closest('.b2-select')) closeSponsorDropdowns();
+    });
+
     function updateSponsorSectionMarker(field) {
       const section = field.closest('.sponsor-form-section');
       const marker = section?.querySelector('.sponsor-form-number');
@@ -250,6 +477,9 @@
       const error = document.getElementById(`${field.id}-error`);
       field.classList.toggle('sponsor-field-error', Boolean(message));
       field.setAttribute('aria-invalid', String(Boolean(message)));
+      const customSelect = sponsorSelectControls.get(field);
+      customSelect?.wrap.classList.toggle('has-error', Boolean(message));
+      customSelect?.trigger.setAttribute('aria-invalid', String(Boolean(message)));
       if (error) {
         error.textContent = message;
         error.classList.toggle('is-visible', Boolean(message));
@@ -273,8 +503,13 @@
       const validationResults = sponsorFields.map(field => ({ field, valid: validateSponsorField(field) }));
       const firstInvalid = validationResults.find(result => !result.valid)?.field;
       if (firstInvalid) {
-        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        window.setTimeout(() => firstInvalid.focus({ preventScroll: true }), 320);
+        const invalidSection = firstInvalid.closest('.sponsor-form-section');
+        if (invalidSection && !invalidSection.classList.contains('is-open')) setSponsorSection(invalidSection, true);
+        window.setTimeout(() => {
+          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const focusTarget = sponsorSelectControls.get(firstInvalid)?.trigger || firstInvalid;
+          focusTarget.focus({ preventScroll: true });
+        }, 440);
       }
     });
 
