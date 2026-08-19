@@ -1,0 +1,63 @@
+/* Canonical Miss Miami solid bronze CTA. Apply only through .mm-bronze-cta. */
+.mm-bronze-cta.mm-bronze-cta {
+  position: relative;
+  display: inline-flex;
+  min-height: 48px !important;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 34px !important;
+  overflow: hidden;
+  border: 1px solid transparent !important;
+  border-radius: 6px !important;
+  background-color: #A66F16;
+  background-image: linear-gradient(110deg, #7A4F10 0%, #C9922A 35%, #D4AF37 50%, #C9922A 70%, #7A4F10 100%) !important;
+  background-repeat: no-repeat;
+  background-position: 0% center;
+  background-size: 250% auto !important;
+  color: #FFF8E7 !important;
+  font-family: "Cinzel", Georgia, serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1.7 !important;
+  letter-spacing: .22em !important;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  animation: mmBronzeFlow 8s ease-in-out infinite !important;
+  transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1), background-position .35s cubic-bezier(.4,0,.2,1);
+}
+
+.mm-bronze-cta.mm-bronze-cta::after {
+  content: none !important;
+  animation: none !important;
+}
+
+.mm-bronze-cta.mm-bronze-cta:hover {
+  box-shadow: 0 10px 22px rgba(58,26,4,.16);
+  transform: translateY(-2px) !important;
+}
+
+.mm-bronze-cta.mm-bronze-cta:focus-visible {
+  outline: 2px solid #C9922A;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px rgba(255,253,245,.7), 0 10px 22px rgba(58,26,4,.16);
+  transform: translateY(-2px) !important;
+}
+
+.mm-bronze-cta.mm-bronze-cta:active {
+  box-shadow: 0 4px 12px rgba(58,26,4,.14);
+  transform: translateY(0) !important;
+}
+
+@keyframes mmBronzeFlow {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-bronze-cta.mm-bronze-cta {
+    animation: none !important;
+    transition: none !important;
+    background-position: 50% center !important;
+  }
+}
