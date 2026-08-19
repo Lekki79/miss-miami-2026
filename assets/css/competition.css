@@ -298,8 +298,29 @@
     .final-actions { display: flex; justify-content: center; gap: 14px; }
     footer {
       padding: 40px 56px 28px;
-      border-top: 1px solid rgba(201,146,42,0.22);
+      border-top: 0;
       background: #EBD8BA;
+    }
+    .competition-brand-divider {
+      display: flex;
+      width: min(420px, calc(100% - 48px));
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 0 auto 24px;
+    }
+    .competition-brand-divider::before,
+    .competition-brand-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(140,87,13,0.34);
+    }
+    .competition-brand-divider img {
+      display: block;
+      width: 28px;
+      height: auto;
+      flex: 0 0 auto;
     }
     .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
     .footer-bottom p, .footer-links a { color: #3A1A04; font-size: 11px; }
@@ -763,6 +784,12 @@
       .final-content { width: calc(100% - 48px); margin-bottom: 54px; text-align: center; }
       .final-cta h2 { font-size: 30px; }
       footer { padding: 28px 24px calc(28px + env(safe-area-inset-bottom, 0px)); }
+      .competition-brand-divider {
+        width: 74%;
+        gap: 12px;
+        margin-bottom: 22px;
+      }
+      .competition-brand-divider img { width: 22px; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
       .footer-bottom p, .footer-links a { font-size: 13px; }
       .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }

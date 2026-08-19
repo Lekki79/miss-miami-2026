@@ -1402,6 +1402,116 @@
     }
   </style>
   <link rel="stylesheet" href="assets/css/site-header.css?v=20260805-3">
+  <link rel="stylesheet" href="assets/css/bronze-cta.css?v=20260818-5" />
+  <style id="apply-concept-review">
+    html { background: #EBD8BA; }
+    html,
+    body { overflow-x: clip; }
+    body {
+      position: relative;
+      isolation: isolate;
+      background:
+        radial-gradient(circle at 78% 10%, rgba(255,248,231,.58), transparent 24%),
+        radial-gradient(circle at 18% 32%, rgba(255,248,231,.70), transparent 21%),
+        radial-gradient(circle at 82% 58%, rgba(201,146,42,.10), transparent 23%),
+        radial-gradient(circle at 82% 82%, rgba(255,253,245,.72), transparent 24%),
+        linear-gradient(180deg, #EBD8BA 0%, #FFFDF5 25%, #EBD8BA 51%, #FFFDF5 76%, #EBD8BA 100%);
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      background:
+        linear-gradient(115deg, transparent 62%, rgba(201,146,42,.09)),
+        radial-gradient(circle at 14% 86%, rgba(201,146,42,.08), transparent 23%);
+      pointer-events: none;
+    }
+    .page-hero, .apply-wrap, footer, .before-apply, form { background: transparent; }
+    .page-hero { padding-top: 132px; padding-bottom: 22px; }
+    .page-hero h1 {
+      color: #1A0800;
+      font-size: clamp(42px,5vw,66px);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .apply-wrap { position: relative; z-index: 1; max-width: 980px; padding-top: 20px; padding-bottom: 58px; }
+    .concept-wordmark {
+      position: relative;
+      z-index: 1;
+      margin: 42px auto 0;
+      color: rgba(140,87,13,.17);
+      font-family: 'Cinzel',serif;
+      font-size: clamp(54px,7vw,92px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: .12em;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .before-apply,
+    #application-form,
+    .concept-final-divider { position: relative; z-index: 1; }
+    .application-ornament,
+    .concept-final-divider {
+      width: min(400px,80%);
+      max-width: 100%;
+      gap: 16px;
+      margin: 24px auto 0;
+    }
+    .application-ornament::before,
+    .application-ornament::after,
+    .concept-final-divider::before,
+    .concept-final-divider::after { background: rgba(140,87,13,.34); }
+    .application-ornament img,
+    .concept-final-divider img { display: block; width: 28px; height: auto; flex: 0 0 auto; }
+    .before-apply { margin-bottom: 30px; }
+    .before-apply-heading { font-size: 22px; font-weight: 400; line-height: 1.15; letter-spacing: .09em; }
+    .before-apply-trigger {
+      border-color: rgba(122,79,16,.52);
+      background: linear-gradient(110deg,#7A4F10 0%,#A9741F 48%,#C9922A 100%);
+      box-shadow: 0 12px 28px rgba(58,26,4,.14);
+    }
+    .before-apply-end { margin-top: 32px; margin-bottom: 4px; }
+    .form-section {
+      background: rgba(255,253,245,.76);
+      border-color: rgba(122,79,16,.62);
+      box-shadow: inset 0 0 0 1px rgba(201,146,42,.10),0 9px 22px rgba(76,48,25,.09);
+      backdrop-filter: blur(2px);
+    }
+    .form-section-title { background: rgba(255,253,245,.78); }
+    .form-section-title h3 { color:#1A0800; font-weight:600; }
+    .payment-section { background: rgba(255,253,245,.48); }
+    .btn-submit.mm-bronze-cta { min-width: 340px; }
+    .concept-final-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 38px;
+      margin-bottom: 10px;
+    }
+    .concept-final-divider::before,
+    .concept-final-divider::after { content:''; height:1px; flex:1; }
+    footer { border-top: 0; padding-top: 26px; }
+    @media (max-width:768px) {
+      .page-hero { padding: 104px 20px 15px; }
+      .page-hero h1 { font-size: 38px; letter-spacing:.08em; }
+      .apply-wrap { padding: 12px 20px 46px; }
+      .concept-wordmark { margin-top: 32px; font-size: clamp(34px,11vw,43px); letter-spacing: .065em; color: rgba(140,87,13,.18); }
+      .application-ornament,
+      .concept-final-divider { width: 74%; gap:12px; }
+      .application-ornament img,
+      .concept-final-divider img { width:22px; }
+      .before-apply-heading { font-size:20px; }
+      .before-apply-trigger { gap:12px; padding:16px; }
+      .form-section { margin-bottom:10px; }
+      .btn-submit.mm-bronze-cta { width:100%; min-width:0; }
+      .concept-final-divider { margin-top:30px; margin-bottom:4px; }
+      footer { padding-top:22px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -1447,7 +1557,7 @@
   <!-- PAGE HERO -->
   <div class="page-hero">
     <h1>Application</h1>
-    <div class="application-ornament" aria-hidden="true"><span>✦</span></div>
+    <div class="application-ornament" aria-hidden="true"><img src="assets/images/miss-miami-brand-star.svg" alt="" /></div>
   </div>
 
   <!-- FORM -->
@@ -1601,7 +1711,7 @@
       </div>
     </div>
       </div>
-      <div class="application-ornament before-apply-end" aria-hidden="true"><span>✦</span></div>
+      <div class="application-ornament before-apply-end" aria-hidden="true"><img src="assets/images/miss-miami-brand-star.svg" alt="" /></div>
     </section>
 
     <form id="apply-form" novalidate>
@@ -1758,7 +1868,7 @@
         </div>
 
         <div class="submit-area">
-          <button type="submit" class="btn-submit">
+          <button type="submit" class="btn-submit mm-bronze-cta">
             Submit Application &amp; Pay $50
           </button>
           <div class="submit-progress" id="submit-progress" role="status" aria-live="polite"></div>
@@ -1771,6 +1881,8 @@
       </div>
 
     </form>
+    <div class="concept-wordmark" aria-hidden="true">MISS MIAMI</div>
+    <div class="concept-final-divider" aria-hidden="true"><img src="assets/images/miss-miami-brand-star.svg" alt="" /></div>
 
     <!-- TEMPORARY: static prototype; replace simulated states with confirmed backend/CRM/Stripe responses. -->
     <section class="apply-success" id="apply-success" aria-live="polite" aria-labelledby="success-title">
@@ -1792,7 +1904,7 @@
         </div>
         <div class="success-summary-item">
           <span class="success-summary-label">Registration Fee</span>
-          <span class="success-summary-value success-payment">✓ $50 USD Paid</span>
+          <span class="success-summary-value success-payment">✓ $50 Paid</span>
         </div>
       </div>
 
@@ -1822,7 +1934,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-bottom">
-      <p>© 2027 Miss Miami. All rights reserved.</p>
+      <p>© 2027 Miss Miami. All rights reserved</p>
       <div class="footer-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Use</a>
@@ -2978,6 +3090,7 @@
           const current = options.indexOf(document.activeElement);
           if (event.key === 'ArrowDown') { event.preventDefault(); options[(current + 1) % options.length].focus(); }
           if (event.key === 'ArrowUp') { event.preventDefault(); options[(current - 1 + options.length) % options.length].focus(); }
+          if ((event.key === 'Enter' || event.key === ' ') && current >= 0) { event.preventDefault(); options[current].click(); }
           if (event.key === 'Escape') { event.preventDefault(); wrap.classList.remove('is-open'); wrap.style.removeProperty('--b2-list-height'); wrap.style.removeProperty('--b2-trigger-height'); trigger.setAttribute('aria-expanded','false'); refreshSectionHeight(wrap.closest('.form-section')); trigger.focus(); }
         });
         select.insertAdjacentElement('afterend', wrap);

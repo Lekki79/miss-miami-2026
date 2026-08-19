@@ -12,13 +12,29 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
+  position: relative;
+  isolation: isolate;
   margin: 0;
   overflow-x: hidden;
-  background: linear-gradient(180deg, #E1C7A2 0%, #E7D0AD 42%, #EBD8BA 100%) fixed;
+  background:
+    radial-gradient(circle at 18% 26%, rgba(255, 248, 231, .7), transparent 24%),
+    radial-gradient(circle at 82% 45%, rgba(255, 253, 245, .72), transparent 26%),
+    radial-gradient(circle at 82% 72%, rgba(201, 146, 42, .1), transparent 26%),
+    linear-gradient(180deg, #EBD8BA 0%, #FFFDF5 52%, #EBD8BA 100%);
   color: var(--faq-body);
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   line-height: 1.7;
+}
+body::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(115deg, transparent 62%, rgba(201, 146, 42, .09)),
+    radial-gradient(circle at 14% 86%, rgba(201, 146, 42, .08), transparent 23%);
+  pointer-events: none;
 }
 body.menu-open { overflow: hidden; }
 a { color: inherit; text-decoration: none; }
@@ -120,7 +136,7 @@ button { font: inherit; }
 }
 .faq-hero h1 span { display: block; }
 .faq-hero .hero-title-lead { color: var(--faq-espresso); white-space: nowrap; }
-.faq-hero .hero-title-accent { margin-top: 18px; color: var(--faq-bronze); }
+.faq-hero .hero-title-accent { margin-top: 18px; color: #C9922A; }
 .faq-hero-inner > p:last-child { max-width: 620px; margin: 0 auto; color: var(--faq-body); font-size: 15px; line-height: 1.8; }
 
 .application-ornament {
@@ -142,6 +158,7 @@ button { font: inherit; }
   background: linear-gradient(to right, transparent, rgba(201, 146, 42, .72));
 }
 .application-ornament::after { transform: scaleX(-1); }
+.application-ornament img { display: block; width: 28px; height: auto; flex: 0 0 auto; }
 .faq-ornament { margin-top: 2px; margin-bottom: 42px; }
 
 /* C2 structured inline directory. Content remains fully visible without JavaScript. */
@@ -155,9 +172,10 @@ button { font: inherit; }
   align-items: center;
   gap: 24px;
   padding: 21px 24px;
-  border: 0;
+  border: 1px solid rgba(122, 79, 16, .34);
   border-radius: 8px;
-  background: rgba(255, 248, 231, .18);
+  background: rgba(255, 253, 245, .7);
+  box-shadow: 0 8px 22px rgba(58, 26, 4, .07);
   color: var(--faq-espresso);
   text-align: left;
   cursor: pointer;
@@ -165,7 +183,7 @@ button { font: inherit; }
 }
 .faq-category-trigger strong { display: block; font: 600 clamp(22px, 2.4vw, 32px)/1.2 'Cinzel', serif; }
 .faq-category-trigger small { display: block; margin-top: 7px; color: var(--faq-body); font-size: 13px; font-weight: 400; line-height: 1.55; }
-.faq-category-trigger:hover { background: rgba(255, 248, 231, .3); }
+.faq-category-trigger:hover { background: rgba(255, 253, 245, .86); }
 .faq-category-trigger:focus-visible { outline: 2px solid var(--faq-bronze); outline-offset: 3px; }
 .faq-category-trigger[aria-expanded='true'] {
   background: linear-gradient(110deg, #8B601C 0%, #A9741F 56%, #CFA345 100%);
@@ -193,7 +211,7 @@ button { font: inherit; }
 .faq-category-panel-inner { padding: 30px 0 34px; }
 .faq-enhanced .faq-category-panel[hidden], .faq-enhanced .faq-answer[hidden] { display: none; }
 
-.faq-subgroup { overflow: hidden; margin: 0 0 24px; border: 1px solid var(--faq-line); border-radius: 8px; background: rgba(255, 248, 231, .2); }
+.faq-subgroup { overflow: hidden; margin: 0 0 24px; border: 1px solid var(--faq-line); border-radius: 8px; background: rgba(255, 253, 245, .52); box-shadow: 0 8px 22px rgba(58, 26, 4, .06); }
 .faq-subgroup + .faq-subgroup { margin-top: 24px; }
 .faq-subgroup > h3 {
   margin: 0;
@@ -322,6 +340,7 @@ footer { padding: 36px 56px; background: transparent; }
   .faq-hero-inner > p:last-child { max-width: 340px; }
   .faq-hero-inner > p:last-child { font-size: 14px; line-height: 1.7; }
   .faq-ornament { width: 74%; margin-bottom: 30px; }
+  .application-ornament img { width: 22px; }
   .faq-source { width: auto; margin: 0 20px; padding-bottom: 36px; }
   .faq-category-trigger { min-height: 76px; padding: 17px 18px; }
   .faq-category-trigger strong { font-size: 21px; }

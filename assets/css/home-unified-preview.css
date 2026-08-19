@@ -22,7 +22,24 @@ html {
 }
 
 body {
-  background: var(--preview-page-gradient) fixed;
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 18% 26%, rgba(255, 248, 231, 0.7), transparent 24%),
+    radial-gradient(circle at 82% 45%, rgba(255, 253, 245, 0.72), transparent 26%),
+    radial-gradient(circle at 82% 72%, rgba(201, 146, 42, 0.1), transparent 26%),
+    linear-gradient(180deg, #EBD8BA 0%, #FFFDF5 52%, #EBD8BA 100%) fixed;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(115deg, transparent 62%, rgba(201, 146, 42, 0.09)),
+    radial-gradient(circle at 14% 86%, rgba(201, 146, 42, 0.08), transparent 23%);
+  pointer-events: none;
 }
 
 #site-header::before {
@@ -75,7 +92,7 @@ body {
 #home {
   height: 80svh;
   min-height: 560px;
-  background: var(--preview-page-gradient) fixed;
+  background: transparent;
 }
 
 #home::before {
@@ -264,7 +281,7 @@ section#mission {
 
 #apply-banner,
 #faq-teaser {
-  border-top: 1px solid var(--preview-divider);
+  border-top: 0;
 }
 
 .section-sub,
@@ -297,10 +314,34 @@ section#apply-banner {
   margin-bottom: 20px;
 }
 
+.home-brand-divider {
+  display: flex;
+  width: min(420px, calc(100% - 48px));
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 0 auto 24px;
+}
+
+.home-brand-divider::before,
+.home-brand-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(140, 87, 13, 0.34);
+}
+
+.home-brand-divider img {
+  display: block;
+  width: 28px;
+  height: auto;
+  flex: 0 0 auto;
+}
+
 footer {
   background: transparent;
   padding: 42px 48px 30px;
-  border-top: 1px solid rgba(201, 146, 42, 0.24);
+  border-top: 0;
 }
 
 .footer-grid {
@@ -309,8 +350,8 @@ footer {
 }
 
 .footer-bottom {
-  padding-top: 24px;
-  border-top-color: var(--preview-divider);
+  padding-top: 0;
+  border-top: 0;
 }
 
 @media (max-width: 1024px) {
@@ -329,11 +370,21 @@ footer {
   }
 }
 
+@media (max-width: 600px) {
+  .home-brand-divider {
+    width: 74%;
+    gap: 12px;
+    margin: 0 auto 22px;
+  }
+
+  .home-brand-divider img { width: 22px; }
+}
+
 @media (max-width: 768px) {
   #home {
     height: 68svh;
     min-height: 570px;
-    background: var(--preview-page-gradient) fixed;
+    background: transparent;
   }
 
   #home::before {
