@@ -171,11 +171,58 @@ body::before {
 }
 
 .hero-year {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(7px, 0.65vw, 9px);
   font-size: clamp(15px, 2vw, 22px);
   margin-bottom: 30px;
   color: #F0D58E;
   font-weight: 600;
+  letter-spacing: 0;
   opacity: 1;
+  white-space: nowrap;
+}
+
+.hero-year-pair {
+  letter-spacing: 0.38em;
+  padding-left: 0.38em;
+}
+
+.hero-year-star-wrap {
+  position: relative;
+  display: grid;
+  width: clamp(26px, 1.9vw, 28px);
+  flex: 0 0 auto;
+  place-items: center;
+  isolation: isolate;
+}
+
+.hero-year-star-wrap::before {
+  position: absolute;
+  z-index: -1;
+  width: 190%;
+  height: 145%;
+  background: radial-gradient(
+    ellipse,
+    rgba(255, 248, 225, 0.34) 0%,
+    rgba(249, 231, 184, 0.17) 38%,
+    transparent 76%
+  );
+  content: '';
+  pointer-events: none;
+}
+
+.hero-year-star {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter:
+    brightness(1.18)
+    saturate(1.38)
+    contrast(1.08)
+    drop-shadow(0 0 0.35px rgba(58, 26, 4, 0.9))
+    drop-shadow(0 1px 0.55px rgba(58, 26, 4, 0.68));
 }
 
 .hero-desc {
@@ -433,6 +480,11 @@ footer {
   .hero-year {
     font-size: 15px;
     margin-bottom: 26px;
+    gap: 7px;
+  }
+
+  .hero-year-star-wrap {
+    width: 24px;
   }
 
   .hero-desc {
